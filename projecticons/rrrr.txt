@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width-device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie-edge">
+	<link href="https://kit-pro.fontawesome.com/releases/v6.1.1/css/pro.min.css"rel="stylesheet">
+	<title>Document</title>
+</head>
+<body>
+     <div style="font-size: 60px">
+	    <i class="fas fa-addres-book"></i>
+       <i class="fas fa-acorn"></i>
+       <i class="fa-solid fa-plate-utensils"></i>
+  </div>
+</body>
+</html>
