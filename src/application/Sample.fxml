@@ -13,7 +13,7 @@
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
    <children>
       <Pane prefHeight="158.0" prefWidth="905.0" style="-fx-background-color: #2D65EB;" />
-      <GridPane layoutX="176.0" layoutY="225.0" prefHeight="253.0" prefWidth="553.0">
+      <GridPane hgap="10.0" layoutX="176.0" layoutY="225.0" prefHeight="253.0" prefWidth="553.0" vgap="10.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -24,14 +24,14 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="168.0" prefWidth="185.0" text="Usuários">
+            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="129.0" prefWidth="213.0" text="Usuários">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../projecticons/Useres.png" />
                      </image></ImageView>
                </graphic></Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="236.0" text="Fornecedores" GridPane.columnIndex="1">
+            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="236.0" style="-fx-border-color: #65789;" text="Fornecedores" GridPane.columnIndex="1">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -73,18 +73,6 @@
             </Button>
          </children>
       </GridPane>
-      <HBox layoutX="385.0" layoutY="488.0" prefHeight="45.0" prefWidth="135.0">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="135.0" text="Sair">
-               <graphic>
-                  <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../projecticons/close.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </HBox>
+      <HBox layoutX="385.0" layoutY="488.0" prefHeight="45.0" prefWidth="135.0" />
    </children>
 </AnchorPane>
