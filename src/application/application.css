@@ -10,3 +10,28 @@
 {
 -fx-background-color : #73A3EF;
 }
+.text-field
+{
+-fx-background-color :  transparent;
+}
+.text-field
+{
+-fx-border-color :  #0598ff;
+}
+.text-field
+{
+-fx-border-width :  0px 0px 2px 0px;
+}
+.text-field
+{
+-fx-text-inner-color: black;
+-fx-prompt-text-fill: #fff;
+}
+.ptxt1{
+-fx-text-inner-color: black;
+-fx-prompt-text-fill: #708090;
+}
+.ptxt2{
+-fx-text-inner-color: black;
+-fx-prompt-text-fill: #708090;
+}
