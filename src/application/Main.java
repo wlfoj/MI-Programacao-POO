@@ -15,7 +15,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		try {
 			primaryStage.setTitle("Comercial Store");
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorCostume.fxml"));
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			

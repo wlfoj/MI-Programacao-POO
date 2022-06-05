@@ -10,6 +10,21 @@
 {
 -fx-background-color : #73A3EF;
 }
+
+.choice-box
+{
+-fx-background-color: #FFF;
+}
+.choice-box:pressed
+{
+-fx-background-color : #73A3EF;
+}
+.choice-box : hover
+{
+-fx-background-color: #C0D5F7;
+}
+
+//combo box
 .combo-box
 {
 -fx-background-color: #FFF;
@@ -22,6 +37,8 @@
 {
 -fx-background-color: #C0D5F7;
 }
+
+//text field
 .text-field
 {
 -fx-background-color :  transparent;
@@ -39,6 +56,8 @@
 -fx-text-inner-color: black;
 -fx-prompt-text-fill: #fff;
 }
+
+//especifico css
 .ptxt1{
 -fx-text-inner-color: black;
 -fx-prompt-text-fill: #708090;

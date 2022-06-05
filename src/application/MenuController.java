@@ -8,7 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 	
-public class SampleController implements Initializable {
+public class MenuController implements Initializable {
 	@FXML
 	private void eventoOne(ActionEvent e) {
 		System.out.println("Test");
