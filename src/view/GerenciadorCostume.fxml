@@ -15,26 +15,24 @@
    <children>
       <AnchorPane prefHeight="59.0" prefWidth="600.0" style="-fx-background-color: #2D65EB;">
          <children>
-            <Label layoutX="193.0" layoutY="8.0" prefHeight="43.0" prefWidth="271.0" text="Gerenciador de Cardápio" textFill="WHITE">
+            <Label layoutX="193.0" layoutY="8.0" prefHeight="43.0" prefWidth="271.0" text="Gerenciador de Clientes" textFill="WHITE">
                <font>
                   <Font name="Candara" size="25.0" />
                </font>
             </Label>
-            <ImageView fitHeight="59.0" fitWidth="75.0" layoutX="118.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="43.0" fitWidth="60.0" layoutX="132.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../projecticons/ManagementItens.png" />
+                  <Image url="@../../projecticons/ManagementClients.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
       <TableView layoutY="129.0" prefHeight="235.0" prefWidth="600.0">
         <columns>
-          <TableColumn prefWidth="44.0" text="Id" />
-          <TableColumn prefWidth="193.0" text="Item" />
-            <TableColumn prefWidth="77.0" text="Descrição" />
-            <TableColumn prefWidth="90.0" text="Categoria" />
-            <TableColumn prefWidth="114.0" text="Ingredientes" />
-            <TableColumn prefWidth="81.0" text="Valor" />
+          <TableColumn prefWidth="155.0" text="Nome" />
+          <TableColumn prefWidth="129.0" text="CPF" />
+            <TableColumn prefWidth="152.0" text="Email" />
+            <TableColumn prefWidth="163.0" text="Telefone" />
         </columns>
       </TableView>
       <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #2D65EB;">
@@ -44,7 +42,7 @@
                   <Image url="@../../projecticons/Search.png" />
                </image>
             </ImageView>
-            <TextField layoutX="338.0" layoutY="9.0" prefHeight="25.0" prefWidth="203.0" promptText="Nome do item" />
+            <TextField layoutX="338.0" layoutY="9.0" prefHeight="25.0" prefWidth="203.0" promptText="Nome do cliente" />
             <Button layoutX="541.0" layoutY="9.0" mnemonicParsing="false" text="Buscar" />
          </children>
       </AnchorPane>
