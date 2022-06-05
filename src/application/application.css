@@ -10,6 +10,18 @@
 {
 -fx-background-color : #73A3EF;
 }
+.combo-box
+{
+-fx-background-color: #FFF;
+}
+.combo-box:pressed
+{
+-fx-background-color : #73A3EF;
+}
+.combo-box : hover
+{
+-fx-background-color: #C0D5F7;
+}
 .text-field
 {
 -fx-background-color :  transparent;

@@ -30,7 +30,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btt1" contentDisplay="TOP" mnemonicParsing="false" prefHeight="129.0" prefWidth="213.0" text="Usuários">
+            <Button fx:id="btt1" contentDisplay="TOP" mnemonicParsing="false" onAction="#eventoOne" prefHeight="129.0" prefWidth="213.0" text="Usuários">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
