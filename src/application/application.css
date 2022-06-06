@@ -1,6 +1,7 @@
 .button
 {
--fx-background-color: #FFF;
+-fx-background-color: #b8b8b8;
+-fx-background-radius: 25px;
 }
 .button : hover
 {
@@ -13,7 +14,8 @@
 
 .choice-box
 {
--fx-background-color: #FFF;
+-fx-background-color: #b8b8b8;
+-fx-background-radius: 25px;
 }
 .choice-box:pressed
 {

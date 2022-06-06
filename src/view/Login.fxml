@@ -2,12 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="450.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="450.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
    <children>
       <AnchorPane prefHeight="133.0" prefWidth="353.0" style="-fx-background-color: #2D65EB;">
          <children>
@@ -18,7 +19,6 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <TextField layoutX="118.0" layoutY="279.0" promptText="Senha" styleClass="ptxt2" />
       <ImageView fitHeight="27.0" fitWidth="21.0" layoutX="86.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../projecticons/password.png" />
@@ -29,13 +29,14 @@
             <Image url="@../../projecticons/Clientes.png" />
          </image>
       </ImageView>
-      <Button layoutX="153.0" layoutY="332.0" mnemonicParsing="false" text="Entrar" />
+      <Button fx:id="buttonLogin" layoutX="153.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#clickedLogin" text="Entrar" />
       <Label layoutX="132.0" layoutY="192.0" text="Login do usuário" />
       <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="86.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../projecticons/Useres.png" />
          </image>
       </ImageView>
-      <TextField layoutX="118.0" layoutY="225.0" promptText="Usuário" styleClass="ptxt1" />
+      <TextField fx:id="user" layoutX="118.0" layoutY="225.0" promptText="Usuário" styleClass="ptxt1" />
+      <PasswordField fx:id="password" layoutX="118.0" layoutY="280.0" promptText="Senha" styleClass="ptxt2" />
    </children>
 </AnchorPane>
