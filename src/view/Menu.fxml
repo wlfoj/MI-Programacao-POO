@@ -9,17 +9,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
    <children>
-      <Pane prefHeight="158.0" prefWidth="905.0" style="-fx-background-color: #2D65EB;">
+      <Pane prefHeight="171.0" prefWidth="600.0" style="-fx-background-color: #2D65EB;">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="497.0" layoutX="361.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="497.0" layoutX="209.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../projecticons/iconehome.png" />
                </image>
             </ImageView>
          </children></Pane>
-      <GridPane hgap="10.0" layoutX="176.0" layoutY="225.0" prefHeight="253.0" prefWidth="553.0" vgap="10.0">
+      <GridPane hgap="10.0" layoutX="54.0" layoutY="181.0" prefHeight="210.0" prefWidth="493.0" vgap="10.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -44,7 +44,7 @@
                         <Image url="@../../projecticons/Fornecedores.png" />
                      </image></ImageView>
                </graphic></Button>
-            <Button fx:id="btt3" contentDisplay="TOP" mnemonicParsing="false" prefHeight="196.0" prefWidth="287.0" text="Vendas" GridPane.columnIndex="2">
+            <Button fx:id="btt3" contentDisplay="TOP" mnemonicParsing="false" prefHeight="132.0" prefWidth="249.0" text="Vendas" GridPane.columnIndex="2">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -52,7 +52,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="btt4" contentDisplay="TOP" mnemonicParsing="false" prefHeight="160.0" prefWidth="251.0" text="Clientes" GridPane.rowIndex="1">
+            <Button fx:id="btt4" contentDisplay="TOP" mnemonicParsing="false" prefHeight="137.0" prefWidth="206.0" text="Clientes" GridPane.rowIndex="1">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -68,7 +68,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="btt6" contentDisplay="TOP" mnemonicParsing="false" prefHeight="170.0" prefWidth="184.0" text="Produtos" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button fx:id="btt6" contentDisplay="TOP" mnemonicParsing="false" prefHeight="112.0" prefWidth="222.0" text="Produtos" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>

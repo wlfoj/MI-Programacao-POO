@@ -16,6 +16,7 @@ public class Main extends Application {
 	public static Scene login;
 	public static Scene menu;
 	public static Scene guser;
+	public static Scene formUser;
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -31,6 +32,9 @@ public class Main extends Application {
 			
 			AnchorPane root2 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorUser.fxml"));
 			guser= new Scene(root2);
+			
+			AnchorPane root3 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
+			formUser= new Scene(root3);
 			
 			
 			Image anotherIcon = new Image("iconapp.png");
@@ -54,6 +58,18 @@ public class Main extends Application {
 				stage.centerOnScreen();
 				break;
 			case "guser":
+				stage.setScene(guser);
+				stage.centerOnScreen();
+				break;
+			case "backUser":
+				stage.setScene(menu);
+				stage.centerOnScreen();
+				break;
+			case "formUser":
+				stage.setScene(formUser);
+				stage.centerOnScreen();
+				break;
+			case "backgUser":
 				stage.setScene(guser);
 				stage.centerOnScreen();
 				break;
