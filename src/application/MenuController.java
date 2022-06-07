@@ -12,6 +12,7 @@ public class MenuController implements Initializable {
 	@FXML
 	private void eventoOne(ActionEvent e) {
 		System.out.println("Test");
+		Main.scenes("guser");
 	}
 	@FXML
     private Button btt1, btt2, btt3, btt4, btt5, btt6;

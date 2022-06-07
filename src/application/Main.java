@@ -15,6 +15,7 @@ public class Main extends Application {
 	public static Stage stage;
 	public static Scene login;
 	public static Scene menu;
+	public static Scene guser;
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -28,8 +29,9 @@ public class Main extends Application {
 			AnchorPane root1 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
 			menu = new Scene(root1);
 			
-			login.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			menu.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			AnchorPane root2 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorUser.fxml"));
+			guser= new Scene(root2);
+			
 			
 			Image anotherIcon = new Image("iconapp.png");
 			primaryStage.getIcons().add(anotherIcon);
@@ -49,6 +51,11 @@ public class Main extends Application {
 				break;
 			case "Acesso Liberado!":
 				stage.setScene(menu);
+				stage.centerOnScreen();
+				break;
+			case "guser":
+				stage.setScene(guser);
+				stage.centerOnScreen();
 				break;
 		}
 	}
