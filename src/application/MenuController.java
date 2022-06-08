@@ -11,13 +11,40 @@ import javafx.scene.control.Button;
 	
 public class MenuController implements Initializable {
 	
-	@FXML
-	private void eventoOne(ActionEvent e) {
-		System.out.println("Test");
-		Main.scenes("guser");
-	}
+
 	@FXML
     private Button btt1, btt2, btt3, btt4, btt5, btt6;
+	
+	@FXML
+	private void eventoOne(ActionEvent e) {
+		System.out.println("Usuario");
+		Main.scenes("guser");
+	}
+	
+	@FXML
+	private void eventoTwo(ActionEvent e) {
+		System.out.println("Produto");
+		Main.scenes("gproduct");
+	}
+	
+	@FXML
+	private void eventoThree(ActionEvent e) {
+		System.out.println("Clientes");
+		Main.scenes("gclientes");
+	}
+	
+	@FXML
+	private void eventoFour(ActionEvent e) {
+		System.out.println("Fornecedores");
+		Main.scenes("gfornecedores");
+	}
+	
+	@FXML
+	private void eventoFive(ActionEvent e) {
+		System.out.println("Cardapio");
+		Main.scenes("gcardapio");
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btt1.setCursor(Cursor.HAND);

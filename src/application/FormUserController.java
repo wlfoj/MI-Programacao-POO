@@ -8,12 +8,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 
 public class FormUserController implements Initializable {
 
     @FXML
-    private ChoiceBox<String> choiceBox;
+    private ComboBox<String> comboBox;
     private String[] lista = {"Administrador","Fucionário"};
     
     @FXML
@@ -32,7 +32,7 @@ public class FormUserController implements Initializable {
 		btt2.setCursor(Cursor.HAND);
 		btt3.setCursor(Cursor.HAND);
 		
-		choiceBox.getItems().setAll(lista);
+		comboBox.getItems().setAll(lista);
 	}
 	
 	

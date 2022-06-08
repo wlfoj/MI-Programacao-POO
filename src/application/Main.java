@@ -16,7 +16,11 @@ public class Main extends Application {
 	public static Scene login;
 	public static Scene menu;
 	public static Scene guser;
-	public static Scene formUser;
+	public static Scene formuser;
+	public static Scene gproduct;
+	public static Scene gclientes;
+	public static Scene gfornecedores;
+	public static Scene gcardapio;
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -34,8 +38,19 @@ public class Main extends Application {
 			guser= new Scene(root2);
 			
 			AnchorPane root3 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
-			formUser= new Scene(root3);
+			formuser= new Scene(root3);
 			
+			AnchorPane root4 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProducts.fxml"));
+			gproduct= new Scene(root4);
+			
+			AnchorPane root5 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorCostume.fxml"));
+			gclientes= new Scene(root5);
+			
+			AnchorPane root6 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProvider.fxml"));
+			gfornecedores= new Scene(root6);
+			
+			AnchorPane root7 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorItens.fxml"));
+			gcardapio= new Scene(root7);
 			
 			Image anotherIcon = new Image("iconapp.png");
 			primaryStage.getIcons().add(anotherIcon);
@@ -66,13 +81,30 @@ public class Main extends Application {
 				stage.centerOnScreen();
 				break;
 			case "formUser":
-				stage.setScene(formUser);
+				stage.setScene(formuser);
 				stage.centerOnScreen();
 				break;
 			case "backgUser":
 				stage.setScene(guser);
 				stage.centerOnScreen();
 				break;
+			case "gproduct":
+				stage.setScene(gproduct);
+				stage.centerOnScreen();
+				break;
+			case "gclientes":
+				stage.setScene(gclientes);
+				stage.centerOnScreen();
+				break;
+			case "gfornecedores":
+				stage.setScene(gfornecedores);
+				stage.centerOnScreen();
+				break;
+			case "gcardapio":
+				stage.setScene(gcardapio);
+				stage.centerOnScreen();
+				break;
+			
 		}
 	}
 	
