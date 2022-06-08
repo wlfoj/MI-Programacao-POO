@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import model.ManagementUsers;
 
 public class LoginController implements Initializable { 
 
@@ -40,7 +41,10 @@ public class LoginController implements Initializable {
     
     //@FXML
     public boolean verificationLogin(String name, String pass) {
-    	return name.equals("admin") && pass.equals("1234");
+    	if( ManagementUsers.auth(name, pass) == null) {
+    		return false;
+    	}
+    	return true;
     }
 
 	@Override

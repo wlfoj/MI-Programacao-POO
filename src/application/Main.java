@@ -2,8 +2,11 @@ package application;
 	
 import java.io.IOException;
 
+import exceptions.NullFieldException;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import model.ManagementUsers;
+import model.User;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -124,10 +127,27 @@ public class Main extends Application {
 				stage.setScene(menu);
 				stage.centerOnScreen();
 				break;
+			case "backitens":
+				stage.setScene(menu);
+				stage.centerOnScreen();
+				break;
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NullFieldException {
+		User u = new User();
+		u.setLogin("riri");
+		u.setPass("1234");
+		u.setName("Ricardo Milos");
+		ManagementUsers.addUser(u);
+		
+		User p = new User();
+		p.setLogin("pao");
+		p.setPass("1234");
+		p.setName("Ricardo Melos");
+		ManagementUsers.addUser(p);
+		
+		
 		launch(args);
 	}
 }
