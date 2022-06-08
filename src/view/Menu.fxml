@@ -44,7 +44,7 @@
                         <Image url="@../../projecticons/Fornecedores.png" />
                      </image></ImageView>
                </graphic></Button>
-            <Button fx:id="btt3" contentDisplay="TOP" mnemonicParsing="false" prefHeight="132.0" prefWidth="249.0" text="Vendas" GridPane.columnIndex="2">
+            <Button fx:id="btt3" contentDisplay="TOP" mnemonicParsing="false" onAction="#eventoSix" prefHeight="132.0" prefWidth="249.0" text="Vendas" GridPane.columnIndex="2">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -45,6 +45,12 @@ public class MenuController implements Initializable {
 		Main.scenes("gcardapio");
 	}
 	
+	@FXML
+	private void eventoSix(ActionEvent e) {
+		System.out.println("Vendas");
+		Main.scenes("gvendas");
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btt1.setCursor(Cursor.HAND);
