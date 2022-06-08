@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,17 +10,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
    <children>
-      <Pane prefHeight="171.0" prefWidth="600.0" style="-fx-background-color: #2D65EB;">
+      <Pane prefHeight="152.0" prefWidth="600.0" style="-fx-background-color: #2D65EB;">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="497.0" layoutX="209.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="120.0" fitWidth="187.0" layoutX="227.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../projecticons/iconehome.png" />
                </image>
             </ImageView>
          </children></Pane>
-      <GridPane hgap="10.0" layoutX="54.0" layoutY="181.0" prefHeight="210.0" prefWidth="493.0" vgap="10.0">
+      <GridPane hgap="10.0" layoutX="54.0" layoutY="162.0" prefHeight="229.0" prefWidth="493.0" vgap="10.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -44,7 +45,7 @@
                         <Image url="@../../projecticons/Fornecedores.png" />
                      </image></ImageView>
                </graphic></Button>
-            <Button fx:id="btt3" contentDisplay="TOP" mnemonicParsing="false" onAction="#eventoSix" prefHeight="132.0" prefWidth="249.0" text="Vendas" GridPane.columnIndex="2">
+            <Button fx:id="btt3" contentDisplay="TOP" mnemonicParsing="false" onAction="#eventoSix" prefHeight="109.0" prefWidth="164.0" text="Vendas" GridPane.columnIndex="2">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -80,4 +81,8 @@
          </children>
       </GridPane>
    </children>
+   <stylesheets>
+      <URL value="@../application/application.css" />
+      <URL value="@../application/application.css" />
+   </stylesheets>
 </AnchorPane>

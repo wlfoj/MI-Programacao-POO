@@ -100,6 +100,10 @@ public class Main extends Application {
 				stage.setScene(gclientes);
 				stage.centerOnScreen();
 				break;
+			case "backclientes":
+				stage.setScene(menu);
+				stage.centerOnScreen();
+				break;
 			case "gfornecedores":
 				stage.setScene(gfornecedores);
 				stage.centerOnScreen();
@@ -112,7 +116,14 @@ public class Main extends Application {
 				stage.setScene(gvendas);
 				stage.centerOnScreen();
 				break;
-			
+			case "backfornecedor":
+				stage.setScene(menu);
+				stage.centerOnScreen();
+				break;
+			case "backprodutos":
+				stage.setScene(menu);
+				stage.centerOnScreen();
+				break;
 		}
 	}
 	

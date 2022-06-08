@@ -23,7 +23,7 @@ public class UserController implements Initializable {
 	
 	@FXML
 	private void eventoOne(ActionEvent e) {
-		System.out.println("Voltar");
+		System.out.println("Voltar Usuario para Menu");
 		Main.scenes("backUser");
 	}
 	
