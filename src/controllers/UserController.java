@@ -69,6 +69,13 @@ public class UserController implements Initializable {
 	}
 	
     @FXML
+    void eventoThree(ActionEvent event) {
+		Main.scenes("formUserEdit");
+		btt4.setDisable(true);
+		btt5.setDisable(true);
+    }
+	
+    @FXML
     void clickLine(MouseEvent event) {
     	User p = tableView.getSelectionModel().getSelectedItem();
     	if(p == null) {

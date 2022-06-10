@@ -73,7 +73,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btt4" disable="true" layoutX="432.0" layoutY="5.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" text="Editar">
+            <Button fx:id="btt4" disable="true" layoutX="432.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventoThree" prefHeight="27.0" prefWidth="68.0" text="Editar">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>

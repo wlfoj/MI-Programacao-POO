@@ -160,6 +160,10 @@ public class Main extends Application {
 				stage.setScene(gclientes);
 				stage.centerOnScreen();
 				break;
+			case "formUserEdit":
+				stage.setScene(formuser);
+				stage.centerOnScreen();
+				break;
 		}
 	}
 	
