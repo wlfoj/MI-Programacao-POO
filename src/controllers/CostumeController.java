@@ -3,20 +3,62 @@ package controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import main.Main;
+import model.Costumer;
+import model.ManagementCostumer;
 
 public class CostumeController implements Initializable {
 
+	ObservableList<Costumer> observableListaClientes;
+
+    @FXML
+    private TableColumn<Costumer, Integer> tableId;
+	
+    @FXML
+    private TableColumn<Costumer, String> cpfTable;
+
+    @FXML
+    private TableColumn<Costumer, String> emailTable;
+
+    @FXML
+    private TableColumn<Costumer, String> nameTable;
+
+    @FXML
+    private TableView<Costumer> tableView;
+
+    @FXML
+    private TableColumn<Costumer, String> telTable;
+	
 	@FXML
 	private void eventoTwo(ActionEvent e) {
 		System.out.println("Formulario Clientes");
 		Main.scenes("formClientes");
 	}
+	
+
+    @FXML
+    void clickLine(MouseEvent event) {
+    	Costumer p = tableView.getSelectionModel().getSelectedItem();
+    	if(p == null) {
+    	} else {
+    		String name=p.getName();
+    		String email=p.getEmail();
+    		Integer id=p.getId();
+    		String cpf=p.getCpf();
+    		System.out.println("nome:  "+name+"|   cpf:"+cpf+"|  email: "+email+"|  id:  "+id);
+    	}
+    }
 	
 	@FXML
 	private void eventoOne(ActionEvent e) {
@@ -36,6 +78,18 @@ public class CostumeController implements Initializable {
 		btt5.setCursor(Cursor.HAND);
 		btt6.setCursor(Cursor.HAND);
 		
+		refreshTableView();
+		
 	}
-
+	public void refreshTableView() {
+		
+		observableListaClientes = FXCollections.observableArrayList(ManagementCostumer.listAllCostumer());
+		tableView.setItems(observableListaClientes);
+		
+		tableId.setCellValueFactory(new PropertyValueFactory<>("id"));
+		cpfTable.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+		emailTable.setCellValueFactory(new PropertyValueFactory<>("email"));
+		nameTable.setCellValueFactory(new PropertyValueFactory<>("name"));
+		telTable.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+	}
 }

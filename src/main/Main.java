@@ -3,8 +3,11 @@ package main;
 import java.io.IOException;
 
 import exceptions.NullFieldException;
+import exceptions.ObjectRegistred;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import model.Costumer;
+import model.ManagementCostumer;
 import model.ManagementUsers;
 import model.User;
 import javafx.scene.Scene;
@@ -154,7 +157,7 @@ public class Main extends Application {
 		}
 	}
 	
-	public static void main(String[] args) throws NullFieldException {
+	public static void main(String[] args) throws NullFieldException, ObjectRegistred {
 		User u = new User();
 		u.setLogin("riri");
 		u.setPass("1234");
@@ -185,6 +188,12 @@ public class Main extends Application {
 		b.setName("Fenix");
 		ManagementUsers.addUser(b);
 		
+		Costumer cliente0 = new Costumer();
+		cliente0.setCpf("44022245200");
+		cliente0.setEmail("testador@exemplo.com");
+		cliente0.setName("testador colossal");
+		cliente0.setTelefone("75-981020666");
+		ManagementCostumer.addCostumer(cliente0);
 		
 		launch(args);
 	}

@@ -16,15 +16,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import main.Main;
 import model.ManagementUsers;
 import model.User;
 
 public class UserController implements Initializable {
-	String idEditUser;
-	
+
 	ObservableList<User> observableListaUsuarios; 
 	
 	@FXML
@@ -99,7 +97,6 @@ public class UserController implements Initializable {
 	}
 	
 	public void refreshTableView() {
-		
 		
 		observableListaUsuarios = FXCollections.observableArrayList(ManagementUsers.listAllUsers());
 		tableView.setItems(observableListaUsuarios);
