@@ -44,6 +44,7 @@ public class UserController implements Initializable {
 		System.out.println("Formulario Usuario");
 		Main.scenes("formUser");
 		btt4.setDisable(true);
+		btt5.setDisable(true);
 	}
 
     @FXML
@@ -54,6 +55,7 @@ public class UserController implements Initializable {
 		System.out.println("Voltar Usuario para Menu");
 		Main.scenes("backUser");
 		btt4.setDisable(true);
+		btt5.setDisable(true);
 	}
 	
     @FXML
@@ -69,6 +71,7 @@ public class UserController implements Initializable {
     	}
     	
     	btt4.setDisable(false);
+    	btt5.setDisable(false);
     }
 	
 	@Override
