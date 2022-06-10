@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../bin/application/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../controllers/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserController">
    <children>
       <AnchorPane prefHeight="53.0" prefWidth="600.0" style="-fx-background-color: #2D65EB;">
          <children>
@@ -35,11 +35,11 @@
             </Button>
          </children>
       </AnchorPane>
-      <TableView layoutY="129.0" prefHeight="235.0" prefWidth="600.0" stylesheets="@../../bin/application/application.css">
+      <TableView fx:id="tableView" layoutY="129.0" onMouseClicked="#clickLine" prefHeight="235.0" prefWidth="600.0" stylesheets="@../controllers/application.css">
         <columns>
-          <TableColumn prefWidth="75.0" text="Id" />
-          <TableColumn prefWidth="372.0" text="Usuario" />
-            <TableColumn prefWidth="151.0" text="Tipo" />
+          <TableColumn fx:id="idColuna" prefWidth="77.0" text="Id" />
+          <TableColumn fx:id="userColuna" prefWidth="85.0" text="Usuario" />
+            <TableColumn fx:id="tipoColuna" prefWidth="436.0" text="Nome" />
         </columns>
       </TableView>
       <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #2D65EB;">
@@ -49,7 +49,7 @@
                   <Image url="@../../projecticons/Search.png" />
                </image>
             </ImageView>
-            <TextField fx:id="textFild1" layoutX="338.0" layoutY="9.0" onMouseClicked="#clickLine" prefHeight="25.0" prefWidth="203.0" promptText="Nome do usuário" />
+            <TextField fx:id="textFild1" layoutX="338.0" layoutY="9.0" prefHeight="25.0" prefWidth="203.0" promptText="Nome do usuário" />
             <Button fx:id="btt2" layoutX="541.0" layoutY="9.0" mnemonicParsing="false" text="Buscar" />
          </children>
       </AnchorPane>

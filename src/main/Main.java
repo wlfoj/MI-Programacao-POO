@@ -1,4 +1,4 @@
-package application;
+package main;
 	
 import java.io.IOException;
 
@@ -80,8 +80,10 @@ public class Main extends Application {
 				stage.centerOnScreen();
 				break;
 			case "guser":
+				stage.close();
 				stage.setScene(guser);
 				stage.centerOnScreen();
+				stage.show();
 				break;
 			case "backUser":
 				stage.setScene(menu);
@@ -92,8 +94,10 @@ public class Main extends Application {
 				stage.centerOnScreen();
 				break;
 			case "backgUser":
+				stage.close();
 				stage.setScene(guser);
 				stage.centerOnScreen();
+				stage.show();
 				break;
 			case "gproduct":
 				stage.setScene(gproduct);
@@ -143,9 +147,27 @@ public class Main extends Application {
 		
 		User p = new User();
 		p.setLogin("pao");
-		p.setPass("1234");
+		p.setPass("paozin");
 		p.setName("Ricardo Melos");
 		ManagementUsers.addUser(p);
+		
+		User v = new User();
+		v.setLogin("batman");
+		v.setPass("4321");
+		v.setName("Bruce Wayne");
+		ManagementUsers.addUser(v);
+		
+		User a = new User();
+		a.setLogin("pedrin");
+		a.setPass("1234");
+		a.setName("Pedro Henrique Cruz");
+		ManagementUsers.addUser(a);
+		
+		User b = new User();
+		b.setLogin("fenix");
+		b.setPass("1234");
+		b.setName("Fenix");
+		ManagementUsers.addUser(b);
 		
 		
 		launch(args);

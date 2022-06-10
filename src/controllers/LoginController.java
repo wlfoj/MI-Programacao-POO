@@ -1,4 +1,4 @@
-package application;
+package controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import main.Main;
 import model.ManagementUsers;
 
 public class LoginController implements Initializable { 
@@ -23,8 +24,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private TextField user;
-
-
+    
     @FXML
     private Label lbl;
     	
@@ -41,7 +41,7 @@ public class LoginController implements Initializable {
     
     //@FXML
     public boolean verificationLogin(String name, String pass) {
-    	if( ManagementUsers.auth(name, pass) == null) {
+    	if(ManagementUsers.auth(name, pass) == null) {
     		return false;
     	}
     	return true;
