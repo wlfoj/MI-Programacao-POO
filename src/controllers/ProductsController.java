@@ -52,7 +52,12 @@ public class ProductsController implements Initializable {
     	btt3.setDisable(true);
 	}
 	
-
+    @FXML
+    void eventoTwo(ActionEvent event) {
+    	System.out.println("Formulario Produtos");
+    	Main.scenes("formProdutc");
+    }
+	
     @FXML
     void clickLine(MouseEvent event) {
     	Product p = tableView.getSelectionModel().getSelectedItem();

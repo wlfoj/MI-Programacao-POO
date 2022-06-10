@@ -59,7 +59,7 @@
       </AnchorPane>
       <AnchorPane layoutY="364.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
-            <Button fx:id="btt2" layoutX="353.0" layoutY="5.0" mnemonicParsing="false" text="Novo">
+            <Button fx:id="btt2" layoutX="353.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventoTwo" text="Novo">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>

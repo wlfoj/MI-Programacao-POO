@@ -35,6 +35,7 @@ public class Main extends Application {
 	public static Scene gcardapio;
 	public static Scene gvendas;
 	public static Scene formclientes;
+	public static Scene formproducts;
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -72,6 +73,9 @@ public class Main extends Application {
 			AnchorPane root9 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioCostume.fxml"));
 			formclientes= new Scene(root9);
 			
+			AnchorPane root10 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioProducts.fxml"));
+			formproducts= new Scene(root10);
+			
 			Image anotherIcon = new Image("iconapp.png");
 			primaryStage.getIcons().add(anotherIcon);
 			
@@ -93,10 +97,8 @@ public class Main extends Application {
 				stage.centerOnScreen();
 				break;
 			case "guser":
-				stage.close();
 				stage.setScene(guser);
 				stage.centerOnScreen();
-				stage.show();
 				break;
 			case "backUser":
 				stage.setScene(menu);
@@ -107,10 +109,8 @@ public class Main extends Application {
 				stage.centerOnScreen();
 				break;
 			case "backgUser":
-				stage.close();
 				stage.setScene(guser);
 				stage.centerOnScreen();
-				stage.show();
 				break;
 			case "gproduct":
 				stage.setScene(gproduct);
@@ -162,6 +162,14 @@ public class Main extends Application {
 				break;
 			case "formUserEdit":
 				stage.setScene(formuser);
+				stage.centerOnScreen();
+				break;
+			case "formProdutc":
+				stage.setScene(formproducts);
+				stage.centerOnScreen();
+				break;
+			case "backProducts":
+				stage.setScene(gproduct);
 				stage.centerOnScreen();
 				break;
 		}
