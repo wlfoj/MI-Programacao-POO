@@ -36,14 +36,14 @@
             </Button>
          </children>
       </AnchorPane>
-      <TableView layoutY="129.0" prefHeight="235.0" prefWidth="600.0">
+      <TableView fx:id="tableView" layoutY="129.0" prefHeight="235.0" prefWidth="600.0">
         <columns>
-          <TableColumn prefWidth="44.0" text="Id" />
-          <TableColumn prefWidth="193.0" text="Produto" />
-            <TableColumn prefWidth="77.0" text="Quantidade" />
-            <TableColumn prefWidth="90.0" text="Validade" />
-            <TableColumn prefWidth="62.0" text="Medida" />
-            <TableColumn prefWidth="133.0" text="Valor" />
+          <TableColumn fx:id="tableId" prefWidth="44.0" text="Id" />
+          <TableColumn fx:id="tableName" prefWidth="237.0" text="Nome do Produto" />
+            <TableColumn fx:id="tableQtd" prefWidth="79.0" text="Quantidade" />
+            <TableColumn fx:id="tableValidade" prefWidth="123.0" text="Validade" />
+            <TableColumn fx:id="tableMedida" prefWidth="66.0" text="Medida" />
+            <TableColumn fx:id="tableValor" prefWidth="50.0" text="Valor" />
         </columns>
       </TableView>
       <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">

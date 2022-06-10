@@ -44,6 +44,9 @@ public class CostumeController implements Initializable {
 	private void eventoTwo(ActionEvent e) {
 		System.out.println("Formulario Clientes");
 		Main.scenes("formClientes");
+		
+		btt4.setDisable(true);
+		btt5.setDisable(true);
 	}
 	
 
@@ -58,12 +61,17 @@ public class CostumeController implements Initializable {
     		String cpf=p.getCpf();
     		System.out.println("nome:  "+name+"|   cpf:"+cpf+"|  email: "+email+"|  id:  "+id);
     	}
+    	btt4.setDisable(false);
+    	btt5.setDisable(false);
     }
 	
 	@FXML
 	private void eventoOne(ActionEvent e) {
 		System.out.println("Voltar Cliente para Menu");
 		Main.scenes("backclientes");
+		
+		btt4.setDisable(true);
+		btt5.setDisable(true);
 	}
 	
 	@FXML

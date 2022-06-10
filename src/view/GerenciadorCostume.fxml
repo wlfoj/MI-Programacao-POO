@@ -67,7 +67,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btt5" layoutX="510.0" layoutY="5.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" text="Excluir">
+            <Button fx:id="btt5" disable="true" layoutX="510.0" layoutY="5.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" text="Excluir">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -76,7 +76,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btt4" layoutX="432.0" layoutY="5.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" text="Editar">
+            <Button fx:id="btt4" disable="true" layoutX="432.0" layoutY="5.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" text="Editar">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
