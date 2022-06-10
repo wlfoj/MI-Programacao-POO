@@ -14,7 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
+import javafx.scene.input.MouseEvent;
 import main.Main;
 import model.ManagementProducts;
 import model.Product;
@@ -48,10 +48,31 @@ public class ProductsController implements Initializable {
 	private void eventoOne(ActionEvent e) {
 		System.out.println("Voltar Produtos para Menu");
 		Main.scenes("backprodutos");
+		btt4.setDisable(true);
+    	btt3.setDisable(true);
 	}
+	
+
+    @FXML
+    void clickLine(MouseEvent event) {
+    	Product p = tableView.getSelectionModel().getSelectedItem();
+    	if(p == null) {
+    		
+    	} else {
+    		String name=p.getName();
+    		String medida=p.getMedida();
+    		Calendar validade=p.getValidity();
+    		Integer quantidade=p.getQtd();
+    		Float valor=p.getPrice();
+    		System.out.println("nome:  "+name+"|  Medida: "+medida+"|  validade:  "+validade+"|   quantidade: "+quantidade+"|   Valor: "+valor);
+    	}
+    	btt4.setDisable(false);
+    	btt3.setDisable(false);
+    }
 	
 	@FXML
     private Button btt1, btt2, btt3, btt4, btt5;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btt1.setCursor(Cursor.HAND);

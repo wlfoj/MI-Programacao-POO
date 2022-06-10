@@ -36,7 +36,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <TableView fx:id="tableView" layoutY="129.0" prefHeight="235.0" prefWidth="600.0">
+      <TableView fx:id="tableView" layoutY="129.0" onMouseClicked="#clickLine" prefHeight="235.0" prefWidth="600.0">
         <columns>
           <TableColumn fx:id="tableId" prefWidth="44.0" text="Id" />
           <TableColumn fx:id="tableName" prefWidth="237.0" text="Nome do Produto" />
@@ -68,7 +68,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btt4" layoutX="510.0" layoutY="5.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" text="Excluir">
+            <Button fx:id="btt4" disable="true" layoutX="510.0" layoutY="5.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" text="Excluir">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -77,7 +77,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btt3" layoutX="432.0" layoutY="5.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" text="Editar">
+            <Button fx:id="btt3" disable="true" layoutX="432.0" layoutY="5.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" text="Editar">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -200,7 +200,7 @@ public class Main extends Application {
 		produto0.setMedida("kg");
 		produto0.setPrice(20);
 		produto0.setQtd(200);
-		produto0.setValidity(Calendar.getInstance());
+      //produto0.setValidity(Calendar.getInstance());
 		produto0.setName("Farinha");
 		ManagementProducts.addProduct(produto0);
 		
@@ -208,7 +208,7 @@ public class Main extends Application {
 		produto1.setMedida("L");
 		produto1.setPrice(10.8F);
 		produto1.setQtd(250);
-		produto1.setValidity(Calendar.getInstance());
+	  //produto1.setValidity(Calendar.getInstance());
 		produto1.setName("Água");
 		ManagementProducts.addProduct(produto1);
 		
@@ -216,7 +216,7 @@ public class Main extends Application {
 		produto2.setMedida("g");
 		produto2.setPrice(2.8F);
 		produto2.setQtd(110);
-		produto2.setValidity(Calendar.getInstance());
+	  //produto2.setValidity(Calendar.getInstance());
 		produto2.setName("Açucar");
 		ManagementProducts.addProduct(produto2);
 		
