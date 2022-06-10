@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -10,21 +9,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FormUserController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FormCostumeController">
    <children>
       <AnchorPane prefHeight="53.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
-            <Label layoutX="191.0" layoutY="9.0" prefHeight="43.0" prefWidth="261.0" text="Formulário de Usuários" textFill="WHITE">
+            <Label layoutX="208.0" layoutY="9.0" prefHeight="43.0" prefWidth="261.0" text="Formulário de Clientes" textFill="WHITE">
                <font>
                   <Font name="Candara" size="25.0" />
                </font>
             </Label>
-            <ImageView fitHeight="43.0" fitWidth="36.0" layoutX="139.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="53.0" fitWidth="51.0" layoutX="139.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../projecticons/Useres.png" />
+                  <Image url="@../../projecticons/Clientes.png" />
                </image>
             </ImageView>
-            <Button fx:id="btt1" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#eventoOne" prefHeight="41.0" prefWidth="85.0" text="Voltar">
+            <Button fx:id="btt1" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#eventoOne" prefHeight="41.0" prefWidth="85.0" text="Voltar">
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -51,9 +50,11 @@
       </AnchorPane>
       <TextField layoutX="103.0" layoutY="155.0" prefHeight="25.0" prefWidth="244.0" />
       <Label layoutX="55.0" layoutY="159.0" text="Nome" />
-      <Label layoutX="55.0" layoutY="204.0" text="Senha" />
-      <Label layoutX="380.0" layoutY="159.0" text="Tipo" />
+      <Label layoutX="55.0" layoutY="204.0" text="CPF" />
       <PasswordField layoutX="103.0" layoutY="199.0" prefHeight="27.0" prefWidth="244.0" />
-      <ComboBox fx:id="comboBox" layoutX="414.0" layoutY="156.0" prefWidth="150.0" />
+      <PasswordField layoutX="103.0" layoutY="243.0" prefHeight="27.0" prefWidth="244.0" />
+      <Label layoutX="57.0" layoutY="248.0" text="email" />
+      <PasswordField layoutX="103.0" layoutY="292.0" prefHeight="27.0" prefWidth="244.0" />
+      <Label layoutX="54.0" layoutY="297.0" text="telefone" />
    </children>
 </AnchorPane>

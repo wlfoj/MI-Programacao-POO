@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../controllers/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserController">
    <children>
-      <AnchorPane prefHeight="53.0" prefWidth="600.0" style="-fx-background-color: #2D65EB;">
+      <AnchorPane prefHeight="53.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
             <Label layoutX="170.0" layoutY="8.0" prefHeight="43.0" prefWidth="261.0" text="Gerenciador de Usuários" textFill="WHITE">
                <font>
@@ -35,14 +35,14 @@
             </Button>
          </children>
       </AnchorPane>
-      <TableView fx:id="tableView" layoutY="129.0" onMouseClicked="#clickLine" prefHeight="235.0" prefWidth="600.0" stylesheets="@../controllers/application.css">
+      <TableView fx:id="tableView" layoutY="129.0" onMouseClicked="#clickLine" prefHeight="235.0" prefWidth="600.0" stylesheets="@../css/application.css">
         <columns>
           <TableColumn fx:id="idColuna" prefWidth="77.0" text="Id" />
           <TableColumn fx:id="userColuna" prefWidth="85.0" text="Usuario" />
             <TableColumn fx:id="tipoColuna" prefWidth="436.0" text="Nome" />
         </columns>
       </TableView>
-      <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #2D65EB;">
+      <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
             <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="306.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -53,7 +53,7 @@
             <Button fx:id="btt2" layoutX="541.0" layoutY="9.0" mnemonicParsing="false" text="Buscar" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="364.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #2D65EB;">
+      <AnchorPane layoutY="364.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
             <Button fx:id="btt3" layoutX="353.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventoTwo" text="Novo">
                <graphic>
@@ -64,7 +64,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btt5" disable="true" layoutX="510.0" layoutY="5.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" text="Excluir">
+            <Button fx:id="btt5" disable="true" layoutX="510.0" layoutY="5.0" mnemonicParsing="false" onAction="#alertAction" prefHeight="27.0" prefWidth="68.0" text="Excluir">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>

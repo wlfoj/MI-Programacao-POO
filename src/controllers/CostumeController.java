@@ -11,6 +11,12 @@ import javafx.scene.control.Button;
 import main.Main;
 
 public class CostumeController implements Initializable {
+
+	@FXML
+	private void eventoTwo(ActionEvent e) {
+		System.out.println("Formulario Clientes");
+		Main.scenes("formClientes");
+	}
 	
 	@FXML
 	private void eventoOne(ActionEvent e) {

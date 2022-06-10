@@ -9,11 +9,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import main.Main;
 import model.ManagementUsers;
@@ -50,6 +53,15 @@ public class UserController implements Initializable {
     @FXML
     private TextField textFild1;
 	
+    @FXML
+    void alertAction(ActionEvent event) {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.show();
+    	alert.setTitle("Deletar");
+    	alert.setHeaderText("Realmente deseja excluir?");
+    	alert.setContentText("Ao apagar as informações não serão mais recuperadas");
+    }
+    
 	@FXML
 	private void eventoOne(ActionEvent e) {
 		System.out.println("Voltar Usuario para Menu");
@@ -67,7 +79,7 @@ public class UserController implements Initializable {
     		String name=p.getName();
     		String login=p.getLogin();
     		Integer id=p.getId();
-    		System.out.println("nome: " +name+ "login: "+ login+ "id: "+id);
+    		System.out.println("nome:  "+name+"|  login: "+login+"|  id:  "+id);
     	}
     	
     	btt4.setDisable(false);

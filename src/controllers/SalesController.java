@@ -8,32 +8,26 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import main.Main;
-
-public class FormUserController implements Initializable {
-
-    @FXML
-    private ComboBox<String> comboBox;
-    private String[] lista = {"Administrador","Fucionário"};
-    
-    @FXML
-    private Button btt1, btt2;
-    
+	
+public class SalesController implements Initializable {
+	
 	@FXML
 	private void eventoOne(ActionEvent e) {
-		System.out.println("Voltar Formulario usuario para gerenciamento usuario");
-		Main.scenes("backgUser");
+		System.out.println("Voltar Vendas para Menu");
+		Main.scenes("backsales");
 	}
 	
-	
+	@FXML
+    private Button btt1, btt2, btt3, btt4, btt5 , btt6;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btt1.setCursor(Cursor.HAND);
 		btt2.setCursor(Cursor.HAND);
-		
-		comboBox.getItems().setAll(lista);
+		btt3.setCursor(Cursor.HAND);
+		btt4.setCursor(Cursor.HAND);
+		btt5.setCursor(Cursor.HAND);
+		btt6.setCursor(Cursor.HAND);
 	}
-	
 	
 }
