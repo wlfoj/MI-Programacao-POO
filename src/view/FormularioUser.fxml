@@ -24,7 +24,7 @@
                   <Image url="@../../projecticons/Useres.png" />
                </image>
             </ImageView>
-            <Button fx:id="btt1" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#eventoOne" prefHeight="41.0" prefWidth="85.0" text="Voltar">
+            <Button fx:id="btnBack" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#eventBack" prefHeight="41.0" prefWidth="85.0" text="Voltar">
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,7 +38,7 @@
       <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;" />
       <AnchorPane layoutY="364.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
-            <Button fx:id="btt2" layoutX="508.0" layoutY="5.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" text="Salvar">
+            <Button fx:id="btnSave" layoutX="508.0" layoutY="5.0" mnemonicParsing="false" onAction="#actionSave" prefHeight="27.0" prefWidth="79.0" text="Salvar">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -49,11 +49,13 @@
             </Button>
          </children>
       </AnchorPane>
-      <TextField layoutX="103.0" layoutY="155.0" prefHeight="25.0" prefWidth="244.0" />
-      <Label layoutX="55.0" layoutY="159.0" text="Nome" />
-      <Label layoutX="55.0" layoutY="204.0" text="Senha" />
+      <TextField fx:id="inputName" layoutX="103.0" layoutY="163.0" prefHeight="25.0" prefWidth="244.0" />
+      <Label layoutX="56.0" layoutY="173.0" text="Nome" />
+      <Label layoutX="55.0" layoutY="256.0" text="Senha" />
       <Label layoutX="380.0" layoutY="159.0" text="Tipo" />
-      <PasswordField layoutX="103.0" layoutY="199.0" prefHeight="27.0" prefWidth="244.0" />
-      <ComboBox fx:id="comboBox" layoutX="414.0" layoutY="156.0" prefWidth="150.0" />
+      <PasswordField fx:id="inputPassword" layoutX="103.0" layoutY="242.0" prefHeight="27.0" prefWidth="244.0" />
+      <ComboBox fx:id="boxType" layoutX="414.0" layoutY="156.0" prefWidth="150.0" />
+      <TextField fx:id="inputLogin" layoutX="103.0" layoutY="200.0" prefHeight="25.0" prefWidth="244.0" />
+      <Label layoutX="57.0" layoutY="214.0" text="Login" />
    </children>
 </AnchorPane>

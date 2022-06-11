@@ -55,7 +55,7 @@
       </AnchorPane>
       <AnchorPane layoutY="364.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
-            <Button fx:id="btt3" layoutX="353.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventoTwo" text="Novo">
+            <Button fx:id="btnAdd" layoutX="353.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventCreate" text="Novo">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -64,7 +64,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btt5" disable="true" layoutX="510.0" layoutY="5.0" mnemonicParsing="false" onAction="#alertAction" prefHeight="27.0" prefWidth="68.0" text="Excluir">
+            <Button fx:id="btnDelete" disable="true" layoutX="510.0" layoutY="5.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="27.0" prefWidth="68.0" text="Excluir">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>

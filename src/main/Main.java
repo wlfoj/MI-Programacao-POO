@@ -97,8 +97,10 @@ public class Main extends Application {
 				stage.centerOnScreen();
 				break;
 			case "guser":
+				stage.close();
 				stage.setScene(guser);
 				stage.centerOnScreen();
+				stage.show();
 				break;
 			case "backUser":
 				stage.setScene(menu);
@@ -109,8 +111,10 @@ public class Main extends Application {
 				stage.centerOnScreen();
 				break;
 			case "backgUser":
+				stage.close();
 				stage.setScene(guser);
 				stage.centerOnScreen();
+				stage.show();
 				break;
 			case "gproduct":
 				stage.setScene(gproduct);
@@ -161,8 +165,10 @@ public class Main extends Application {
 				stage.centerOnScreen();
 				break;
 			case "formUserEdit":
+				stage.close();
 				stage.setScene(formuser);
 				stage.centerOnScreen();
+				stage.show();
 				break;
 			case "formProdutc":
 				stage.setScene(formproducts);
@@ -177,8 +183,8 @@ public class Main extends Application {
 	
 	public static void main(String[] args) throws NullFieldException, ObjectRegistred, NegativePriceEntity, InsufficientQuantityProducts {
 		User u = new User();
-		u.setLogin("riri");
-		u.setPass("1234");
+		u.setLogin("0");
+		u.setPass("0");
 		u.setName("Ricardo Milos");
 		ManagementUsers.addUser(u);
 		

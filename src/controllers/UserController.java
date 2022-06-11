@@ -22,7 +22,9 @@ import model.ManagementUsers;
 import model.User;
 
 public class UserController implements Initializable {
-
+	
+	private Integer idSelected;
+	
 	ObservableList<User> observableListaUsuarios; 
 	
 	@FXML
@@ -38,26 +40,29 @@ public class UserController implements Initializable {
     private TableColumn<User, String> userColuna;
 
 	@FXML
-    private Button btt1, btt2, btt3, btt4, btt5;
+    private Button btt1, btt2, btnAdd, btt4, btnDelete;
 	
 	@FXML
-	private void eventoTwo(ActionEvent e) {
+	private void eventCreate(ActionEvent e) {
 		System.out.println("Formulario Usuario");
 		Main.scenes("formUser");
 		btt4.setDisable(true);
-		btt5.setDisable(true);
+		btnDelete.setDisable(true);
 	}
 
     @FXML
     private TextField textFild1;
 	
     @FXML
-    void alertAction(ActionEvent event) {
+    void deleteAction(ActionEvent event) {
     	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	//VERIFICAR QUANDO PRESSIONAR OK!
     	alert.show();
     	alert.setTitle("Deletar");
     	alert.setHeaderText("Realmente deseja excluir?");
     	alert.setContentText("Ao apagar as informações não serão mais recuperadas");
+    	ManagementUsers.delete(idSelected);
+    	refreshTableView();
     }
     
 	@FXML
@@ -65,14 +70,14 @@ public class UserController implements Initializable {
 		System.out.println("Voltar Usuario para Menu");
 		Main.scenes("backUser");
 		btt4.setDisable(true);
-		btt5.setDisable(true);
+		btnDelete.setDisable(true);
 	}
 	
     @FXML
     void eventoThree(ActionEvent event) {
 		Main.scenes("formUserEdit");
 		btt4.setDisable(true);
-		btt5.setDisable(true);
+		btnDelete.setDisable(true);
     }
 	
     @FXML
@@ -80,24 +85,22 @@ public class UserController implements Initializable {
     	User p = tableView.getSelectionModel().getSelectedItem();
     	if(p == null) {
     		
-    	} else {
-    		String name=p.getName();
-    		String login=p.getLogin();
-    		Integer id=p.getId();
-    		System.out.println("nome:  "+name+"|  login: "+login+"|  id:  "+id);
+    	} else {	
+    		idSelected =p.getId();
+    		System.out.println(idSelected);
     	}
     	
     	btt4.setDisable(false);
-    	btt5.setDisable(false);
+    	btnDelete.setDisable(false);
     }
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btt1.setCursor(Cursor.HAND);
 		btt2.setCursor(Cursor.HAND);
-		btt3.setCursor(Cursor.HAND);
+		btnAdd.setCursor(Cursor.HAND);
 		btt4.setCursor(Cursor.HAND);
-		btt5.setCursor(Cursor.HAND);
+		btnDelete.setCursor(Cursor.HAND);
 	
 		refreshTableView();
 		
