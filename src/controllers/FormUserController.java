@@ -1,17 +1,21 @@
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import exceptions.NullFieldException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.Administrator;
 import model.Employee;
@@ -33,7 +37,7 @@ public class FormUserController implements Initializable {
 
     @FXML
     private ComboBox<String> boxType;
-    private String[] lista = {"Administrador","Fucionário"};
+    private String[] lista = {"Administrador","FucionÃ¡rio"};
     
     @FXML
     void actionSave(ActionEvent event)  {
@@ -51,7 +55,7 @@ public class FormUserController implements Initializable {
     		try {
 				ManagementUsers.addUser(u);
 			} catch (NullFieldException e) {
-				// FAZER LÓGICA PARA TRATAMENTO DE ERRO
+				// FAZER LÃ“GICA PARA TRATAMENTO DE ERRO
 				e.printStackTrace();
 			}
     	} else {
@@ -62,7 +66,7 @@ public class FormUserController implements Initializable {
     		try {
 				ManagementUsers.addUser(u);
 			} catch (NullFieldException e) {
-				// FAZER LÓGICA PARA TRATAMENTO DE ERRO
+				// FAZER LÃ“GICA PARA TRATAMENTO DE ERRO
 				e.printStackTrace();
 			}
     	}
@@ -73,10 +77,10 @@ public class FormUserController implements Initializable {
     private Button btnBack, btnSave;
     
 	@FXML
-	private void eventBack(ActionEvent e) {
-		System.out.println("Voltar Formulario usuario para gerenciamento usuario");
-		Main.scenes("backgUser");
-		
+	private void eventBack(ActionEvent e) throws IOException {
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorUser.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
 	}
 	
 	
@@ -84,14 +88,14 @@ public class FormUserController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		if (idReceived == -1) {
-			//EXCECUÇÕES PARA CRIAR UM NOVO USUÁRIO
+			//EXCECUÃ‡Ã•ES PARA CRIAR UM NOVO USUÃ�RIO
 			btnBack.setCursor(Cursor.HAND);
 			btnSave.setCursor(Cursor.HAND);
 			
 			boxType.getItems().setAll(lista);
-			boxType.setValue("Fucionário");
+			boxType.setValue("FucionÃ¡rio");
 		}else {
-			//EXCECUÇÕES PARA EDITAR UM NOVO USUÁRIO
+			//EXCECUÃ‡Ã•ES PARA EDITAR UM NOVO USUÃ�RIO
 			User u = new User();
 			u = ManagementUsers.getOne(idReceived);
 			inputName.setText(u.getName());

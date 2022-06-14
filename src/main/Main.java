@@ -25,7 +25,10 @@ import javafx.fxml.FXMLLoader;
 public class Main extends Application {
 	
 	public static Stage stage;
-	public static Scene login;
+	public static Scene scene;
+	
+	
+	//public static Scene login;
 	public static Scene menu;
 	public static Scene guser;
 	public static Scene formuser;
@@ -36,6 +39,13 @@ public class Main extends Application {
 	public static Scene gvendas;
 	public static Scene formclientes;
 	public static Scene formproducts;
+	public static AnchorPane root3;
+	
+	
+	public static void setScene(Scene newScene) {
+		scene = newScene;
+		stage.setScene(scene);
+	}
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -44,15 +54,15 @@ public class Main extends Application {
 			primaryStage.setTitle("Comercial Store");
 			
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
-			login = new Scene(root);
-			
+			Scene login = new Scene(root);
+			/*
 			AnchorPane root1 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
 			menu = new Scene(root1);
 			
 			AnchorPane root2 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorUser.fxml"));
 			guser= new Scene(root2);
 			
-			AnchorPane root3 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
+			root3 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
 			formuser= new Scene(root3);
 			
 			AnchorPane root4 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProducts.fxml"));
@@ -75,7 +85,7 @@ public class Main extends Application {
 			
 			AnchorPane root10 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioProducts.fxml"));
 			formproducts= new Scene(root10);
-			
+			*/
 			Image anotherIcon = new Image("iconapp.png");
 			primaryStage.getIcons().add(anotherIcon);
 			
@@ -89,9 +99,9 @@ public class Main extends Application {
 	
 	public static void scenes(String url) {
 		switch(url) {
-			case "loginAcess":
-				stage.setScene(login);
-				break;
+			//case "loginAcess":
+			//	stage.setScene(login);
+			//	break;
 			case "Acesso Liberado!":
 				stage.setScene(menu);
 				stage.centerOnScreen();
@@ -165,10 +175,9 @@ public class Main extends Application {
 				stage.centerOnScreen();
 				break;
 			case "formUserEdit":
-				stage.close();
-				stage.setScene(formuser);
+				Scene formuserr = new Scene(root3);
+				stage.setScene(formuserr);
 				stage.centerOnScreen();
-				stage.show();
 				break;
 			case "formProdutc":
 				stage.setScene(formproducts);
@@ -227,7 +236,7 @@ public class Main extends Application {
 		produto1.setPrice(10.8F);
 		produto1.setQtd(250);
 	  //produto1.setValidity(Calendar.getInstance());
-		produto1.setName("Água");
+		produto1.setName("Ã�gua");
 		ManagementProducts.addProduct(produto1);
 		
 		Product produto2 = new Product();
@@ -235,7 +244,7 @@ public class Main extends Application {
 		produto2.setPrice(2.8F);
 		produto2.setQtd(110);
 	  //produto2.setValidity(Calendar.getInstance());
-		produto2.setName("Açucar");
+		produto2.setName("AÃ§ucar");
 		ManagementProducts.addProduct(produto2);
 		
 		launch(args);

@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -7,8 +8,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -17,6 +20,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementUsers;
 import model.User;
@@ -66,16 +70,22 @@ public class UserController implements Initializable {
     }
     
 	@FXML
-	private void eventoOne(ActionEvent e) {
-		System.out.println("Voltar Usuario para Menu");
-		Main.scenes("backUser");
+	//VOLTAR
+	private void eventoOne(ActionEvent e) throws IOException {
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
 		btt4.setDisable(true);
 		btnDelete.setDisable(true);
 	}
 	
     @FXML
-    void eventoThree(ActionEvent event) {
-		Main.scenes("formUserEdit");
+    //formuilario editar
+    void eventoThree(ActionEvent event) throws IOException {
+		//Main.scenes("formUserEdit");
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
 		btt4.setDisable(true);
 		btnDelete.setDisable(true);
     }
