@@ -31,17 +31,25 @@ public class ItensController implements Initializable {
 		Main.setScene(cena);
     }
 	
+    @FXML
+    void actionEdit(ActionEvent event) {
+
+    }
+    
+    @FXML
+    void actionDelete(ActionEvent event) {
+
+    }
+    
 	@FXML
-    private Button btnBack, btt2, btt3, btt4, btnCreate, btt6;
+    private Button btnBack, btnEdit, btnCreate, btnDelete;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);
-		btt2.setCursor(Cursor.HAND);
-		btt3.setCursor(Cursor.HAND);
-		btt4.setCursor(Cursor.HAND);
+		btnEdit.setCursor(Cursor.HAND);
 		btnCreate.setCursor(Cursor.HAND);
-		btt6.setCursor(Cursor.HAND);
+		btnDelete.setCursor(Cursor.HAND);
 	}
 
 }
