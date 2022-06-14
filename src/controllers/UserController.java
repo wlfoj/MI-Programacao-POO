@@ -101,11 +101,8 @@ public class UserController implements Initializable {
     @FXML
     void clickLine(MouseEvent event) {
     	User p = tableView.getSelectionModel().getSelectedItem();
-    	if(p == null) {
-    		
-    	} else {	
+    	if(p != null) {
     		idSelected =p.getId();
-    		//System.out.println(idSelected);
     	}
     	
     	btnEdit.setDisable(false);

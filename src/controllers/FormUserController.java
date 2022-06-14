@@ -114,7 +114,6 @@ public class FormUserController implements Initializable {
 				e.printStackTrace();
 			}
     	}
-    	
     }
     
 	@FXML
