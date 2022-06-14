@@ -45,7 +45,7 @@ public class ProductsController implements Initializable {
     private TableView<Product> tableView;
 	
 	@FXML
-	private void eventoOne(ActionEvent e) {
+	private void eventBack(ActionEvent e) {
 		System.out.println("Voltar Produtos para Menu");
 		Main.scenes("backprodutos");
 		btt4.setDisable(true);
@@ -53,7 +53,7 @@ public class ProductsController implements Initializable {
 	}
 	
     @FXML
-    void eventoTwo(ActionEvent event) {
+    void eventShowFormProducts(ActionEvent event) {
     	System.out.println("Formulario Produtos");
     	Main.scenes("formProdutc");
     }

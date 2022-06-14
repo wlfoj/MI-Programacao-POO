@@ -71,7 +71,7 @@ public class UserController implements Initializable {
     
 	@FXML
 	//VOLTAR
-	private void eventoOne(ActionEvent e) throws IOException {
+	private void eventBack(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
@@ -81,7 +81,7 @@ public class UserController implements Initializable {
 	
     @FXML
     //formuilario editar
-    void eventoThree(ActionEvent event) throws IOException {
+    void eventEdit(ActionEvent event) throws IOException {
 		//Main.scenes("formUserEdit");
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
 		Scene cena = new Scene(anchor);

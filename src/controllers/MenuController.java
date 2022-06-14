@@ -17,12 +17,12 @@ import main.Main;
 public class MenuController implements Initializable {
 	
 
-	@FXML//MUDA OS NOMES DESSES BOTÕES E DESSES EVENTOS CARA
-    private Button btt1, btt2, btt3, btt4, btt5, btt6;
+	@FXML//MUDA OS NOMES DESSES BOTï¿½ES E DESSES EVENTOS CARA
+    private Button btnUser, btnProvider, btnSales, btnCostumer, btnItens, btnProduct;
 	
 	@FXML
-	//MUDA OS NOMES DESSES BOTÕES E DESSES EVENTOS CARA
-	private void eventoOne(ActionEvent e) throws IOException {
+	//MUDA OS NOMES DESSES BOTï¿½ES E DESSES EVENTOS CARA
+	private void eventShowUserScene(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorUser.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
@@ -31,44 +31,44 @@ public class MenuController implements Initializable {
 		//Main.scenes("guser");
 	}
 	
-	@FXML//MUDA OS NOMES DESSES BOTÕES E DESSES EVENTOS CARA
-	private void eventoTwo(ActionEvent e) {
+	@FXML//MUDA OS NOMES DESSES BOTï¿½ES E DESSES EVENTOS CARA
+	private void eventProductShowScene(ActionEvent e) {
 		System.out.println("Produto");
 		Main.scenes("gproduct");
 	}
 	
-	@FXML//MUDA OS NOMES DESSES BOTÕES E DESSES EVENTOS CARA
-	private void eventoThree(ActionEvent e) {
+	@FXML//MUDA OS NOMES DESSES BOTï¿½ES E DESSES EVENTOS CARA
+	private void eventCostumerShowScene(ActionEvent e) {
 		System.out.println("Clientes");
 		Main.scenes("gclientes");
 	}
 	
-	@FXML//MUDA OS NOMES DESSES BOTÕES E DESSES EVENTOS CARA
-	private void eventoFour(ActionEvent e) {
+	@FXML//MUDA OS NOMES DESSES BOTï¿½ES E DESSES EVENTOS CARA
+	private void eventShowProviderScene(ActionEvent e) {
 		System.out.println("Fornecedores");
 		Main.scenes("gfornecedores");
 	}
-	//MUDA OS NOMES DESSES BOTÕES E DESSES EVENTOS CARA
+	//MUDA OS NOMES DESSES BOTï¿½ES E DESSES EVENTOS CARA
 	@FXML
-	private void eventoFive(ActionEvent e) {
+	private void eventItensShowScene(ActionEvent e) {
 		System.out.println("Cardapio");
 		Main.scenes("gcardapio");
 	}
 	
-	@FXML//MUDA OS NOMES DESSES BOTÕES E DESSES EVENTOS CARA
-	private void eventoSix(ActionEvent e) {
+	@FXML//MUDA OS NOMES DESSES BOTï¿½ES E DESSES EVENTOS CARA
+	private void eventShowSalesScene(ActionEvent e) {
 		System.out.println("Vendas");
 		Main.scenes("gvendas");
 	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		btt1.setCursor(Cursor.HAND);
-		btt2.setCursor(Cursor.HAND);
-		btt3.setCursor(Cursor.HAND);
-		btt4.setCursor(Cursor.HAND);
-		btt5.setCursor(Cursor.HAND);
-		btt6.setCursor(Cursor.HAND);
+		btnUser.setCursor(Cursor.HAND);
+		btnProvider.setCursor(Cursor.HAND);
+		btnSales.setCursor(Cursor.HAND);
+		btnCostumer.setCursor(Cursor.HAND);
+		btnItens.setCursor(Cursor.HAND);
+		btnProduct.setCursor(Cursor.HAND);
 	}
 	
 }
