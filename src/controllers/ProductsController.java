@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.ResourceBundle;
@@ -8,13 +9,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementProducts;
 import model.Product;
@@ -43,62 +49,75 @@ public class ProductsController implements Initializable {
 
     @FXML
     private TableView<Product> tableView;
+    
+	@FXML
+    private Button btnBack, btnCreate, btnEdit, btnRemove, btnPrint;
+	
+	private Integer idSelected;
+	
 	
 	@FXML
-	private void eventBack(ActionEvent e) {
-		System.out.println("Voltar Produtos para Menu");
-		Main.scenes("backprodutos");
-		btnEdit.setDisable(true);
-		btnRemove.setDisable(true);
+	private void eventBack(ActionEvent e) throws IOException {
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
 	}
 	
-	//AO USUARIO CLICAR DELETAR ITEM DA TABLEVIEW
+
+    @FXML
+    void eventEdit(ActionEvent event) throws IOException {
+		Main.setIdSelected(idSelected);
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioProducts.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+    }
+    
+	
+    @FXML
+    void eventShowFormProducts(ActionEvent event) throws IOException {
+		Main.setIdSelected(-1);
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioProducts.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+    }
+	
+    
     @FXML
     void eventDelete(ActionEvent event) {
-
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	//VERIFICAR QUANDO PRESSIONAR OK!
+    	alert.setTitle("Deletar");
+    	alert.setHeaderText("Realmente deseja excluir?");
+    	alert.setContentText("Ao apagar as informações não serão mais recuperadas");
+    	alert.show();
+    	ManagementProducts.delete(idSelected);
+    	refreshTableView();
     }
-	
-	//AO CLICAR ABRIR FORMULARIO PARA EDITAR
-    @FXML
-    void eventEdit(ActionEvent event) {
-
-    }
-	
-    @FXML
-    void eventShowFormProducts(ActionEvent event) {
-    	System.out.println("Formulario Produtos");
-    	Main.scenes("formProdutc");
-    }
-	
+    
+    
     @FXML
     void clickLine(MouseEvent event) {
     	Product p = tableView.getSelectionModel().getSelectedItem();
-    	if(p == null) {
-    		
-    	} else {
-    		String name=p.getName();
-    		String medida=p.getMedida();
-    		Calendar validade=p.getValidity();
-    		Integer quantidade=p.getQtd();
-    		Float valor=p.getPrice();
-    		System.out.println("nome:  "+name+"|  Medida: "+medida+"|  validade:  "+validade+"|   quantidade: "+quantidade+"|   Valor: "+valor);
+    	if(p != null) {
+    		idSelected=p.getId();
     	}
     	btnEdit.setDisable(false);
     	btnRemove.setDisable(false);
     }
 	
-	@FXML
-    private Button btnBack, btt1, btnCreate, btnEdit, btnRemove, btnPrint;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);
-		btt1.setCursor(Cursor.HAND);
 		btnCreate.setCursor(Cursor.HAND);
 		btnEdit.setCursor(Cursor.HAND);
 		btnRemove.setCursor(Cursor.HAND);
 		btnPrint.setCursor(Cursor.HAND);
-		
+		refreshTableView();
+	}
+	
+	
+	public void refreshTableView() {
 		observableListaProduct = FXCollections.observableArrayList(ManagementProducts.listAllProducts());
 		tableView.setItems(observableListaProduct);
 
@@ -109,5 +128,4 @@ public class ProductsController implements Initializable {
 		tableValidade.setCellValueFactory(new PropertyValueFactory<>("validity"));
 		tableValor.setCellValueFactory(new PropertyValueFactory<>("price"));
 	}
-	
 }
