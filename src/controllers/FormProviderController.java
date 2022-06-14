@@ -68,6 +68,11 @@ public class FormProviderController implements Initializable {
 
     }
 
+    @FXML
+    void actionSave(ActionEvent event) {
+
+    }
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		comboNameList = new ArrayList<String>();
@@ -84,6 +89,6 @@ public class FormProviderController implements Initializable {
 		}
 		// Lendo os produtos no combo
 		comboProducts.getItems().setAll(comboNameList);
-		
+
 	}
 }

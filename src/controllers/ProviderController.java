@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
 
@@ -25,12 +26,20 @@ public class ProviderController implements Initializable{
 	
     @FXML
     void actionDelete(ActionEvent event) {
-
+    	
     }
-	
+    
     @FXML
-    void actionEdit(ActionEvent event) {
-
+    void clickLine(MouseEvent event) {
+    	
+    }
+    
+    @FXML
+    void actionEdit(ActionEvent event) throws IOException {
+    	Main.setIdSelected(-1);
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioProvider.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
     }
 	
     @FXML
