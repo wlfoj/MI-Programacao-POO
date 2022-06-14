@@ -54,8 +54,6 @@ public class CostumeController implements Initializable {
 	
 	@FXML
 	private void eventCreate(ActionEvent e) throws IOException {
-		System.out.println("Entrei");
-		// Indicando que nï¿½o selecionou ninguï¿½m
 		Main.setIdSelected(-1);
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioCostume.fxml"));
 		Scene cena = new Scene(anchor);
@@ -111,7 +109,6 @@ public class CostumeController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		System.out.println("Entrei");
 		btnBack.setCursor(Cursor.HAND);
 		btnEdit.setCursor(Cursor.HAND);
 		btnRemove.setCursor(Cursor.HAND);

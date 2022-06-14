@@ -116,4 +116,20 @@ public class ManagementCostumer {
 		
 		return newlist;
 	}
+	
+	
+	/** Pega um cliente da lista, com determinado id.
+	 * 
+	 * @param id	id do cliente a ser buscado.
+	 * @return		Retorna o cliente, se o id estiver registrado;
+	 * 				Retorna null, se o id nao estiver na lista.
+	 */
+	public static Costumer getOne(int id) {
+		for (int i = 0; i < list.size(); i++) {
+			if(id == list.get(i).getId()) {
+				return list.get(i);
+			}
+		}
+		return null;
+	}
 }

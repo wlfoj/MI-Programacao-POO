@@ -147,7 +147,6 @@ public class FormUserController implements Initializable {
 			else {
 				boxType.setValue("Administrador");
 			}
-			System.out.println(u.getName());
 		}
 	}	
 }

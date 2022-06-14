@@ -88,10 +88,10 @@ public class UserController implements Initializable {
     void deleteAction(ActionEvent event) {
     	Alert alert = new Alert(AlertType.CONFIRMATION);
     	//VERIFICAR QUANDO PRESSIONAR OK!
-    	alert.show();
     	alert.setTitle("Deletar");
     	alert.setHeaderText("Realmente deseja excluir?");
     	alert.setContentText("Ao apagar as informações não serão mais recuperadas");
+    	alert.show();
     	ManagementUsers.delete(idSelected);
     	refreshTableView();
     }
