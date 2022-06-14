@@ -48,7 +48,7 @@ public class UserController implements Initializable {
 
 	@FXML
 	//ESQUECEU DE MUDAR ESSES AQUI
-    private Button btnBack, btt2, btnAdd, btnEdit, btnDelete;
+    private Button btnBack, btnAdd, btnEdit, btnDelete;
 	
 	@FXML
 	private void eventCreate(ActionEvent e) throws IOException {
@@ -115,7 +115,6 @@ public class UserController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);
-		btt2.setCursor(Cursor.HAND);
 		btnAdd.setCursor(Cursor.HAND);
 		btnEdit.setCursor(Cursor.HAND);
 		btnDelete.setCursor(Cursor.HAND);

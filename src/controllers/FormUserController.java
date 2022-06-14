@@ -24,8 +24,6 @@ import model.User;
 
 public class FormUserController implements Initializable {
 
-	private Integer idReceived=-1;
-	
     @FXML
     private TextField inputLogin;
 	
@@ -36,16 +34,31 @@ public class FormUserController implements Initializable {
     private PasswordField inputPassword;
 
     @FXML
-    private ComboBox<String> boxType;
-    private String[] lista = {"Administrador","FucionÃ¡rio"};
+    private Button btnBack, btnSave;
     
     @FXML
-    void actionSave(ActionEvent event)  {
+    private ComboBox<String> boxType;
+    
+    private String[] lista = {"Administrador","Fucionario"};
+    
+    @FXML
+    void actionSave(ActionEvent event) throws IOException  {
+    	if(Main.getIdSelected() == -1) {
+    		//Cria
+    		createNewUser();
+    	}
+    	else {
+    		//edita
+    		editUser();
+    	}
+    	backToUser();
+    }
+   
+    private void createNewUser() {
     	String name = inputName.getText();
     	String password = inputPassword.getText();
     	String login = inputLogin.getText();
     	String type = boxType.getValue();
-    	System.out.println(type);
     	
     	if (type == "Administrador") {
     		Administrator u = new Administrator();
@@ -70,37 +83,71 @@ public class FormUserController implements Initializable {
 				e.printStackTrace();
 			}
     	}
-    	System.out.println(ManagementUsers.listAllUsers());
     }
     
-    @FXML
-    private Button btnBack, btnSave;
+    private void editUser() {
+    	String name = inputName.getText();
+    	String password = inputPassword.getText();
+    	String login = inputLogin.getText();
+    	String type = boxType.getValue();
+    	if (type == "Administrador") {
+    		Administrator u = new Administrator();
+    		u.setLogin(login);
+    		u.setName(name);
+    		u.setPass(password);
+    		try {
+				ManagementUsers.update(Main.getIdSelected(), u);
+			} catch (NullFieldException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    	else {
+    		Employee u = new Employee();
+    		u.setLogin(login);
+    		u.setName(name);
+    		u.setPass(password);
+    		try {
+				ManagementUsers.update(Main.getIdSelected(), u);
+			} catch (NullFieldException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    	
+    }
     
 	@FXML
 	private void eventBack(ActionEvent e) throws IOException {
+		backToUser();
+	}
+	
+	private void backToUser() throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorUser.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
 	}
-	
-	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		if (idReceived == -1) {
-			//EXCECUÃ‡Ã•ES PARA CRIAR UM NOVO USUÃ�RIO
-			btnBack.setCursor(Cursor.HAND);
-			btnSave.setCursor(Cursor.HAND);
-			
+		btnBack.setCursor(Cursor.HAND);
+		btnSave.setCursor(Cursor.HAND);
+		//INICIALIZACOES PARA CRIAR UM NOVO USUARIO
+		if (Main.getIdSelected() == -1) {
 			boxType.getItems().setAll(lista);
-			boxType.setValue("FucionÃ¡rio");
+			boxType.setValue("Fucionario");
 		}else {
-			//EXCECUÃ‡Ã•ES PARA EDITAR UM NOVO USUÃ�RIO
+			//INICIALIZACOES PARA EDITAR UM NOVO USUARIO
 			User u = new User();
-			u = ManagementUsers.getOne(idReceived);
+			u = ManagementUsers.getOne(Main.getIdSelected());
 			inputName.setText(u.getName());
 			inputLogin.setText(u.getLogin());
 			inputPassword.setText(u.getPass());
+			if (u instanceof Employee) {
+				boxType.setValue("Fucionario");
+			}
+			else {
+				boxType.setValue("Administrador");
+			}
 			System.out.println(u.getName());
 		}
 	}	
