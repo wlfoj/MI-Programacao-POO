@@ -48,8 +48,8 @@ public class ProductsController implements Initializable {
 	private void eventBack(ActionEvent e) {
 		System.out.println("Voltar Produtos para Menu");
 		Main.scenes("backprodutos");
-		btt4.setDisable(true);
-    	btt3.setDisable(true);
+		btnEdit.setDisable(true);
+		btnRemove.setDisable(true);
 	}
 	
     @FXML
@@ -71,20 +71,21 @@ public class ProductsController implements Initializable {
     		Float valor=p.getPrice();
     		System.out.println("nome:  "+name+"|  Medida: "+medida+"|  validade:  "+validade+"|   quantidade: "+quantidade+"|   Valor: "+valor);
     	}
-    	btt4.setDisable(false);
-    	btt3.setDisable(false);
+    	btnEdit.setDisable(false);
+    	btnRemove.setDisable(false);
     }
 	
 	@FXML
-    private Button btt1, btt2, btt3, btt4, btt5;
+    private Button btnBack, btt1, btnCreate, btnEdit, btnRemove, btnPrint;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		btnBack.setCursor(Cursor.HAND);
 		btt1.setCursor(Cursor.HAND);
-		btt2.setCursor(Cursor.HAND);
-		btt3.setCursor(Cursor.HAND);
-		btt4.setCursor(Cursor.HAND);
-		btt5.setCursor(Cursor.HAND);
+		btnCreate.setCursor(Cursor.HAND);
+		btnEdit.setCursor(Cursor.HAND);
+		btnRemove.setCursor(Cursor.HAND);
+		btnPrint.setCursor(Cursor.HAND);
 		
 		observableListaProduct = FXCollections.observableArrayList(ManagementProducts.listAllProducts());
 		tableView.setItems(observableListaProduct);
