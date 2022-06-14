@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -48,13 +48,20 @@
             </Button>
          </children>
       </AnchorPane>
-      <TextField layoutX="103.0" layoutY="134.0" prefHeight="25.0" prefWidth="244.0" />
+      <TextField fx:id="inputName" layoutX="103.0" layoutY="134.0" prefHeight="25.0" prefWidth="244.0" />
       <Label layoutX="63.0" layoutY="148.0" text="Nome" />
       <Label layoutX="46.0" layoutY="192.0" text="Endereço" />
-      <PasswordField layoutX="103.0" layoutY="179.0" prefHeight="27.0" prefWidth="244.0" />
-      <PasswordField layoutX="103.0" layoutY="219.0" prefHeight="27.0" prefWidth="244.0" />
       <Label layoutX="65.0" layoutY="233.0" text="CNPJ" />
-      <PasswordField layoutX="103.0" layoutY="260.0" prefHeight="27.0" prefWidth="244.0" />
-      <Label layoutX="50.0" layoutY="274.0" text="Produto" />
+      <TextField fx:id="inputAdress" layoutX="103.0" layoutY="179.0" prefHeight="25.0" prefWidth="244.0" />
+      <TextField fx:id="inputCnpj" layoutX="103.0" layoutY="220.0" prefHeight="25.0" prefWidth="244.0" />
+      <AnchorPane layoutX="364.0" layoutY="111.0" prefHeight="253.0" prefWidth="236.0">
+         <children>
+            <ScrollPane prefHeight="253.0" prefWidth="236.0">
+               <content>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="234.0" text="Produtos" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

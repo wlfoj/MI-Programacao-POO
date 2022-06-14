@@ -28,7 +28,7 @@ public class ProviderController implements Initializable{
 		btt3.setCursor(Cursor.HAND);
 		btt4.setCursor(Cursor.HAND);
 		btt5.setCursor(Cursor.HAND);
-
+		//criar um for checkbox
 	}
 
 	
