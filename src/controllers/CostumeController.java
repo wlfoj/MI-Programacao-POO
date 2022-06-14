@@ -65,6 +65,18 @@ public class CostumeController implements Initializable {
     	btnRemove.setDisable(false);
     }
 	
+    //EVENTO DE EDITAR AQUI AO CLICAR ABRIR FORMULÁRIO!
+    @FXML
+    void eventEdit(ActionEvent event) {
+
+    }
+    
+   //EVENTO DE DELETAR AQUI AO CLICAR DELETAR ITEM DA TABLE VIEW
+    @FXML
+    void eventDelete(ActionEvent event) {
+
+    }
+    
 	@FXML
 	private void eventBack(ActionEvent e) {
 		System.out.println("Voltar Cliente para Menu");

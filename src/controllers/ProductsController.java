@@ -52,6 +52,18 @@ public class ProductsController implements Initializable {
 		btnRemove.setDisable(true);
 	}
 	
+	//AO USUARIO CLICAR DELETAR ITEM DA TABLEVIEW
+    @FXML
+    void eventDelete(ActionEvent event) {
+
+    }
+	
+	//AO CLICAR ABRIR FORMULARIO PARA EDITAR
+    @FXML
+    void eventEdit(ActionEvent event) {
+
+    }
+	
     @FXML
     void eventShowFormProducts(ActionEvent event) {
     	System.out.println("Formulario Produtos");
