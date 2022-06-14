@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 
 /** Classe responsavel pelo objeto produto primario. EX: tomate, arroz...
  * 
@@ -12,7 +12,7 @@ public class Product {
 	private int id;
 	private String name;// nome do produto
 	private float price;// preço do produto
-	private Calendar validity;// validade do produto.
+	private LocalDate validity;// validade do produto.
 	private int qtd;// quantidade
 	private String medida;// unidade de medida para a quantidade. Ex. 15Kg, 2L
 	
@@ -49,11 +49,11 @@ public class Product {
 		this.price = price;
 	}
 	
-	public Calendar getValidity() {
+	public LocalDate getValidity() {
 		return validity;
 	}
 	
-	public void setValidity(Calendar validity) {
+	public void setValidity(LocalDate validity) {
 		this.validity = validity;
 	}
 

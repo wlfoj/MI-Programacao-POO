@@ -98,30 +98,6 @@ public class Main extends Application {
 		cliente1.setTelefone("75-984349255");
 		ManagementCostumer.addCostumer(cliente1);
 		
-		Product produto0 = new Product();
-		produto0.setMedida("kg");
-		produto0.setPrice(20);
-		produto0.setQtd(200);
-      //produto0.setValidity(Calendar.getInstance());
-		produto0.setName("Farinha");
-		ManagementProducts.addProduct(produto0);
-		
-		Product produto1 = new Product();
-		produto1.setMedida("L");
-		produto1.setPrice(10.8F);
-		produto1.setQtd(250);
-	  //produto1.setValidity(Calendar.getInstance());
-		produto1.setName("Ã�gua");
-		ManagementProducts.addProduct(produto1);
-		
-		Product produto2 = new Product();
-		produto2.setMedida("g");
-		produto2.setPrice(2.8F);
-		produto2.setQtd(110);
-	  //produto2.setValidity(Calendar.getInstance());
-		produto2.setName("AÃ§ucar");
-		ManagementProducts.addProduct(produto2);
-		
 		launch(args);
 	}
 }

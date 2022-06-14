@@ -73,6 +73,7 @@ public class CostumeController implements Initializable {
 
     }
 
+    
     @FXML
     void clickLine(MouseEvent event) {
     	Costumer p = tableView.getSelectionModel().getSelectedItem();
@@ -83,7 +84,6 @@ public class CostumeController implements Initializable {
     	btnRemove.setDisable(false);
     }
 	
-
     
    //EVENTO DE DELETAR AQUI AO CLICAR DELETAR ITEM DA TABLE VIEW
     @FXML
