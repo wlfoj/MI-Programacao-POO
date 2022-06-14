@@ -41,12 +41,12 @@ public class CostumeController implements Initializable {
     private TableColumn<Costumer, String> telTable;
 	
 	@FXML
-	private void eventoTwo(ActionEvent e) {
+	private void eventCreate(ActionEvent e) {
 		System.out.println("Formulario Clientes");
 		Main.scenes("formClientes");
 		
-		btt4.setDisable(true);
-		btt5.setDisable(true);
+		btnEdit.setDisable(true);
+		btnRemove.setDisable(true);
 	}
 	
 
@@ -61,30 +61,31 @@ public class CostumeController implements Initializable {
     		String cpf=p.getCpf();
     		System.out.println("nome:  "+name+"|   cpf:"+cpf+"|  email: "+email+"|  id:  "+id);
     	}
-    	btt4.setDisable(false);
-    	btt5.setDisable(false);
+    	btnEdit.setDisable(false);
+    	btnRemove.setDisable(false);
     }
 	
 	@FXML
-	private void eventoOne(ActionEvent e) {
+	private void eventBack(ActionEvent e) {
 		System.out.println("Voltar Cliente para Menu");
 		Main.scenes("backclientes");
 		
-		btt4.setDisable(true);
-		btt5.setDisable(true);
+		btnEdit.setDisable(true);
+		btnRemove.setDisable(true);
 	}
 	
 	@FXML
-    private Button btt1, btt2, btt3, btt4, btt5, btt6;
+    private Button btnCreate, btnBack, btt2, btt3, btnEdit, btnRemove, btnPrint;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		btt1.setCursor(Cursor.HAND);
+		btnBack.setCursor(Cursor.HAND);
 		btt2.setCursor(Cursor.HAND);
 		btt3.setCursor(Cursor.HAND);
-		btt4.setCursor(Cursor.HAND);
-		btt5.setCursor(Cursor.HAND);
-		btt6.setCursor(Cursor.HAND);
+		btnEdit.setCursor(Cursor.HAND);
+		btnRemove.setCursor(Cursor.HAND);
+		btnPrint.setCursor(Cursor.HAND);
+		btnCreate.setCursor(Cursor.HAND);
 		
 		refreshTableView();
 		
