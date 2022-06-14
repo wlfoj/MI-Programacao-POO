@@ -8,12 +8,27 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import main.Main;
 
 public class FormProductsController implements Initializable {
 
 
-    
+    @FXML
+    private TextField inputMedida;
+
+    @FXML
+    private TextField inputName;
+
+    @FXML
+    private TextField inputQtd;
+
+    @FXML
+    private TextField inputValidity;
+
+    @FXML
+    private TextField inputValue;
+
     @FXML
     private Button btnBack, btnSave;
     
