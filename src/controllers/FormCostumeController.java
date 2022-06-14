@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import main.Main;
 
 public class FormCostumeController implements Initializable {
@@ -16,6 +17,18 @@ public class FormCostumeController implements Initializable {
     
     @FXML
     private Button btnBack, btnSave;
+    
+    @FXML
+    private TextField inputCpf;
+
+    @FXML
+    private TextField inputEmail;
+
+    @FXML
+    private TextField inputName;
+
+    @FXML
+    private TextField inputPhone;
     
 	@FXML
 	private void eventBack(ActionEvent e) {

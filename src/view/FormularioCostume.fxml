@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -48,13 +47,13 @@
             </Button>
          </children>
       </AnchorPane>
-      <TextField layoutX="103.0" layoutY="155.0" prefHeight="25.0" prefWidth="244.0" />
+      <TextField fx:id="inputName" layoutX="103.0" layoutY="155.0" prefHeight="25.0" prefWidth="244.0" />
       <Label layoutX="55.0" layoutY="159.0" text="Nome" />
       <Label layoutX="55.0" layoutY="204.0" text="CPF" />
-      <PasswordField layoutX="103.0" layoutY="199.0" prefHeight="27.0" prefWidth="244.0" />
-      <PasswordField layoutX="103.0" layoutY="243.0" prefHeight="27.0" prefWidth="244.0" />
       <Label layoutX="57.0" layoutY="248.0" text="email" />
-      <PasswordField layoutX="103.0" layoutY="292.0" prefHeight="27.0" prefWidth="244.0" />
       <Label layoutX="54.0" layoutY="297.0" text="telefone" />
+      <TextField fx:id="inputCpf" layoutX="103.0" layoutY="199.0" prefHeight="25.0" prefWidth="244.0" />
+      <TextField fx:id="inputEmail" layoutX="103.0" layoutY="243.0" prefHeight="25.0" prefWidth="244.0" />
+      <TextField fx:id="inputPhone" layoutX="103.0" layoutY="284.0" prefHeight="25.0" prefWidth="244.0" />
    </children>
 </AnchorPane>
