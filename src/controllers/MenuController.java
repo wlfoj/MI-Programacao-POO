@@ -63,6 +63,7 @@ public class MenuController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		Main.setIdSelected(-1);
 		btnUser.setCursor(Cursor.HAND);
 		btnProvider.setCursor(Cursor.HAND);
 		btnSales.setCursor(Cursor.HAND);

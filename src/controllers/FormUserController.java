@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import exceptions.NullFieldException;
@@ -59,6 +60,7 @@ public class FormUserController implements Initializable {
     	String password = inputPassword.getText();
     	String login = inputLogin.getText();
     	String type = boxType.getValue();
+    	boxType.setValue("");
     	
     	if (type == "Administrador") {
     		Administrator u = new Administrator();
