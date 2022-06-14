@@ -59,7 +59,6 @@ public class FormProviderController implements Initializable {
 		Product p = new Product();
 		p.setName("pao");
 		p.setId(0);
-		//comboProducts.setAccessibleText("olá");
 		comboProducts.setValue(p);
 	}
 }
