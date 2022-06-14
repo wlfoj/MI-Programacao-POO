@@ -3,7 +3,7 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import javafx.scene.control.ButtonBar;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -86,14 +87,14 @@ public class UserController implements Initializable {
 	
     @FXML
     void deleteAction(ActionEvent event) {
-    	Alert alert = new Alert(AlertType.CONFIRMATION);
-    	//VERIFICAR QUANDO PRESSIONAR OK!
-    	alert.setTitle("Deletar");
-    	alert.setHeaderText("Realmente deseja excluir?");
-    	alert.setContentText("Ao apagar as informações não serão mais recuperadas");
-    	alert.show();
-    	ManagementUsers.delete(idSelected);
-    	refreshTableView();
+//    	Alert alert = new Alert(AlertType.CONFIRMATION);
+//    	//VERIFICAR QUANDO PRESSIONAR OK!
+//    	alert.setTitle("Deletar");
+//    	alert.setHeaderText("Realmente deseja excluir?");
+//    	alert.setContentText("Ao apagar as informações não serão mais recuperadas");
+//    	alert.show();
+//    	ManagementUsers.delete(idSelected);
+//    	refreshTableView();
     }
     
 
@@ -115,6 +116,25 @@ public class UserController implements Initializable {
 		btnAdd.setCursor(Cursor.HAND);
 		btnEdit.setCursor(Cursor.HAND);
 		btnDelete.setCursor(Cursor.HAND);
+		
+		btnDelete.setOnAction(e-> {
+			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
+			
+			ButtonType btnOk = new ButtonType("Deletar");
+			ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+			
+			deleteExe.setTitle("Deletar");
+			deleteExe.setHeaderText("Deseja realmente deletar?");
+			deleteExe.setContentText("Ao apagar as informações não serão mais recuperadas");
+			deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
+			deleteExe.showAndWait().ifPresent(a -> {
+				if (a == btnOk) {
+					ManagementUsers.delete(idSelected);
+					refreshTableView();
+				} 
+			});
+			
+		});
 		refreshTableView();
 	}
 	

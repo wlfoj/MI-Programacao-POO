@@ -35,7 +35,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <TableView layoutY="129.0" prefHeight="235.0" prefWidth="600.0">
+      <TableView layoutY="129.0" onMouseClicked="#clickLine" prefHeight="235.0" prefWidth="600.0">
         <columns>
           <TableColumn prefWidth="50.0" text="Id" />
           <TableColumn prefWidth="144.0" text="Nome" />

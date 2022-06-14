@@ -54,11 +54,16 @@ public class FormProviderController implements Initializable {
 
     }
 
+    @FXML
+    void actionSave(ActionEvent event) {
+
+    }
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		Product p = new Product();
 		p.setName("pao");
 		p.setId(0);
-		comboProducts.setValue(p);
+		comboProducts.;
 	}
 }
