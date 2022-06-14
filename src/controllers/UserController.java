@@ -39,23 +39,50 @@ public class UserController implements Initializable {
 
     @FXML
     private TableColumn<User, String> tipoColuna;
-
+    
+    @FXML
+    private TextField textFild1;
+    
     @FXML
     private TableColumn<User, String> userColuna;
 
 	@FXML
+	//ESQUECEU DE MUDAR ESSES AQUI
     private Button btt1, btt2, btnAdd, btt4, btnDelete;
 	
 	@FXML
-	private void eventCreate(ActionEvent e) {
-		System.out.println("Formulario Usuario");
-		Main.scenes("formUser");
+	private void eventCreate(ActionEvent e) throws IOException {
+		// Indicando que não selecionou ninguém
+		Main.setIdSelected(-1);
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+		// Para quê isso? manda mensagem explicando
 		btt4.setDisable(true);
 		btnDelete.setDisable(true);
 	}
-
+	
     @FXML
-    private TextField textFild1;
+    void eventEdit(ActionEvent event) throws IOException {
+    	// Indicando quem selecionou
+    	Main.setIdSelected(idSelected);
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+		// Para quê isso? manda mensagem explicando
+		btt4.setDisable(true);
+		btnDelete.setDisable(true);
+    }
+
+	@FXML
+	private void eventBack(ActionEvent e) throws IOException {
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+		// Para quê isso? manda mensagem explicando
+		btt4.setDisable(true);
+		btnDelete.setDisable(true);
+	}
 	
     @FXML
     void deleteAction(ActionEvent event) {
@@ -69,26 +96,7 @@ public class UserController implements Initializable {
     	refreshTableView();
     }
     
-	@FXML
-	//VOLTAR
-	private void eventBack(ActionEvent e) throws IOException {
-		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
-		Scene cena = new Scene(anchor);
-		Main.setScene(cena);
-		btt4.setDisable(true);
-		btnDelete.setDisable(true);
-	}
-	
-    @FXML
-    //formuilario editar
-    void eventEdit(ActionEvent event) throws IOException {
-		//Main.scenes("formUserEdit");
-		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
-		Scene cena = new Scene(anchor);
-		Main.setScene(cena);
-		btt4.setDisable(true);
-		btnDelete.setDisable(true);
-    }
+
 	
     @FXML
     void clickLine(MouseEvent event) {
@@ -97,7 +105,7 @@ public class UserController implements Initializable {
     		
     	} else {	
     		idSelected =p.getId();
-    		System.out.println(idSelected);
+    		//System.out.println(idSelected);
     	}
     	
     	btt4.setDisable(false);
@@ -111,13 +119,10 @@ public class UserController implements Initializable {
 		btnAdd.setCursor(Cursor.HAND);
 		btt4.setCursor(Cursor.HAND);
 		btnDelete.setCursor(Cursor.HAND);
-	
 		refreshTableView();
-		
 	}
 	
 	public void refreshTableView() {
-		
 		observableListaUsuarios = FXCollections.observableArrayList(ManagementUsers.listAllUsers());
 		tableView.setItems(observableListaUsuarios);
 

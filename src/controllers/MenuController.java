@@ -16,49 +16,49 @@ import main.Main;
 	
 public class MenuController implements Initializable {
 	
-
-	@FXML//MUDA OS NOMES DESSES BOT�ES E DESSES EVENTOS CARA
+	@FXML
     private Button btnUser, btnProvider, btnSales, btnCostumer, btnItens, btnProduct;
 	
 	@FXML
-	//MUDA OS NOMES DESSES BOT�ES E DESSES EVENTOS CARA
 	private void eventShowUserScene(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorUser.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
-		
-		System.out.println("Usuario");
-		//Main.scenes("guser");
 	}
 	
-	@FXML//MUDA OS NOMES DESSES BOT�ES E DESSES EVENTOS CARA
-	private void eventProductShowScene(ActionEvent e) {
-		System.out.println("Produto");
-		Main.scenes("gproduct");
-	}
-	
-	@FXML//MUDA OS NOMES DESSES BOT�ES E DESSES EVENTOS CARA
-	private void eventCostumerShowScene(ActionEvent e) {
-		System.out.println("Clientes");
-		Main.scenes("gclientes");
-	}
-	
-	@FXML//MUDA OS NOMES DESSES BOT�ES E DESSES EVENTOS CARA
-	private void eventShowProviderScene(ActionEvent e) {
-		System.out.println("Fornecedores");
-		Main.scenes("gfornecedores");
-	}
-	//MUDA OS NOMES DESSES BOT�ES E DESSES EVENTOS CARA
 	@FXML
-	private void eventItensShowScene(ActionEvent e) {
-		System.out.println("Cardapio");
-		Main.scenes("gcardapio");
+	private void eventProductShowScene(ActionEvent e) throws IOException {
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProducts.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
 	}
 	
-	@FXML//MUDA OS NOMES DESSES BOT�ES E DESSES EVENTOS CARA
-	private void eventShowSalesScene(ActionEvent e) {
-		System.out.println("Vendas");
-		Main.scenes("gvendas");
+	@FXML
+	private void eventCostumerShowScene(ActionEvent e) throws IOException {
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorCostume.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+	}
+	
+	@FXML
+	private void eventShowProviderScene(ActionEvent e) throws IOException {
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProvider.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+	}
+
+	@FXML
+	private void eventItensShowScene(ActionEvent e) throws IOException {
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorItens.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+	}
+	
+	@FXML
+	private void eventShowSalesScene(ActionEvent e) throws IOException {
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorSales.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
 	}
 	
 	@Override

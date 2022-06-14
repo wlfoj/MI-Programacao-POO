@@ -24,27 +24,24 @@ import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
 	
-	public static Stage stage;
-	public static Scene scene;
+	private static Stage stage;
+	private static Scene scene;
+	// PODE FICAR MELHOR EM UMA CLASSE AUXILIAR
+	private static Integer idSelected = -1;
 	
-	
-	//public static Scene login;
-	public static Scene menu;
-	public static Scene guser;
-	public static Scene formuser;
-	public static Scene gproduct;
-	public static Scene gclientes;
-	public static Scene gfornecedores;
-	public static Scene gcardapio;
-	public static Scene gvendas;
-	public static Scene formclientes;
-	public static Scene formproducts;
-	public static AnchorPane root3;
-	
-	
+	//Tornar melhor o código
 	public static void setScene(Scene newScene) {
 		scene = newScene;
 		stage.setScene(scene);
+		stage.centerOnScreen();
+	}
+	
+	public static Integer getIdSelected() {
+		return idSelected;
+	}
+	
+	public static void setIdSelected(Integer newId) {
+		idSelected = newId;
 	}
 	
 	@Override
@@ -52,40 +49,10 @@ public class Main extends Application {
 		try {
 			stage = primaryStage;
 			primaryStage.setTitle("Comercial Store");
-			
+			// TALVEZ FAÇA MAIS SENTIDO EM VOID MAIN
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 			Scene login = new Scene(root);
-			/*
-			AnchorPane root1 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
-			menu = new Scene(root1);
-			
-			AnchorPane root2 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorUser.fxml"));
-			guser= new Scene(root2);
-			
-			root3 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
-			formuser= new Scene(root3);
-			
-			AnchorPane root4 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProducts.fxml"));
-			gproduct= new Scene(root4);
-			
-			AnchorPane root5 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorCostume.fxml"));
-			gclientes= new Scene(root5);
-			
-			AnchorPane root6 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProvider.fxml"));
-			gfornecedores= new Scene(root6);
-			
-			AnchorPane root7 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorItens.fxml"));
-			gcardapio= new Scene(root7);
-			
-			AnchorPane root8 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorSales.fxml"));
-			gvendas= new Scene(root8);
-			
-			AnchorPane root9 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioCostume.fxml"));
-			formclientes= new Scene(root9);
-			
-			AnchorPane root10 = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioProducts.fxml"));
-			formproducts= new Scene(root10);
-			*/
+
 			Image anotherIcon = new Image("iconapp.png");
 			primaryStage.getIcons().add(anotherIcon);
 			
@@ -97,99 +64,7 @@ public class Main extends Application {
 		}
 	}
 	
-	public static void scenes(String url) {
-		switch(url) {
-			//case "loginAcess":
-			//	stage.setScene(login);
-			//	break;
-			case "Acesso Liberado!":
-				stage.setScene(menu);
-				stage.centerOnScreen();
-				break;
-			case "guser":
-				stage.close();
-				stage.setScene(guser);
-				stage.centerOnScreen();
-				stage.show();
-				break;
-			case "backUser":
-				stage.setScene(menu);
-				stage.centerOnScreen();
-				break;
-			case "formUser":
-				stage.setScene(formuser);
-				stage.centerOnScreen();
-				break;
-			case "backgUser":
-				stage.close();
-				stage.setScene(guser);
-				stage.centerOnScreen();
-				stage.show();
-				break;
-			case "gproduct":
-				stage.setScene(gproduct);
-				stage.centerOnScreen();
-				break;
-			case "gclientes":
-				stage.setScene(gclientes);
-				stage.centerOnScreen();
-				break;
-			case "backclientes":
-				stage.setScene(menu);
-				stage.centerOnScreen();
-				break;
-			case "gfornecedores":
-				stage.setScene(gfornecedores);
-				stage.centerOnScreen();
-				break;
-			case "gcardapio":
-				stage.setScene(gcardapio);
-				stage.centerOnScreen();
-				break;
-			case "gvendas":
-				stage.setScene(gvendas);
-				stage.centerOnScreen();
-				break;
-			case "backfornecedor":
-				stage.setScene(menu);
-				stage.centerOnScreen();
-				break;
-			case "backprodutos":
-				stage.setScene(menu);
-				stage.centerOnScreen();
-				break;
-			case "backitens":
-				stage.setScene(menu);
-				stage.centerOnScreen();
-				break;
-			case "backsales":
-				stage.setScene(menu);
-				stage.centerOnScreen();
-				break;
-			case "formClientes":
-				stage.setScene(formclientes);
-				stage.centerOnScreen();
-				break;
-			case "backClientes":
-				stage.setScene(gclientes);
-				stage.centerOnScreen();
-				break;
-			case "formUserEdit":
-				Scene formuserr = new Scene(root3);
-				stage.setScene(formuserr);
-				stage.centerOnScreen();
-				break;
-			case "formProdutc":
-				stage.setScene(formproducts);
-				stage.centerOnScreen();
-				break;
-			case "backProducts":
-				stage.setScene(gproduct);
-				stage.centerOnScreen();
-				break;
-		}
-	}
-	
+	// Não pode retornar exceções
 	public static void main(String[] args) throws NullFieldException, ObjectRegistred, NegativePriceEntity, InsufficientQuantityProducts {
 		User u = new User();
 		u.setLogin("0");
