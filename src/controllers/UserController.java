@@ -48,17 +48,17 @@ public class UserController implements Initializable {
 
 	@FXML
 	//ESQUECEU DE MUDAR ESSES AQUI
-    private Button btt1, btt2, btnAdd, btt4, btnDelete;
+    private Button btnBack, btt2, btnAdd, btnEdit, btnDelete;
 	
 	@FXML
 	private void eventCreate(ActionEvent e) throws IOException {
-		// Indicando que não selecionou ninguém
+		// Indicando que nï¿½o selecionou ninguï¿½m
 		Main.setIdSelected(-1);
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
-		// Para quê isso? manda mensagem explicando
-		btt4.setDisable(true);
+		// Para quï¿½ isso? manda mensagem explicando
+		btnEdit.setDisable(true);
 		btnDelete.setDisable(true);
 	}
 	
@@ -69,8 +69,8 @@ public class UserController implements Initializable {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
-		// Para quê isso? manda mensagem explicando
-		btt4.setDisable(true);
+		// Para quï¿½ isso? manda mensagem explicando
+		btnEdit.setDisable(true);
 		btnDelete.setDisable(true);
     }
 
@@ -79,8 +79,8 @@ public class UserController implements Initializable {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
-		// Para quê isso? manda mensagem explicando
-		btt4.setDisable(true);
+		// Para quï¿½ isso? manda mensagem explicando
+		btnEdit.setDisable(true);
 		btnDelete.setDisable(true);
 	}
 	
@@ -108,16 +108,16 @@ public class UserController implements Initializable {
     		//System.out.println(idSelected);
     	}
     	
-    	btt4.setDisable(false);
+    	btnEdit.setDisable(false);
     	btnDelete.setDisable(false);
     }
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		btt1.setCursor(Cursor.HAND);
+		btnBack.setCursor(Cursor.HAND);
 		btt2.setCursor(Cursor.HAND);
 		btnAdd.setCursor(Cursor.HAND);
-		btt4.setCursor(Cursor.HAND);
+		btnEdit.setCursor(Cursor.HAND);
 		btnDelete.setCursor(Cursor.HAND);
 		refreshTableView();
 	}
