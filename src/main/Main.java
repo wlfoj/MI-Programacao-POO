@@ -1,9 +1,6 @@
 package main;
 	
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.TimeZone;
-
 import exceptions.InsufficientQuantityProducts;
 import exceptions.NegativePriceEntity;
 import exceptions.NullFieldException;
@@ -12,9 +9,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import model.Costumer;
 import model.ManagementCostumer;
-import model.ManagementProducts;
 import model.ManagementUsers;
-import model.Product;
 import model.User;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -49,6 +44,7 @@ public class Main extends Application {
 		try {
 			stage = primaryStage;
 			primaryStage.setTitle("Comercial Store");
+			primaryStage.setResizable(false);
 			// TALVEZ FAÇA MAIS SENTIDO EM VOID MAIN
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 			Scene login = new Scene(root);
