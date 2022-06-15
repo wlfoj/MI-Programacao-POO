@@ -69,6 +69,11 @@ public class FormProviderController implements Initializable {
     }
 
     @FXML
+    void tableLine(ActionEvent event) {
+
+    }
+    
+    @FXML
     void actionSave(ActionEvent event) {
 
     }

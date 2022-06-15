@@ -1,6 +1,8 @@
 package main;
 	
 import java.io.IOException;
+import java.time.LocalDate;
+
 import exceptions.InsufficientQuantityProducts;
 import exceptions.NegativePriceEntity;
 import exceptions.NullFieldException;
@@ -10,6 +12,8 @@ import javafx.stage.Stage;
 import model.Costumer;
 import model.ManagementCostumer;
 import model.ManagementUsers;
+import model.Product;
+import model.Provider;
 import model.User;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;

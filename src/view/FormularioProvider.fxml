@@ -39,7 +39,7 @@
       <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;" />
       <AnchorPane layoutY="364.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
-            <Button fx:id="btnSave" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" text="Salvar">
+            <Button fx:id="btnSave" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#actionSave" prefHeight="27.0" prefWidth="79.0" text="Salvar">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -67,7 +67,7 @@
       <TextField fx:id="inputCnpj" layoutX="103.0" layoutY="220.0" prefHeight="27.0" prefWidth="182.0" />
       <AnchorPane layoutX="317.0" layoutY="111.0" prefHeight="253.0" prefWidth="283.0">
          <children>
-            <TableView fx:id="tableProducts" layoutY="46.0" onMouseClicked="#clickLine" prefHeight="207.0" prefWidth="283.0">
+            <TableView fx:id="tableProducts" layoutY="46.0" onMouseClicked="#clickLine" onSort="#tableLine" prefHeight="207.0" prefWidth="283.0">
               <columns>
                 <TableColumn prefWidth="47.0" text="Id" />
                 <TableColumn prefWidth="235.0" text="Produto" />
