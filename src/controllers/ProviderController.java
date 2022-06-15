@@ -59,7 +59,8 @@ public class ProviderController implements Initializable{
     
     @FXML
     void clickLine(MouseEvent event) {
-    	
+    	btnEdit.setDisable(false);
+    	btnDelete.setDisable(false);
     }
     
     @FXML

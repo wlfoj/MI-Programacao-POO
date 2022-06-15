@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FormSalesController">
    <children>
       <AnchorPane prefHeight="53.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
@@ -23,7 +23,7 @@
                   <Image url="@../../projecticons/Vendas.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnBack" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="85.0" text="Voltar">
+            <Button fx:id="btnBack" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#actionBack" prefHeight="41.0" prefWidth="85.0" text="Voltar">
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,7 +37,7 @@
       <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;" />
       <AnchorPane layoutY="364.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
-            <Button fx:id="btnSave" layoutX="508.0" layoutY="5.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" text="Salvar">
+            <Button fx:id="btnSave" layoutX="508.0" layoutY="5.0" mnemonicParsing="false" onAction="#actionSave" prefHeight="27.0" prefWidth="79.0" text="Salvar">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>

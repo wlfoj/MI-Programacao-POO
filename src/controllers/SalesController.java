@@ -1,33 +1,53 @@
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import main.Main;
 	
 public class SalesController implements Initializable {
 	
-	@FXML
-	private void eventoOne(ActionEvent e) {
-		System.out.println("Voltar Vendas para Menu");
-		Main.scenes("backsales");
-	}
+	private Integer idSelected;
 	
 	@FXML
-    private Button btt1, btt2, btt3, btt4, btt5 , btt6;
+	private void actionBack(ActionEvent e) throws IOException {
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+	}
+	
+    @FXML
+    void actionCreate(ActionEvent event) throws IOException {
+		Main.setIdSelected(idSelected);
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioSales.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+    }
+    
+    @FXML
+    void actionEdit(ActionEvent event) throws IOException {
+    	Main.setIdSelected(idSelected);
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioSales.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+    }
+	
+	@FXML
+    private Button btnBack, btnCreate, btnEdit;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		btt1.setCursor(Cursor.HAND);
-		btt2.setCursor(Cursor.HAND);
-		btt3.setCursor(Cursor.HAND);
-		btt4.setCursor(Cursor.HAND);
-		btt5.setCursor(Cursor.HAND);
-		btt6.setCursor(Cursor.HAND);
+		btnBack.setCursor(Cursor.HAND);
+		btnCreate.setCursor(Cursor.HAND);
+		btnEdit.setCursor(Cursor.HAND);;
 	}
 	
 }
