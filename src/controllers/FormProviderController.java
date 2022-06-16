@@ -24,21 +24,20 @@ import java.util.Map;
 import java.util.ArrayList;
 
 public class FormProviderController implements Initializable {
-
+	// COMPONENTES DA JAVAFX
     @FXML
     private Button btnAddProduct,btnBack,btnDeleteProduct,btnSave;
-
     @FXML
     private ComboBox<String> comboProducts;
-    
-    private static ArrayList<String> comboNameList;
-    
-    private static ArrayList<Product> listAllProducts;
-    
-    private static Map<String, Integer> HashMapProducts = new HashMap<String,Integer>();
-
     @FXML
     private TextField inputAdress, inputName, inputCnpj;
+    
+    // ESTRUTURA DE DADOS PRO COMBOBOX
+    private static ArrayList<String> comboNameList;
+    private static ArrayList<Product> listAllProducts;
+    private static Map<String, Integer> HashMapProducts = new HashMap<String,Integer>();
+
+
     
     @FXML
     private TableView<?> tableProducts;
@@ -49,6 +48,7 @@ public class FormProviderController implements Initializable {
     	//Falta fazer o percorrer
     	// Percorre a lista da tabela e em cada linha, cruza o nome do campo com o id e adiciona na lista
     	listProducts.add(HashMapProducts.get(comboProducts.getValue()));
+    	System.out.println(HashMapProducts.get(comboProducts.getValue()));
     }
 
     @FXML

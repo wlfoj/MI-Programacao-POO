@@ -20,11 +20,9 @@ public class ManagementCostumer {
 	public static void addCostumer(Costumer obj) throws NullFieldException, ObjectRegistred {
 		if (obj.getCpf() == "" || obj.getName() == "") {
 			throw new NullFieldException();
-		//Informar que o cpf já tem
 		} else if (containsCpf(obj.getCpf())){
 			throw new ObjectRegistred();
 		}else {
-			//Faz o cadastro
 			obj.setId(lastId++);
 			list.add(obj);
 		}
@@ -64,19 +62,21 @@ public class ManagementCostumer {
 		public static void update(int id, Costumer obj) throws NullFieldException{
 			int idProvider;
 			if (obj.getName() != "" && obj.getCpf() != "") {
-			for (int i = 0; i < list.size(); i++) {
-				idProvider = list.get(i).getId();
-				if (idProvider == id) {
-					list.get(i).setName(obj.getName());
-					list.get(i).setCpf(obj.getCpf());
-					list.get(i).setEmail(obj.getEmail());
-					list.get(i).setTelefone(obj.getTelefone());
-					}
-				} 
-			}else {
 				throw new NullFieldException ();
+			}
+			else {
+				//Percorrendo alista
+				for (int i = 0; i < list.size(); i++) {
+					idProvider = list.get(i).getId();
+					if (idProvider == id) {
+						list.get(i).setName(obj.getName());
+						list.get(i).setCpf(obj.getCpf());
+						list.get(i).setEmail(obj.getEmail());
+						list.get(i).setTelefone(obj.getTelefone());
+					}
 				}
 			}
+		}
 		
 		
 	/** Verifica se o cpf ja esta registrado na lista de clientes.

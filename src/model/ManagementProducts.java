@@ -1,7 +1,10 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import exceptions.DateInvalid;
 import exceptions.InsufficientQuantityProducts;
 import exceptions.NegativePriceEntity;
 import exceptions.NullFieldException;
@@ -32,7 +35,7 @@ public abstract class ManagementProducts {
 	 * @param dateToExpi	Data limite em que os produtos v�o expirar
 	 * @return	A lista filtrada, contendo at� <code>qtdProducts</code> elementos
 	 */
-	public static ArrayList<Product> listProductsInExpiration(int qtdProducts, Calendar dateToExpi){
+	public static ArrayList<Product> listProductsInExpiration(int qtdProducts, LocalDate dateToExpi){
 		int count = 0;
 		Product p;
 		ArrayList<Product> productExpiration = new ArrayList<Product>();
@@ -53,16 +56,21 @@ public abstract class ManagementProducts {
 	 * @param obj adicionando produto
 	 * @throws NegativePriceEntity Excecao para precos negativos ou nulo
 	 * @throws InsufficientQuantityProducts Excecao para quantidade invalida
+	 * @throws DateInvalid Data Excecao para data de validade menor que a data atual
 	 */
-	public static void addProduct(Product obj) throws NegativePriceEntity, InsufficientQuantityProducts{
-		if (obj.getQtd()<=0) {
+	public static void addProduct(Product obj) throws NegativePriceEntity, InsufficientQuantityProducts, DateInvalid{
+		if (obj.getValidity().compareTo(LocalDate.now()) <= 0) {
+			throw new DateInvalid();
+		}
+		else if (obj.getQtd()<=0) {
 			throw new InsufficientQuantityProducts();
 		}
-		if (obj.getPrice() >= 0) {
+		else if (obj.getPrice() < 0){
+			throw new NegativePriceEntity();
+		}
+		else {
 			obj.setId(lastId++);
 			list.add(obj);
-		}else {
-			throw new NegativePriceEntity();
 		}
 	}
 	
@@ -86,27 +94,30 @@ public abstract class ManagementProducts {
 	 * 
 	 * @param id id do produto a ser alterado.
 	 * @param obj novos dados que irao substituir os do produto.
-	 * @throws NullFieldException excecao para campo nulo
-	 * @throws NegativePriceEntity excecao para valores negativos
+	 * @throws NegativePriceEntity excecao para valores negativos de preco
+	 * @throws DateInvalid excecao para data de validade inferior a atual
+	 * @throws InsufficientQuantityProducts excecao para uma quantidade menor ou igual a 0 do produto
 	 */
-	public static void update(int id, Product obj) throws NullFieldException,NegativePriceEntity{
+	public static void update(int id, Product obj) throws NegativePriceEntity, DateInvalid, InsufficientQuantityProducts{
 		int idProduct;
-		if (obj.getName() != "") {
-		for (int i = 0; i < list.size(); i++) {
-			idProduct = list.get(i).getId();
-			if (obj.getPrice() >= 0) {
-			if (idProduct == id) {
-				list.get(i).setPrice(obj.getPrice());
-				list.get(i).setName(obj.getName());
-				list.get(i).setValidity(obj.getValidity());
+		if (obj.getValidity().compareTo(LocalDate.now()) <= 0) {
+			throw new DateInvalid();
+		}
+		else if (obj.getQtd()<=0) {
+			throw new InsufficientQuantityProducts();
+		}
+		else if (obj.getPrice() < 0){
+			throw new NegativePriceEntity();
+		}
+		else {
+			for (int i = 0; i < list.size(); i++) {
+				idProduct = list.get(i).getId();
+				if (idProduct == id) {
+					list.get(i).setPrice(obj.getPrice());
+					list.get(i).setName(obj.getName());
+					list.get(i).setValidity(obj.getValidity());
 				}
-			} else {
-				throw new NegativePriceEntity();
 			}
-				
-			}
-		}else {
-			throw new NullFieldException();
 		}
 	}
 	

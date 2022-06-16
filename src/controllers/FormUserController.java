@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import exceptions.NullFieldException;
+import facede.FacedeManagement;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -61,30 +62,13 @@ public class FormUserController implements Initializable {
     	String login = inputLogin.getText();
     	String type = boxType.getValue();
     	boxType.setValue("");
+    	try {
+			FacedeManagement.addUser(name, login, password, type);
+		} catch (NullFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
-    	if (type == "Administrador") {
-    		Administrator u = new Administrator();
-    		u.setLogin(login);
-    		u.setName(name);
-    		u.setPass(password);
-    		try {
-				ManagementUsers.addUser(u);
-			} catch (NullFieldException e) {
-				// FAZER LÃ“GICA PARA TRATAMENTO DE ERRO
-				e.printStackTrace();
-			}
-    	} else {
-    		Employee u = new Employee();
-    		u.setLogin(login);
-    		u.setName(name);
-    		u.setPass(password);
-    		try {
-				ManagementUsers.addUser(u);
-			} catch (NullFieldException e) {
-				// FAZER LÃ“GICA PARA TRATAMENTO DE ERRO
-				e.printStackTrace();
-			}
-    	}
     }
     
     private void editUser() {

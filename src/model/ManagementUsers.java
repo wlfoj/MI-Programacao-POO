@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 import exceptions.NullFieldException;
+import exceptions.ObjectRegistred;
 
 /** Classe responsavel pelo gerenciamento dos usuarios.
  * 
@@ -28,17 +29,19 @@ public abstract class ManagementUsers {
 	 * 
 	 * @param obj	O usuario a ser adicionado na lista, pode ser Employee ou Management.
 	 * @throws NullFieldException excecao para o campo nulo
+	 * @throws ObjectRegistred  Excecao para um usuario com login j· registrado
 	 */
-	public static void addUser(User obj) throws NullFieldException {
-		if (obj.getLogin() != "" || obj.getPass() != "") {
-		// Se o login n√£o tiver na lista
-		if(!containsLogin(obj.getLogin())) {
+	public static void addUser(User obj) throws NullFieldException, ObjectRegistred {
+		if (obj.getLogin() == "" || obj.getPass() == "") {
+			throw new NullFieldException();
+		}
+		else if (containsLogin(obj.getLogin())) {
+			throw new ObjectRegistred();	
+		}
+		else {
 			obj.setId(lastId++);
 			list.add(obj);
 		}
-		} else {
-	  		   throw new NullFieldException();
-				}
 	}
 	
 	
@@ -65,21 +68,21 @@ public abstract class ManagementUsers {
 	 */
 	public static void update(int id, User obj) throws NullFieldException {
 		int idUser;
-		if (obj.getLogin() != "" || obj.getPass() != "") {
-		for (int i = 0; i < list.size(); i++) {
-			idUser = list.get(i).getId();
-			if (idUser == id) {
-				list.get(i).setLogin(obj.getLogin());
-				list.get(i).setPass(obj.getPass());
-				list.get(i).setName(obj.getName());
-				}
-			} 
-		}else {
-					throw new NullFieldException();
+		if (obj.getLogin() == "" || obj.getPass() == "") {
+			throw new NullFieldException();
+		} else {
+			//Percorrendo a lista
+			for (int i = 0; i < list.size(); i++) {
+				idUser = list.get(i).getId();
+				if (idUser == id) {
+					list.get(i).setLogin(obj.getLogin());
+					list.get(i).setPass(obj.getPass());
+					list.get(i).setName(obj.getName());
 				}
 			}
+		}
+	}
 		
-	
 	
 	
 	/** Verifica se o login ja esta registrado na lista de usuarios.
