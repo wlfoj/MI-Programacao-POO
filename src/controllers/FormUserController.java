@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import exceptions.NullFieldException;
+import exceptions.ObjectRegistred;
 import facede.FacedeManagement;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -62,12 +63,16 @@ public class FormUserController implements Initializable {
     	String login = inputLogin.getText();
     	String type = boxType.getValue();
     	boxType.setValue("");
-    	try {
+		try {
 			FacedeManagement.addUser(name, login, password, type);
 		} catch (NullFieldException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ObjectRegistred e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
     	
     }
     

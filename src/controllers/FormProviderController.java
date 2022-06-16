@@ -44,11 +44,16 @@ public class FormProviderController implements Initializable {
 
     @FXML
     void actionAddProduct(ActionEvent event) {
-    	ArrayList<Integer> listProducts = new ArrayList<Integer>();
-    	//Falta fazer o percorrer
-    	// Percorre a lista da tabela e em cada linha, cruza o nome do campo com o id e adiciona na lista
-    	listProducts.add(HashMapProducts.get(comboProducts.getValue()));
-    	System.out.println(HashMapProducts.get(comboProducts.getValue()));
+    	Integer id;
+    	Product p;
+    	// Pega o nome da combobox, converte para id
+    	id = HashMapProducts.get(comboProducts.getValue());
+    	// Busca o produto com o id
+    	p = ManagementProducts.getOne(id);
+    	// Se existir produto, joga na lista
+    	if (p != null) {
+    		listAllProducts.add(p);
+    	}
     }
 
     @FXML

@@ -157,4 +157,17 @@ public abstract class ManagementProducts {
 		
 		return newlist;
 	}
+	
+	
+	public static ArrayList<Product> convertInProductList(ArrayList<Integer> listId){
+		ArrayList<Product> newList = new ArrayList<Product>();
+		Product p;
+		for(int i=0; i<listId.size(); i++) {
+			p = getOne(listId.get(i));
+			if (p != null) {
+				newList.add(p);
+			}
+		}
+		return newList;
+	}
 }
