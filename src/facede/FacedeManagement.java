@@ -59,11 +59,11 @@ public abstract class FacedeManagement {
 		ManagementProducts.addProduct(p1);
 		
 		Product p2 = new Product();
-		p1.setMedida("L");
-		p1.setName("Alface");
-		p1.setPrice(2f);
-		p1.setQtd(44);
-		p1.setValidity(LocalDate.now());
+		p2.setMedida("L");
+		p2.setName("Alface");
+		p2.setPrice(2f);
+		p2.setQtd(44);
+		p2.setValidity(LocalDate.now());
 		ManagementProducts.addProduct(p2);
 	}
 	//METODOS PARA CRIAR UM NOVO USUARIO
