@@ -59,7 +59,7 @@ public abstract class ManagementProducts {
 	 * @throws DateInvalid Data Excecao para data de validade menor que a data atual
 	 */
 	public static void addProduct(Product obj) throws NegativePriceEntity, InsufficientQuantityProducts, DateInvalid{
-		if (obj.getValidity().compareTo(LocalDate.now()) <= 0) {
+		if (obj.getValidity().compareTo(LocalDate.now()) < 0) {
 			throw new DateInvalid();
 		}
 		else if (obj.getQtd()<=0) {
@@ -100,7 +100,7 @@ public abstract class ManagementProducts {
 	 */
 	public static void update(int id, Product obj) throws NegativePriceEntity, DateInvalid, InsufficientQuantityProducts{
 		int idProduct;
-		if (obj.getValidity().compareTo(LocalDate.now()) <= 0) {
+		if (obj.getValidity().compareTo(LocalDate.now()) < 0) {
 			throw new DateInvalid();
 		}
 		else if (obj.getQtd()<=0) {
