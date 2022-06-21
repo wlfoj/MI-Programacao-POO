@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+import exceptions.DateInvalid;
 import exceptions.InsufficientQuantityProducts;
 import exceptions.NegativePriceEntity;
 import exceptions.NullFieldException;
@@ -46,7 +47,7 @@ public class FormProductsController implements Initializable {
 	
 
 	@FXML
-	private void eventSave(ActionEvent event) throws IOException {
+	private void eventSave(ActionEvent event) throws IOException, DateInvalid, InsufficientQuantityProducts {
 		//LocalDate aa= LocalDate.now();
 		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		//now = now.parse("2019-11-05");
@@ -62,8 +63,8 @@ public class FormProductsController implements Initializable {
 
 	}
 	
-	private void createProduct() {
-		// Fazer os testes de erros de conversão e gerar alerts
+	private void createProduct() throws DateInvalid {
+		// Fazer os testes de erros de conversï¿½o e gerar alerts
 		Product p = new Product();
 		p.setName(inputName.getText());
 		p.setMedida(inputMedida.getText());
@@ -83,8 +84,8 @@ public class FormProductsController implements Initializable {
 		
 	}
 	
-	private void editProduct() {
-		// Fazer os testes de erros de conversão e gerar alerts
+	private void editProduct() throws DateInvalid, InsufficientQuantityProducts {
+		// Fazer os testes de erros de conversï¿½o e gerar alerts
 		Product p = new Product();
 		p.setName(inputName.getText());
 		p.setMedida(inputMedida.getText());
@@ -94,9 +95,6 @@ public class FormProductsController implements Initializable {
 		
 		try {
 			ManagementProducts.update(Main.getIdSelected(), p);
-		} catch (NullFieldException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (NegativePriceEntity e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
