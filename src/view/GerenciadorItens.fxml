@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -46,17 +45,7 @@
             <TableColumn prefWidth="81.0" text="Valor" />
         </columns>
       </TableView>
-      <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
-         <children>
-            <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="306.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../projecticons/Search.png" />
-               </image>
-            </ImageView>
-            <TextField layoutX="338.0" layoutY="9.0" prefHeight="25.0" prefWidth="203.0" promptText="Nome do item" />
-            <Button fx:id="btt2" layoutX="541.0" layoutY="9.0" mnemonicParsing="false" text="Buscar" />
-         </children>
-      </AnchorPane>
+      <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;" />
       <AnchorPane layoutY="364.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
             <Button fx:id="btnCreate" layoutX="353.0" layoutY="5.0" mnemonicParsing="false" onAction="#actionCreate" text="Novo">
