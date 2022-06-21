@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,8 +13,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
@@ -35,12 +39,19 @@ public class FormProviderController implements Initializable {
     // ESTRUTURA DE DADOS PRO COMBOBOX
     private static ArrayList<String> comboNameList;
     private static ArrayList<Product> listAllProducts;
+    private ArrayList<Product> tableViewList = new ArrayList<Product>();
     private static Map<String, Integer> HashMapProducts = new HashMap<String,Integer>();
 
-
+    ObservableList<Product> observableListaProduct; 
     
     @FXML
-    private TableView<?> tableProducts;
+    private TableColumn<Product, Integer> tableId;
+
+    @FXML
+    private TableColumn<Product, String> tableName;
+    
+    @FXML
+    private TableView<Product> tableProducts;
 
     @FXML
     void actionAddProduct(ActionEvent event) {
@@ -52,10 +63,11 @@ public class FormProviderController implements Initializable {
     	p = ManagementProducts.getOne(id);
     	// Se existir produto, joga na lista
     	if (p != null) {
-    		listAllProducts.add(p);
+    		tableViewList.add(p);
+    		refreshTableViewProducts();
     	}
     }
-
+    
     @FXML
     void actionBack(ActionEvent event) throws IOException {
     	AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProvider.fxml"));
@@ -83,8 +95,23 @@ public class FormProviderController implements Initializable {
 
     }
     
+    public void refreshTableViewProducts() {
+		observableListaProduct = FXCollections.observableArrayList(tableViewList);
+		tableProducts.setItems(observableListaProduct);
+		
+		tableId.setCellValueFactory(new PropertyValueFactory<>("id"));
+		tableName.setCellValueFactory(new PropertyValueFactory<>("name"));
+    }
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+//		observableListaProduct = FXCollections.observableArrayList(ManagementProducts.listAllProducts());
+//		tableProducts.setItems(observableListaProduct);
+//
+//		tableId.setCellValueFactory(new PropertyValueFactory<>("id"));
+//		tableName.setCellValueFactory(new PropertyValueFactory<>("name"));
+		
 		comboNameList = new ArrayList<String>();
 		Product p;
 		//comboProducts.setValue(p);
