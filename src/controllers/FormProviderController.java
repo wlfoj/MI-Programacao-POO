@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import exceptions.NullFieldException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,7 +22,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementProducts;
+import model.ManagementProvider;
 import model.Product;
+import model.Provider;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -70,11 +73,15 @@ public class FormProviderController implements Initializable {
     
     @FXML
     void actionBack(ActionEvent event) throws IOException {
+    	backToProvider();
+    }
+
+    private void backToProvider() throws IOException {
     	AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProvider.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
     }
-
+    
     @FXML
     void actionDeleteProduct(ActionEvent event) {
 
@@ -87,12 +94,48 @@ public class FormProviderController implements Initializable {
 
     @FXML
     void tableLine(ActionEvent event) {
-
+    	
+    
     }
     
     @FXML
-    void actionSave(ActionEvent event) {
+    void actionSave(ActionEvent event) throws IOException {
+	if (Main.getIdSelected() == -1) {
+    		
+    		createProvider();
+    	} else {
+    		editProvider();	
+    	}
+    	backToProvider();
+    }
+    
+    private void createProvider() {
+    	Provider p = new Provider();
+		p.setName(inputName.getText());
+		p.setCnpj(inputCnpj.getText());
+		p.setAddress(inputAdress.getText());
+		
+		try {
+			ManagementProvider.addProvider(p);
+		} catch (NullFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+    }
+    
+    private void editProvider() {
+    	Provider p = new Provider();
+		p.setName(inputName.getText());
+		p.setCnpj(inputCnpj.getText());
+		p.setAddress(inputAdress.getText());
 
+		try {
+			ManagementProvider.update(Main.getIdSelected(), p);
+		} catch (NullFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     public void refreshTableViewProducts() {

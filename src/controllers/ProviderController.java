@@ -72,7 +72,7 @@ public class ProviderController implements Initializable{
     
     @FXML
     void actionEdit(ActionEvent event) throws IOException {
-    	Main.setIdSelected(-1);
+    	Main.setIdSelected(idSelected);
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioProvider.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
