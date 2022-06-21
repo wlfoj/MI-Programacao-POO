@@ -149,12 +149,12 @@ public class FormProviderController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-//		observableListaProduct = FXCollections.observableArrayList(ManagementProducts.listAllProducts());
-//		tableProducts.setItems(observableListaProduct);
-//
-//		tableId.setCellValueFactory(new PropertyValueFactory<>("id"));
-//		tableName.setCellValueFactory(new PropertyValueFactory<>("name"));
-		
+		if (Main.getIdSelected() != -1) {
+			Provider p = ManagementProvider.getOne(Main.getIdSelected());
+			inputName.setText(p.getName());
+			inputCnpj.setText(p.getCnpj());
+			inputAdress.setText(p.getAddress());
+		}
 		comboNameList = new ArrayList<String>();
 		Product p;
 		//comboProducts.setValue(p);
