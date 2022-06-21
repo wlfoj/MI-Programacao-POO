@@ -116,8 +116,12 @@ public class FormProductsController implements Initializable {
 		try {
 			ManagementProducts.update(Main.getIdSelected(), p);
 		} catch (NegativePriceEntity e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Valor negativo é inválido");
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Valor negativo");
+			alert.setHeaderText("Valor do produto negativo");
+			alert.setContentText("Usuário por favor preencher com valores acima de 0");
+	    	alert.show();
 		}
 		
 	}

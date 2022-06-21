@@ -12,7 +12,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,12 +23,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementProvider;
+import model.ManagementUsers;
 import model.Provider;
 
 public class ProviderController implements Initializable{
 
 	ObservableList<Provider> observableListaProvider; 
 	
+	private Integer idSelected;
 
     @FXML
     private TableColumn<Provider, String> tableAdress;
@@ -39,8 +44,6 @@ public class ProviderController implements Initializable{
     @FXML
     private TableColumn<Provider, String> tableName;
 
-    @FXML
-    private TableColumn<Provider, String> tableProducts;
 
     @FXML
     private TableView<Provider> tableView;
@@ -59,6 +62,10 @@ public class ProviderController implements Initializable{
     
     @FXML
     void clickLine(MouseEvent event) {
+    	Provider p = tableView.getSelectionModel().getSelectedItem();
+    	if(p != null) {
+    		idSelected =p.getId();
+    	}
     	btnEdit.setDisable(false);
     	btnDelete.setDisable(false);
     }
@@ -89,6 +96,25 @@ public class ProviderController implements Initializable{
 		btnDelete.setCursor(Cursor.HAND);
 		btnEdit.setCursor(Cursor.HAND);
 		refreshTableView();
+		
+		btnDelete.setOnAction(e-> {
+			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
+			
+			ButtonType btnOk = new ButtonType("Deletar");
+			ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+			
+			deleteExe.initOwner(btnDelete.getScene().getWindow());
+			deleteExe.setTitle("Deletar");
+			deleteExe.setHeaderText("Deseja realmente deletar?");
+			deleteExe.setContentText("Ao apagar as informações não serão mais recuperadas");
+			deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
+			deleteExe.showAndWait().ifPresent(a -> {
+				if (a == btnOk) {
+					ManagementProvider.delete(idSelected);
+					refreshTableView();
+				} 
+			});
+		});
 	}
 	
 	public void refreshTableView() {
@@ -97,8 +123,7 @@ public class ProviderController implements Initializable{
 		
 		tableId.setCellValueFactory(new PropertyValueFactory<>("id"));
 		tableName.setCellValueFactory(new PropertyValueFactory<>("name"));
-		tableAdress.setCellValueFactory(new PropertyValueFactory<>("adress"));
+		tableAdress.setCellValueFactory(new PropertyValueFactory<>("address"));
 		tableCnpj.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
-		tableProducts.setCellValueFactory(new PropertyValueFactory<>("products"));
 	}
 }

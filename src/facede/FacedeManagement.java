@@ -1,6 +1,7 @@
 package facede;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import exceptions.DateInvalid;
 import exceptions.InsufficientQuantityProducts;
@@ -12,8 +13,10 @@ import model.Costumer;
 import model.Employee;
 import model.ManagementCostumer;
 import model.ManagementProducts;
+import model.ManagementProvider;
 import model.ManagementUsers;
 import model.Product;
+import model.Provider;
 import model.User;
 
 public abstract class FacedeManagement {
@@ -65,6 +68,16 @@ public abstract class FacedeManagement {
 		p2.setQtd(44);
 		p2.setValidity(LocalDate.now());
 		ManagementProducts.addProduct(p2);
+		
+		Provider provider = new Provider();
+		ArrayList<Integer> p0 = new ArrayList<Integer>();
+		p0.add(0); //id que tem nos produtos verificar se o id foi deletado
+		provider.setCnpj("77039172000101");
+		provider.setName("Laticinios Bahia");
+		provider.setAddress("Rua Salvador, Savador Bahia n 305");
+		provider.setProducts(p0);
+		ManagementProvider.addProvider(provider);
+		
 	}
 	//METODOS PARA CRIAR UM NOVO USUARIO
 	public static void addUser(String name, String login, String pass, String type) throws NullFieldException, ObjectRegistred {
