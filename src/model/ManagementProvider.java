@@ -135,4 +135,5 @@ public abstract class ManagementProvider {
 		
 		return newlist;
 	}
+	
 }

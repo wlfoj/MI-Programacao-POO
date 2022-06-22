@@ -95,8 +95,8 @@ public class ProviderController implements Initializable{
 		btnCreate.setCursor(Cursor.HAND);
 		btnDelete.setCursor(Cursor.HAND);
 		btnEdit.setCursor(Cursor.HAND);
-		refreshTableView();
 		
+		//Adicionando o evento de deletar e configurando comportamento do alert
 		btnDelete.setOnAction(e-> {
 			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
 			
@@ -115,6 +115,8 @@ public class ProviderController implements Initializable{
 				} 
 			});
 		});
+		
+		refreshTableView();
 	}
 	
 	public void refreshTableView() {

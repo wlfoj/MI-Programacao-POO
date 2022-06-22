@@ -50,7 +50,6 @@ public class FormProductsController implements Initializable {
     @FXML
     private Button btnBack, btnSave;
 	
-
 	@FXML
 	private void eventSave(ActionEvent event) throws IOException{
 		boolean aux = true;

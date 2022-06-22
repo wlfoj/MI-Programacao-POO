@@ -170,4 +170,5 @@ public abstract class ManagementProducts {
 		}
 		return newList;
 	}
+	
 }

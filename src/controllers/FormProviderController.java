@@ -25,12 +25,15 @@ import model.ManagementProducts;
 import model.ManagementProvider;
 import model.Product;
 import model.Provider;
+import model.User;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.ArrayList;
 
 public class FormProviderController implements Initializable {
+	private Integer idSelected;
 	// COMPONENTES DA JAVAFX
     @FXML
     private Button btnAddProduct,btnBack,btnDeleteProduct,btnSave;
@@ -84,12 +87,17 @@ public class FormProviderController implements Initializable {
     
     @FXML
     void actionDeleteProduct(ActionEvent event) {
-    	
+    	ManagementProducts.delete(idSelected);
+    	refreshTableViewProducts();
     }
 
     @FXML
     void clickLine(MouseEvent event) {
     	btnDeleteProduct.setDisable(false);
+    	Product p = tableProducts.getSelectionModel().getSelectedItem();
+    	if(p != null) {
+    		idSelected =p.getId();
+    	}
     }
 
     @FXML
@@ -109,10 +117,17 @@ public class FormProviderController implements Initializable {
     }
     
     private void createProvider() {
+    	ArrayList<Integer> idListProducts = new ArrayList<Integer>();
     	Provider p = new Provider();
 		p.setName(inputName.getText());
 		p.setCnpj(inputCnpj.getText());
 		p.setAddress(inputAdress.getText());
+		
+		// Convertendo a lista de produtos em lista de ids
+		for (int i = 0; i < tableViewList.size(); i++) {
+			idListProducts.add(tableViewList.get(i).getId());
+		}
+		p.setProducts(idListProducts);
 		
 		try {
 			ManagementProvider.addProvider(p);
@@ -153,6 +168,7 @@ public class FormProviderController implements Initializable {
 			inputName.setText(p.getName());
 			inputCnpj.setText(p.getCnpj());
 			inputAdress.setText(p.getAddress());
+			tableViewList = ManagementProducts.convertInProductList(p.getProducts());
 		}
 		comboNameList = new ArrayList<String>();
 		Product p;
@@ -168,6 +184,6 @@ public class FormProviderController implements Initializable {
 		}
 		// Lendo os produtos no combo
 		comboProducts.getItems().setAll(comboNameList);
-
+		refreshTableViewProducts();
 	}
 }
