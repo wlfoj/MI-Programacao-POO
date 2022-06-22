@@ -51,11 +51,11 @@ public abstract class ManagementProvider {
 	 * @throws NullFieldException excecao para campo vazio
 	 */
 	public static void addProvider(Provider obj) throws NullFieldException {
-		if (obj.getName() != "") {
-		obj.setId(lastId++);
-		list.add(obj);
-		}else {
+		if (obj.getName() == "") {
 			throw new NullFieldException();
+		}else {
+			obj.setId(lastId++);
+			list.add(obj);
 		}
 	}
 		

@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -87,7 +88,14 @@ public class FormProviderController implements Initializable {
     
     @FXML
     void actionDeleteProduct(ActionEvent event) {
-    	ManagementProducts.delete(idSelected);
+    	Product p;
+    	// Procurando pelo produto selecionado
+    	for (int i = 0; i < tableViewList.size(); i++) {
+			p = tableViewList.get(i);
+			if (p.getId() == idSelected) {
+				tableViewList.remove(i);
+			}
+		}
     	refreshTableViewProducts();
     }
 
@@ -107,16 +115,37 @@ public class FormProviderController implements Initializable {
     
     @FXML
     void actionSave(ActionEvent event) throws IOException {
-	if (Main.getIdSelected() == -1) {
-    		
-    		createProvider();
-    	} else {
-    		editProvider();	
-    	}
-    	backToProvider();
+    	boolean aux = true;
+    	// Verifica não existe um id selecionado
+		if (Main.getIdSelected() == -1) {
+	    		try {
+					createProvider();
+					aux = false;
+				} catch (NullFieldException e) {
+					Alert alert = new Alert(Alert.AlertType.ERROR);
+					alert.setTitle("Campos vazios");
+					alert.setContentText("Preencha todos os campos");
+					alert.show();
+				}
+	    // Caso tenha o id selecionado
+	    } else {
+	    	try {
+				editProvider();
+				aux = false;
+			} catch (NullFieldException e) {
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setTitle("Campos vazios");
+				alert.setContentText("Preencha todos os campos");
+				alert.show();
+			}	
+	    }
+		// Se passar pelas etapas sem receber uma exceção
+		if (aux == false) {
+			backToProvider();
+		}
     }
     
-    private void createProvider() {
+    private void createProvider() throws NullFieldException {
     	ArrayList<Integer> idListProducts = new ArrayList<Integer>();
     	Provider p = new Provider();
 		p.setName(inputName.getText());
@@ -129,27 +158,22 @@ public class FormProviderController implements Initializable {
 		}
 		p.setProducts(idListProducts);
 		
-		try {
-			ManagementProvider.addProvider(p);
-		} catch (NullFieldException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		ManagementProvider.addProvider(p);
     }
     
-    private void editProvider() {
+    private void editProvider() throws NullFieldException {
+    	ArrayList<Integer> idListProducts = new ArrayList<Integer>();
     	Provider p = new Provider();
 		p.setName(inputName.getText());
 		p.setCnpj(inputCnpj.getText());
 		p.setAddress(inputAdress.getText());
-
-		try {
-			ManagementProvider.update(Main.getIdSelected(), p);
-		} catch (NullFieldException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		// Convertendo a lista de produtos em lista de ids
+		for (int i = 0; i < tableViewList.size(); i++) {
+			idListProducts.add(tableViewList.get(i).getId());
 		}
+		p.setProducts(idListProducts);
+		
+		ManagementProvider.update(Main.getIdSelected(), p);
     }
     
     public void refreshTableViewProducts() {
