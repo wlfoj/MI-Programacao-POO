@@ -52,23 +52,81 @@ public class FormProductsController implements Initializable {
 	
 
 	@FXML
-	private void eventSave(ActionEvent event) throws IOException, DateInvalid, InsufficientQuantityProducts, NegativePriceEntity {
+	private void eventSave(ActionEvent event) throws IOException{
+		boolean aux = true;
 		//LocalDate aa= LocalDate.now();
 		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		//now = now.parse("2019-11-05");
 		//inputValidity.setValue(aa);
+		// Verifica n�o existe um id selecionado
 		if (Main.getIdSelected() == -1) {
-			//Cria
-			createProduct();
+			try {
+				createProduct();
+				aux = false;
+			} catch (NegativePriceEntity e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Valor negativo");
+				alert.setHeaderText("Valor do produto negativo");
+				alert.setContentText("Usuário por favor preencher com valores acima de 0");
+		    	alert.show();
+			} catch (InsufficientQuantityProducts e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Quantidade insuficiente");
+				alert.setHeaderText("Quantidade de produtos insuficiente");
+				alert.setContentText("Usuário por favor preencher com quantidade de produtos suficiente");
+		    	alert.show();
+			} catch (DateInvalid e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Validade invalida");
+				alert.setHeaderText("Data de validade anterior a atual");
+				alert.setContentText("Usuário por favor preencher com data posterior a atual");
+		    	alert.show();
+			}
+		// Caso tenha o id selecionado
 		} else {
-			//edita
-			editProduct();
+			try {
+				editProduct();
+				aux = false;
+			} catch (DateInvalid e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Validade invalida");
+				alert.setHeaderText("Data de validade anterior a atual");
+				alert.setContentText("Usuário por favor preencher com data posterior a atual");
+		    	alert.show();
+			} catch (InsufficientQuantityProducts e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Quantidade insuficiente");
+				alert.setHeaderText("Quantidade de produtos insuficiente");
+				alert.setContentText("Usuário por favor preencher com quantidade de produtos suficiente");
+		    	alert.show();
+			} catch (NegativePriceEntity e) {
+				System.out.println("Valor negativo é inválido");
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Valor negativo");
+				alert.setHeaderText("Valor do produto negativo");
+				alert.setContentText("Usuário por favor preencher com valores acima de 0");
+		    	alert.show();
+			}
 		}
-		backToProduct();
+    	// Se passar pelas etapas sem receber uma exce��o
+    	if(aux==false) {
+    		backToProduct();
+    	}
+	}
+	
+	private void createProduct() throws NegativePriceEntity, InsufficientQuantityProducts, DateInvalid{
+		// Fazer os testes de erros de convers�o e gerar alerts
+		Product p = new Product();
+		p.setName(inputName.getText());
+		p.setMedida(inputMedida.getText());
+		p.setPrice(Float.parseFloat(inputValue.getText()));
+		p.setQtd(Integer.parseInt(inputQtd.getText()));
+		p.setValidity(inputValidity.getValue());
 
+		ManagementProducts.addProduct(p);
 	}
 	
-	private void createProduct() throws DateInvalid, InsufficientQuantityProducts, NegativePriceEntity{
+	private void editProduct() throws DateInvalid, InsufficientQuantityProducts, NegativePriceEntity {
 		// Fazer os testes de erros de convers�o e gerar alerts
 		Product p = new Product();
 		p.setName(inputName.getText());
@@ -77,53 +135,7 @@ public class FormProductsController implements Initializable {
 		p.setQtd(Integer.parseInt(inputQtd.getText()));
 		p.setValidity(inputValidity.getValue());
 		
-		try {
-			ManagementProducts.addProduct(p);
-		} catch (NegativePriceEntity e) {
-			System.out.println("Valor negativo é inválido");
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Valor negativo");
-			alert.setHeaderText("Valor do produto negativo");
-			alert.setContentText("Usuário por favor preencher com valores acima de 0");
-	    	alert.show();
-		} catch (InsufficientQuantityProducts e) {
-			System.out.println("Quantidades de produtos insuficientes");
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Quantidade insuficiente");
-			alert.setHeaderText("Quantidade de produtos insuficiente");
-			alert.setContentText("Usuário por favor preencher com quantidade de produtos suficiente");
-	    	alert.show();
-		} catch (DateInvalid e) {
-			System.out.println("Data de validade invalida");
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Validade invalida");
-			alert.setHeaderText("Data de validade anterior a atual");
-			alert.setContentText("Usuário por favor preencher com data posterior a atual");
-	    	alert.show();
-		}
-		
-	}
-	
-	private void editProduct() throws DateInvalid, InsufficientQuantityProducts {
-		// Fazer os testes de erros de convers�o e gerar alerts
-		Product p = new Product();
-		p.setName(inputName.getText());
-		p.setMedida(inputMedida.getText());
-		p.setPrice(Float.parseFloat(inputValue.getText()));
-		p.setQtd(Integer.parseInt(inputQtd.getText()));
-		p.setValidity(inputValidity.getValue());
-		
-		try {
-			ManagementProducts.update(Main.getIdSelected(), p);
-		} catch (NegativePriceEntity e) {
-			System.out.println("Valor negativo é inválido");
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Valor negativo");
-			alert.setHeaderText("Valor do produto negativo");
-			alert.setContentText("Usuário por favor preencher com valores acima de 0");
-	    	alert.show();
-		}
-		
+		ManagementProducts.update(Main.getIdSelected(), p);	
 	}
 	
 	

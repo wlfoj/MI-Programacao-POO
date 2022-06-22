@@ -14,6 +14,8 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
@@ -23,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.Costumer;
 import model.ManagementCostumer;
+import model.ManagementProducts;
 import model.ManagementUsers;
 
 public class CostumeController implements Initializable {
@@ -114,6 +117,27 @@ public class CostumeController implements Initializable {
 		btnRemove.setCursor(Cursor.HAND);
 		btnPrint.setCursor(Cursor.HAND);
 		btnCreate.setCursor(Cursor.HAND);
+		
+		//Adicionando o evento de deletar e configurando comportamento do alert
+		btnRemove.setOnAction(e-> {
+			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
+			
+			ButtonType btnOk = new ButtonType("Deletar");
+			ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+			
+			deleteExe.initOwner(btnRemove.getScene().getWindow());
+			deleteExe.setTitle("Deletar");
+			deleteExe.setHeaderText("Deseja realmente deletar?");
+			deleteExe.setContentText("Ao apagar as informaÃ§Ãµes nÃ£o serÃ£o mais recuperadas");
+			deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
+			deleteExe.showAndWait().ifPresent(a -> {
+				if (a == btnOk) {
+					ManagementCostumer.delete(idSelected);
+					refreshTableView();
+				} 
+			});
+			
+		});
 		
 		refreshTableView();
 		

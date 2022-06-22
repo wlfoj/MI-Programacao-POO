@@ -46,18 +46,48 @@ public class FormCostumeController implements Initializable {
 	
     @FXML
     void eventSave(ActionEvent event) throws IOException {
+    	boolean aux = true;
+    	// Verifica não existe um id selecionado
     	if(Main.getIdSelected() == -1) {
-    		//Cria
-    		createCostumer();
+    		try {
+				createCostumer();
+				aux = false;
+			} catch (NullFieldException e) {
+		    	Alert alert = new Alert(AlertType.ERROR);
+		    	alert.setTitle("Erro");
+		    	alert.setHeaderText("Campos vazios");
+		    	alert.setContentText("Para prosseguir, preencha corretamente os campos");
+		    	alert.show();
+			} catch (ObjectRegistred e) {
+		    	Alert alert = new Alert(AlertType.INFORMATION);
+		    	alert.setTitle("Erro");
+		    	alert.setHeaderText("CPF registrado");
+		    	alert.setContentText("Para prosseguir, insira outro cpf");
+		    	alert.show();
+			}
     	}
+    	// Caso tenha o id selecionado
     	else {
-    		//edita
-    		editCostumer();
+    		try {
+				editCostumer();
+				aux = false;
+			} catch (NullFieldException e) {
+		    	Alert alert = new Alert(AlertType.ERROR);
+		    	alert.setTitle("Erro");
+		    	alert.setHeaderText("Campos vazios");
+		    	alert.setContentText("Para prosseguir, preencha corretamente os campos");
+		    	alert.show();
+			}
     	}
-    	backToCostumer();
+    	
+    	// Se passar pelas etapas sem receber uma exceção
+    	if(aux==false) {
+    		backToCostumer();
+    	}
+    	
     }
 	
-    private void createCostumer() {
+    private void createCostumer() throws NullFieldException, ObjectRegistred {
     	String name = inputName.getText();
     	String cpf = inputCpf.getText();
     	String email = inputEmail.getText();
@@ -69,24 +99,10 @@ public class FormCostumeController implements Initializable {
     	c.setName(name);
     	c.setTelefone(phone);
     	
-    	try {
-			ManagementCostumer.addCostumer(c);
-		} catch (NullFieldException e) {
-	    	Alert alert = new Alert(AlertType.ERROR);
-	    	alert.setTitle("Erro");
-	    	alert.setHeaderText("Campos vazios");
-	    	alert.setContentText("Para prosseguir, preencha corretamente os campos");
-	    	alert.show();
-		} catch (ObjectRegistred e) {
-	    	Alert alert = new Alert(AlertType.ERROR);
-	    	alert.setTitle("Erro");
-	    	alert.setHeaderText("CPF registrado");
-	    	alert.setContentText("Para prosseguir, insira outro cpf");
-	    	alert.show();
-		}
+		ManagementCostumer.addCostumer(c);
     }
     
-    private void editCostumer() {
+    private void editCostumer() throws NullFieldException {
     	String name = inputName.getText();
     	String cpf = inputCpf.getText();
     	String email = inputEmail.getText();
@@ -98,16 +114,7 @@ public class FormCostumeController implements Initializable {
     	c.setName(name);
     	c.setTelefone(phone);
     	
-    	try {
-			ManagementCostumer.update(Main.getIdSelected(), c);
-		} catch (NullFieldException e) {
-	    	Alert alert = new Alert(AlertType.ERROR);
-	    	alert.setTitle("Erro");
-	    	alert.setHeaderText("Campos vazios");
-	    	alert.setContentText("Para prosseguir, preencha corretamente os campos");
-	    	alert.show();
-		}
-    	
+		ManagementCostumer.update(Main.getIdSelected(), c);
     }
     
     

@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
@@ -42,41 +43,58 @@ public class FormUserController implements Initializable {
     @FXML
     private ComboBox<String> boxType;
     
+    // Opções de tipos de usuarios para selecionar
     private String[] lista = {"Administrador","Fucionario"};
     
     @FXML
     void actionSave(ActionEvent event) throws IOException  {
+    	boolean aux = true;
+    	// Verifica não existe um id selecionado
     	if(Main.getIdSelected() == -1) {
-    		//Cria
-    		createNewUser();
+    		try {
+				createNewUser();
+				aux = false;
+			} catch (NullFieldException e) {
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setTitle("Campos vazios");
+				alert.setContentText("Preencha todos os campos");
+				alert.show();
+			} catch (ObjectRegistred e) {
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setTitle("Login registrado");
+				alert.setContentText("Já existe um usuário com este login");
+				alert.show();
+			}
     	}
+    	// Caso tenha o id selecionado
     	else {
-    		//edita
-    		editUser();
+    		try {
+				editUser();
+				aux = false;
+			} catch (NullFieldException e) {
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setTitle("Campos vazios");
+				alert.setContentText("Preencha todos os campos");
+				alert.show();
+			}
     	}
-    	backToUser();
+    	// Se passar pelas etapas sem receber uma exceção
+    	if (aux == false) {
+    		backToUser();
+    	}
+    	
     }
    
-    private void createNewUser() {
+    private void createNewUser() throws NullFieldException, ObjectRegistred {
     	String name = inputName.getText();
     	String password = inputPassword.getText();
     	String login = inputLogin.getText();
     	String type = boxType.getValue();
     	boxType.setValue("");
-		try {
-			FacedeManagement.addUser(name, login, password, type);
-		} catch (NullFieldException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ObjectRegistred e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-    	
+		FacedeManagement.addUser(name, login, password, type);
     }
     
-    private void editUser() {
+    private void editUser() throws NullFieldException {
     	String name = inputName.getText();
     	String password = inputPassword.getText();
     	String login = inputLogin.getText();
@@ -86,24 +104,14 @@ public class FormUserController implements Initializable {
     		u.setLogin(login);
     		u.setName(name);
     		u.setPass(password);
-    		try {
-				ManagementUsers.update(Main.getIdSelected(), u);
-			} catch (NullFieldException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			ManagementUsers.update(Main.getIdSelected(), u);
     	}
     	else {
     		Employee u = new Employee();
     		u.setLogin(login);
     		u.setName(name);
     		u.setPass(password);
-    		try {
-				ManagementUsers.update(Main.getIdSelected(), u);
-			} catch (NullFieldException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			ManagementUsers.update(Main.getIdSelected(), u);
     	}
     }
     

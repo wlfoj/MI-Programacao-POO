@@ -117,6 +117,7 @@ public class UserController implements Initializable {
 		btnEdit.setCursor(Cursor.HAND);
 		btnDelete.setCursor(Cursor.HAND);
 		
+		//Adicionando o evento de deletar e configurando comportamento do alert
 		btnDelete.setOnAction(e-> {
 			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
 			

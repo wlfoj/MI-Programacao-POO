@@ -15,6 +15,8 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
@@ -23,6 +25,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementProducts;
+import model.ManagementUsers;
 import model.Product;
 	
 public class ProductsController implements Initializable {
@@ -113,6 +116,28 @@ public class ProductsController implements Initializable {
 		btnEdit.setCursor(Cursor.HAND);
 		btnRemove.setCursor(Cursor.HAND);
 		btnPrint.setCursor(Cursor.HAND);
+		
+		//Adicionando o evento de deletar e configurando comportamento do alert
+		btnRemove.setOnAction(e-> {
+			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
+			
+			ButtonType btnOk = new ButtonType("Deletar");
+			ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+			
+			deleteExe.initOwner(btnRemove.getScene().getWindow());
+			deleteExe.setTitle("Deletar");
+			deleteExe.setHeaderText("Deseja realmente deletar?");
+			deleteExe.setContentText("Ao apagar as informações não serão mais recuperadas");
+			deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
+			deleteExe.showAndWait().ifPresent(a -> {
+				if (a == btnOk) {
+					ManagementProducts.delete(idSelected);
+					refreshTableView();
+				} 
+			});
+			
+		});
+		
 		refreshTableView();
 	}
 	

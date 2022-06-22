@@ -65,12 +65,13 @@ public abstract class ManagementUsers {
 	 * @param id  id do usuario a ser alterado.
 	 * @param obj  novos dados que irao substituir os do usuario.
 	 * @throws NullFieldException excecao para o campo nulo
+	 * @throws ObjectRegistred 
 	 */
 	public static void update(int id, User obj) throws NullFieldException {
 		int idUser;
 		if (obj.getLogin() == "" || obj.getPass() == "") {
 			throw new NullFieldException();
-		} else {
+		}else {
 			//Percorrendo a lista
 			for (int i = 0; i < list.size(); i++) {
 				idUser = list.get(i).getId();
