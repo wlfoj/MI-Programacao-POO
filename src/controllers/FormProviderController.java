@@ -84,18 +84,17 @@ public class FormProviderController implements Initializable {
     
     @FXML
     void actionDeleteProduct(ActionEvent event) {
-
+    	
     }
 
     @FXML
     void clickLine(MouseEvent event) {
-
+    	btnDeleteProduct.setDisable(false);
     }
 
     @FXML
     void tableLine(ActionEvent event) {
     	
-    
     }
     
     @FXML

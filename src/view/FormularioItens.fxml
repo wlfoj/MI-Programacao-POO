@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FormItensController">
@@ -36,7 +42,16 @@
       <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;" />
       <AnchorPane layoutY="364.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
-            <Button fx:id="btnSave" layoutX="508.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventSave" prefHeight="27.0" prefWidth="79.0" text="Salvar">
+            <Button fx:id="btnDelete" layoutX="508.0" layoutY="5.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" text="Deletar">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../projecticons/check.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnSave" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventSave" prefHeight="27.0" prefWidth="79.0" text="Salvar">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -47,11 +62,31 @@
             </Button>
          </children>
       </AnchorPane>
-      <TextField fx:id="inputName" layoutX="103.0" layoutY="134.0" prefHeight="25.0" prefWidth="244.0" />
-      <Label layoutX="54.0" layoutY="147.0" text="Nome" />
-      <Label layoutX="56.0" layoutY="192.0" text="Valor" />
-      <Label layoutX="31.0" layoutY="315.0" text="Medida Kg/L" />
-      <TextField fx:id="inputValue" layoutX="103.0" layoutY="179.0" prefHeight="25.0" prefWidth="244.0" />
-      <TextField fx:id="inputMedida" layoutX="103.0" layoutY="302.0" prefHeight="25.0" prefWidth="244.0" />
+      <GridPane layoutX="12.0" layoutY="139.0" prefHeight="94.0" prefWidth="226.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="39.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="192.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="inputName" prefHeight="35.0" prefWidth="192.0" GridPane.columnIndex="1" />
+            <Label text="Nome" />
+            <TextField fx:id="inputValue" prefHeight="27.0" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Valor" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <TableView layoutX="284.0" layoutY="164.0" prefHeight="200.0" prefWidth="316.0">
+        <columns>
+          <TableColumn prefWidth="96.0" text="Produto" />
+          <TableColumn prefWidth="122.0" text="Quantidade" />
+            <TableColumn prefWidth="97.0" text="Medida" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="comboBoxMedida" layoutX="284.0" layoutY="129.0" prefHeight="26.0" prefWidth="117.0" />
+      <TextField layoutX="408.0" layoutY="129.0" prefHeight="27.0" prefWidth="117.0" />
+      <Button layoutX="532.0" layoutY="127.0" mnemonicParsing="false" text="Ok" />
    </children>
 </AnchorPane>
