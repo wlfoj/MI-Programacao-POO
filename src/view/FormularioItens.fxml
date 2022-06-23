@@ -43,11 +43,11 @@
       <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;" />
       <AnchorPane layoutY="364.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
-            <Button fx:id="btnDelete" layoutX="508.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventDelete" prefHeight="27.0" prefWidth="79.0" text="Deletar">
+            <Button fx:id="btnDelete" disable="true" layoutX="508.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventDelete" prefHeight="27.0" prefWidth="79.0" text="Deletar">
                <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="19.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../projecticons/check.png" />
+                        <Image url="@../../projecticons/delete.png" />
                      </image>
                   </ImageView>
                </graphic>

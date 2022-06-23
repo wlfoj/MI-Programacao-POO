@@ -42,7 +42,7 @@ public class FormItensController {
 
     @FXML
     void clickLine(MouseEvent event) {
-
+    	btnDelete.setDisable(false);
     }
 
     @FXML
