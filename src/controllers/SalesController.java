@@ -11,12 +11,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
 	
 public class SalesController implements Initializable {
 	
 	private Integer idSelected;
+	
+    @FXML
+    private TableView<?> tableView;
+    
+	@FXML
+    private Button btnBack, btnCreate, btnEdit, btnDelete;
 	
 	@FXML
 	private void actionBack(ActionEvent e) throws IOException {
@@ -41,13 +49,18 @@ public class SalesController implements Initializable {
 		Main.setScene(cena);
     }
 	
-	@FXML
-    private Button btnBack, btnCreate, btnEdit;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);
 		btnCreate.setCursor(Cursor.HAND);
-		btnEdit.setCursor(Cursor.HAND);;
+		btnEdit.setCursor(Cursor.HAND);
+		btnDelete.setCursor(Cursor.HAND);
 	}
 	
+
+    @FXML
+    void clickLine(MouseEvent event) {
+    	btnDelete.setDisable(false);
+    	btnEdit.setDisable(false);
+    }
 }

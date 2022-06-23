@@ -11,6 +11,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
 
@@ -32,6 +34,9 @@ public class ItensController implements Initializable {
     }
 	
     @FXML
+    private TableView<?> tableView;
+    
+    @FXML
     void actionEdit(ActionEvent event) {
 
     }
@@ -39,6 +44,12 @@ public class ItensController implements Initializable {
     @FXML
     void actionDelete(ActionEvent event) {
 
+    }
+    
+    @FXML
+    void clickLine(MouseEvent event) {
+    	btnEdit.setDisable(false);
+    	btnDelete.setDisable(false);
     }
     
 	@FXML

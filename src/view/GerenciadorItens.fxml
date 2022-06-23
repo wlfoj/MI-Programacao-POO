@@ -35,14 +35,13 @@
             </Button>
          </children>
       </AnchorPane>
-      <TableView layoutY="129.0" prefHeight="235.0" prefWidth="600.0">
+      <TableView fx:id="tableView" layoutY="129.0" onMouseClicked="#clickLine" prefHeight="235.0" prefWidth="600.0">
         <columns>
-          <TableColumn prefWidth="44.0" text="Id" />
-          <TableColumn prefWidth="193.0" text="Item" />
-            <TableColumn prefWidth="77.0" text="Descrição" />
-            <TableColumn prefWidth="90.0" text="Categoria" />
-            <TableColumn prefWidth="114.0" text="Ingredientes" />
-            <TableColumn prefWidth="81.0" text="Valor" />
+          <TableColumn prefWidth="29.0" text="Id" />
+          <TableColumn prefWidth="175.0" text="Nome" />
+            <TableColumn prefWidth="220.0" text="Descrição" />
+            <TableColumn prefWidth="93.0" text="Categoria" />
+            <TableColumn prefWidth="82.0" text="Valor" />
         </columns>
       </TableView>
       <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;" />
@@ -57,7 +56,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnDelete" layoutX="510.0" layoutY="5.0" mnemonicParsing="false" onAction="#actionDelete" prefHeight="27.0" prefWidth="68.0" text="Excluir">
+            <Button fx:id="btnDelete" disable="true" layoutX="510.0" layoutY="5.0" mnemonicParsing="false" onAction="#actionDelete" prefHeight="27.0" prefWidth="68.0" text="Excluir">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -66,7 +65,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnEdit" layoutX="432.0" layoutY="5.0" mnemonicParsing="false" onAction="#actionEdit" prefHeight="27.0" prefWidth="68.0" text="Editar">
+            <Button fx:id="btnEdit" disable="true" layoutX="432.0" layoutY="5.0" mnemonicParsing="false" onAction="#actionEdit" prefHeight="27.0" prefWidth="68.0" text="Editar">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>

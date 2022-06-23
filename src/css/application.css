@@ -40,6 +40,9 @@
 -fx-background-color: #C0D5F7;
 }
 
+.jfx-text-field {
+-fx-prompt-text-fill: #989898;
+}
 //text field
 .text-field
 {
@@ -56,7 +59,7 @@
 .text-field
 {
 -fx-text-inner-color: black;
--fx-prompt-text-fill: #fff;
+-fx-prompt-text-fill: #708090;
 }
 
 //especifico css
