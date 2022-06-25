@@ -107,8 +107,6 @@ public class CostumeController implements Initializable {
 		Main.setScene(cena);
 	}
 	
-
-	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);

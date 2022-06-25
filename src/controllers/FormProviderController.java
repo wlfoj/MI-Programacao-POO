@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -183,6 +184,10 @@ public class FormProviderController implements Initializable {
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		btnAddProduct.setCursor(Cursor.HAND);
+		btnBack.setCursor(Cursor.HAND);
+		btnDeleteProduct.setCursor(Cursor.HAND);
+		btnSave.setCursor(Cursor.HAND);
 		
 		if (Main.getIdSelected() != -1) {
 			Provider p = ManagementProvider.getOne(Main.getIdSelected());

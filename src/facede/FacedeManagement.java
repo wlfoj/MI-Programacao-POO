@@ -30,8 +30,8 @@ public abstract class FacedeManagement {
 		User p = new User();
 		p.setLogin("pao");
 		p.setPass("paozin");
-		p.setName("Ricardo Melos");
-		ManagementUsers.addUser(p);;
+		p.setName("Marcos Pedro Cruz Henrique");
+		ManagementUsers.addUser(p);
 		
 		User a = new User();
 		a.setLogin("pedrin");

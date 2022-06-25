@@ -39,5 +39,6 @@
       <TextField fx:id="user" layoutX="118.0" layoutY="225.0" promptText="Usuário" styleClass="ptxt1" />
       <PasswordField fx:id="password" layoutX="118.0" layoutY="280.0" promptText="Senha" styleClass="ptxt2" />
       <Label fx:id="lbl" layoutX="60.0" layoutY="375.0" prefHeight="17.0" prefWidth="233.0" />
+      <AnchorPane layoutY="370.0" prefHeight="80.0" prefWidth="353.0" />
    </children>
 </AnchorPane>

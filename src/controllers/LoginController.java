@@ -36,11 +36,11 @@ public class LoginController implements Initializable {
     void clickedLogin(MouseEvent event) throws IOException {
     	if(verificationLogin(user.getText(), new String (password.getText()))) {
     		System.out.println("Acesso Liberado!");
-    		//OLHE ESSA LÓGICA AQUI
+    		//OLHE ESSA Lï¿½GICA AQUI
     		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
 			Scene cena = new Scene(anchor);
     		Main.setScene(cena);
-    		//FIM DA LÓGICA
+    		//FIM DA Lï¿½GICA
     	} else {
     		System.out.println("Acesso Negado!");
     		lbl.setText("Login ou senha incorretos tente novamente");
@@ -57,8 +57,7 @@ public class LoginController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		buttonLogin.setCursor(Cursor.HAND);
-		
+		buttonLogin.setCursor(Cursor.HAND);	
 	}
 
 }

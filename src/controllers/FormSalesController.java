@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -65,6 +66,11 @@ public class FormSalesController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		btnBack.setCursor(Cursor.HAND);
+		btnSave.setCursor(Cursor.HAND);
+		btnAdicionar.setCursor(Cursor.HAND);
+		btnDelete.setCursor(Cursor.HAND);
+		
 		comboBoxPaymentMethod.getItems().setAll(lista);
 		
 	}

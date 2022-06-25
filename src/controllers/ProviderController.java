@@ -86,7 +86,7 @@ public class ProviderController implements Initializable{
     }
 	
 	@FXML
-    private Button btnBack, btnCreate, btnEdit, btnDelete; //btt3, btt4, //btt5;
+    private Button btnBack, btnCreate, btnEdit, btnDelete;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
