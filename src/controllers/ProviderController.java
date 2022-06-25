@@ -23,7 +23,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementProvider;
-import model.ManagementUsers;
 import model.Provider;
 
 public class ProviderController implements Initializable{

@@ -20,8 +20,6 @@ import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.Costumer;
 import model.ManagementCostumer;
-import model.ManagementUsers;
-import model.User;
 
 public class FormCostumeController implements Initializable {
 
@@ -47,7 +45,7 @@ public class FormCostumeController implements Initializable {
     @FXML
     void eventSave(ActionEvent event) throws IOException {
     	boolean aux = true;
-    	// Verifica não existe um id selecionado
+    	// Verifica nï¿½o existe um id selecionado
     	if(Main.getIdSelected() == -1) {
     		try {
 				createCostumer();
@@ -80,7 +78,7 @@ public class FormCostumeController implements Initializable {
 			}
     	}
     	
-    	// Se passar pelas etapas sem receber uma exceção
+    	// Se passar pelas etapas sem receber uma exceï¿½ï¿½o
     	if(aux==false) {
     		backToCostumer();
     	}

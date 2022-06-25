@@ -26,8 +26,6 @@ import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.Costumer;
 import model.ManagementCostumer;
-import model.ManagementProducts;
-import model.ManagementUsers;
 
 public class CostumeController implements Initializable {
 

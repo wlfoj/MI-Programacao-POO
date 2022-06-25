@@ -2,12 +2,9 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-
 import exceptions.DateInvalid;
 import exceptions.InsufficientQuantityProducts;
 import exceptions.NegativePriceEntity;
-import exceptions.NullFieldException;
 
 /** Classe responsavel pelo gerenciamento dos produtos.
 * 

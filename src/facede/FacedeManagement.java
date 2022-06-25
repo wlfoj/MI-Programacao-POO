@@ -69,6 +69,22 @@ public abstract class FacedeManagement {
 		p2.setValidity(LocalDate.now());
 		ManagementProducts.addProduct(p2);
 		
+		Product p3 = new Product();
+		p3.setMedida("Kg");
+		p3.setName("Pão");
+		p3.setPrice(2.3f);
+		p3.setQtd(78);
+		p3.setValidity(LocalDate.now());
+		ManagementProducts.addProduct(p3);
+		
+		Product p4 = new Product();
+		p4.setMedida("Kg");
+		p4.setName("Bolo de Chocolate");
+		p4.setPrice(23f);
+		p4.setQtd(55);
+		p4.setValidity(LocalDate.now());
+		ManagementProducts.addProduct(p4);
+		
 		Provider provider = new Provider();
 		ArrayList<Integer> p0 = new ArrayList<Integer>();
 		p0.add(0); //id que tem nos produtos verificar se o id foi deletado
@@ -77,6 +93,16 @@ public abstract class FacedeManagement {
 		provider.setAddress("Rua Salvador, Savador Bahia n 305");
 		provider.setProducts(p0);
 		ManagementProvider.addProvider(provider);
+		
+		Provider provider2 = new Provider();
+		ArrayList<Integer> pv = new ArrayList<Integer>();
+		pv.add(2); //id que tem nos produtos verificar se o id foi deletado
+		pv.add(3); //id que tem nos produtos verificar se o id foi deletado
+		provider2.setCnpj("56934054500001");
+		provider2.setName("Padaria La massa");
+		provider2.setAddress("Rua Brasil, Feira de Santana Centro, n 4");
+		provider2.setProducts(pv);
+		ManagementProvider.addProvider(provider2);
 		
 	}
 	//METODOS PARA CRIAR UM NOVO USUARIO

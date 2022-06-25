@@ -2,26 +2,19 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
-
 import exceptions.DateInvalid;
 import exceptions.InsufficientQuantityProducts;
 import exceptions.NegativePriceEntity;
-import exceptions.NullFieldException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -57,7 +50,7 @@ public class FormProductsController implements Initializable {
 		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		//now = now.parse("2019-11-05");
 		//inputValidity.setValue(aa);
-		// Verifica não existe um id selecionado
+		// Verifica nï¿½o existe um id selecionado
 		if (Main.getIdSelected() == -1) {
 			try {
 				createProduct();
@@ -107,7 +100,7 @@ public class FormProductsController implements Initializable {
 		    	alert.show();
 			}
 		}
-    	// Se passar pelas etapas sem receber uma exceção
+    	// Se passar pelas etapas sem receber uma exceï¿½ï¿½o
     	if(aux==false) {
     		backToProduct();
     	}

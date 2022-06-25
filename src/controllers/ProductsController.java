@@ -25,7 +25,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementProducts;
-import model.ManagementUsers;
 import model.Product;
 	
 public class ProductsController implements Initializable {

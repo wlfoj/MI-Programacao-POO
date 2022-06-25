@@ -26,10 +26,7 @@ import model.ManagementProducts;
 import model.ManagementProvider;
 import model.Product;
 import model.Provider;
-import model.User;
-
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.ArrayList;
 
@@ -116,7 +113,7 @@ public class FormProviderController implements Initializable {
     @FXML
     void actionSave(ActionEvent event) throws IOException {
     	boolean aux = true;
-    	// Verifica não existe um id selecionado
+    	// Verifica nï¿½o existe um id selecionado
 		if (Main.getIdSelected() == -1) {
 	    		try {
 					createProvider();
@@ -139,7 +136,7 @@ public class FormProviderController implements Initializable {
 				alert.show();
 			}	
 	    }
-		// Se passar pelas etapas sem receber uma exceção
+		// Se passar pelas etapas sem receber uma exceï¿½ï¿½o
 		if (aux == false) {
 			backToProvider();
 		}
