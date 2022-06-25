@@ -5,13 +5,17 @@ import java.util.ArrayList;
 
 import exceptions.DateInvalid;
 import exceptions.InsufficientQuantityProducts;
+import exceptions.ListEmptyComposition;
 import exceptions.NegativePriceEntity;
 import exceptions.NullFieldException;
 import exceptions.ObjectRegistred;
 import model.Administrator;
 import model.Costumer;
 import model.Employee;
+import model.Ingredients;
+import model.Item;
 import model.ManagementCostumer;
+import model.ManagementItens;
 import model.ManagementProducts;
 import model.ManagementProvider;
 import model.ManagementUsers;
@@ -20,7 +24,7 @@ import model.Provider;
 import model.User;
 
 public abstract class FacedeManagement {
-	public static void initData() throws NullFieldException, ObjectRegistred, NegativePriceEntity, InsufficientQuantityProducts, DateInvalid {
+	public static void initData() throws NullFieldException, ObjectRegistred, NegativePriceEntity, InsufficientQuantityProducts, DateInvalid, ListEmptyComposition {
 		User u = new User();
 		u.setLogin("0");
 		u.setPass("0");
@@ -103,6 +107,19 @@ public abstract class FacedeManagement {
 		provider2.setAddress("Rua Brasil, Feira de Santana Centro, n 4");
 		provider2.setProducts(pv);
 		ManagementProvider.addProvider(provider2);
+		
+		Ingredients ing = new Ingredients();
+		ing.setId(0);
+		ing.setQtd(2);
+		ArrayList<Ingredients> c1 = new ArrayList<Ingredients>();
+		c1.add(ing);
+		Item item = new Item();
+		item.setCatgory("laticinio");
+		item.setPrice(4);
+		item.setDescription("queijo mussarela");
+		item.setName("queijo");
+		item.setComposition(c1);
+		ManagementItens.addItem(item);
 		
 	}
 	//METODOS PARA CRIAR UM NOVO USUARIO

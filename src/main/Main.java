@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import exceptions.DateInvalid;
 import exceptions.InsufficientQuantityProducts;
+import exceptions.ListEmptyComposition;
 import exceptions.NegativePriceEntity;
 import exceptions.NullFieldException;
 import exceptions.ObjectRegistred;
@@ -67,7 +68,7 @@ public class Main extends Application {
 	}
 	
 	// Não pode retornar exceções
-	public static void main(String[] args) throws NullFieldException, ObjectRegistred, NegativePriceEntity, InsufficientQuantityProducts, DateInvalid {
+	public static void main(String[] args) throws NullFieldException, ObjectRegistred, NegativePriceEntity, InsufficientQuantityProducts, DateInvalid, ListEmptyComposition {
 		FacedeManagement.initData();
 		
 		launch(args);

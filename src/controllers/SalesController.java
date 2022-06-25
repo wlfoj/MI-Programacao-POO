@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -19,6 +20,18 @@ import main.Main;
 public class SalesController implements Initializable {
 	
 	private Integer idSelected;
+	
+    @FXML
+    private TableColumn<?, ?> tableDate;
+
+    @FXML
+    private TableColumn<?, ?> tableId;
+
+    @FXML
+    private TableColumn<?, ?> tablePaymentMethod;
+
+    @FXML
+    private TableColumn<?, ?> tableTotalValue;
 	
     @FXML
     private TableView<?> tableView;
