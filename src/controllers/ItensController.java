@@ -90,7 +90,7 @@ public class ItensController implements Initializable {
 		
 		tableId.setCellValueFactory(new PropertyValueFactory<>("id"));
 		tableName.setCellValueFactory(new PropertyValueFactory<>("name"));
-		//tableCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
+		tableCategory.setCellValueFactory(new PropertyValueFactory<Item, String>("category"));
 		tableDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
 		tableValue.setCellValueFactory(new PropertyValueFactory<>("price"));
 		

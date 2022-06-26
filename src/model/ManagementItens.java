@@ -67,14 +67,14 @@ public abstract class ManagementItens {
 	 */
 	public static void update(int id, Item obj) throws NullFieldException {
 		int idItem;
-		if (obj.getName() != "" || obj.getCatgory() != "") {
+		if (obj.getName() != "" || obj.getCategory() != "") {
 		for (int i = 0; i < list.size(); i++) {
 			idItem = list.get(i).getId();
 			if (idItem == id) {
 				list.get(i).setName(obj.getName());
 				list.get(i).setPrice(obj.getPrice());
 				list.get(i).setDescription(obj.getDescription());
-				list.get(i).setCatgory(obj.getCatgory());
+				list.get(i).setCategory(obj.getCategory());
 				list.get(i).setComposition(obj.getComposition());
 			}
 		}

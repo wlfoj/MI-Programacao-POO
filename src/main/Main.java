@@ -1,8 +1,6 @@
 package main;
 	
 import java.io.IOException;
-import java.time.LocalDate;
-
 import exceptions.DateInvalid;
 import exceptions.InsufficientQuantityProducts;
 import exceptions.ListEmptyComposition;
@@ -12,12 +10,6 @@ import exceptions.ObjectRegistred;
 import facede.FacedeManagement;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.Costumer;
-import model.ManagementCostumer;
-import model.ManagementUsers;
-import model.Product;
-import model.Provider;
-import model.User;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;

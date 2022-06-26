@@ -46,11 +46,11 @@ public class Item {
 		this.description = description;
 	}
 
-	public String getCatgory() {
+	public String getCategory() {
 		return category;
 	}
 
-	public void setCatgory(String category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 

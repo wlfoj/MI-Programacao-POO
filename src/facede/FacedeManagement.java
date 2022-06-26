@@ -114,7 +114,7 @@ public abstract class FacedeManagement {
 		ArrayList<Ingredients> c1 = new ArrayList<Ingredients>();
 		c1.add(ing);
 		Item item = new Item();
-		item.setCatgory("laticinio");
+		item.setCategory("laticinio");
 		item.setPrice(4);
 		item.setDescription("queijo mussarela");
 		item.setName("queijo");
