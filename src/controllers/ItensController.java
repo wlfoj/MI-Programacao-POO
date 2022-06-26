@@ -12,7 +12,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -25,6 +28,8 @@ import model.ManagementItens;
 public class ItensController implements Initializable {
 
 	ObservableList<Item> observableListItem;
+	
+	private Integer idSelected;
 	
 	@FXML
 	private void actionBack(ActionEvent e) throws IOException {
@@ -60,17 +65,24 @@ public class ItensController implements Initializable {
     private TableView<Item> tableView;
     
     @FXML
-    void actionEdit(ActionEvent event) {
-
+    void actionEdit(ActionEvent event) throws IOException {
+    	Main.setIdSelected(idSelected);
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioItens.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
     }
     
     @FXML
     void actionDelete(ActionEvent event) {
 
     }
-    
+   
     @FXML
     void clickLine(MouseEvent event) {
+    	Item p = tableView.getSelectionModel().getSelectedItem();
+    	if(p != null) {
+    		idSelected =p.getId();
+    	}
     	btnEdit.setDisable(false);
     	btnDelete.setDisable(false);
     }
@@ -85,6 +97,30 @@ public class ItensController implements Initializable {
 		btnCreate.setCursor(Cursor.HAND);
 		btnDelete.setCursor(Cursor.HAND);
 		
+		//Adicionando o evento de deletar e configurando comportamento do alert
+		btnDelete.setOnAction(e-> {
+			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
+			
+			ButtonType btnOk = new ButtonType("Deletar");
+			ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+			
+			deleteExe.initOwner(btnDelete.getScene().getWindow());
+			deleteExe.setTitle("Deletar");
+			deleteExe.setHeaderText("Deseja realmente deletar?");
+			deleteExe.setContentText("Ao apagar as informações não serão mais recuperadas");
+			deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
+			deleteExe.showAndWait().ifPresent(a -> {
+				if (a == btnOk) {
+					ManagementItens.delete(idSelected);
+					refreshTableView();
+				} 
+			});
+		});
+		
+		refreshTableView();
+	}
+	
+	public void refreshTableView() {
 		observableListItem = FXCollections.observableArrayList(ManagementItens.listAllItens());
 		tableView.setItems(observableListItem);
 		
@@ -93,7 +129,6 @@ public class ItensController implements Initializable {
 		tableCategory.setCellValueFactory(new PropertyValueFactory<Item, String>("category"));
 		tableDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
 		tableValue.setCellValueFactory(new PropertyValueFactory<>("price"));
-		
 	}
-
+	
 }

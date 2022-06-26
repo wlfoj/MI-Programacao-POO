@@ -2,6 +2,7 @@ package facede;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 import exceptions.DateInvalid;
 import exceptions.InsufficientQuantityProducts;
@@ -18,9 +19,11 @@ import model.ManagementCostumer;
 import model.ManagementItens;
 import model.ManagementProducts;
 import model.ManagementProvider;
+import model.ManagementSales;
 import model.ManagementUsers;
 import model.Product;
 import model.Provider;
+import model.Sale;
 import model.User;
 
 public abstract class FacedeManagement {
@@ -120,6 +123,27 @@ public abstract class FacedeManagement {
 		item.setName("queijo");
 		item.setComposition(c1);
 		ManagementItens.addItem(item);
+		
+		Item item2 = new Item();
+		Ingredients ing2 = new Ingredients();
+		ing2.setId(3); //id que exista no produtos
+		ing2.setQtd(2);
+		ArrayList<Ingredients> c2 = new ArrayList<Ingredients>();
+		c2.add(ing2);
+		item2.setCategory("salgados");
+		item2.setPrice(2);
+		item2.setDescription("coxinha de frango");
+		item2.setName("coxinha");
+		item2.setComposition(c2);
+		ManagementItens.addItem(item2);
+		
+		Sale venda = new Sale();
+		venda.setPaymentMethod("Avista");
+		ArrayList<Integer> aaa = new ArrayList<Integer>();
+		aaa.add(0);
+		aaa.add(1);
+		venda.insertItens(aaa);
+		ManagementSales.addSale(venda);
 		
 	}
 	//METODOS PARA CRIAR UM NOVO USUARIO
