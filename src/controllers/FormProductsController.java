@@ -17,6 +17,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementProducts;
@@ -105,7 +107,6 @@ public class FormProductsController implements Initializable {
     		backToProduct();
     	}
 	}
-	
 	private void createProduct() throws NegativePriceEntity, InsufficientQuantityProducts, DateInvalid{
 		// Fazer os testes de erros de convers�o e gerar alerts
 		Product p = new Product();
@@ -135,6 +136,23 @@ public class FormProductsController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);
 		btnSave.setCursor(Cursor.HAND);
+		
+		inputQtd.setTextFormatter(new TextFormatter<>(c -> {
+		    if (!c.getControlNewText().matches("[0123456789]*")) 
+		        return null;
+		    else
+		        return c;
+		    }
+		));
+		
+		inputValue.setTextFormatter(new TextFormatter<>(c -> {
+		    if (!c.getControlNewText().matches("[0123456789.]*")) 
+		        return null;
+		    else
+		        return c;
+		    }
+		));
+		
 		if (Main.getIdSelected() != -1) {
 			Product p = ManagementProducts.getOne(Main.getIdSelected());
 			inputName.setText(p.getName());
@@ -145,7 +163,7 @@ public class FormProductsController implements Initializable {
 		}
 		
 	}
-	
+    
 	@FXML
 	private void eventBack(ActionEvent e) throws IOException {
 		backToProduct();
