@@ -1,0 +1,7 @@
+Ao tentar gerar um relatório com a lista vazia, gera um alerta.
+
+Corrigir os relatórios de fornecedor
+
+Tratar dados invalidos dos inputs ( tipo quando digita uma string quando devia ser um número)
+
+Corrigir o relatório de vendas por tipo de prato
