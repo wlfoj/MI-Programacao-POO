@@ -113,7 +113,7 @@ public class FormProductsController implements Initializable {
 		// Fazer os testes de erros de convers�o e gerar alerts
 		Product p = new Product();
 		p.setName(inputName.getText());
-		p.setMedida(inputMedida.getPromptText());
+		p.setMedida(inputMedida.getSelectionModel().getSelectedItem());
 		p.setPrice(Float.parseFloat(inputValue.getText()));
 		p.setQtd(Integer.parseInt(inputQtd.getText()));
 		p.setValidity(inputValidity.getValue());
@@ -125,7 +125,7 @@ public class FormProductsController implements Initializable {
 		// Fazer os testes de erros de convers�o e gerar alerts
 		Product p = new Product();
 		p.setName(inputName.getText());
-		p.setMedida(inputMedida.getPromptText());
+		p.setMedida(inputMedida.getSelectionModel().getSelectedItem());
 		p.setPrice(Float.parseFloat(inputValue.getText()));
 		p.setQtd(Integer.parseInt(inputQtd.getText()));
 		p.setValidity(inputValidity.getValue());
