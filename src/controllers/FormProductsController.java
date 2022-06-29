@@ -114,10 +114,15 @@ public class FormProductsController implements Initializable {
 		Product p = new Product();
 		p.setName(inputName.getText());
 		p.setMedida(inputMedida.getSelectionModel().getSelectedItem());
-		p.setPrice(Float.parseFloat(inputValue.getText()));
 		p.setQtd(Integer.parseInt(inputQtd.getText()));
 		p.setValidity(inputValidity.getValue());
 
+		//condicao para o caso do usuario por um "." no textField de valor vai retornar 0
+		if (! inputValue.getText().equals(".")) {
+			p.setPrice(Float.parseFloat(inputValue.getText()));
+		}else {
+			p.setPrice(0);
+		}
 		ManagementProducts.addProduct(p);
 	}
 	
@@ -125,11 +130,16 @@ public class FormProductsController implements Initializable {
 		// Fazer os testes de erros de convers�o e gerar alerts
 		Product p = new Product();
 		p.setName(inputName.getText());
-		p.setMedida(inputMedida.getSelectionModel().getSelectedItem());
-		p.setPrice(Float.parseFloat(inputValue.getText()));
 		p.setQtd(Integer.parseInt(inputQtd.getText()));
 		p.setValidity(inputValidity.getValue());
 		
+		//condicao para o caso do usuario por um "." no textField de valor vai retornar 0
+		p.setMedida(inputMedida.getSelectionModel().getSelectedItem());
+		if (! inputValue.getText().equals(".")) {
+			p.setPrice(Float.parseFloat(inputValue.getText()));
+		}else {
+			p.setPrice(0);
+		}
 		ManagementProducts.update(Main.getIdSelected(), p);	
 	}
 	
@@ -140,6 +150,7 @@ public class FormProductsController implements Initializable {
 		btnSave.setCursor(Cursor.HAND);
 		inputMedida.getItems().setAll(lista);
 		
+		//Mascara para impedir que o usuario ponha dados de String na textField de Inteiros
 		inputQtd.setTextFormatter(new TextFormatter<>(c -> {
 		    if (!c.getControlNewText().matches("[0123456789]*")) 
 		        return null;
@@ -148,8 +159,9 @@ public class FormProductsController implements Initializable {
 		    }
 		));
 		
+		//Mascara para impedir que o usuario ponha dados de String na textField de Float
 		inputValue.setTextFormatter(new TextFormatter<>(c -> {
-		    if (!c.getControlNewText().matches("[0123456789.]*")) 
+		    if (!c.getControlNewText().matches("\\d*(\\.\\d*)?")) 
 		        return null;
 		    else
 		        return c;

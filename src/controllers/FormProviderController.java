@@ -19,6 +19,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -188,6 +189,15 @@ public class FormProviderController implements Initializable {
 		btnBack.setCursor(Cursor.HAND);
 		btnDeleteProduct.setCursor(Cursor.HAND);
 		btnSave.setCursor(Cursor.HAND);
+		
+		//Mascara para impedir que o usuario ponha dados de String na textField de Inteiros
+		inputCnpj.setTextFormatter(new TextFormatter<>(c -> {
+		    if (!c.getControlNewText().matches("[0123456789]*")) 
+		        return null;
+		    else
+		        return c;
+		    }
+		));
 		
 		if (Main.getIdSelected() != -1) {
 			Provider p = ManagementProvider.getOne(Main.getIdSelected());

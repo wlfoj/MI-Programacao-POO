@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
@@ -120,7 +121,25 @@ public class FormCostumeController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);
 		btnSave.setCursor(Cursor.HAND);
-		//
+		
+		//Mascara para impedir que o usuario ponha dados de String na textField de Inteiros
+		inputCpf.setTextFormatter(new TextFormatter<>(c -> {
+		    if (!c.getControlNewText().matches("[0123456789]*")) 
+		        return null;
+		    else
+		        return c;
+		    }
+		));
+		
+		//Mascara para impedir que o usuario ponha dados de String na textField de Inteiros
+		inputPhone.setTextFormatter(new TextFormatter<>(c -> {
+		    if (!c.getControlNewText().matches("[0123456789]*")) 
+		        return null;
+		    else
+		        return c;
+		    }
+		));
+		
 		if(Main.getIdSelected()!=-1) {
 			Costumer c = new Costumer();
 			c = ManagementCostumer.getOne(Main.getIdSelected());
