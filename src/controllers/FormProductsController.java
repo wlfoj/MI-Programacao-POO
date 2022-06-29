@@ -15,10 +15,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementProducts;
@@ -27,8 +27,10 @@ import model.Product;
 public class FormProductsController implements Initializable {
 
 
-    @FXML
-    private TextField inputMedida;
+	@FXML
+    private ComboBox<String> inputMedida;
+	
+	private String[] lista = {"L","Kg" , "g", "mL"};
 
     @FXML
     private TextField inputName;
@@ -111,7 +113,7 @@ public class FormProductsController implements Initializable {
 		// Fazer os testes de erros de convers�o e gerar alerts
 		Product p = new Product();
 		p.setName(inputName.getText());
-		p.setMedida(inputMedida.getText());
+		p.setMedida(inputMedida.getPromptText());
 		p.setPrice(Float.parseFloat(inputValue.getText()));
 		p.setQtd(Integer.parseInt(inputQtd.getText()));
 		p.setValidity(inputValidity.getValue());
@@ -123,7 +125,7 @@ public class FormProductsController implements Initializable {
 		// Fazer os testes de erros de convers�o e gerar alerts
 		Product p = new Product();
 		p.setName(inputName.getText());
-		p.setMedida(inputMedida.getText());
+		p.setMedida(inputMedida.getPromptText());
 		p.setPrice(Float.parseFloat(inputValue.getText()));
 		p.setQtd(Integer.parseInt(inputQtd.getText()));
 		p.setValidity(inputValidity.getValue());
@@ -136,6 +138,7 @@ public class FormProductsController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);
 		btnSave.setCursor(Cursor.HAND);
+		inputMedida.getItems().setAll(lista);
 		
 		inputQtd.setTextFormatter(new TextFormatter<>(c -> {
 		    if (!c.getControlNewText().matches("[0123456789]*")) 
@@ -156,7 +159,7 @@ public class FormProductsController implements Initializable {
 		if (Main.getIdSelected() != -1) {
 			Product p = ManagementProducts.getOne(Main.getIdSelected());
 			inputName.setText(p.getName());
-			inputMedida.setText(p.getMedida());
+			inputMedida.setPromptText(p.getMedida());
 			inputQtd.setText(Integer.toString(p.getQtd()));
 			inputValue.setText(Float.toString(p.getPrice()));
 			inputValidity.setValue(p.getValidity());
