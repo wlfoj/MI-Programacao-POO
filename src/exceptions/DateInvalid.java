@@ -10,7 +10,7 @@ public class DateInvalid extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	public DateInvalid() {
-		super("Data de vencimento invalida");
+		super("Validade invalida");
 	}
 
 }
