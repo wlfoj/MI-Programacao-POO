@@ -25,12 +25,21 @@ import main.Main;
 import model.ManagementProvider;
 import model.Provider;
 
+/** Classe responsavel pelo Controller de Fornecedores
+ * 
+ * @author Washington Luis Ferreira de Oliveira Junior
+ * @author Tassio Carvalho Rodrigues
+ *
+ */
 public class ProviderController implements Initializable{
 
 	ObservableList<Provider> observableListaProvider; 
 	
 	private Integer idSelected;
 
+	@FXML
+    private Button btnBack, btnCreate, btnEdit, btnDelete;
+	
     @FXML
     private TableColumn<Provider, String> tableAdress;
 
@@ -47,6 +56,11 @@ public class ProviderController implements Initializable{
     @FXML
     private TableView<Provider> tableView;
 	
+    /**Evento atribuido no botao de voltar para retornar ao menu
+     * 
+     * @param e
+     * @throws IOException
+     */
 	@FXML
 	private void actionBack(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
@@ -54,11 +68,10 @@ public class ProviderController implements Initializable{
 		Main.setScene(cena);
 	}
 	
-    @FXML
-    void actionDelete(ActionEvent event) {
-    	
-    }
-    
+	/**Evento de click para selecionar determinada linha da tabela
+	 * 
+	 * @param event
+	 */
     @FXML
     void clickLine(MouseEvent event) {
     	Provider p = tableView.getSelectionModel().getSelectedItem();
@@ -69,6 +82,11 @@ public class ProviderController implements Initializable{
     	btnDelete.setDisable(false);
     }
     
+    /**Evento de click para editar o cliente
+     * 
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void actionEdit(ActionEvent event) throws IOException {
     	Main.setIdSelected(idSelected);
@@ -77,6 +95,11 @@ public class ProviderController implements Initializable{
 		Main.setScene(cena);
     }
 	
+    /**Evento para criar um novo cliente
+     * 
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void actionCreate(ActionEvent event) throws IOException {
     	Main.setIdSelected(-1);
@@ -84,10 +107,10 @@ public class ProviderController implements Initializable{
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
     }
-	
-	@FXML
-    private Button btnBack, btnCreate, btnEdit, btnDelete;
-	
+
+    /**Metodo para inicializar o gerenciamento e  ativar a visualizacao dos botoes 
+     * 
+     */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);
@@ -96,6 +119,15 @@ public class ProviderController implements Initializable{
 		btnEdit.setCursor(Cursor.HAND);
 		
 		//Adicionando o evento de deletar e configurando comportamento do alert
+	
+		deleteProvider();
+		refreshTableView();
+	}
+	
+	/**Metodo atribuindo um evento no botao de deletar para deletar o fornecedor da lista
+	 * 
+	 */
+	public void deleteProvider() {
 		btnDelete.setOnAction(e-> {
 			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
 			
@@ -115,9 +147,11 @@ public class ProviderController implements Initializable{
 			});
 		});
 		
-		refreshTableView();
 	}
 	
+	/**Metodo para carregar a listView da classe e formatar as celulas
+	 * 
+	 */
 	public void refreshTableView() {
 		observableListaProvider = FXCollections.observableArrayList(ManagementProvider.listAllProvider());
 		tableView.setItems(observableListaProvider);

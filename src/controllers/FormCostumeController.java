@@ -133,7 +133,7 @@ public class FormCostumeController implements Initializable {
 		
 		//Mascara para impedir que o usuario ponha dados de String na textField de Inteiros
 		inputPhone.setTextFormatter(new TextFormatter<>(c -> {
-		    if (!c.getControlNewText().matches("[0123456789]*")) 
+		    if (!c.getControlNewText().matches("[0123456789-]*")) 
 		        return null;
 		    else
 		        return c;

@@ -19,14 +19,19 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementProducts;
 import model.Product;
-	
+
+/** Classe responsavel pelo Controller de Produtos
+ * 
+ * @author Washington Luis Ferreira de Oliveira Junior
+ * @author Tassio Carvalho Rodrigues
+ *
+ */
 public class ProductsController implements Initializable {
 
 	ObservableList<Product> observableListaProduct; 
@@ -57,7 +62,11 @@ public class ProductsController implements Initializable {
 	
 	private Integer idSelected;
 	
-	
+	/**Evento atribuido no botao de voltar para retornar ao menu
+	 * 
+	 * @param e
+	 * @throws IOException
+	 */
 	@FXML
 	private void eventBack(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
@@ -65,7 +74,11 @@ public class ProductsController implements Initializable {
 		Main.setScene(cena);
 	}
 	
-
+	/**Evento de click para editar o produto
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     void eventEdit(ActionEvent event) throws IOException {
 		Main.setIdSelected(idSelected);
@@ -74,28 +87,23 @@ public class ProductsController implements Initializable {
 		Main.setScene(cena);
     }
     
-	
+    /**Evento de click para adicionar um novo produto
+     * 
+     * @param event
+     * @throws IOException
+     */
     @FXML
-    void eventShowFormProducts(ActionEvent event) throws IOException {
+    void eventCreate(ActionEvent event) throws IOException {
 		Main.setIdSelected(-1);
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioProducts.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
     }
 	
-    
-    @FXML
-    void eventDelete(ActionEvent event) {
-    	Alert alert = new Alert(AlertType.CONFIRMATION);
-    	//VERIFICAR QUANDO PRESSIONAR OK!
-    	alert.setTitle("Deletar");
-    	alert.setHeaderText("Realmente deseja excluir?");
-    	alert.setContentText("Ao apagar as informações não serão mais recuperadas");
-    	alert.show();
-    	ManagementProducts.delete(idSelected);
-    	refreshTableView();
-    }
-    
+    /**Evento de click para selecionar determinada linha da tabela
+     * 
+     * @param event
+     */
     
     @FXML
     void clickLine(MouseEvent event) {
@@ -107,6 +115,9 @@ public class ProductsController implements Initializable {
     	btnRemove.setDisable(false);
     }
 	
+    /**Metodo para inicializar o gerenciamento e  ativar a visualizacao dos botoes 
+     * 
+     */
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -116,30 +127,40 @@ public class ProductsController implements Initializable {
 		btnRemove.setCursor(Cursor.HAND);
 		btnPrint.setCursor(Cursor.HAND);
 		
-		//Adicionando o evento de deletar e configurando comportamento do alert
-		btnRemove.setOnAction(e-> {
-			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
-			
-			ButtonType btnOk = new ButtonType("Deletar");
-			ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
-			
-			deleteExe.initOwner(btnRemove.getScene().getWindow());
-			deleteExe.setTitle("Deletar");
-			deleteExe.setHeaderText("Deseja realmente deletar?");
-			deleteExe.setContentText("Ao apagar as informações não serão mais recuperadas");
-			deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
-			deleteExe.showAndWait().ifPresent(a -> {
-				if (a == btnOk) {
-					ManagementProducts.delete(idSelected);
-					refreshTableView();
-				} 
-			});
-			
-		});
-		
+		deleteProducts();
 		refreshTableView();
 	}
 	
+	/**Metodo atribuindo um evento no botao de deletar para deletar o produto da lista
+	 * 
+	 */
+	
+	public void deleteProducts() {
+		//Adicionando o evento de deletar e configurando comportamento do alert
+				btnRemove.setOnAction(e-> {
+					Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
+					
+					ButtonType btnOk = new ButtonType("Deletar");
+					ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+					
+					deleteExe.initOwner(btnRemove.getScene().getWindow());
+					deleteExe.setTitle("Deletar");
+					deleteExe.setHeaderText("Deseja realmente deletar?");
+					deleteExe.setContentText("Ao apagar as informações não serão mais recuperadas");
+					deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
+					deleteExe.showAndWait().ifPresent(a -> {
+						if (a == btnOk) {
+							ManagementProducts.delete(idSelected);
+							refreshTableView();
+						} 
+					});
+					
+				});
+	}
+	
+	/**Metodo para carregar a listView da classe e formatar as celulas
+	 * 
+	 */
 	
 	public void refreshTableView() {
 		observableListaProduct = FXCollections.observableArrayList(ManagementProducts.listAllProducts());

@@ -79,7 +79,12 @@ public class SalesController implements Initializable {
 		btnCreate.setCursor(Cursor.HAND);
 		btnEdit.setCursor(Cursor.HAND);
 		btnDelete.setCursor(Cursor.HAND);
-		
+	
+		deleteSales();
+		refreshTableView();
+	}
+	
+	public void deleteSales() {
 		btnDelete.setOnAction(e-> {
 			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
 			
@@ -98,8 +103,6 @@ public class SalesController implements Initializable {
 				} 
 			});
 		});
-		
-		refreshTableView();
 	}
 	
 	public void refreshTableView() {

@@ -97,27 +97,30 @@ public class ItensController implements Initializable {
 		btnCreate.setCursor(Cursor.HAND);
 		btnDelete.setCursor(Cursor.HAND);
 		
-		//Adicionando o evento de deletar e configurando comportamento do alert
-		btnDelete.setOnAction(e-> {
-			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
-			
-			ButtonType btnOk = new ButtonType("Deletar");
-			ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
-			
-			deleteExe.initOwner(btnDelete.getScene().getWindow());
-			deleteExe.setTitle("Deletar");
-			deleteExe.setHeaderText("Deseja realmente deletar?");
-			deleteExe.setContentText("Ao apagar as informações não serão mais recuperadas");
-			deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
-			deleteExe.showAndWait().ifPresent(a -> {
-				if (a == btnOk) {
-					ManagementItens.delete(idSelected);
-					refreshTableView();
-				} 
-			});
-		});
-		
+		deleteItem();
 		refreshTableView();
+	}
+	
+	public void deleteItem() {
+		//Adicionando o evento de deletar e configurando comportamento do alert
+				btnDelete.setOnAction(e-> {
+					Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
+					
+					ButtonType btnOk = new ButtonType("Deletar");
+					ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+					
+					deleteExe.initOwner(btnDelete.getScene().getWindow());
+					deleteExe.setTitle("Deletar");
+					deleteExe.setHeaderText("Deseja realmente deletar?");
+					deleteExe.setContentText("Ao apagar as informações não serão mais recuperadas");
+					deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
+					deleteExe.showAndWait().ifPresent(a -> {
+						if (a == btnOk) {
+							ManagementItens.delete(idSelected);
+							refreshTableView();
+						} 
+					});
+				});
 	}
 	
 	public void refreshTableView() {

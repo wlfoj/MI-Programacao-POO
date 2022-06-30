@@ -116,26 +116,7 @@ public class UserController implements Initializable {
 		btnEdit.setCursor(Cursor.HAND);
 		btnDelete.setCursor(Cursor.HAND);
 		
-		//Adicionando o evento de deletar e configurando comportamento do alert
-		btnDelete.setOnAction(e-> {
-			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
-			
-			ButtonType btnOk = new ButtonType("Deletar");
-			ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
-			
-			deleteExe.initOwner(btnDelete.getScene().getWindow());
-			deleteExe.setTitle("Deletar");
-			deleteExe.setHeaderText("Deseja realmente deletar?");
-			deleteExe.setContentText("Ao apagar as informações não serão mais recuperadas");
-			deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
-			deleteExe.showAndWait().ifPresent(a -> {
-				if (a == btnOk) {
-					ManagementUsers.delete(idSelected);
-					refreshTableView();
-				} 
-			});
-			
-		});
+		deleteUser();
 		refreshTableView();
 	}
 	
@@ -146,5 +127,28 @@ public class UserController implements Initializable {
 		idColuna.setCellValueFactory(new PropertyValueFactory<>("id"));
 		tipoColuna.setCellValueFactory(new PropertyValueFactory<>("name"));
 		userColuna.setCellValueFactory(new PropertyValueFactory<>("login"));
+	}
+	
+	public void deleteUser() {
+		//Adicionando o evento de deletar e configurando comportamento do alert
+				btnDelete.setOnAction(e-> {
+					Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
+					
+					ButtonType btnOk = new ButtonType("Deletar");
+					ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+					
+					deleteExe.initOwner(btnDelete.getScene().getWindow());
+					deleteExe.setTitle("Deletar");
+					deleteExe.setHeaderText("Deseja realmente deletar?");
+					deleteExe.setContentText("Ao apagar as informações não serão mais recuperadas");
+					deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
+					deleteExe.showAndWait().ifPresent(a -> {
+						if (a == btnOk) {
+							ManagementUsers.delete(idSelected);
+							refreshTableView();
+						} 
+					});
+					
+				});
 	}
 }

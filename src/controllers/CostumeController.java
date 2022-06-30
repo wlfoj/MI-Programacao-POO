@@ -19,7 +19,6 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +26,12 @@ import main.Main;
 import model.Costumer;
 import model.ManagementCostumer;
 
+/** Classe responsavel pelo Controller de Clientes
+ * 
+ * @author Washington Luis Ferreira de Oliveira Junior
+ * @author Tassio Carvalho Rodrigues
+ *
+ */
 public class CostumeController implements Initializable {
 
 	ObservableList<Costumer> observableListaClientes;
@@ -54,18 +59,24 @@ public class CostumeController implements Initializable {
 	
 	private Integer idSelected;
 	
+	/**Evento para criar um novo cliente
+	 * 
+	 * @param e evento
+	 * @throws IOException excecoes da classe costumer
+	 */
 	@FXML
 	private void eventCreate(ActionEvent e) throws IOException {
 		Main.setIdSelected(-1);
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioCostume.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
-		
-		//	btnEdit.setDisable(true);
-		//	btnRemove.setDisable(true);
 	}
-	
-    //EVENTO DE EDITAR AQUI AO CLICAR ABRIR FORMULÃ�RIO!
+
+	/** Evento de click para editar o cliente
+	 * 
+	 * @param event
+	 * @throws IOException excecoes da classe costumer
+	 */
     @FXML
     void eventEdit(ActionEvent event) throws IOException {
 		Main.setIdSelected(idSelected);
@@ -75,6 +86,10 @@ public class CostumeController implements Initializable {
 
     }
 
+    /**Evento de click para selecionar determinada linha da tabela
+     * 
+     * @param event
+     */
     
     @FXML
     void clickLine(MouseEvent event) {
@@ -85,27 +100,22 @@ public class CostumeController implements Initializable {
     	btnEdit.setDisable(false);
     	btnRemove.setDisable(false);
     }
-	
     
-   //EVENTO DE DELETAR AQUI AO CLICAR DELETAR ITEM DA TABLE VIEW
-    @FXML
-    void eventDelete(ActionEvent event) {
-    	Alert alert = new Alert(AlertType.CONFIRMATION);
-    	//VERIFICAR QUANDO PRESSIONAR OK!
-    	alert.setTitle("Deletar");
-    	alert.setHeaderText("Realmente deseja excluir?");
-    	alert.setContentText("Ao apagar as informaÃ§Ãµes nÃ£o serÃ£o mais recuperadas");
-    	alert.show();
-    	ManagementCostumer.delete(idSelected);
-    	refreshTableView();
-    }
-    
+    /**Evento atribuido no botao de voltar para retornar ao menu
+     * 
+     * @param e
+     * @throws IOException
+     */
 	@FXML
 	private void eventBack(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
 	}
+	
+	/** Metodo para inicializar o gerenciamento e  ativar a visualizacao dos botoes 
+	 * 
+	 */
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -115,6 +125,15 @@ public class CostumeController implements Initializable {
 		btnPrint.setCursor(Cursor.HAND);
 		btnCreate.setCursor(Cursor.HAND);
 		
+		deleteCostume();
+		refreshTableView();
+		
+	}
+	
+	/** Metodo atribuindo um evento no botao de deletar para deletar o cliente da lista
+	 * 
+	 */
+	public void deleteCostume() {
 		//Adicionando o evento de deletar e configurando comportamento do alert
 		btnRemove.setOnAction(e-> {
 			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
@@ -125,7 +144,7 @@ public class CostumeController implements Initializable {
 			deleteExe.initOwner(btnRemove.getScene().getWindow());
 			deleteExe.setTitle("Deletar");
 			deleteExe.setHeaderText("Deseja realmente deletar?");
-			deleteExe.setContentText("Ao apagar as informaÃ§Ãµes nÃ£o serÃ£o mais recuperadas");
+			deleteExe.setContentText("Ao apagar as informações nao serão mais recuperadas");
 			deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
 			deleteExe.showAndWait().ifPresent(a -> {
 				if (a == btnOk) {
@@ -135,10 +154,11 @@ public class CostumeController implements Initializable {
 			});
 			
 		});
-		
-		refreshTableView();
-		
 	}
+	
+	/**Metodo para carregar a listView da classe e formatar as celulas
+	 * 
+	 */
 	public void refreshTableView() {
 		
 		observableListaClientes = FXCollections.observableArrayList(ManagementCostumer.listAllCostumer());
