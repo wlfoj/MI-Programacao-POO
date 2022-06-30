@@ -104,7 +104,6 @@ public class ProductsController implements Initializable {
      * 
      * @param event
      */
-    
     @FXML
     void clickLine(MouseEvent event) {
     	Product p = tableView.getSelectionModel().getSelectedItem();
@@ -118,7 +117,6 @@ public class ProductsController implements Initializable {
     /**Metodo para inicializar o gerenciamento e  ativar a visualizacao dos botoes 
      * 
      */
-	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);
@@ -134,7 +132,6 @@ public class ProductsController implements Initializable {
 	/**Metodo atribuindo um evento no botao de deletar para deletar o produto da lista
 	 * 
 	 */
-	
 	public void deleteProducts() {
 		//Adicionando o evento de deletar e configurando comportamento do alert
 				btnRemove.setOnAction(e-> {
@@ -161,7 +158,6 @@ public class ProductsController implements Initializable {
 	/**Metodo para carregar a listView da classe e formatar as celulas
 	 * 
 	 */
-	
 	public void refreshTableView() {
 		observableListaProduct = FXCollections.observableArrayList(ManagementProducts.listAllProducts());
 		tableView.setItems(observableListaProduct);

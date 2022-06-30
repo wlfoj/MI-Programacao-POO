@@ -26,6 +26,12 @@ import main.Main;
 import model.ManagementSales;
 import model.Sale;
 	
+/** Classe responsavel pelo Controller de Vendas
+ * 
+ * @author Washington Luis Ferreira de Oliveira Junior
+ * @author Tassio Carvalho Rodrigues
+ *
+ */
 public class SalesController implements Initializable {
 	
 	ObservableList<Sale> observableListSales;
@@ -50,6 +56,11 @@ public class SalesController implements Initializable {
 	@FXML
     private Button btnBack, btnCreate, btnEdit, btnDelete;
 	
+	/**Evento atribuido no botao de voltar para retornar ao menu
+	 * 
+	 * @param e
+	 * @throws IOException
+	 */
 	@FXML
 	private void actionBack(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
@@ -57,6 +68,11 @@ public class SalesController implements Initializable {
 		Main.setScene(cena);
 	}
 	
+	 /**Evento de click para adicionar um novo produto
+     * 
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void actionCreate(ActionEvent event) throws IOException {
     	Main.setIdSelected(-1);
@@ -65,6 +81,11 @@ public class SalesController implements Initializable {
 		Main.setScene(cena);
     }
     
+	/**Evento de click para editar o produto
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     void actionEdit(ActionEvent event) throws IOException {
     	Main.setIdSelected(idSelected);
@@ -73,6 +94,9 @@ public class SalesController implements Initializable {
 		Main.setScene(cena);
     }
 	
+    /**Metodo para inicializar o gerenciamento e  ativar a visualizacao dos botoes 
+     * 
+     */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);
@@ -84,6 +108,9 @@ public class SalesController implements Initializable {
 		refreshTableView();
 	}
 	
+	/**Metodo atribuindo um evento no botao de deletar para deletar a venda da lista
+	 * 
+	 */
 	public void deleteSales() {
 		btnDelete.setOnAction(e-> {
 			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
@@ -105,6 +132,9 @@ public class SalesController implements Initializable {
 		});
 	}
 	
+	/**Metodo para carregar a listView da classe e formatar as celulas
+	 * 
+	 */
 	public void refreshTableView() {
 		observableListSales = FXCollections.observableArrayList(ManagementSales.listAllSale());
 		tableView.setItems(observableListSales);
@@ -116,6 +146,11 @@ public class SalesController implements Initializable {
 		
 	}
 
+	
+	 /**Evento de click para selecionar determinada linha da tabela
+     * 
+     * @param event
+     */
     @FXML
     void clickLine(MouseEvent event) {
     	Sale p = tableView.getSelectionModel().getSelectedItem();

@@ -82,7 +82,7 @@ public class ProviderController implements Initializable{
     	btnDelete.setDisable(false);
     }
     
-    /**Evento de click para editar o cliente
+    /**Evento de click para editar o Fornecedor
      * 
      * @param event
      * @throws IOException
@@ -95,7 +95,7 @@ public class ProviderController implements Initializable{
 		Main.setScene(cena);
     }
 	
-    /**Evento para criar um novo cliente
+    /**Evento para criar um novo Fornecedor
      * 
      * @param event
      * @throws IOException

@@ -25,12 +25,23 @@ import main.Main;
 import model.Item;
 import model.ManagementItens;
 
+/** Classe responsavel pelo Controller de Itens
+ * 
+ * @author Washington Luis Ferreira de Oliveira Junior
+ * @author Tassio Carvalho Rodrigues
+ *
+ */
 public class ItensController implements Initializable {
 
 	ObservableList<Item> observableListItem;
 	
 	private Integer idSelected;
 	
+	/**Evento atribuido no botao de voltar para retornar ao menu
+	 * 
+	 * @param e
+	 * @throws IOException
+	 */
 	@FXML
 	private void actionBack(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
@@ -38,6 +49,11 @@ public class ItensController implements Initializable {
 		Main.setScene(cena);
 	}
 	
+	 /**Evento de click para adicionar um novo Cardapio
+     * 
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void actionCreate(ActionEvent event) throws IOException {
     	Main.setIdSelected(-1);
@@ -45,7 +61,10 @@ public class ItensController implements Initializable {
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
     }
-	
+    
+	@FXML
+    private Button btnBack, btnEdit, btnCreate, btnDelete;
+    
     @FXML
     private TableColumn<Item, String> tableCategory;
 
@@ -64,6 +83,11 @@ public class ItensController implements Initializable {
     @FXML
     private TableView<Item> tableView;
     
+    /**Evento de click para editar o cardapio
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     void actionEdit(ActionEvent event) throws IOException {
     	Main.setIdSelected(idSelected);
@@ -72,11 +96,10 @@ public class ItensController implements Initializable {
 		Main.setScene(cena);
     }
     
-    @FXML
-    void actionDelete(ActionEvent event) {
-
-    }
-   
+    /**Evento de click para selecionar determinada linha da tabela
+     * 
+     * @param event
+     */
     @FXML
     void clickLine(MouseEvent event) {
     	Item p = tableView.getSelectionModel().getSelectedItem();
@@ -86,10 +109,10 @@ public class ItensController implements Initializable {
     	btnEdit.setDisable(false);
     	btnDelete.setDisable(false);
     }
-    
-	@FXML
-    private Button btnBack, btnEdit, btnCreate, btnDelete;
 	
+	 /**Metodo para inicializar o gerenciamento e  ativar a visualizacao dos botoes 
+     * 
+     */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);
@@ -101,6 +124,9 @@ public class ItensController implements Initializable {
 		refreshTableView();
 	}
 	
+	/**Metodo atribuindo um evento no botao de deletar para deletar o cardapio da lista
+	 * 
+	 */
 	public void deleteItem() {
 		//Adicionando o evento de deletar e configurando comportamento do alert
 				btnDelete.setOnAction(e-> {
@@ -123,6 +149,9 @@ public class ItensController implements Initializable {
 				});
 	}
 	
+	/**Metodo para carregar a listView da classe e formatar as celulas
+	 * 
+	 */
 	public void refreshTableView() {
 		observableListItem = FXCollections.observableArrayList(ManagementItens.listAllItens());
 		tableView.setItems(observableListItem);
