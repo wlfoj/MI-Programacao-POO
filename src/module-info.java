@@ -4,6 +4,8 @@ module comercialV2 {
 	requires javafx.graphics;
 	requires javafx.base;
 	requires java.desktop;
+	requires org.junit.jupiter.api;
+	requires org.junit.platform.suite.api;
 	
 	opens main to javafx.graphics;
 	opens controllers to javafx.fxml;
