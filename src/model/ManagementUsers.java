@@ -29,7 +29,7 @@ public abstract class ManagementUsers {
 	 * 
 	 * @param obj	O usuario a ser adicionado na lista, pode ser Employee ou Management.
 	 * @throws NullFieldException excecao para o campo nulo
-	 * @throws ObjectRegistred  Excecao para um usuario com login já registrado
+	 * @throws ObjectRegistred  Excecao para um usuario com login jï¿½ registrado
 	 */
 	public static void addUser(User obj) throws NullFieldException, ObjectRegistred {
 		if (obj.getLogin() == "" || obj.getPass() == "") {

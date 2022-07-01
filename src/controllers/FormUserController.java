@@ -54,15 +54,9 @@ public class FormUserController implements Initializable {
 				createNewUser();
 				aux = false;
 			} catch (NullFieldException e) {
-				Alert alert = new Alert(Alert.AlertType.ERROR);
-				alert.setTitle("Campos vazios");
-				alert.setContentText("Preencha todos os campos");
-				alert.show();
+				AlertsController.alertErrorDate(e.getMessage(), "Campos vazios","Preencha todos os campos" );
 			} catch (ObjectRegistred e) {
-				Alert alert = new Alert(Alert.AlertType.INFORMATION);
-				alert.setTitle("Login registrado");
-				alert.setContentText("Já existe um usuário com este login");
-				alert.show();
+				AlertsController.alertErrorDate(e.getMessage(), "Login registrado","Já existe um usuário com este login" );
 			}
     	}
     	// Caso tenha o id selecionado
