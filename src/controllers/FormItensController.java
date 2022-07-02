@@ -56,13 +56,13 @@ public class FormItensController implements Initializable {
     private TableView<Product> tableProductes;
     
     @FXML
-    private TableColumn<Product, String> tableMedida;
+    private TableColumn<Product, String> columnMedida;
     
     @FXML
-    private TableColumn<Product, String> tableProduct;
+    private TableColumn<Product, String> columnProduct;
 
     @FXML
-    private TableColumn<Product, Integer> tableQtd;
+    private TableColumn<Product, Integer> columnQtd;
     
     @FXML
     void clickLine(MouseEvent event) {
@@ -93,9 +93,9 @@ public class FormItensController implements Initializable {
 		observableListaProduct = FXCollections.observableArrayList(ManagementProducts.listAllProducts());
 		tableProductes.setItems(observableListaProduct);
 		
-		tableMedida.setCellValueFactory(new PropertyValueFactory<>("medida"));
-		tableProduct.setCellValueFactory(new PropertyValueFactory<>("name"));
-		tableQtd.setCellValueFactory(new PropertyValueFactory<>("qtd"));
+		columnMedida.setCellValueFactory(new PropertyValueFactory<>("medida"));
+		columnProduct.setCellValueFactory(new PropertyValueFactory<>("name"));
+		columnQtd.setCellValueFactory(new PropertyValueFactory<>("qtd"));
     }
 
 	@Override

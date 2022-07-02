@@ -62,9 +62,9 @@
       <Label layoutX="14.0" layoutY="175.0" text="Metódo de pagamento" />
       <TableView fx:id="tableView" layoutX="337.0" layoutY="164.0" onMouseClicked="#clickLine" prefHeight="200.0" prefWidth="261.0">
         <columns>
-          <TableColumn prefWidth="41.0" text="Id" />
-          <TableColumn prefWidth="140.0" text="Nome" />
-            <TableColumn prefWidth="79.0" text="Preço" />
+          <TableColumn fx:id="columnId" prefWidth="41.0" text="Id" />
+          <TableColumn fx:id="columnName" prefWidth="140.0" text="Nome" />
+            <TableColumn fx:id="columnPrice" prefWidth="79.0" text="Preço" />
         </columns>
       </TableView>
       <ComboBox fx:id="comboBoxPratos" layoutX="337.0" layoutY="128.0" prefHeight="25.0" prefWidth="149.0" promptText="Selecione o prato" />

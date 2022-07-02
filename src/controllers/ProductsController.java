@@ -44,22 +44,22 @@ public class ProductsController implements Initializable {
     private String[] lista = {"Relatorio completo", "Produtos a vencer"};//Opcoes de relatorios
 	
     @FXML
-    private TableColumn<Product, Integer> tableId;
+    private TableColumn<Product, Integer> columnId;
 
     @FXML
-    private TableColumn<Product, String> tableMedida;
+    private TableColumn<Product, String> columnMedida;
 
     @FXML
-    private TableColumn<Product, String> tableName;
+    private TableColumn<Product, String> columnName;
 
     @FXML
-    private TableColumn<Product, Integer> tableQtd;
+    private TableColumn<Product, Integer> columnQtd;
 
     @FXML
-    private TableColumn<Product, Calendar> tableValidade;
+    private TableColumn<Product, Calendar> columnValidade;
     
     @FXML
-    private TableColumn<Product, Float> tableValor;
+    private TableColumn<Product, Float> columnValor;
 
     @FXML
     private TableView<Product> tableView;
@@ -183,12 +183,12 @@ public class ProductsController implements Initializable {
 		observableListaProduct = FXCollections.observableArrayList(ManagementProducts.listAllProducts());
 		tableView.setItems(observableListaProduct);
 
-		tableId.setCellValueFactory(new PropertyValueFactory<>("id"));
-		tableName.setCellValueFactory(new PropertyValueFactory<>("name"));
-		tableQtd.setCellValueFactory(new PropertyValueFactory<>("qtd"));
-		tableMedida.setCellValueFactory(new PropertyValueFactory<>("medida"));
-		tableValidade.setCellValueFactory(new PropertyValueFactory<>("validity"));
-		tableValor.setCellValueFactory(new PropertyValueFactory<>("price"));
+		columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+		columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+		columnQtd.setCellValueFactory(new PropertyValueFactory<>("qtd"));
+		columnMedida.setCellValueFactory(new PropertyValueFactory<>("medida"));
+		columnValidade.setCellValueFactory(new PropertyValueFactory<>("validity"));
+		columnValor.setCellValueFactory(new PropertyValueFactory<>("price"));
 	}
 	
 	

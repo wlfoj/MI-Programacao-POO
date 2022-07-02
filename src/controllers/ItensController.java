@@ -66,19 +66,19 @@ public class ItensController implements Initializable {
     private Button btnBack, btnEdit, btnCreate, btnDelete;
     
     @FXML
-    private TableColumn<Item, String> tableCategory;
+    private TableColumn<Item, String> columnCategory;
 
     @FXML
-    private TableColumn<Item, String> tableDescription;
+    private TableColumn<Item, String> columnDescription;
 
     @FXML
-    private TableColumn<Item, Integer> tableId;
+    private TableColumn<Item, Integer> columnId;
 
     @FXML
-    private TableColumn<Item, String> tableName;
+    private TableColumn<Item, String> columnName;
 
     @FXML
-    private TableColumn<Item, Float> tableValue;
+    private TableColumn<Item, Float> columnValue;
     
     @FXML
     private TableView<Item> tableView;
@@ -156,11 +156,11 @@ public class ItensController implements Initializable {
 		observableListItem = FXCollections.observableArrayList(ManagementItens.listAllItens());
 		tableView.setItems(observableListItem);
 		
-		tableId.setCellValueFactory(new PropertyValueFactory<>("id"));
-		tableName.setCellValueFactory(new PropertyValueFactory<>("name"));
-		tableCategory.setCellValueFactory(new PropertyValueFactory<Item, String>("category"));
-		tableDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-		tableValue.setCellValueFactory(new PropertyValueFactory<>("price"));
+		columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+		columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+		columnCategory.setCellValueFactory(new PropertyValueFactory<Item, String>("category"));
+		columnDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+		columnValue.setCellValueFactory(new PropertyValueFactory<>("price"));
 	}
 	
 }

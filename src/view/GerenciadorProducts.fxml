@@ -37,12 +37,12 @@
       </AnchorPane>
       <TableView fx:id="tableView" layoutY="129.0" onMouseClicked="#clickLine" prefHeight="235.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="tableId" prefWidth="44.0" text="Id" />
-          <TableColumn fx:id="tableName" prefWidth="237.0" text="Nome do Produto" />
-            <TableColumn fx:id="tableQtd" prefWidth="79.0" text="Quantidade" />
-            <TableColumn fx:id="tableValidade" prefWidth="123.0" text="Validade" />
-            <TableColumn fx:id="tableMedida" prefWidth="66.0" text="Medida" />
-            <TableColumn fx:id="tableValor" prefWidth="50.0" text="Valor" />
+          <TableColumn fx:id="columnId" prefWidth="44.0" text="Id" />
+          <TableColumn fx:id="columnName" prefWidth="237.0" text="Nome do Produto" />
+            <TableColumn fx:id="columnQtd" prefWidth="79.0" text="Quantidade" />
+            <TableColumn fx:id="columnValidade" prefWidth="123.0" text="Validade" />
+            <TableColumn fx:id="columnMedida" prefWidth="66.0" text="Medida" />
+            <TableColumn fx:id="columnValor" prefWidth="50.0" text="Valor" />
         </columns>
       </TableView>
       <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;" />

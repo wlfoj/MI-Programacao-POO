@@ -41,22 +41,22 @@ public class CostumeController implements Initializable {
 	ObservableList<Costumer> observableListaClientes;
 
     @FXML
-    private TableColumn<Costumer, Integer> tableId;
+    private TableColumn<Costumer, Integer> columnId;
 	
     @FXML
-    private TableColumn<Costumer, String> tableCpf;
+    private TableColumn<Costumer, String> columnCpf;
 
     @FXML
-    private TableColumn<Costumer, String> tableEmail;
+    private TableColumn<Costumer, String> columnEmail;
 
     @FXML
-    private TableColumn<Costumer, String> tableName;
+    private TableColumn<Costumer, String> columnName;
 
     @FXML
     private TableView<Costumer> tableView;
 
     @FXML
-    private TableColumn<Costumer, String> tableTel;
+    private TableColumn<Costumer, String> columnTel;
 	
 	@FXML
     private Button btnCreate, btnBack, btnEdit, btnRemove;
@@ -167,10 +167,10 @@ public class CostumeController implements Initializable {
 		observableListaClientes = FXCollections.observableArrayList(ManagementCostumer.listAllCostumer());
 		tableView.setItems(observableListaClientes);
 		
-		tableId.setCellValueFactory(new PropertyValueFactory<>("id"));
-		tableCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
-		tableEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-		tableName.setCellValueFactory(new PropertyValueFactory<>("name"));
-		tableTel.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+		columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+		columnCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+		columnEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+		columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+		columnTel.setCellValueFactory(new PropertyValueFactory<>("telefone"));
 	}
 }

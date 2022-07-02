@@ -48,16 +48,16 @@ public class ProviderController implements Initializable{
 	private String[] lista = {"Relatorio completo", "Fornecedor por Produto"};
 	
     @FXML
-    private TableColumn<Provider, String> tableAdress;
+    private TableColumn<Provider, String> columnAdress;
 
     @FXML
-    private TableColumn<Provider, String> tableCnpj;
+    private TableColumn<Provider, String> columnCnpj;
 
     @FXML
-    private TableColumn<Provider, Integer> tableId;
+    private TableColumn<Provider, Integer> columnId;
 
     @FXML
-    private TableColumn<Provider, String> tableName;
+    private TableColumn<Provider, String> columnName;
 
 
     @FXML
@@ -179,10 +179,10 @@ public class ProviderController implements Initializable{
 		observableListaProvider = FXCollections.observableArrayList(ManagementProvider.listAllProvider());
 		tableView.setItems(observableListaProvider);
 		
-		tableId.setCellValueFactory(new PropertyValueFactory<>("id"));
-		tableName.setCellValueFactory(new PropertyValueFactory<>("name"));
-		tableAdress.setCellValueFactory(new PropertyValueFactory<>("address"));
-		tableCnpj.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
+		columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+		columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+		columnAdress.setCellValueFactory(new PropertyValueFactory<>("address"));
+		columnCnpj.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
 	}
 	
 	public void providerAll() {

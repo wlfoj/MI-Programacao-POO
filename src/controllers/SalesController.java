@@ -39,16 +39,16 @@ public class SalesController implements Initializable {
 	private Integer idSelected;
 	
     @FXML
-    private TableColumn<Sale, Calendar> tableDate;
+    private TableColumn<Sale, Calendar> columnDate;
 
     @FXML
-    private TableColumn<Sale, Integer> tableId;
+    private TableColumn<Sale, Integer> columnId;
 
     @FXML
-    private TableColumn<Sale, String> tablePaymentMethod;
+    private TableColumn<Sale, String> columnPaymentMethod;
 
     @FXML
-    private TableColumn<Sale, Float> tableTotalValue;
+    private TableColumn<Sale, Float> columnTotalValue;
 	
     @FXML
     private TableView<Sale> tableView;
@@ -139,10 +139,10 @@ public class SalesController implements Initializable {
 		observableListSales = FXCollections.observableArrayList(ManagementSales.listAllSale());
 		tableView.setItems(observableListSales);
 		
-		tableTotalValue.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
-		tablePaymentMethod.setCellValueFactory(new PropertyValueFactory<>("paymentMethod"));
-		tableId.setCellValueFactory(new PropertyValueFactory<>("id"));
-		tableDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+		columnTotalValue.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
+		columnPaymentMethod.setCellValueFactory(new PropertyValueFactory<>("paymentMethod"));
+		columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+		columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
 		
 	}
 

@@ -51,10 +51,10 @@ public class FormProviderController implements Initializable {
     ObservableList<Product> observableListaProduct; 
     
     @FXML
-    private TableColumn<Product, Integer> tableId;
+    private TableColumn<Product, Integer> columnId;
 
     @FXML
-    private TableColumn<Product, String> tableName;
+    private TableColumn<Product, String> columnName;
     
     @FXML
     private TableView<Product> tableProducts;
@@ -179,8 +179,8 @@ public class FormProviderController implements Initializable {
 		observableListaProduct = FXCollections.observableArrayList(tableViewList);
 		tableProducts.setItems(observableListaProduct);
 		
-		tableId.setCellValueFactory(new PropertyValueFactory<>("id"));
-		tableName.setCellValueFactory(new PropertyValueFactory<>("name"));
+		columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+		columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
     }
     
 	@Override
