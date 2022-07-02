@@ -5,3 +5,13 @@ Corrigir os relatórios de fornecedor
 Tratar dados invalidos dos inputs ( tipo quando digita uma string quando devia ser um número)
 
 Corrigir o relatório de vendas por tipo de prato
+
+Corrigir a exceção de campos vazios dos clientes na hora de editar!
+
+Por relatorios nas classes
+
+Corrigir editar usuário na troca de Adm para Employee
+
+Adicionar o editar e criar nos Vendas e Cardapio
+
+Ver o Cliente por venda
