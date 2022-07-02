@@ -93,7 +93,6 @@ public class FormUserController implements Initializable {
     	String password = inputPassword.getText();
     	String login = inputLogin.getText();
     	String type = boxType.getValue();
-    	boxType.setValue("");
 		FacedeManagement.addUser(name, login, password, type);
     }
     

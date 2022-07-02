@@ -40,8 +40,8 @@ public class ProductsController implements Initializable {
 	ObservableList<Product> observableListaProduct; 
 	
     @FXML
-    private ComboBox<String> comboBoxPrint;
-    private String[] lista = {"Relatorio completo", "Produtos a vencer"};
+    private ComboBox<String> comboBoxPrint;// Combo para gerar o relatorio
+    private String[] lista = {"Relatorio completo", "Produtos a vencer"};//Opcoes de relatorios
 	
     @FXML
     private TableColumn<Product, Integer> tableId;
@@ -107,8 +107,13 @@ public class ProductsController implements Initializable {
 		Main.setScene(cena);
     }
 	
+    /**Metodo para gerar o relatorio selecionado
+     * 
+     * @param event - Evento disparado ao clicar no botao de gerar relatorio
+     */
     @FXML
     void actionPrint(ActionEvent event) {
+    	
     	if (comboBoxPrint.getValue() == "Relatorio completo") {
     		ProductAll();
     	}
@@ -186,6 +191,10 @@ public class ProductsController implements Initializable {
 		tableValor.setCellValueFactory(new PropertyValueFactory<>("price"));
 	}
 	
+	
+	/**Metodo para auxiliar a gerar o relatorio de todos os produtos
+	 * 
+	 */
 	public void ProductAll() {
 		ArrayList<Product> list = ManagementProducts.listAllProducts();
 		int qtdTotal = list.size();

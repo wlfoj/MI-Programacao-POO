@@ -27,11 +27,10 @@ import model.Product;
 
 public class FormProductsController implements Initializable {
 
-
 	@FXML
-    private ComboBox<String> inputMedida;
+    private ComboBox<String> inputMedida;// Combox para selecionar a unidade da medida
 	
-	private String[] lista = {"L","Kg" , "g", "mL"};
+	private String[] lista = {"L","Kg" , "g", "mL"};// Medidas disponiveis para selecionar no combobox
 
     @FXML
     private TextField inputName;
@@ -48,14 +47,14 @@ public class FormProductsController implements Initializable {
     @FXML
     private Button btnBack, btnSave;
 	
+    /**Metodo para salvar as informações digitadas do produto, seja para criar ou para editar
+     * 
+     * @param event - Evento disparado ao clicar no botão salvar
+     * @throws IOException
+     */
 	@FXML
 	private void eventSave(ActionEvent event) throws IOException{
 		boolean aux = true;
-		//LocalDate aa= LocalDate.now();
-		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		//now = now.parse("2019-11-05");
-		//inputValidity.setValue(aa);
-		// Verifica nï¿½o existe um id selecionado
 		if (Main.getIdSelected() == -1) {
 			try {
 				createProduct();
@@ -80,20 +79,25 @@ public class FormProductsController implements Initializable {
 				AlertsController.alertErrorDate(e.getMessage(), "Valor do produto negativo","UsuÃ¡rio por favor preencher com valores acima de 0" );
 			}
 		}
-    	// Se passar pelas etapas sem receber uma exceï¿½ï¿½o
+    	// Se passar pelas etapas sem receber uma exceção, volta para tela anterior
     	if(aux==false) {
     		backToProduct();
     	}
 	}
+	
+	/**Metodo para criar o produto
+	 * 
+	 * @throws NegativePriceEntity - Excecao para valores de preço negativos
+	 * @throws InsufficientQuantityProducts - Excecao para quantidade de produto insuficiente ou negativa
+	 * @throws DateInvalid - Data de validade inválida ou anterior a data atual
+	 */
 	private void createProduct() throws NegativePriceEntity, InsufficientQuantityProducts, DateInvalid{
-		// Fazer os testes de erros de conversï¿½o e gerar alerts
 		Product p = new Product();
 		p.setName(inputName.getText());
-		p.setMedida(inputMedida.getSelectionModel().getSelectedItem());
+		p.setMedida(inputMedida.getValue());
 		p.setQtd(Integer.parseInt(inputQtd.getText()));
 		p.setValidity(inputValidity.getValue());
-
-		//condicao para o caso do usuario por um "." no textField de valor vai retornar 0
+		
 		if (! inputValue.getText().equals(".")) {
 			p.setPrice(Float.parseFloat(inputValue.getText()));
 		}else {
@@ -102,15 +106,20 @@ public class FormProductsController implements Initializable {
 		ManagementProducts.addProduct(p);
 	}
 	
+	
+	/**Metodo para editar o produto
+	 * 
+	 * @throws NegativePriceEntity - Excecao para valores de preço negativos
+	 * @throws InsufficientQuantityProducts - Excecao para quantidade de produto insuficiente ou negativa
+	 * @throws DateInvalid - Data de validade inválida ou anterior a data atual
+	 */
 	private void editProduct() throws DateInvalid, InsufficientQuantityProducts, NegativePriceEntity {
-		// Fazer os testes de erros de conversï¿½o e gerar alerts
 		Product p = new Product();
 		p.setName(inputName.getText());
 		p.setQtd(Integer.parseInt(inputQtd.getText()));
 		p.setValidity(inputValidity.getValue());
+		p.setMedida(inputMedida.getValue());
 		
-		//condicao para o caso do usuario por um "." no textField de valor vai retornar 0
-		p.setMedida(inputMedida.getSelectionModel().getSelectedItem());
 		if (! inputValue.getText().equals(".")) {
 			p.setPrice(Float.parseFloat(inputValue.getText()));
 		}else {
@@ -120,11 +129,27 @@ public class FormProductsController implements Initializable {
 	}
 	
 	
+	/**Metodo executa ao inicializar o componente
+	 * 
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);
 		btnSave.setCursor(Cursor.HAND);
 		inputMedida.getItems().setAll(lista);
+		//INICIALIZACOES PARA CRIAR UM NOVO USUARIO
+		if (Main.getIdSelected() == -1) {
+			inputMedida.setValue("Kg");
+		}
+		// Se tiver id selecionado, já preenche os campos
+		else{
+			Product p = ManagementProducts.getOne(Main.getIdSelected());
+			inputName.setText(p.getName());
+			inputMedida.setValue(p.getMedida());
+			inputQtd.setText(Integer.toString(p.getQtd()));
+			inputValue.setText(Float.toString(p.getPrice()));
+			inputValidity.setValue(p.getValidity());
+		}
 		
 		//Mascara para impedir que o usuario ponha dados de String na textField de Inteiros
 		inputQtd.setTextFormatter(new TextFormatter<>(c -> {
@@ -143,23 +168,23 @@ public class FormProductsController implements Initializable {
 		        return c;
 		    }
 		));
-		
-		if (Main.getIdSelected() != -1) {
-			Product p = ManagementProducts.getOne(Main.getIdSelected());
-			inputName.setText(p.getName());
-			inputMedida.setPromptText(p.getMedida());
-			inputQtd.setText(Integer.toString(p.getQtd()));
-			inputValue.setText(Float.toString(p.getPrice()));
-			inputValidity.setValue(p.getValidity());
-		}
-		
 	}
     
+	/**Metodo para retornar a pagina anterior
+	 * 
+	 * @param e - Evento disparado ao clicar no botao voltar
+	 * @throws IOException
+	 */
 	@FXML
 	private void eventBack(ActionEvent e) throws IOException {
 		backToProduct();
 	}
 	
+	
+	/**Metodo para retorna a pagina de produtos
+	 * 
+	 * @throws IOException
+	 */
 	private void backToProduct() throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProducts.fxml"));
 		Scene cena = new Scene(anchor);

@@ -113,6 +113,7 @@ public abstract class ManagementProducts {
 					list.get(i).setPrice(obj.getPrice());
 					list.get(i).setName(obj.getName());
 					list.get(i).setValidity(obj.getValidity());
+					list.get(i).setMedida(obj.getMedida());
 				}
 			}
 		}
