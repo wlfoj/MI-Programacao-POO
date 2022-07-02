@@ -27,7 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementProducts;
 import model.Product;
-import model.Relatorio;
+import utils.Relatorio;
 
 /** Classe responsavel pelo Controller de Produtos
  * 

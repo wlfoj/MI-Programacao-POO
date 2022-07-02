@@ -26,7 +26,7 @@ import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementProvider;
 import model.Provider;
-import model.Relatorio;
+import utils.Relatorio;
 
 /** Classe responsavel pelo Controller de Fornecedores
  * 

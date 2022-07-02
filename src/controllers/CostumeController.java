@@ -28,7 +28,7 @@ import model.Costumer;
 import model.ManagementCostumer;
 import model.ManagementProvider;
 import model.Provider;
-import model.Relatorio;
+import utils.Relatorio;
 
 /** Classe responsavel pelo Controller de Clientes
  * 

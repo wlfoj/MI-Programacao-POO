@@ -24,6 +24,7 @@ import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementProducts;
 import model.Product;
+import utils.AlertsController;
 
 public class FormProductsController implements Initializable {
 
@@ -47,9 +48,9 @@ public class FormProductsController implements Initializable {
     @FXML
     private Button btnBack, btnSave;
 	
-    /**Metodo para salvar as informações digitadas do produto, seja para criar ou para editar
+    /**Metodo para salvar as informaï¿½ï¿½es digitadas do produto, seja para criar ou para editar
      * 
-     * @param event - Evento disparado ao clicar no botão salvar
+     * @param event - Evento disparado ao clicar no botï¿½o salvar
      * @throws IOException
      */
 	@FXML
@@ -79,7 +80,7 @@ public class FormProductsController implements Initializable {
 				AlertsController.alertErrorDate(e.getMessage(), "Valor do produto negativo","UsuÃ¡rio por favor preencher com valores acima de 0" );
 			}
 		}
-    	// Se passar pelas etapas sem receber uma exceção, volta para tela anterior
+    	// Se passar pelas etapas sem receber uma exceï¿½ï¿½o, volta para tela anterior
     	if(aux==false) {
     		backToProduct();
     	}
@@ -87,9 +88,9 @@ public class FormProductsController implements Initializable {
 	
 	/**Metodo para criar o produto
 	 * 
-	 * @throws NegativePriceEntity - Excecao para valores de preço negativos
+	 * @throws NegativePriceEntity - Excecao para valores de preï¿½o negativos
 	 * @throws InsufficientQuantityProducts - Excecao para quantidade de produto insuficiente ou negativa
-	 * @throws DateInvalid - Data de validade inválida ou anterior a data atual
+	 * @throws DateInvalid - Data de validade invï¿½lida ou anterior a data atual
 	 */
 	private void createProduct() throws NegativePriceEntity, InsufficientQuantityProducts, DateInvalid{
 		Product p = new Product();
@@ -109,9 +110,9 @@ public class FormProductsController implements Initializable {
 	
 	/**Metodo para editar o produto
 	 * 
-	 * @throws NegativePriceEntity - Excecao para valores de preço negativos
+	 * @throws NegativePriceEntity - Excecao para valores de preï¿½o negativos
 	 * @throws InsufficientQuantityProducts - Excecao para quantidade de produto insuficiente ou negativa
-	 * @throws DateInvalid - Data de validade inválida ou anterior a data atual
+	 * @throws DateInvalid - Data de validade invï¿½lida ou anterior a data atual
 	 */
 	private void editProduct() throws DateInvalid, InsufficientQuantityProducts, NegativePriceEntity {
 		Product p = new Product();
@@ -141,7 +142,7 @@ public class FormProductsController implements Initializable {
 		if (Main.getIdSelected() == -1) {
 			inputMedida.setValue("Kg");
 		}
-		// Se tiver id selecionado, já preenche os campos
+		// Se tiver id selecionado, jï¿½ preenche os campos
 		else{
 			Product p = ManagementProducts.getOne(Main.getIdSelected());
 			inputName.setText(p.getName());
