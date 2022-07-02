@@ -64,7 +64,7 @@ public abstract class FacedeManagement {
 		p1.setName("Tomate");
 		p1.setPrice(1.55f);
 		p1.setQtd(50);
-		p1.setValidity(LocalDate.now());
+		p1.setValidity(LocalDate.of(2023, 01, 12));;
 		ManagementProducts.addProduct(p1);
 		
 		Product p2 = new Product();
@@ -72,7 +72,7 @@ public abstract class FacedeManagement {
 		p2.setName("Alface");
 		p2.setPrice(2f);
 		p2.setQtd(44);
-		p2.setValidity(LocalDate.now());
+		p2.setValidity(LocalDate.of(2022, 12, 11));
 		ManagementProducts.addProduct(p2);
 		
 		Product p3 = new Product();
@@ -80,7 +80,7 @@ public abstract class FacedeManagement {
 		p3.setName("Pão");
 		p3.setPrice(2.3f);
 		p3.setQtd(78);
-		p3.setValidity(LocalDate.now());
+		p3.setValidity(LocalDate.of(2022, 11, 23));
 		ManagementProducts.addProduct(p3);
 		
 		Product p4 = new Product();
