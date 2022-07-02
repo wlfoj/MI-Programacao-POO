@@ -25,6 +25,12 @@ import main.Main;
 import model.ManagementUsers;
 import model.User;
 
+/** Classe responsavel pelo Controller de usuarios
+ * 
+ * @author Washington Luis Ferreira de Oliveira Junior
+ * @author Tassio Carvalho Rodrigues
+ *
+ */
 public class UserController implements Initializable {
 	
 	private Integer idSelected;
@@ -47,9 +53,13 @@ public class UserController implements Initializable {
     private TableColumn<User, String> userColuna;
 
 	@FXML
-	//ESQUECEU DE MUDAR ESSES AQUI
     private Button btnBack, btnAdd, btnEdit, btnDelete;
 	
+	 /**Evento para criar um novo user
+     * 
+     * @param event
+     * @throws IOException
+     */
 	@FXML
 	private void eventCreate(ActionEvent e) throws IOException {
 		// Indicando que n�o selecionou ningu�m
@@ -57,31 +67,32 @@ public class UserController implements Initializable {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
-		// Para qu� isso? manda mensagem explicando
-		btnEdit.setDisable(true);
-		btnDelete.setDisable(true);
 	}
 	
+	 /**Evento de click para editar o User
+     * 
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void eventEdit(ActionEvent event) throws IOException {
     	// Indicando quem selecionou
     	Main.setIdSelected(idSelected);
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
 		Scene cena = new Scene(anchor);
-		Main.setScene(cena);
-		// Para qu� isso? manda mensagem explicando
-		btnEdit.setDisable(true);
-		btnDelete.setDisable(true);
+		Main.setScene(cena);;
     }
 
+    /**Evento atribuido no botao de voltar para retornar ao menu
+     * 
+     * @param e
+     * @throws IOException
+     */
 	@FXML
 	private void eventBack(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
-		// Para qu� isso? manda mensagem explicando
-		btnEdit.setDisable(true);
-		btnDelete.setDisable(true);
 	}
 	
     @FXML
@@ -95,9 +106,11 @@ public class UserController implements Initializable {
 //    	ManagementUsers.delete(idSelected);
 //    	refreshTableView();
     }
-    
 
-	
+    /**Evento de click para selecionar determinada linha da tabela
+	 * 
+	 * @param event
+	 */
     @FXML
     void clickLine(MouseEvent event) {
     	User p = tableView.getSelectionModel().getSelectedItem();
@@ -109,6 +122,9 @@ public class UserController implements Initializable {
     	btnDelete.setDisable(false);
     }
 	
+    /**Metodo para inicializar o gerenciamento e  ativar a visualizacao dos botoes 
+     * 
+     */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);
@@ -120,6 +136,9 @@ public class UserController implements Initializable {
 		refreshTableView();
 	}
 	
+	/**Metodo para carregar a listView da classe e formatar as celulas
+	 * 
+	 */
 	public void refreshTableView() {
 		observableListaUsuarios = FXCollections.observableArrayList(ManagementUsers.listAllUsers());
 		tableView.setItems(observableListaUsuarios);
@@ -129,6 +148,9 @@ public class UserController implements Initializable {
 		userColuna.setCellValueFactory(new PropertyValueFactory<>("login"));
 	}
 	
+	/**Metodo atribuindo um evento no botao de deletar para deletar o user da lista
+	 * 
+	 */
 	public void deleteUser() {
 		//Adicionando o evento de deletar e configurando comportamento do alert
 				btnDelete.setOnAction(e-> {

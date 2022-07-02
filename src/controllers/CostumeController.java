@@ -3,6 +3,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -25,6 +26,9 @@ import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.Costumer;
 import model.ManagementCostumer;
+import model.ManagementProvider;
+import model.Provider;
+import model.Relatorio;
 
 /** Classe responsavel pelo Controller de Clientes
  * 

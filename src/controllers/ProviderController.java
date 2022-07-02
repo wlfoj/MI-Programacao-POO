@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,6 +26,7 @@ import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementProvider;
 import model.Provider;
+import model.Relatorio;
 
 /** Classe responsavel pelo Controller de Fornecedores
  * 
@@ -38,7 +41,11 @@ public class ProviderController implements Initializable{
 	private Integer idSelected;
 
 	@FXML
-    private Button btnBack, btnCreate, btnEdit, btnDelete;
+    private Button btnBack, btnCreate, btnEdit, btnDelete, btnPrint;
+	
+	@FXML
+    private ComboBox<String> comboBoxPrint;
+	private String[] lista = {"Relatorio completo", "Realorio 2"};
 	
     @FXML
     private TableColumn<Provider, String> tableAdress;
@@ -117,6 +124,8 @@ public class ProviderController implements Initializable{
 		btnCreate.setCursor(Cursor.HAND);
 		btnDelete.setCursor(Cursor.HAND);
 		btnEdit.setCursor(Cursor.HAND);
+		btnPrint.setCursor(Cursor.HAND);
+		comboBoxPrint.getItems().setAll(lista);
 		
 		//Adicionando o evento de deletar e configurando comportamento do alert
 	
@@ -149,6 +158,13 @@ public class ProviderController implements Initializable{
 		
 	}
 	
+	@FXML
+    void eventPrint(ActionEvent event) {
+		if (comboBoxPrint.getValue() == "Relatorio completo") {
+			providerAll();
+		}
+    }
+
 	/**Metodo para carregar a listView da classe e formatar as celulas
 	 * 
 	 */
@@ -160,5 +176,17 @@ public class ProviderController implements Initializable{
 		tableName.setCellValueFactory(new PropertyValueFactory<>("name"));
 		tableAdress.setCellValueFactory(new PropertyValueFactory<>("address"));
 		tableCnpj.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
+	}
+	
+	public void providerAll() {
+		ArrayList<Provider> list = ManagementProvider.listAllProvider();
+		int qtdTotal = list.size();
+		
+		try {
+			Relatorio.relatorioFornecedor(list, qtdTotal);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
