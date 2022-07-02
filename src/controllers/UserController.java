@@ -94,18 +94,6 @@ public class UserController implements Initializable {
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
 	}
-	
-    @FXML
-    void deleteAction(ActionEvent event) {
-//    	Alert alert = new Alert(AlertType.CONFIRMATION);
-//    	//VERIFICAR QUANDO PRESSIONAR OK!
-//    	alert.setTitle("Deletar");
-//    	alert.setHeaderText("Realmente deseja excluir?");
-//    	alert.setContentText("Ao apagar as informações não serão mais recuperadas");
-//    	alert.show();
-//    	ManagementUsers.delete(idSelected);
-//    	refreshTableView();
-    }
 
     /**Evento de click para selecionar determinada linha da tabela
 	 * 

@@ -230,7 +230,6 @@ public class Relatorio {
 		String nome = "RelatorioFornecedor" + dataEHora() + ".pdf";
 		ArrayList<Integer> produtosId;
 		Product produto;
-		System.out.println(lista.get(0).getCnpj());
 		try {
 			//Iniciando arquivo
 			PdfWriter.getInstance(documento, new FileOutputStream(nome));
@@ -282,7 +281,6 @@ public class Relatorio {
 					produto = ManagementProducts.getOne(id);//busca um prato com esse id na gestao de pratos
 					//prato = null;
 					if (produto != null) {
-						System.out.println("entrou aq");
 						celulaPDF1 = new PdfPCell(new Paragraph(Integer.toString(fornecedor.getId())));//c�digo
 						celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
 						celulaPDF2 = new PdfPCell(new Paragraph(fornecedor.getName()));//nome

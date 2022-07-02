@@ -45,7 +45,7 @@ public class ProviderController implements Initializable{
 	
 	@FXML
     private ComboBox<String> comboBoxPrint;
-	private String[] lista = {"Relatorio completo", "Realorio 2"};
+	private String[] lista = {"Relatorio completo", "Fornecedor por Produto"};
 	
     @FXML
     private TableColumn<Provider, String> tableAdress;
@@ -126,6 +126,7 @@ public class ProviderController implements Initializable{
 		btnEdit.setCursor(Cursor.HAND);
 		btnPrint.setCursor(Cursor.HAND);
 		comboBoxPrint.getItems().setAll(lista);
+		comboBoxPrint.setValue("Relatorio completo");
 		
 		//Adicionando o evento de deletar e configurando comportamento do alert
 	
@@ -158,10 +159,16 @@ public class ProviderController implements Initializable{
 		
 	}
 	
+	/**Evento para imprimir relatorios de fornecedores
+	 * 
+	 * @param event
+	 */
 	@FXML
     void eventPrint(ActionEvent event) {
 		if (comboBoxPrint.getValue() == "Relatorio completo") {
 			providerAll();
+		}else{
+			providerPerProduct();
 		}
     }
 
@@ -181,6 +188,22 @@ public class ProviderController implements Initializable{
 	public void providerAll() {
 		ArrayList<Provider> list = ManagementProvider.listAllProvider();
 		int qtdTotal = list.size();
+		
+		try {
+			Relatorio.relatorioFornecedor(list, qtdTotal);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void providerPerProduct() {
+		int idProduct = 0;
+		ArrayList<Provider> list;
+		int qtdTotal;
+		
+		list = ManagementProvider.listProviderPerProduct(idProduct);
+		qtdTotal = list.size();
 		
 		try {
 			Relatorio.relatorioFornecedor(list, qtdTotal);
