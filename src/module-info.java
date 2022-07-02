@@ -6,6 +6,7 @@ module comercialV2 {
 	requires java.desktop;
 	requires org.junit.jupiter.api;
 	requires org.junit.platform.suite.api;
+	requires itextpdf;
 	
 	opens main to javafx.graphics;
 	opens controllers to javafx.fxml;
