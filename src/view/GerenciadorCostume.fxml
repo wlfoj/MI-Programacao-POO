@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -38,10 +37,10 @@
       <TableView fx:id="tableView" layoutY="129.0" onMouseClicked="#clickLine" prefHeight="235.0" prefWidth="600.0">
         <columns>
             <TableColumn fx:id="tableId" prefWidth="33.0" text="Id" />
-          <TableColumn fx:id="nameTable" prefWidth="157.0" text="Nome" />
-            <TableColumn fx:id="telTable" prefWidth="121.0" text="Telefone" />
-          <TableColumn fx:id="cpfTable" prefWidth="121.0" text="CPF" />
-            <TableColumn fx:id="emailTable" prefWidth="167.0" text="Email" />
+          <TableColumn fx:id="tableName" prefWidth="157.0" text="Nome" />
+            <TableColumn fx:id="tableTel" prefWidth="121.0" text="Telefone" />
+          <TableColumn fx:id="tableCpf" prefWidth="121.0" text="CPF" />
+            <TableColumn fx:id="tableEmail" prefWidth="167.0" text="Email" />
         </columns>
       </TableView>
       <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;" />
@@ -70,16 +69,6 @@
                   <ImageView fitHeight="19.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../projecticons/edit.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <ComboBox layoutX="39.0" layoutY="5.0" prefHeight="27.0" prefWidth="150.0" promptText="Relatórios" />
-            <Button fx:id="btnPrint" layoutX="195.0" layoutY="5.0" mnemonicParsing="false">
-               <graphic>
-                  <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../projecticons/print.png" />
                      </image>
                   </ImageView>
                </graphic>

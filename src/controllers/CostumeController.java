@@ -44,22 +44,22 @@ public class CostumeController implements Initializable {
     private TableColumn<Costumer, Integer> tableId;
 	
     @FXML
-    private TableColumn<Costumer, String> cpfTable;
+    private TableColumn<Costumer, String> tableCpf;
 
     @FXML
-    private TableColumn<Costumer, String> emailTable;
+    private TableColumn<Costumer, String> tableEmail;
 
     @FXML
-    private TableColumn<Costumer, String> nameTable;
+    private TableColumn<Costumer, String> tableName;
 
     @FXML
     private TableView<Costumer> tableView;
 
     @FXML
-    private TableColumn<Costumer, String> telTable;
+    private TableColumn<Costumer, String> tableTel;
 	
 	@FXML
-    private Button btnCreate, btnBack, btnEdit, btnRemove, btnPrint;
+    private Button btnCreate, btnBack, btnEdit, btnRemove;
 	
 	private Integer idSelected;
 	
@@ -126,7 +126,6 @@ public class CostumeController implements Initializable {
 		btnBack.setCursor(Cursor.HAND);
 		btnEdit.setCursor(Cursor.HAND);
 		btnRemove.setCursor(Cursor.HAND);
-		btnPrint.setCursor(Cursor.HAND);
 		btnCreate.setCursor(Cursor.HAND);
 		
 		deleteCostume();
@@ -169,9 +168,9 @@ public class CostumeController implements Initializable {
 		tableView.setItems(observableListaClientes);
 		
 		tableId.setCellValueFactory(new PropertyValueFactory<>("id"));
-		cpfTable.setCellValueFactory(new PropertyValueFactory<>("cpf"));
-		emailTable.setCellValueFactory(new PropertyValueFactory<>("email"));
-		nameTable.setCellValueFactory(new PropertyValueFactory<>("name"));
-		telTable.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+		tableCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+		tableEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+		tableName.setCellValueFactory(new PropertyValueFactory<>("name"));
+		tableTel.setCellValueFactory(new PropertyValueFactory<>("telefone"));
 	}
 }
