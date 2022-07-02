@@ -85,11 +85,11 @@
             <TextField fx:id="inputCategory" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <TableView layoutX="274.0" layoutY="164.0" onMouseClicked="#clickLine" prefHeight="200.0" prefWidth="326.0">
+      <TableView fx:id="tableProductes" layoutX="274.0" layoutY="164.0" onMouseClicked="#clickLine" prefHeight="200.0" prefWidth="326.0">
         <columns>
-          <TableColumn prefWidth="96.0" text="Produto" />
-          <TableColumn prefWidth="122.0" text="Quantidade" />
-            <TableColumn prefWidth="97.0" text="Medida" />
+          <TableColumn fx:id="tableProduct" prefWidth="96.0" text="Produto" />
+          <TableColumn fx:id="tableQtd" prefWidth="122.0" text="Quantidade" />
+            <TableColumn fx:id="tableMedida" prefWidth="97.0" text="Medida" />
         </columns>
       </TableView>
       <ComboBox fx:id="comboBoxProdutos" layoutX="274.0" layoutY="129.0" onMouseClicked="#clickComboProduct" prefHeight="27.0" prefWidth="121.0" promptText="Produtos" />
