@@ -141,24 +141,24 @@ public class UserController implements Initializable {
 	 */
 	public void deleteUser() {
 		//Adicionando o evento de deletar e configurando comportamento do alert
-				btnDelete.setOnAction(e-> {
-					Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
+		btnDelete.setOnAction(e-> {
+			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
 					
-					ButtonType btnOk = new ButtonType("Deletar");
-					ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+			ButtonType btnOk = new ButtonType("Deletar");
+			ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+				
+			deleteExe.initOwner(btnDelete.getScene().getWindow());
+			deleteExe.setTitle("Deletar");
+			deleteExe.setHeaderText("Deseja realmente deletar?");
+			deleteExe.setContentText("Ao apagar as informações não serão mais recuperadas");
+			deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
+			deleteExe.showAndWait().ifPresent(a -> {
+				if (a == btnOk) {
+					ManagementUsers.delete(idSelected);
+					refreshTableView();
+				} 
+			});
 					
-					deleteExe.initOwner(btnDelete.getScene().getWindow());
-					deleteExe.setTitle("Deletar");
-					deleteExe.setHeaderText("Deseja realmente deletar?");
-					deleteExe.setContentText("Ao apagar as informações não serão mais recuperadas");
-					deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
-					deleteExe.showAndWait().ifPresent(a -> {
-						if (a == btnOk) {
-							ManagementUsers.delete(idSelected);
-							refreshTableView();
-						} 
-					});
-					
-				});
+		});
 	}
 }

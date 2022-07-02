@@ -100,7 +100,7 @@ public class Relatorio {
 				celulaPDF5 = new PdfPCell(new Paragraph(produto.getValidity().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG))));
 				//celulaPDF5 = new PdfPCell(new Paragraph(f.format(data)));
 				celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
-				celulaPDF6 = new PdfPCell(new Paragraph(Float.toString(produto.getPrice())));
+				celulaPDF6 = new PdfPCell(new Paragraph("R$ "+Float.toString(produto.getPrice())));
 				celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
 
 				tabela.addCell(celulaPDF1);

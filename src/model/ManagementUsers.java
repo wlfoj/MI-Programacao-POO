@@ -96,7 +96,7 @@ public abstract class ManagementUsers {
 		String loginUser;
         for (int i = 0; i < list.size(); i++) {
         	loginUser = list.get(i).getLogin();
-        	if (login == loginUser) {
+        	if (login.equals(loginUser)) {
         		return true;
         	}
         }

@@ -72,7 +72,7 @@
             <Label text="Medida Kg/L" GridPane.rowIndex="4" />
             <TextField fx:id="inputName" prefHeight="25.0" prefWidth="165.0" GridPane.columnIndex="1" />
             <TextField fx:id="inputValue" prefHeight="25.0" prefWidth="244.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <DatePicker fx:id="inputValidity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="inputValidity" GridPane.columnIndex="1" GridPane.rowIndex="2" editable="false"/>
             <TextField fx:id="inputQtd" prefHeight="25.0" prefWidth="244.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <ComboBox fx:id="inputMedida" prefHeight="25.0" prefWidth="174.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
