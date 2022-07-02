@@ -17,7 +17,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -25,7 +24,7 @@ import main.Main;
 import model.ManagementUsers;
 import model.User;
 
-/** Classe responsavel pelo Controller de usuarios
+/** Classe responsavel pelo controle das ações a serem tomadas com os usuários
  * 
  * @author Washington Luis Ferreira de Oliveira Junior
  * @author Tassio Carvalho Rodrigues
@@ -33,31 +32,29 @@ import model.User;
  */
 public class UserController implements Initializable {
 	
+	//Id do usuário selecionado
 	private Integer idSelected;
 	
 	ObservableList<User> observableListaUsuarios; 
-	
-	@FXML
-    private TableColumn<User, Integer> idColuna;
 
     @FXML
     private TableView<User> tableView;
 
     @FXML
-    private TableColumn<User, String> tipoColuna;
+    private TableColumn<User, String> tipoColuna;// Coluna do tipo de usuário
     
     @FXML
-    private TextField textFild1;
-    
-    @FXML
-    private TableColumn<User, String> userColuna;
+    private TableColumn<User, String> userColuna;// Coluna do login do usuário
 
+	@FXML
+    private TableColumn<User, Integer> idColuna;// Coluna do id do usuário
+	
 	@FXML
     private Button btnBack, btnAdd, btnEdit, btnDelete;
 	
 	 /**Evento para criar um novo user
      * 
-     * @param event
+     * @param event - Evento disparado ao clicar no botão de criar um usuário
      * @throws IOException
      */
 	@FXML
@@ -69,9 +66,9 @@ public class UserController implements Initializable {
 		Main.setScene(cena);
 	}
 	
-	 /**Evento de click para editar o User
+	 /**Evento para editar o User
      * 
-     * @param event
+     * @param event - Evento disparado ao clicar no botão de editar o usuário
      * @throws IOException
      */
     @FXML
@@ -83,9 +80,9 @@ public class UserController implements Initializable {
 		Main.setScene(cena);;
     }
 
-    /**Evento atribuido no botao de voltar para retornar ao menu
+    /**Evento atribuido ao botao de voltar para retornar ao menu
      * 
-     * @param e
+     * @param e - Evento disparado ao clicar no Botão de voltar
      * @throws IOException
      */
 	@FXML
@@ -97,15 +94,16 @@ public class UserController implements Initializable {
 
     /**Evento de click para selecionar determinada linha da tabela
 	 * 
-	 * @param event
+	 * @param event - Evento disparado ao clicar em uma linha da tabela.
 	 */
     @FXML
     void clickLine(MouseEvent event) {
+    	// Obtendo o id o usuário selecionado
     	User p = tableView.getSelectionModel().getSelectedItem();
     	if(p != null) {
-    		idSelected =p.getId();
+    		idSelected = p.getId();
     	}
-    	
+    	// Habilitando os botões de edição e de exclusão
     	btnEdit.setDisable(false);
     	btnDelete.setDisable(false);
     }
@@ -120,7 +118,7 @@ public class UserController implements Initializable {
 		btnEdit.setCursor(Cursor.HAND);
 		btnDelete.setCursor(Cursor.HAND);
 		
-		deleteUser();
+		addEventDeleteUser();
 		refreshTableView();
 	}
 	
@@ -139,7 +137,7 @@ public class UserController implements Initializable {
 	/**Metodo atribuindo um evento no botao de deletar para deletar o user da lista
 	 * 
 	 */
-	public void deleteUser() {
+	public void addEventDeleteUser() {
 		//Adicionando o evento de deletar e configurando comportamento do alert
 		btnDelete.setOnAction(e-> {
 			Alert deleteExe = new Alert(Alert.AlertType.CONFIRMATION);
@@ -153,6 +151,7 @@ public class UserController implements Initializable {
 			deleteExe.setContentText("Ao apagar as informaÃ§Ãµes nÃ£o serÃ£o mais recuperadas");
 			deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
 			deleteExe.showAndWait().ifPresent(a -> {
+				// Se clicar no botão 'ok' deleta o usuário
 				if (a == btnOk) {
 					ManagementUsers.delete(idSelected);
 					refreshTableView();
