@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -95,6 +97,7 @@ public class Relatorio {
 				celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
 				celulaPDF4 = new PdfPCell(new Paragraph(produto.getMedida()));
 				celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
+				celulaPDF5 = new PdfPCell(new Paragraph(produto.getValidity().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG))));
 				//celulaPDF5 = new PdfPCell(new Paragraph(f.format(data)));
 				celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
 				celulaPDF6 = new PdfPCell(new Paragraph(Float.toString(produto.getPrice())));

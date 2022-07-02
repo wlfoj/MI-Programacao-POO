@@ -125,7 +125,6 @@ public class FormProductsController implements Initializable {
 		btnBack.setCursor(Cursor.HAND);
 		btnSave.setCursor(Cursor.HAND);
 		inputMedida.getItems().setAll(lista);
-		inputValidity.setValue(LocalDate.now());
 		
 		//Mascara para impedir que o usuario ponha dados de String na textField de Inteiros
 		inputQtd.setTextFormatter(new TextFormatter<>(c -> {
