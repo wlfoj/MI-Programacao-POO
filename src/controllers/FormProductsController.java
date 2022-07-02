@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import exceptions.DateInvalid;
 import exceptions.InsufficientQuantityProducts;
@@ -124,6 +125,7 @@ public class FormProductsController implements Initializable {
 		btnBack.setCursor(Cursor.HAND);
 		btnSave.setCursor(Cursor.HAND);
 		inputMedida.getItems().setAll(lista);
+		inputValidity.setValue(LocalDate.now());
 		
 		//Mascara para impedir que o usuario ponha dados de String na textField de Inteiros
 		inputQtd.setTextFormatter(new TextFormatter<>(c -> {
