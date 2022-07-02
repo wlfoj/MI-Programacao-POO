@@ -2,7 +2,6 @@ package facede;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 import exceptions.DateInvalid;
 import exceptions.InsufficientQuantityProducts;

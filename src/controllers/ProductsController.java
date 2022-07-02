@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
@@ -17,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -25,6 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementProducts;
 import model.Product;
+import model.Relatorio;
 
 /** Classe responsavel pelo Controller de Produtos
  * 
@@ -35,6 +38,10 @@ import model.Product;
 public class ProductsController implements Initializable {
 
 	ObservableList<Product> observableListaProduct; 
+	
+    @FXML
+    private ComboBox<String> comboBoxPrint;
+    private String[] lista = {"Relatorio completo", "Produtos a vencer"};
 	
     @FXML
     private TableColumn<Product, Integer> tableId;
@@ -50,7 +57,7 @@ public class ProductsController implements Initializable {
 
     @FXML
     private TableColumn<Product, Calendar> tableValidade;
-
+    
     @FXML
     private TableColumn<Product, Float> tableValor;
 
@@ -100,6 +107,13 @@ public class ProductsController implements Initializable {
 		Main.setScene(cena);
     }
 	
+    @FXML
+    void actionPrint(ActionEvent event) {
+    	if (comboBoxPrint.getValue() == "Relatorio completo") {
+    		ProductAll();
+    	}
+    }
+    
     /**Evento de click para selecionar determinada linha da tabela
      * 
      * @param event
@@ -124,6 +138,8 @@ public class ProductsController implements Initializable {
 		btnEdit.setCursor(Cursor.HAND);
 		btnRemove.setCursor(Cursor.HAND);
 		btnPrint.setCursor(Cursor.HAND);
+		comboBoxPrint.getItems().setAll(lista);
+		comboBoxPrint.setValue("Relatorio completo");
 		
 		deleteProducts();
 		refreshTableView();
@@ -169,4 +185,17 @@ public class ProductsController implements Initializable {
 		tableValidade.setCellValueFactory(new PropertyValueFactory<>("validity"));
 		tableValor.setCellValueFactory(new PropertyValueFactory<>("price"));
 	}
+	
+	public void ProductAll() {
+		ArrayList<Product> list = ManagementProducts.listAllProducts();
+		int qtdTotal = list.size();
+		
+		try {
+			Relatorio.relatorioEstoque(list, qtdTotal);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }
