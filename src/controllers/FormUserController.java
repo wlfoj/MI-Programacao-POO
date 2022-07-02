@@ -40,11 +40,16 @@ public class FormUserController implements Initializable {
     private Button btnBack, btnSave;
     
     @FXML
-    private ComboBox<String> boxType;
+    private ComboBox<String> boxType; // Combobox para selecionar os tipos de usuário
     
-    // Opções de tipos de usuarios para selecionar
+    // Opções de tipos de usuarios para selecionar no Combobox
     private String[] lista = {"Administrador","Fucionario"};
     
+    /**Metodo para salvar/criar um usuário com os valores digitados nos campos
+     * 
+     * @param event - Evento disparado ao clicar no botão de salvar
+     * @throws IOException
+     */
     @FXML
     void actionSave(ActionEvent event) throws IOException  {
     	boolean aux = true;
@@ -71,13 +76,18 @@ public class FormUserController implements Initializable {
 				alert.show();
 			}
     	}
-    	// Se passar pelas etapas sem receber uma exceção
+    	// Se passar pelas etapas sem receber uma exceção, retorna para tela anterior
     	if (aux == false) {
     		backToUser();
     	}
     	
     }
    
+    /**Metodo para criar um novo usuário
+     * 
+     * @throws NullFieldException - Exceção disparada caso não tenha campos preenchidos
+     * @throws ObjectRegistred - Exceção disparada caso o login já tenha sido registrado
+     */
     private void createNewUser() throws NullFieldException, ObjectRegistred {
     	String name = inputName.getText();
     	String password = inputPassword.getText();
@@ -87,6 +97,10 @@ public class FormUserController implements Initializable {
 		FacedeManagement.addUser(name, login, password, type);
     }
     
+    /**Metodo para editar um usuário
+     * 
+     * @throws NullFieldException - Exceção disparada caso não tenha campos preenchidos
+     */
     private void editUser() throws NullFieldException {
     	String name = inputName.getText();
     	String password = inputPassword.getText();
@@ -108,16 +122,29 @@ public class FormUserController implements Initializable {
     	}
     }
     
+    /**Metodo para retornar a tela anterior
+     * 
+     * @param e - Evento disparado ao clicar no botão de voltar
+     * @throws IOException
+     */
 	@FXML
 	private void eventBack(ActionEvent e) throws IOException {
 		backToUser();
 	}
 	
+	/**Metodo para retornar a tela de usuários
+	 * 
+	 * @throws IOException
+	 */
 	private void backToUser() throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorUser.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
 	}
+	
+	/**Metodo executado ao inicializar o componente
+	 * 
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);

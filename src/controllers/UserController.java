@@ -52,7 +52,7 @@ public class UserController implements Initializable {
 	@FXML
     private Button btnBack, btnAdd, btnEdit, btnDelete;
 	
-	 /**Evento para criar um novo user
+	 /**Metodo para criar um novo user
      * 
      * @param event - Evento disparado ao clicar no botão de criar um usuário
      * @throws IOException
@@ -66,7 +66,7 @@ public class UserController implements Initializable {
 		Main.setScene(cena);
 	}
 	
-	 /**Evento para editar o User
+	 /**Metodo para editar o User
      * 
      * @param event - Evento disparado ao clicar no botão de editar o usuário
      * @throws IOException
@@ -92,7 +92,7 @@ public class UserController implements Initializable {
 		Main.setScene(cena);
 	}
 
-    /**Evento de click para selecionar determinada linha da tabela
+    /**Metodo para selecionar determinada linha da tabela
 	 * 
 	 * @param event - Evento disparado ao clicar em uma linha da tabela.
 	 */
