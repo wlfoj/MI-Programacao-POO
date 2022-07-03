@@ -2,8 +2,10 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -21,12 +23,17 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import main.Main;
 import model.ManagementProducts;
+import model.ManagementProvider;
 import model.Product;
+import model.Provider;
 import utils.Relatorio;
 
 /** Classe responsavel pelo Controller de Produtos
@@ -37,6 +44,8 @@ import utils.Relatorio;
  */
 public class ProductsController implements Initializable {
 
+	private Optional<String> input;
+	
 	ObservableList<Product> observableListaProduct; 
 	
     @FXML
@@ -110,12 +119,15 @@ public class ProductsController implements Initializable {
     /**Metodo para gerar o relatorio selecionado
      * 
      * @param event - Evento disparado ao clicar no botao de gerar relatorio
+     * @throws IOException 
      */
     @FXML
-    void actionPrint(ActionEvent event) {
+    void actionPrint(ActionEvent event) throws IOException {
     	
     	if (comboBoxPrint.getValue() == "Relatorio completo") {
     		ProductAll();
+    	} else {
+    		 ProductExpiredDate ();
     	}
     }
     
@@ -206,5 +218,22 @@ public class ProductsController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	public void ProductExpiredDate () throws IOException {
+		LocalDate test;
+		ArrayList<Product> list;
+		int qtdProductInRelat = 1;
+		openRelatorioDate();
+		if (RelatorioDateController.getAnswer() == true) {
+			test = RelatorioDateController.getDateInicial();
+			list = ManagementProducts.listProductsInExpiration(qtdProductInRelat, test);
+		}
+	}
+	
+	public void openRelatorioDate() throws IOException {
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/RelatorioDataPicker.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+	}
+	
 	
 }

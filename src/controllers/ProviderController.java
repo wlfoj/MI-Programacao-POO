@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,6 +31,7 @@ import javafx.stage.Stage;
 import main.Main;
 import model.ManagementProvider;
 import model.Provider;
+import utils.Alerts;
 import utils.Relatorio;
 
 /** Classe responsavel pelo Controller de Fornecedores
@@ -215,6 +217,7 @@ public class ProviderController implements Initializable{
 	 * 
 	 */
 	public void providerPerProduct() throws Exception {
+		//Dialogo de texto para informar o ID do produto
 		TextInputDialog textInput = new TextInputDialog();
 		textInput.setTitle("ID do produto");
 		textInput.getDialogPane().setHeaderText("Informe o ID do produto");
@@ -222,10 +225,43 @@ public class ProviderController implements Initializable{
 		Stage stage = (Stage) textInput.getDialogPane().getScene().getWindow();
 		stage.getIcons().add(new Image("iconapp.png"));
 		input = textInput.showAndWait();
-		if(input.isPresent()) {
-			ArrayList<Provider> list = ManagementProvider.listProviderPerProduct(Integer.parseInt(input.get()));
-			int qtdTotal = list.size();
-			Relatorio.relatorioFornecedor(list, qtdTotal);
+		if(input.isPresent() == true) {
+			try {
+				ArrayList<Provider> list = ManagementProvider.listProviderPerProduct(Integer.parseInt(input.get()));
+				int qtdTotal = list.size();
+				Relatorio.relatorioFornecedor(list, qtdTotal);
+			}catch(NumberFormatException ex) {
+				alertNumberFormat();
+				
+			}			
 		}
+	}
+	
+	/**Metodo que gera alerta para evitar entradas de outros valores a nao ser inteiros dentro do TextInputDialog
+	 * 
+	 */
+	public void alertNumberFormat() {
+		Alert logoutExe = new Alert(Alert.AlertType.CONFIRMATION);
+		
+		ButtonType btnOk = new ButtonType("Ok");
+		Stage stage2 = (Stage) logoutExe.getDialogPane().getScene().getWindow();
+		stage2.getIcons().add(new Image("iconapp.png"));
+		logoutExe.setTitle("Informe corretamente");
+		logoutExe.setHeaderText("Informe valor inteiro");
+		logoutExe.setContentText("Informe uma valor inteiro!");
+		logoutExe.getButtonTypes().setAll(btnOk);
+		logoutExe.showAndWait().ifPresent(a -> {
+			if (a == btnOk) {
+				try {
+					providerPerProduct();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 }
