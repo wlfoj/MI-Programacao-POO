@@ -23,8 +23,6 @@ import model.Costumer;
 import model.ManagementCostumer;
 
 public class FormCostumeController implements Initializable {
-
-
     
     @FXML
     private Button btnBack, btnSave;
@@ -42,7 +40,11 @@ public class FormCostumeController implements Initializable {
     private TextField inputPhone;
     
 
-	
+	/**Metodo para salvar os dados do formulario no cliente
+	 * 
+	 * @param event - Evento disparado ao pressionar o botao de salvar
+	 * @throws IOException
+	 */
     @FXML
     void eventSave(ActionEvent event) throws IOException {
     	boolean aux = true;
@@ -86,37 +88,41 @@ public class FormCostumeController implements Initializable {
     	
     }
 	
-    private void createCostumer() throws NullFieldException, ObjectRegistred {
-    	String name = inputName.getText();
-    	String cpf = inputCpf.getText();
-    	String email = inputEmail.getText();
-    	String phone = inputPhone.getText();
-    	
+    
+    /** Metodo para criar um novo cliente
+     * 
+     * @throws NullFieldException - Excecao para caso tenha certos campos vazios
+     * @throws ObjectRegistred - Excecao caso o CPF ja esteja registrado
+     */
+    private void createCostumer() throws NullFieldException, ObjectRegistred { 	
     	Costumer c = new Costumer();
-    	c.setCpf(cpf);
-    	c.setEmail(email);
-    	c.setName(name);
-    	c.setTelefone(phone);
+    	c.setCpf(inputCpf.getText());
+    	c.setEmail(inputEmail.getText());
+    	c.setName(inputName.getText());
+    	c.setTelefone(inputPhone.getText());
     	
 		ManagementCostumer.addCostumer(c);
     }
     
+    
+    /**Metodo para editar um cliente
+     * 
+     * @throws NullFieldException - Excecao para caso tenha certos campos vazios
+     */
     private void editCostumer() throws NullFieldException {
-    	String name = inputName.getText();
-    	String cpf = inputCpf.getText();
-    	String email = inputEmail.getText();
-    	String phone = inputPhone.getText();
-    	
     	Costumer c = new Costumer();
-    	c.setCpf(cpf);
-    	c.setEmail(email);
-    	c.setName(name);
-    	c.setTelefone(phone);
+    	c.setCpf(inputCpf.getText());
+    	c.setEmail(inputEmail.getText());
+    	c.setName(inputName.getText());
+    	c.setTelefone(inputPhone.getText());
     	
 		ManagementCostumer.update(Main.getIdSelected(), c);
     }
     
     
+    /**Metodo executa ao inicializar o componente
+     * 
+     */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);
@@ -151,16 +157,25 @@ public class FormCostumeController implements Initializable {
 		}
 	}
 	
+	
+	/**Metodo para retornar a tela anterior
+	 * 
+	 * @param e - Evento disparado ao pressionar botao de voltar
+	 * @throws IOException
+	 */
 	@FXML
 	private void eventBack(ActionEvent e) throws IOException {
 		backToCostumer();
 	}
 	
+	
+	/**Metodo que retorna a tela anterior
+	 * 
+	 * @throws IOException
+	 */
 	private void backToCostumer() throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorCostume.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
 	}
-	
-	
 }

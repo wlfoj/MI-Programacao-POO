@@ -61,7 +61,7 @@ public class ManagementCostumer {
 	 */
 		public static void update(int id, Costumer obj) throws NullFieldException{
 			int idProvider;
-			if (obj.getName() != "" && obj.getCpf() != "") {
+			if (obj.getName() == "" && obj.getCpf() == "") {
 				throw new NullFieldException ();
 			}
 			else {
@@ -89,7 +89,7 @@ public class ManagementCostumer {
 		String cpfCostumer;
         for (int i = 0; i < list.size(); i++) {
         	cpfCostumer = list.get(i).getCpf();
-        	if (cpf == cpfCostumer) {
+        	if (cpf.equals(cpfCostumer)) {
         		return true;
         	}
         }

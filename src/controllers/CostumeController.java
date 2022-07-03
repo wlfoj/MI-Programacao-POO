@@ -61,12 +61,12 @@ public class CostumeController implements Initializable {
 	@FXML
     private Button btnCreate, btnBack, btnEdit, btnRemove;
 	
-	private Integer idSelected;
+	private Integer idSelected;// Id do cliente selecionado na tabela
 	
-	/**Evento para criar um novo cliente
+	/**Metodo para criar um novo cliente
 	 * 
-	 * @param e evento
-	 * @throws IOException excecoes da classe costumer
+	 * @param e - Evento disparado ao clicar no botao de criar novo
+	 * @throws IOException 
 	 */
 	@FXML
 	private void eventCreate(ActionEvent e) throws IOException {
@@ -76,9 +76,9 @@ public class CostumeController implements Initializable {
 		Main.setScene(cena);
 	}
 
-	/** Evento de click para editar o cliente
+	/** Metodo para editar o cliente
 	 * 
-	 * @param event
+	 * @param event - Evento disparado ao clicar no botao de editar
 	 * @throws IOException excecoes da classe costumer
 	 */
     @FXML
@@ -90,11 +90,10 @@ public class CostumeController implements Initializable {
 
     }
 
-    /**Evento de click para selecionar determinada linha da tabela
+    /**Metodo para selecionar determinada linha da tabela
      * 
-     * @param event
+     * @param event - Evento disparado ao clicar em uma linha da tabela
      */
-    
     @FXML
     void clickLine(MouseEvent event) {
     	Costumer p = tableView.getSelectionModel().getSelectedItem();
@@ -105,9 +104,9 @@ public class CostumeController implements Initializable {
     	btnRemove.setDisable(false);
     }
     
-    /**Evento atribuido no botao de voltar para retornar ao menu
+    /**Metodo relacionado ao botao de voltar para retornar ao menu
      * 
-     * @param e
+     * @param e - Evento disparado ao clicar no botao de voltaar
      * @throws IOException
      */
 	@FXML
@@ -120,7 +119,6 @@ public class CostumeController implements Initializable {
 	/** Metodo para inicializar o gerenciamento e  ativar a visualizacao dos botoes 
 	 * 
 	 */
-	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnBack.setCursor(Cursor.HAND);
@@ -133,7 +131,7 @@ public class CostumeController implements Initializable {
 		
 	}
 	
-	/** Metodo atribuindo um evento no botao de deletar para deletar o cliente da lista
+	/** Metodo para atribuir um evento no botao de deletar para deletar o cliente da lista
 	 * 
 	 */
 	public void deleteCostume() {
@@ -159,7 +157,8 @@ public class CostumeController implements Initializable {
 		});
 	}
 	
-	/**Metodo para carregar a listView da classe e formatar as celulas
+	
+	/**Metodo para atualizar a listView da classe e formatar as celulas
 	 * 
 	 */
 	public void refreshTableView() {
