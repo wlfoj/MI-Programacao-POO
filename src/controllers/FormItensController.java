@@ -61,9 +61,6 @@ public class FormItensController implements Initializable {
     private TextArea inputDescription;
 
     @FXML
-    private Label labelUnd;
-
-    @FXML
     private TableView<Ingredients> tableProducts;
     
     @FXML
