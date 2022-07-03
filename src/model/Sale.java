@@ -10,6 +10,7 @@ import java.util.Calendar;
  */
 public class Sale {
 	private int id;
+	private int idCostumer;
 	private float totalPrice;//Valor total da venda
 	private String paymentMethod;//Metodo de pagamento
 	private ArrayList<Integer> itens;//Lista com os id's dos pratos vendidos
@@ -107,6 +108,18 @@ public class Sale {
 			}
 		}
 		return totalCost;
+	}
+
+
+
+	public int getIdCostumer() {
+		return idCostumer;
+	}
+
+
+
+	public void setIdCostumer(int idCostumer) {
+		this.idCostumer = idCostumer;
 	}
 	
 }
