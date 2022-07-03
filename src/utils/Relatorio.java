@@ -197,13 +197,11 @@ public class Relatorio {
 					prato = ManagementItens.getOne(id);//busca um prato com esse id na gestao de pratos
 					//prato = null;
 					if (prato != null) {
-						c = venda.getDate();
-						data = c.getTime();
 						celulaPDF1 = new PdfPCell(new Paragraph(Integer.toString(venda.getId())));//c�digo
 						celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
 						celulaPDF2 = new PdfPCell(new Paragraph(venda.getPaymentMethod()));//pagamento
 						celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
-						celulaPDF3 = new PdfPCell(new Paragraph(f.format(data)));//data da venda
+						//celulaPDF3 = new PdfPCell(new Paragraph(f.format(data)));//data da venda
 						celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
 						celulaPDF4 = new PdfPCell(new Paragraph(prato.getName()));//nome do prato
 						celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);

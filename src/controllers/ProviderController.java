@@ -230,32 +230,38 @@ public class ProviderController implements Initializable{
 				ArrayList<Provider> list = ManagementProvider.listProviderPerProduct(Integer.parseInt(input.get()));
 				int qtdTotal = list.size();
 				Relatorio.relatorioFornecedor(list, qtdTotal);
-				//alerta gerado no caso do usuario informar uma string ou outro valor ao inves de inteiro
 			}catch(NumberFormatException ex) {
-				Alert logoutExe = new Alert(Alert.AlertType.CONFIRMATION);
-				
-				ButtonType btnOk = new ButtonType("Ok");
-				Stage stage2 = (Stage) logoutExe.getDialogPane().getScene().getWindow();
-				stage2.getIcons().add(new Image("iconapp.png"));
-				logoutExe.setTitle("Informe corretamente");
-				logoutExe.setHeaderText("Informe valor inteiro");
-				logoutExe.setContentText("Informe uma valor inteiro!");
-				logoutExe.getButtonTypes().setAll(btnOk);
-				logoutExe.showAndWait().ifPresent(a -> {
-					if (a == btnOk) {
-						try {
-							providerPerProduct();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (Exception e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				});
+				alertNumberFormat();
 				
 			}			
 		}
+	}
+	
+	/**Metodo que gera alerta para evitar entradas de outros valores a nao ser inteiros dentro do TextInputDialog
+	 * 
+	 */
+	public void alertNumberFormat() {
+		Alert logoutExe = new Alert(Alert.AlertType.CONFIRMATION);
+		
+		ButtonType btnOk = new ButtonType("Ok");
+		Stage stage2 = (Stage) logoutExe.getDialogPane().getScene().getWindow();
+		stage2.getIcons().add(new Image("iconapp.png"));
+		logoutExe.setTitle("Informe corretamente");
+		logoutExe.setHeaderText("Informe valor inteiro");
+		logoutExe.setContentText("Informe uma valor inteiro!");
+		logoutExe.getButtonTypes().setAll(btnOk);
+		logoutExe.showAndWait().ifPresent(a -> {
+			if (a == btnOk) {
+				try {
+					providerPerProduct();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 }

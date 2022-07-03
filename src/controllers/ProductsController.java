@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -21,12 +22,17 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import main.Main;
 import model.ManagementProducts;
+import model.ManagementProvider;
 import model.Product;
+import model.Provider;
 import utils.Relatorio;
 
 /** Classe responsavel pelo Controller de Produtos
@@ -37,6 +43,8 @@ import utils.Relatorio;
  */
 public class ProductsController implements Initializable {
 
+	private Optional<String> input;
+	
 	ObservableList<Product> observableListaProduct; 
 	
     @FXML
@@ -205,6 +213,14 @@ public class ProductsController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public void ProductExpiredDate () {
+		ArrayList<Product> list;
+		int qtdProductInRelat;
+		boolean err;
+		Calendar validaty = Calendar.getInstance();
+		String date;
+		
 	}
 	
 }
