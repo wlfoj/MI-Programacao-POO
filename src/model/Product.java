@@ -13,7 +13,7 @@ public class Product {
 	private String name;// nome do produto
 	private float price;// preço do produto
 	private LocalDate validity;// validade do produto.
-	private int qtd;// quantidade
+	private float qtd;// quantidade
 	private String medida;// unidade de medida para a quantidade. Ex. 15Kg, 2L
 	
 	
@@ -57,11 +57,11 @@ public class Product {
 		this.validity = validity;
 	}
 
-	public int getQtd() {
+	public float getQtd() {
 		return qtd;
 	}
 
-	public void setQtd(int qtd) {
-		this.qtd = qtd;
+	public void setQtd(float f) {
+		this.qtd = f;
 	}
 }

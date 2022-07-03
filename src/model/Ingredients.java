@@ -8,7 +8,7 @@ package model;
  */
 public class Ingredients {
 	private int id;// id do produto
-	private int qtd;// quantidade
+	private float qtd;// quantidade
 	private String medida;// unidade de medida para a quantidade. Ex. 15Kg, 2L
 	private String name;// nome do produto
 	
@@ -20,11 +20,11 @@ public class Ingredients {
 		this.id = id;
 	}
 
-	public int getQtd() {
+	public float getQtd() {
 		return qtd;
 	}
 
-	public void setQtd(int qtd) {
+	public void setQtd(float qtd) {
 		this.qtd = qtd;
 	}
 

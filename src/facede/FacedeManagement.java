@@ -51,14 +51,14 @@ public abstract class FacedeManagement {
 		cliente0.setCpf("000000000");
 		cliente0.setEmail("vazio@exemplo.com");
 		cliente0.setName("nao especificado");
-		cliente0.setTelefone("00-000000000");
+		cliente0.setTelefone("00000000000");
 		ManagementCostumer.addCostumer(cliente0);
 		
 		Costumer cliente1 = new Costumer();
 		cliente1.setCpf("72745028345");
 		cliente1.setEmail("geradordecpf@exemplo.com");
 		cliente1.setName("cpfgerado santos");
-		cliente1.setTelefone("75-984349255");
+		cliente1.setTelefone("75984349255");
 		ManagementCostumer.addCostumer(cliente1);
 		
 		// BLOCO DE PRODUTOS
@@ -119,14 +119,14 @@ public abstract class FacedeManagement {
 		ing.setMedida("Kg");
 		ing.setName("Tomate");
 		ing.setId(0);
-		ing.setQtd(2);
+		ing.setQtd(0.5f);
 		ArrayList<Ingredients> c1 = new ArrayList<Ingredients>();
 		c1.add(ing);
 		Item item = new Item();
-		item.setCategory("laticinio");
+		item.setCategory("lanche");
 		item.setPrice(4);
-		item.setDescription("queijo mussarela");
-		item.setName("queijo");
+		item.setDescription("Simplasso");
+		item.setName("Hamburguer");
 		item.setComposition(c1);
 		ManagementItens.addItem(item);
 		

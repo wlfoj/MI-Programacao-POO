@@ -26,13 +26,14 @@ public abstract class ManagementProducts {
 	}
 	
 	
-	/** Metodo para buscar os produtos que estar�o expirados at� a data recebida
+	/** Metodo para buscar os produtos que vao expirar em 1 mes da data atual
 	 * 
 	 * @param qtdProducts	Quantidade maxima de itens que o usuario quer ver no relatorio
 	 * @param dateToExpi	Data limite em que os produtos v�o expirar
 	 * @return	A lista filtrada, contendo at� <code>qtdProducts</code> elementos
 	 */
-	public static ArrayList<Product> listProductsInExpiration(int qtdProducts, LocalDate dateToExpi){
+	public static ArrayList<Product> listProductsInExpiration(int qtdProducts){
+		LocalDate dateToExpi = LocalDate.now().plusMonths(1);
 		int count = 0;
 		Product p;
 		ArrayList<Product> productExpiration = new ArrayList<Product>();

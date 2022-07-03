@@ -52,7 +52,7 @@ public class FormItensController implements Initializable {
     // Map que com a key sendo o nome do produto e o value o id do mesmo
     private static Map<String, Integer> HashMapProducts = new HashMap<String,Integer>();
     
-    ObservableList<Ingredients> observableListaIngredients;
+    private ObservableList<Ingredients> observableListaIngredients;
 
     @FXML
     private TextField inputCategory, inputName, inputValue, inputQuatity;

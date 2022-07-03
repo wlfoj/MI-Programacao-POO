@@ -120,4 +120,22 @@ public abstract class ManagementItens {
 		
 		return newlist;
 	}
+	
+	
+	/** Metodo para converter uma lista de id' de pratos em uma lista de pratos
+	 * 
+	 * @param listId - Lista de ids
+	 * @return A lista de pratos
+	 */
+	public static ArrayList<Item> convertIdItemList(ArrayList<Integer> listId){
+		ArrayList<Item> newList = new ArrayList<Item>();
+		Item item;
+		for(int i=0; i<listId.size(); i++) {
+			item = getOne(listId.get(i));
+			if (item != null) {
+				newList.add(item);
+			}
+		}
+		return newList;
+	}
 }
