@@ -23,13 +23,23 @@ public class MenuController implements Initializable {
 	@FXML
     private Button btnUser, btnProvider, btnSales, btnCostumer, btnItens, btnProduct, btnLogout;
 	
+	/**Metodo para trocar de tela para gerenciamento de usuario
+	 * 
+	 * @param evento disparado ao clicar no botao usuario
+	 * @throws IOException
+	 */
 	@FXML
 	private void actionShowUserScene(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorUser.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
 	}
-	
+
+	/**Metodo para trocar de tela para gerenciamento de produtos
+	 * 
+	 * @param e evento disparado ao clicar no botao produtos
+	 * @throws IOException
+	 */
 	@FXML
 	private void actionProductShowScene(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProducts.fxml"));
@@ -37,6 +47,11 @@ public class MenuController implements Initializable {
 		Main.setScene(cena);
 	}
 	
+	/**Metodo para trocar de tela para gerenciamento de clientes
+	 * 
+	 * @param evento disparado ao clicar no botao clientes
+	 * @throws IOException
+	 */
 	@FXML
 	private void actionCostumerShowScene(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorCostume.fxml"));
@@ -44,6 +59,11 @@ public class MenuController implements Initializable {
 		Main.setScene(cena);
 	}
 	
+	/**Metodo para trocar de tela para gerenciamento de fornecedor
+	 * 
+	 * @param evento disparado ao clicar no botao fornecedores
+	 * @throws IOException
+	 */
 	@FXML
 	private void actionShowProviderScene(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProvider.fxml"));
@@ -51,6 +71,11 @@ public class MenuController implements Initializable {
 		Main.setScene(cena);
 	}
 
+	/**Metodo para trocar de tela para gerenciamento de cardapio
+	 * 
+	 * @param evento disparado ao clicar no botao cardapio
+	 * @throws IOException
+	 */
 	@FXML
 	private void actionItensShowScene(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorItens.fxml"));
@@ -58,6 +83,11 @@ public class MenuController implements Initializable {
 		Main.setScene(cena);
 	}
 	
+	/**Metodo para trocar de tela para gerenciamento de vendas
+	 * 
+	 * @param evento disparado ao clicar no botao vendas
+	 * @throws IOException
+	 */
 	@FXML
 	private void actionShowSalesScene(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorSales.fxml"));
@@ -65,6 +95,9 @@ public class MenuController implements Initializable {
 		Main.setScene(cena);
 	}
 	
+	/**Metodo executa ao inicializar o componente
+	 * 
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		Main.setIdSelected(-1);
@@ -80,6 +113,10 @@ public class MenuController implements Initializable {
 		}
 	}
 	
+	/**Metodo que realiza o logout do sistema
+	 * 
+	 * @return
+	 */
 	public boolean logoutSystem() {
 		btnLogout.setOnAction(e-> {
 			Alert logoutExe = new Alert(Alert.AlertType.CONFIRMATION);
@@ -106,6 +143,11 @@ public class MenuController implements Initializable {
 		});
 		return false;
 	}
+	
+	/**Metodo que retorna para a cena de login
+	 * 
+	 * @throws IOException
+	 */
 	public void loginScene() throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 		Scene cena = new Scene(anchor);

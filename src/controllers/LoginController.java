@@ -31,7 +31,12 @@ public class LoginController implements Initializable {
     
     @FXML
     private Label lbl;
-    	
+    
+    /**Metodo para realizar o login
+     * 
+     * @param event - evento disparado ao clicar login
+     * @throws IOException
+     */
     @FXML
     void clickedLogin(MouseEvent event) throws IOException {
     	if(verificationLogin(user.getText(), new String (password.getText()))) {
@@ -47,6 +52,13 @@ public class LoginController implements Initializable {
     	}
     }
     
+    /** Metodo de verificacao de login
+     * 
+     * @param name
+     * @param pass
+     * @return
+     */
+    
     //@FXML
     public boolean verificationLogin(String name, String pass) {
     	if(ManagementUsers.auth(name, pass) == null) {
@@ -55,7 +67,10 @@ public class LoginController implements Initializable {
     	return true;
     }
 
-	@Override
+    /**Metodo executa ao inicializar o componente
+     * 
+     */
+    @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		buttonLogin.setCursor(Cursor.HAND);	
 	}

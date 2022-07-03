@@ -71,7 +71,7 @@ public class ProductsController implements Initializable {
 	
 	/**Evento atribuido no botao de voltar para retornar ao menu
 	 * 
-	 * @param e
+	 * @param e Evento disparado ao clicar o botao voltar
 	 * @throws IOException
 	 */
 	@FXML
@@ -83,7 +83,7 @@ public class ProductsController implements Initializable {
 	
 	/**Evento de click para editar o produto
 	 * 
-	 * @param event
+	 * @param event Evento disparado ao clicar o botao editar
 	 * @throws IOException
 	 */
     @FXML
@@ -96,7 +96,7 @@ public class ProductsController implements Initializable {
     
     /**Evento de click para adicionar um novo produto
      * 
-     * @param event
+     * @param event Evento disparado ao clicar o botao criar
      * @throws IOException
      */
     @FXML
@@ -121,7 +121,7 @@ public class ProductsController implements Initializable {
     
     /**Evento de click para selecionar determinada linha da tabela
      * 
-     * @param event
+     * @param event Evento disparado ao clicar na tabela
      */
     @FXML
     void clickLine(MouseEvent event) {

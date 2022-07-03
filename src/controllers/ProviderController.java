@@ -65,7 +65,7 @@ public class ProviderController implements Initializable{
 	
     /**Metodo atribuido no botao de voltar para retornar ao menu
      * 
-     * @param e - Evento disparado ao clicar no botao
+     * @param e - Evento disparado ao clicar no botao voltar
      * @throws IOException
      */
 	@FXML

@@ -60,7 +60,7 @@ public class ItensController implements Initializable {
 	
 	/**Metodo atribuido no botao de voltar para retornar ao menu
 	 * 
-	 * @param e
+	 * @param e - Evento disparado ao clicar no botao voltar
 	 * @throws IOException
 	 */
 	@FXML
@@ -72,7 +72,7 @@ public class ItensController implements Initializable {
 	
 	 /**Metodo de click para adicionar um novo Cardapio
      * 
-     * @param event
+     * @param event disparado ao clicar no botao criar
      * @throws IOException
      */
     @FXML
@@ -86,7 +86,7 @@ public class ItensController implements Initializable {
     
     /**Evento de click para editar o cardapio
 	 * 
-	 * @param event
+	 * @param event - Evento disparado ao clicar no botao editar
 	 * @throws IOException
 	 */
     @FXML
@@ -99,7 +99,7 @@ public class ItensController implements Initializable {
     
     /**Metodo para selecionar um prato da tabela
      * 
-     * @param event
+     * @param event - evento disparado ao clicar na tabela
      */
     @FXML
     void clickLine(MouseEvent event) {

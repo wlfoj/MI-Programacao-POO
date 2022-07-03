@@ -146,7 +146,7 @@ public class FormItensController implements Initializable {
     
     /**Metodo para salvar os dados do formulario
      * 
-     * @param event
+     * @param event - Evento disparado ao cliclar no botao salvar
      * @throws IOException 
      */
     @FXML
@@ -288,9 +288,9 @@ public class FormItensController implements Initializable {
 		));
 	}
 	
-	/**Metodo para tornar o botao quantidade visivel
+	/**Metodo para tornar o botao adicionar visivel
 	 * 
-	 * @param event
+	 * @param Evento disparado ao clicar na textField quantidade
 	 */
     @FXML
     void clickedAddQtd(MouseEvent event) {
