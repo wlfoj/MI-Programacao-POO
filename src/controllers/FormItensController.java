@@ -28,13 +28,12 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import main.Main;
+import main.Main; 
 import model.Ingredients;
 import model.Item;
 import model.ManagementItens;
 import model.ManagementProducts;
 import model.Product;
-import model.Provider;
 import utils.Alerts;
 
 public class FormItensController implements Initializable {

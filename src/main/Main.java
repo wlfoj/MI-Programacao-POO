@@ -10,6 +10,7 @@ import exceptions.ObjectRegistred;
 import facede.FacedeManagement;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import model.User;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -20,10 +21,13 @@ public class Main extends Application {
 	
 	private static Stage stage;
 	private static Scene scene;
-	// PODE FICAR MELHOR EM UMA CLASSE AUXILIAR
-	private static Integer idSelected = -1;
+	private static Integer idSelected = -1;// id do objeto selecionado nos controllers principais
+	private static User session;
 	
-	//Tornar melhor o código
+	/** Setando uma nova scene no stage
+	 * 
+	 * @param newScene - A nova scene que vai ser exibida
+	 */
 	public static void setScene(Scene newScene) {
 		scene = newScene;
 		stage.setScene(scene);
@@ -44,7 +48,6 @@ public class Main extends Application {
 			stage = primaryStage;
 			primaryStage.setTitle("Comercial Store");
 			primaryStage.setResizable(false);
-			// TALVEZ FAÇA MAIS SENTIDO EM VOID MAIN
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 			Scene login = new Scene(root);
 
@@ -64,5 +67,13 @@ public class Main extends Application {
 		FacedeManagement.initData();
 		
 		launch(args);
+	}
+
+	public static User getSession() {
+		return session;
+	}
+
+	public static void setSession(User session) {
+		Main.session = session;
 	}
 }

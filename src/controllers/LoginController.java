@@ -39,33 +39,17 @@ public class LoginController implements Initializable {
      */
     @FXML
     void clickedLogin(MouseEvent event) throws IOException {
-    	if(verificationLogin(user.getText(), new String (password.getText()))) {
-    		System.out.println("Acesso Liberado!");
-    		//OLHE ESSA L�GICA AQUI
+    	// Jogando o User recebido em session
+    	Main.setSession(ManagementUsers.auth(user.getText(), password.getText()));
+    	if(Main.getSession() != null) {
     		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
 			Scene cena = new Scene(anchor);
     		Main.setScene(cena);
-    		//FIM DA L�GICA
     	} else {
-    		System.out.println("Acesso Negado!");
     		lbl.setText("Login ou senha incorretos tente novamente");
     	}
     }
-    
-    /** Metodo de verificacao de login
-     * 
-     * @param name
-     * @param pass
-     * @return
-     */
-    
-    //@FXML
-    public boolean verificationLogin(String name, String pass) {
-    	if(ManagementUsers.auth(name, pass) == null) {
-    		return false;
-    	}
-    	return true;
-    }
+   
 
     /**Metodo executa ao inicializar o componente
      * 
