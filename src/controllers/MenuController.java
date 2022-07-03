@@ -10,14 +10,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
 	
 public class MenuController implements Initializable {
 	
 	@FXML
-    private Button btnUser, btnProvider, btnSales, btnCostumer, btnItens, btnProduct;
+    private Button btnUser, btnProvider, btnSales, btnCostumer, btnItens, btnProduct, btnLogout;
 	
 	@FXML
 	private void eventShowUserScene(ActionEvent e) throws IOException {
@@ -70,6 +73,39 @@ public class MenuController implements Initializable {
 		btnCostumer.setCursor(Cursor.HAND);
 		btnItens.setCursor(Cursor.HAND);
 		btnProduct.setCursor(Cursor.HAND);
+		btnLogout.setCursor(Cursor.HAND);
+		logoutSystem();
+	}
+	
+	public void logoutSystem() {
+		btnLogout.setOnAction(e-> {
+			Alert logoutExe = new Alert(Alert.AlertType.CONFIRMATION);
+			
+			ButtonType btnOk = new ButtonType("Sair");
+			ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+			
+			logoutExe.initOwner(btnLogout.getScene().getWindow());
+			logoutExe.setTitle("Sair");
+			logoutExe.setHeaderText("Deseja realmente sair?");
+			logoutExe.setContentText("Ao sair o usuário terá que logar novamente no sistema");
+			logoutExe.getButtonTypes().setAll(btnOk,btnCancel);
+			logoutExe.showAndWait().ifPresent(a -> {
+				if (a == btnOk) {
+					try {
+						loginScene();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			});
+			
+		});
+	}
+	public void loginScene() throws IOException {
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
 	}
 	
 }
