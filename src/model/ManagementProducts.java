@@ -156,12 +156,34 @@ public abstract class ManagementProducts {
 		return newlist;
 	}
 	
-	
-	public static ArrayList<Product> convertInProductList(ArrayList<Integer> listId){
+	/** Metodo para converter uma lista de id' de produtos em uma lista de produtos
+	 * 
+	 * @param listId - Lista de ids
+	 * @return A lista de produtos
+	 */
+	public static ArrayList<Product> convertIdProductList(ArrayList<Integer> listId){
 		ArrayList<Product> newList = new ArrayList<Product>();
 		Product p;
 		for(int i=0; i<listId.size(); i++) {
 			p = getOne(listId.get(i));
+			if (p != null) {
+				newList.add(p);
+			}
+		}
+		return newList;
+	}
+	
+	
+	/** Metodo para converter uma lista de ingredientes de produtos em uma lista de produtos
+	 * 
+	 * @param listId - Lista de ingredientes
+	 * @return A lista de produtos
+	 */
+	public static ArrayList<Product> convertIngredProductList(ArrayList<Ingredients> listIngred){
+		ArrayList<Product> newList = new ArrayList<Product>();
+		Product p;
+		for(int i=0; i<listIngred.size(); i++) {
+			p = getOne(listIngred.get(i).getId());
 			if (p != null) {
 				newList.add(p);
 			}

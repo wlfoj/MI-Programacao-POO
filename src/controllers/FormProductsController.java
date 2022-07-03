@@ -24,7 +24,7 @@ import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementProducts;
 import model.Product;
-import utils.AlertsController;
+import utils.Alerts;
 
 public class FormProductsController implements Initializable {
 
@@ -61,11 +61,11 @@ public class FormProductsController implements Initializable {
 				createProduct();
 				aux = false;
 			} catch (NegativePriceEntity e) {
-				AlertsController.alertErrorDate(e.getMessage(), "Valor do produto negativo","Usuário por favor preencher com valores acima de 0" );
+				Alerts.alertError(e.getMessage(), "Valor do produto negativo","Usuário por favor preencher com valores acima de 0" );
 			} catch (InsufficientQuantityProducts e) {
-				AlertsController.alertErrorDate(e.getMessage(), "Quantidade de produtos insuficiente","Usuário por favor preencher com quantidade de produtos suficiente" );
+				Alerts.alertError(e.getMessage(), "Quantidade de produtos insuficiente","Usuário por favor preencher com quantidade de produtos suficiente" );
 			} catch (DateInvalid e) {
-				AlertsController.alertErrorDate(e.getMessage(),"Data de validade anterior a atual", "Usuário por favor preencher com data posterior a atual" );
+				Alerts.alertError(e.getMessage(),"Data de validade anterior a atual", "Usuário por favor preencher com data posterior a atual" );
 			}
 		// Caso tenha o id selecionado
 		} else {
@@ -73,11 +73,11 @@ public class FormProductsController implements Initializable {
 				editProduct();
 				aux = false;
 			} catch (DateInvalid e) {
-				AlertsController.alertErrorDate(e.getMessage(),"Data de validade anterior a atual", "Usuário por favor preencher com data posterior a atual" );
+				Alerts.alertError(e.getMessage(),"Data de validade anterior a atual", "Usuário por favor preencher com data posterior a atual" );
 			} catch (InsufficientQuantityProducts e) {
-				AlertsController.alertErrorDate(e.getMessage(), "Quantidade de produtos insuficiente","Usuário por favor preencher com quantidade de produtos suficiente" );
+				Alerts.alertError(e.getMessage(), "Quantidade de produtos insuficiente","Usuário por favor preencher com quantidade de produtos suficiente" );
 			} catch (NegativePriceEntity e) {
-				AlertsController.alertErrorDate(e.getMessage(), "Valor do produto negativo","Usuário por favor preencher com valores acima de 0" );
+				Alerts.alertError(e.getMessage(), "Valor do produto negativo","Usuário por favor preencher com valores acima de 0" );
 			}
 		}
     	// Se passar pelas etapas sem receber uma exce��o, volta para tela anterior

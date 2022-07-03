@@ -64,7 +64,7 @@
       </AnchorPane>
       <AnchorPane layoutX="317.0" layoutY="111.0" prefHeight="253.0" prefWidth="283.0">
          <children>
-            <TableView fx:id="tableProducts" layoutY="46.0" onMouseClicked="#clickLine" onSort="#tableLine" prefHeight="207.0" prefWidth="283.0">
+            <TableView fx:id="tableProducts" layoutY="46.0" onMouseClicked="#clickLine" prefHeight="207.0" prefWidth="283.0">
               <columns>
                 <TableColumn fx:id="columnId" prefWidth="47.0" text="Id" />
                 <TableColumn fx:id="columnName" prefWidth="235.0" text="Produto" />

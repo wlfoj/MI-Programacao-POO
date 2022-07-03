@@ -9,6 +9,8 @@ package model;
 public class Ingredients {
 	private int id;// id do produto
 	private int qtd;// quantidade
+	private String medida;// unidade de medida para a quantidade. Ex. 15Kg, 2L
+	private String name;// nome do produto
 	
 	public int getId() {
 		return id;
@@ -24,5 +26,21 @@ public class Ingredients {
 
 	public void setQtd(int qtd) {
 		this.qtd = qtd;
+	}
+
+	public String getMedida() {
+		return medida;
+	}
+
+	public void setMedida(String medida) {
+		this.medida = medida;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

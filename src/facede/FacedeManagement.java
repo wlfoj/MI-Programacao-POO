@@ -27,6 +27,7 @@ import model.User;
 
 public abstract class FacedeManagement {
 	public static void initData() throws NullFieldException, ObjectRegistred, NegativePriceEntity, InsufficientQuantityProducts, DateInvalid, ListEmptyComposition {
+		// BLOCO DE USUARIO
 		User u = new User();
 		u.setLogin("0");
 		u.setPass("0");
@@ -45,6 +46,7 @@ public abstract class FacedeManagement {
 		a.setName("Pedro Henrique Cruz");
 		ManagementUsers.addUser(a);
 		
+		// BLOCO DE CLIENTES
 		Costumer cliente0 = new Costumer();
 		cliente0.setCpf("44022245200");
 		cliente0.setEmail("testador@exemplo.com");
@@ -59,8 +61,9 @@ public abstract class FacedeManagement {
 		cliente1.setTelefone("75-984349255");
 		ManagementCostumer.addCostumer(cliente1);
 		
+		// BLOCO DE PRODUTOS
 		Product p1 = new Product();
-		p1.setMedida("L");
+		p1.setMedida("Kg");
 		p1.setName("Tomate");
 		p1.setPrice(1.55f);
 		p1.setQtd(50);
@@ -68,7 +71,7 @@ public abstract class FacedeManagement {
 		ManagementProducts.addProduct(p1);
 		
 		Product p2 = new Product();
-		p2.setMedida("L");
+		p2.setMedida("Kg");
 		p2.setName("Alface");
 		p2.setPrice(2f);
 		p2.setQtd(44);
@@ -77,20 +80,21 @@ public abstract class FacedeManagement {
 		
 		Product p3 = new Product();
 		p3.setMedida("Kg");
-		p3.setName("Pão");
+		p3.setName("Pao");
 		p3.setPrice(2.3f);
 		p3.setQtd(78);
 		p3.setValidity(LocalDate.of(2022, 11, 23));
 		ManagementProducts.addProduct(p3);
 		
 		Product p4 = new Product();
-		p4.setMedida("Kg");
-		p4.setName("Bolo de Chocolate");
-		p4.setPrice(23f);
+		p4.setMedida("l");
+		p4.setName("Leite");
+		p4.setPrice(3.84f);
 		p4.setQtd(55);
 		p4.setValidity(LocalDate.now());
 		ManagementProducts.addProduct(p4);
 		
+		// BLOCO DE FORNECEDOR
 		Provider provider = new Provider();
 		ArrayList<Integer> p0 = new ArrayList<Integer>();
 		p0.add(0); //id que tem nos produtos verificar se o id foi deletado
@@ -110,7 +114,10 @@ public abstract class FacedeManagement {
 		provider2.setProducts(pv);
 		ManagementProvider.addProvider(provider2);
 		
+		// BLOCO DE INGREDIENTES E PRATOS
 		Ingredients ing = new Ingredients();
+		ing.setMedida("Kg");
+		ing.setName("Tomate");
 		ing.setId(0);
 		ing.setQtd(2);
 		ArrayList<Ingredients> c1 = new ArrayList<Ingredients>();
@@ -126,6 +133,8 @@ public abstract class FacedeManagement {
 		Item item2 = new Item();
 		Ingredients ing2 = new Ingredients();
 		ing2.setId(3); //id que exista no produtos
+		ing.setMedida("L");
+		ing.setName("Leite");
 		ing2.setQtd(2);
 		ArrayList<Ingredients> c2 = new ArrayList<Ingredients>();
 		c2.add(ing2);
@@ -136,6 +145,7 @@ public abstract class FacedeManagement {
 		item2.setComposition(c2);
 		ManagementItens.addItem(item2);
 		
+		// BLOCO DE VENDAS
 		Sale venda = new Sale();
 		venda.setPaymentMethod("Avista");
 		ArrayList<Integer> aaa = new ArrayList<Integer>();
@@ -145,7 +155,8 @@ public abstract class FacedeManagement {
 		ManagementSales.addSale(venda);
 		
 	}
-	//METODOS PARA CRIAR UM NOVO USUARIO
+	
+	//VER SE TIRA ISSO
 	public static void addUser(String name, String login, String pass, String type) throws NullFieldException, ObjectRegistred {
 		if (type == "Administrador") {
     		Administrator u = new Administrator();

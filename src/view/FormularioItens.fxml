@@ -85,15 +85,15 @@
             <TextField fx:id="inputCategory" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <TableView fx:id="tableProductes" layoutX="274.0" layoutY="164.0" onMouseClicked="#clickLine" prefHeight="200.0" prefWidth="326.0">
+      <TableView fx:id="tableProducts" layoutX="274.0" layoutY="164.0" onMouseClicked="#clickLine" prefHeight="200.0" prefWidth="326.0">
         <columns>
           <TableColumn fx:id="columnProduct" prefWidth="96.0" text="Produto" />
           <TableColumn fx:id="columnQtd" prefWidth="122.0" text="Quantidade" />
             <TableColumn fx:id="columnMedida" prefWidth="97.0" text="Medida" />
         </columns>
       </TableView>
-      <ComboBox fx:id="comboBoxProdutos" layoutX="274.0" layoutY="129.0" onMouseClicked="#clickComboProduct" prefHeight="27.0" prefWidth="121.0" promptText="Produtos" />
-      <TextField fx:id="inputQuatity" disable="true" layoutX="399.0" layoutY="129.0" prefHeight="27.0" prefWidth="79.0" promptText="Quantidade" />
+      <ComboBox fx:id="comboBoxProdutos" layoutX="274.0" layoutY="129.0" prefHeight="27.0" prefWidth="121.0" promptText="Produtos" />
+      <TextField fx:id="inputQuatity" layoutX="399.0" layoutY="129.0" prefHeight="27.0" prefWidth="79.0" promptText="Quantidade" />
       <Button fx:id="btnAdicionar" layoutX="510.0" layoutY="127.0" mnemonicParsing="false" onAction="#eventAdicionar" prefHeight="30.0" prefWidth="79.0" text="Adicionar" />
       <Label fx:id="labelUnd" layoutX="474.0" layoutY="129.0" prefHeight="27.0" prefWidth="36.0" />
    </children>

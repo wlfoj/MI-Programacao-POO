@@ -35,33 +35,6 @@ public class ItensController implements Initializable {
 
 	ObservableList<Item> observableListItem;
 	
-	private Integer idSelected;
-	
-	/**Evento atribuido no botao de voltar para retornar ao menu
-	 * 
-	 * @param e
-	 * @throws IOException
-	 */
-	@FXML
-	private void actionBack(ActionEvent e) throws IOException {
-		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
-		Scene cena = new Scene(anchor);
-		Main.setScene(cena);
-	}
-	
-	 /**Evento de click para adicionar um novo Cardapio
-     * 
-     * @param event
-     * @throws IOException
-     */
-    @FXML
-    void actionCreate(ActionEvent event) throws IOException {
-    	Main.setIdSelected(-1);
-		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioItens.fxml"));
-		Scene cena = new Scene(anchor);
-		Main.setScene(cena);
-    }
-    
 	@FXML
     private Button btnBack, btnEdit, btnCreate, btnDelete;
     
@@ -82,6 +55,34 @@ public class ItensController implements Initializable {
     
     @FXML
     private TableView<Item> tableView;
+	
+	private Integer idSelected;
+	
+	/**Metodo atribuido no botao de voltar para retornar ao menu
+	 * 
+	 * @param e
+	 * @throws IOException
+	 */
+	@FXML
+	private void actionBack(ActionEvent e) throws IOException {
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+	}
+	
+	 /**Metodo de click para adicionar um novo Cardapio
+     * 
+     * @param event
+     * @throws IOException
+     */
+    @FXML
+    void actionCreate(ActionEvent event) throws IOException {
+    	Main.setIdSelected(-1);
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioItens.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+    }
+  
     
     /**Evento de click para editar o cardapio
 	 * 
@@ -96,7 +97,7 @@ public class ItensController implements Initializable {
 		Main.setScene(cena);
     }
     
-    /**Evento de click para selecionar determinada linha da tabela
+    /**Metodo para selecionar um prato da tabela
      * 
      * @param event
      */

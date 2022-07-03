@@ -241,18 +241,19 @@ public class FormProviderController implements Initializable {
 		    }
 		));
 		
+		// Se for editar um novo fornecedor, preenche os campos e tabela
 		if (Main.getIdSelected() != -1) {
 			Provider p = ManagementProvider.getOne(Main.getIdSelected());
 			inputName.setText(p.getName());
 			inputCnpj.setText(p.getCnpj());
 			inputAdress.setText(p.getAddress());
-			tableViewList = ManagementProducts.convertInProductList(p.getProducts());
+			tableViewList = ManagementProducts.convertIdProductList(p.getProducts());
 		}
+		// Preenchendo o combo box com a lista de produtos
 		comboNameList = new ArrayList<String>();
-		Product p;
-		//comboProducts.setValue(p);
 		listAllProducts = ManagementProducts.listAllProducts();
-		
+		Product p;
+		// Percorrendo todos os produtos e adicionando só o nome na lista
 		for (int i = 0; i < listAllProducts.size(); i++) {
 			p = listAllProducts.get(i);
 			// Adicionando na lista do comboBox
@@ -260,7 +261,7 @@ public class FormProviderController implements Initializable {
 			// Adicionando na hash pro futuro
 			HashMapProducts.put(p.getName(), p.getId());
 		}
-		// Lendo os produtos no combo
+		// Setando os produtos no combo
 		comboProducts.getItems().setAll(comboNameList);
 		refreshTableViewProducts();
 	}
