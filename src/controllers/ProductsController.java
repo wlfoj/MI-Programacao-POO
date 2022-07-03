@@ -224,7 +224,6 @@ public class ProductsController implements Initializable {
 	 * @throws Exception
 	 */
 	public void ProductExpiredDate () throws Exception {
-		LocalDate data = LocalDate.now();
 		ArrayList<Product> list;
 		
 		    TextInputDialog textInput = new TextInputDialog();
@@ -236,7 +235,7 @@ public class ProductsController implements Initializable {
 			input = textInput.showAndWait();
 			if(input.isPresent() == true) {
 				try {
-					list = ManagementProducts.listProductsInExpiration(Integer.parseInt(input.get()), data);
+					list = ManagementProducts.listProductsInExpiration(Integer.parseInt(input.get()));
 					Relatorio.relatorioEstoque(list, Integer.parseInt(input.get()));;
 				} catch (NumberFormatException ex) {
 					alertNumberFormat();
