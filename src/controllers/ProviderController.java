@@ -38,13 +38,13 @@ public class ProviderController implements Initializable{
 
 	ObservableList<Provider> observableListaProvider; 
 	
-	private Integer idSelected;
+	private Integer idSelected;// Id do fornecedor selecionado na tabela
 
 	@FXML
     private Button btnBack, btnCreate, btnEdit, btnDelete, btnPrint;
 	
 	@FXML
-    private ComboBox<String> comboBoxPrint;
+    private ComboBox<String> comboBoxPrint;// ComboBox para selecionar o tipo de relatório
 	private String[] lista = {"Relatorio completo", "Fornecedor por Produto"};
 	
     @FXML
@@ -63,9 +63,9 @@ public class ProviderController implements Initializable{
     @FXML
     private TableView<Provider> tableView;
 	
-    /**Evento atribuido no botao de voltar para retornar ao menu
+    /**Metodo atribuido no botao de voltar para retornar ao menu
      * 
-     * @param e
+     * @param e - Evento disparado ao clicar no botao
      * @throws IOException
      */
 	@FXML
@@ -75,9 +75,10 @@ public class ProviderController implements Initializable{
 		Main.setScene(cena);
 	}
 	
-	/**Evento de click para selecionar determinada linha da tabela
+	
+	/**Metodo para selecionar um fornecedor da tabela
 	 * 
-	 * @param event
+	 * @param event - Evento disparado ao clicar em uma linha na tabela
 	 */
     @FXML
     void clickLine(MouseEvent event) {
@@ -89,9 +90,9 @@ public class ProviderController implements Initializable{
     	btnDelete.setDisable(false);
     }
     
-    /**Evento de click para editar o Fornecedor
+    /**Metodo para editar o Fornecedor
      * 
-     * @param event
+     * @param event - Evento disparado ao clicar no botao editar
      * @throws IOException
      */
     @FXML
@@ -102,9 +103,9 @@ public class ProviderController implements Initializable{
 		Main.setScene(cena);
     }
 	
-    /**Evento para criar um novo Fornecedor
+    /**Metodo para criar um novo Fornecedor
      * 
-     * @param event
+     * @param event - Evento disparado ao clicar no botao criar
      * @throws IOException
      */
     @FXML
@@ -159,9 +160,9 @@ public class ProviderController implements Initializable{
 		
 	}
 	
-	/**Evento para imprimir relatorios de fornecedores
+	/**Metodo para imprimir o relatorio selecionado de fornecedores
 	 * 
-	 * @param event
+	 * @param event - Evento disparado ao clicar no botao de imprimir
 	 */
 	@FXML
     void eventPrint(ActionEvent event) {
@@ -171,8 +172,9 @@ public class ProviderController implements Initializable{
 			providerPerProduct();
 		}
     }
+	
 
-	/**Metodo para carregar a listView da classe e formatar as celulas
+	/**Metodo para atualizar a listView da classe e formatar as celulas
 	 * 
 	 */
 	public void refreshTableView() {
@@ -185,7 +187,11 @@ public class ProviderController implements Initializable{
 		columnCnpj.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
 	}
 	
+	/**Metodo para gerar o relatorio de todos os fornecedores
+	 * 
+	 */
 	public void providerAll() {
+		//VAI FICAR MELHOR SE BOTAR EM UM FACE, PQ ISSO NÃO É TAREFA DO CONTROLLER
 		ArrayList<Provider> list = ManagementProvider.listAllProvider();
 		int qtdTotal = list.size();
 		
@@ -197,7 +203,11 @@ public class ProviderController implements Initializable{
 		}
 	}
 	
+	/**Metodo para gerar o relatorio de fornecedores por produto
+	 * 
+	 */
 	public void providerPerProduct() {
+		//VAI FICAR MELHOR SE BOTAR EM UM FACE, PQ ISSO NÃO É TAREFA DO CONTROLLER
 		int idProduct = 0;
 		ArrayList<Provider> list;
 		int qtdTotal;

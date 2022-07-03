@@ -33,7 +33,7 @@ import java.util.Map;
 import java.util.ArrayList;
 
 public class FormProviderController implements Initializable {
-	private Integer idSelected;
+	private Integer idSelected;// id do produto fornecido, selecionado da tabela
 	// COMPONENTES DA JAVAFX
     @FXML
     private Button btnAddProduct,btnBack,btnDeleteProduct,btnSave;
@@ -44,8 +44,9 @@ public class FormProviderController implements Initializable {
     
     // ESTRUTURA DE DADOS PRO COMBOBOX
     private static ArrayList<String> comboNameList;
-    private static ArrayList<Product> listAllProducts;
+    private static ArrayList<Product> listAllProducts;// Lista de produtos utilizada no combobox
     private ArrayList<Product> tableViewList = new ArrayList<Product>();
+    // Map que com a key sendo o nome do produto e o value o id do mesmo
     private static Map<String, Integer> HashMapProducts = new HashMap<String,Integer>();
 
     ObservableList<Product> observableListaProduct; 
@@ -59,6 +60,10 @@ public class FormProviderController implements Initializable {
     @FXML
     private TableView<Product> tableProducts;
 
+    /**Metodo para adicionar um produto na lista de produtos fornecidos pelo provider
+     * 
+     * @param event - Evento disparado ao clicar no botao de adicionar
+     */
     @FXML
     void actionAddProduct(ActionEvent event) {
     	Integer id;
@@ -74,17 +79,31 @@ public class FormProviderController implements Initializable {
     	}
     }
     
+    /**Metodo para retornar a tela anterior
+     * 
+     * @param e - Evento disparado ao clicar no botão de voltar
+     * @throws IOException
+     */
     @FXML
     void actionBack(ActionEvent event) throws IOException {
     	backToProvider();
     }
 
+	/**Metodo para retornar a tela de fornecedor
+	 * 
+	 * @throws IOException
+	 */
     private void backToProvider() throws IOException {
     	AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProvider.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
     }
     
+    
+    /**Metodo para deletar um produto da lista de produtos fornecidos
+     * 
+     * @param event - Evento disparado ao clicar no botao deletar
+     */
     @FXML
     void actionDeleteProduct(ActionEvent event) {
     	Product p;
@@ -98,6 +117,11 @@ public class FormProviderController implements Initializable {
     	refreshTableViewProducts();
     }
 
+    
+    /**Metodo para selecionar um produto na tabela de produtos fornecidos
+     * 
+     * @param event - Evento disparado ao clicar em uma linha da tabela
+     */
     @FXML
     void clickLine(MouseEvent event) {
     	btnDeleteProduct.setDisable(false);
@@ -106,12 +130,13 @@ public class FormProviderController implements Initializable {
     		idSelected =p.getId();
     	}
     }
-
-    @FXML
-    void tableLine(ActionEvent event) {
-    	
-    }
     
+    
+    /** Metodo para salvar as informações inseridas no formulario
+     * 
+     * @param event - Evento disparado ao clicar no botao salvar
+     * @throws IOException
+     */
     @FXML
     void actionSave(ActionEvent event) throws IOException {
     	boolean aux = true;
@@ -144,6 +169,10 @@ public class FormProviderController implements Initializable {
 		}
     }
     
+    /**Metodo para criar um novo fornecedor
+     * 
+     * @throws NullFieldException - Excecao para campos vazios
+     */
     private void createProvider() throws NullFieldException {
     	ArrayList<Integer> idListProducts = new ArrayList<Integer>();
     	Provider p = new Provider();
@@ -160,6 +189,11 @@ public class FormProviderController implements Initializable {
 		ManagementProvider.addProvider(p);
     }
     
+    
+    /**Metodo para editar um fornecedor
+     * 
+     * @throws NullFieldException - Excecao para campos vazios
+     */
     private void editProvider() throws NullFieldException {
     	ArrayList<Integer> idListProducts = new ArrayList<Integer>();
     	Provider p = new Provider();
@@ -175,6 +209,9 @@ public class FormProviderController implements Initializable {
 		ManagementProvider.update(Main.getIdSelected(), p);
     }
     
+    /**Metodo para atualizar a tabela de produtos
+     * 
+     */
     public void refreshTableViewProducts() {
 		observableListaProduct = FXCollections.observableArrayList(tableViewList);
 		tableProducts.setItems(observableListaProduct);
@@ -183,6 +220,11 @@ public class FormProviderController implements Initializable {
 		columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
     }
     
+    
+    /**Metodo executado ao inicializar a aplicacao.
+     * Insere mascaras nos inputs e preenchi campos, caso tenha selecionado editar na tela anterior
+     * 
+     */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnAddProduct.setCursor(Cursor.HAND);
