@@ -48,10 +48,10 @@ public abstract class FacedeManagement {
 		
 		// BLOCO DE CLIENTES
 		Costumer cliente0 = new Costumer();
-		cliente0.setCpf("44022245200");
-		cliente0.setEmail("testador@exemplo.com");
-		cliente0.setName("testador colossal");
-		cliente0.setTelefone("75-981020666");
+		cliente0.setCpf("000000000");
+		cliente0.setEmail("vazio@exemplo.com");
+		cliente0.setName("nao especificado");
+		cliente0.setTelefone("00-000000000");
 		ManagementCostumer.addCostumer(cliente0);
 		
 		Costumer cliente1 = new Costumer();
