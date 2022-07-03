@@ -17,6 +17,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -92,6 +93,15 @@ public class FormSalesController implements Initializable {
 		comboBoxPaymentMethod.getItems().setAll(lista);
 		
 		refreshTableView();
+		
+		//Mascara para impedir que o usuario ponha dados de String na textField de Float
+		inputTotalValue.setTextFormatter(new TextFormatter<>(c -> {
+		    if (!c.getControlNewText().matches("\\d*(\\.\\d*)?")) 
+		        return null;
+		    else
+		        return c;
+		    }
+		));
 		
 	}
 	
