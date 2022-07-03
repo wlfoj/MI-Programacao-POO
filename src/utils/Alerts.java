@@ -2,6 +2,7 @@ package utils;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 
@@ -21,6 +22,8 @@ public class Alerts {
 	 */
 	public static void alertError(String msgTitle ,String msgDescript ,String msgDescriptDetail) {
 		Alert alert = new Alert(AlertType.ERROR);
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image("iconapp.png"));
 		alert.setTitle(msgTitle);
 		alert.setHeaderText(msgDescript);
 		alert.setContentText(msgDescriptDetail);
@@ -36,6 +39,8 @@ public class Alerts {
 	 */
 	public static void alertInformation(String msgTitle ,String msgDescript ,String msgDescriptDetail) {
 		Alert alert = new Alert(AlertType.INFORMATION);
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image("iconapp.png"));
 		alert.setTitle(msgTitle);
 		alert.setHeaderText(msgDescript);
 		alert.setContentText(msgDescriptDetail);

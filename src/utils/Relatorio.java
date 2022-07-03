@@ -20,6 +20,13 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import model.Item;
+import model.ManagementItens;
+import model.ManagementProducts;
+import model.Product;
+import model.Provider;
+import model.Sale;
+
 /** Classe responsavel por gerar os relatorios em PDF
  * 
  * @author Washington Luis Ferreira de Oliveira Junior

@@ -3,6 +3,7 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -20,9 +21,12 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import main.Main;
 import model.ManagementProvider;
 import model.Provider;
@@ -36,6 +40,8 @@ import utils.Relatorio;
  */
 public class ProviderController implements Initializable{
 
+	private Optional<String> input;
+	
 	ObservableList<Provider> observableListaProvider; 
 	
 	private Integer idSelected;// Id do fornecedor selecionado na tabela
@@ -163,9 +169,10 @@ public class ProviderController implements Initializable{
 	/**Metodo para imprimir o relatorio selecionado de fornecedores
 	 * 
 	 * @param event - Evento disparado ao clicar no botao de imprimir
+	 * @throws Exception 
 	 */
 	@FXML
-    void actionPrint(ActionEvent event) {
+    void actionPrint(ActionEvent event) throws Exception {
 		if (comboBoxPrint.getValue() == "Relatorio completo") {
 			providerAll();
 		}else{
@@ -204,22 +211,21 @@ public class ProviderController implements Initializable{
 	}
 	
 	/**Metodo para gerar o relatorio de fornecedores por produto
+	 * @throws Exception 
 	 * 
 	 */
-	public void providerPerProduct() {
-		//VAI FICAR MELHOR SE BOTAR EM UM FACE, PQ ISSO N�O � TAREFA DO CONTROLLER
-		int idProduct = 0;
-		ArrayList<Provider> list;
-		int qtdTotal;
-		
-		list = ManagementProvider.listProviderPerProduct(idProduct);
-		qtdTotal = list.size();
-		
-		try {
+	public void providerPerProduct() throws Exception {
+		TextInputDialog textInput = new TextInputDialog();
+		textInput.setTitle("ID do produto");
+		textInput.getDialogPane().setHeaderText("Informe o ID do produto");
+		textInput.getDialogPane().setContentText("Informe o ID do produto para gerar o relatorio:");
+		Stage stage = (Stage) textInput.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image("iconapp.png"));
+		input = textInput.showAndWait();
+		if(input.isPresent()) {
+			ArrayList<Provider> list = ManagementProvider.listProviderPerProduct(Integer.parseInt(input.get()));
+			int qtdTotal = list.size();
 			Relatorio.relatorioFornecedor(list, qtdTotal);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 }

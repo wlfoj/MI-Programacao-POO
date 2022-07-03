@@ -1,7 +1,6 @@
 package model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import exceptions.InsufficientQuantityProducts;
 
@@ -57,7 +56,7 @@ public abstract class ManagementSales {
 	public static ArrayList<Sale> listSalePerPeriod(LocalDateTime dataInicial, LocalDateTime dataFinal){
 		ArrayList<Sale> SalePerPeriod = new ArrayList<Sale>();
 		Sale s;
-		//data1 é depois de data2?
+		//data1 ï¿½ depois de data2?
 		
 		for(int i=0; i<list.size(); i++) {
 			s = list.get(i);
@@ -85,10 +84,10 @@ public abstract class ManagementSales {
 			for (int j = 0; j < todosPratos.size(); j++){// Percorrendo a lista de pratos no cardÃ¡pio
 				if(pratosVenda.get(i) == todosPratos.get(j).getId()){ // Verificando se o prato Ã© o mesmo
 					ArrayList<Ingredients> ingredientes = todosPratos.get(j).getComposition();
-					// Buscando a relação entre pratos e ingredientes
+					// Buscando a relaï¿½ï¿½o entre pratos e ingredientes
 					for (int k = 0; k < ingredientes.size(); k++){// Percorre a lista de ingredientes
 						for (int c = 0; c < todosProdutos.size(); c++){// Percorre a lista de produtos
-							//caso não tenha o produto utilizado como ingrediente
+							//caso nï¿½o tenha o produto utilizado como ingrediente
 							if(ManagementProducts.getOne(ingredientes.get(k).getId())==null) {
 								throw new InsufficientQuantityProducts();
 							}
