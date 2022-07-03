@@ -2,11 +2,13 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import exceptions.InsufficientQuantityProducts;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,13 +27,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
-import model.Ingredients;
 import model.Item;
 import model.ManagementItens;
-import model.ManagementProducts;
 import model.ManagementSales;
-import model.Product;
 import model.Sale;
+import utils.Alerts;
 
 public class FormSalesController implements Initializable {
 
@@ -167,14 +167,78 @@ public class FormSalesController implements Initializable {
     	else {
     		inputTotalValue.setText("0");
     	}
-
     	refreshTableView();
     }
 
+    /**Metodo para salvar as informacoes inseridas no formulario
+     * 
+     * @param event - Evento disparado ao clicar no botao registrar
+     * @throws IOException
+     */
     @FXML
-    void actionSave(ActionEvent event) {
-    	// ver se valor total do obj é diferente do input
+    void actionSave(ActionEvent event) throws IOException {
+    	boolean aux = true;
+    	// Verifica nï¿½o existe um id selecionado
+		if (Main.getIdSelected() == -1) {
+			try {
+				createSale();
+				aux = false;
+			} catch (InsufficientQuantityProducts e) {
+				String desc = "Quantidade insuficiente";
+				String detailDesc = "Nao tem produto suficiente para fazer esse prato";
+				Alerts.alertError(e.getMessage(), desc, detailDesc);
+			}
+		}
+		// Se for editar uma venda
+		else {
+			editSale();
+			aux = false;
+		}
+		// Se passar pelas etapas sem receber uma exceï¿½ï¿½o
+		if (aux == false) {
+			actionBackToSale();
+		}
     }
+    
+    
+    /**Metodo para utilizar as informacoes do formulario para registrar nova venda
+     * @throws InsufficientQuantityProducts 
+     * 
+     */
+    public void createSale() throws InsufficientQuantityProducts {
+    	Sale s = new Sale();
+    	s.setIdCostumer(Integer.parseInt(inputIdCostume.getText()));
+    	s.setPaymentMethod(comboBoxPaymentMethod.getValue());
+    	
+    	// Pegando somente o id dos pratos da listview
+    	ArrayList<Integer> listId = new ArrayList<Integer>();
+    	for (int i = 0; i < tableViewList.size(); i++) {
+    		listId.add(tableViewList.get(i).getId());
+		}
+    	s.insertItens(listId);
+    	
+    	ManagementSales.addSale(s);
+    	
+    }
+    
+    /**Metodo para utilizar as informacoes do formulario para editar uma venda
+     * 
+     */
+    public void editSale() {
+    	Sale s = new Sale();
+    	s.setIdCostumer(Integer.parseInt(inputIdCostume.getText()));
+    	s.setPaymentMethod(comboBoxPaymentMethod.getValue());
+    	
+    	// Pegando somente o id dos pratos da listview
+    	ArrayList<Integer> listId = new ArrayList<Integer>();
+    	for (int i = 0; i < tableViewList.size(); i++) {
+    		listId.add(tableViewList.get(i).getId());
+		}
+    	s.insertItens(listId);
+    	
+    	ManagementSales.update(Main.getIdSelected(), s);
+    }
+    
     
     /**Metodo de inicializacao do componente, controi mascaras para inputs e preenche algumas estruturas
      * quando se escolhe editar uma venda
