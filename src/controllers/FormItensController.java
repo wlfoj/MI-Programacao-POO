@@ -24,6 +24,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -45,7 +46,7 @@ public class FormItensController implements Initializable {
     @FXML
     private ComboBox<String> comboBoxProdutos;// O combo box que recebe a lista de nomes
     // ESTRUTURA DE DADOS PRO COMBOBOX
-    private static ArrayList<String> comboNameList;// Lista de nome de produtos que é exibida no combo
+    private static ArrayList<String> comboNameList;// Lista de nome de produtos que ï¿½ exibida no combo
     private static ArrayList<Product> listAllProducts;// Lista de produtos utilizada no combobox
     
     private ArrayList<Ingredients> tableViewList = new ArrayList<Ingredients>();// Lista de ingredientes utilizados()
@@ -82,8 +83,8 @@ public class FormItensController implements Initializable {
      * @throws IOException
      */
 	@FXML
-    void eventBack(ActionEvent event) throws IOException {
-		backToItem();
+    void actionBack(ActionEvent event) throws IOException {
+		actionBackToItem();
     }
 
     
@@ -106,8 +107,7 @@ public class FormItensController implements Initializable {
      * @param event - Evento disparado ao clicar no botao de adicionar
      */
     @FXML
-    void eventAdicionar(ActionEvent event) {
-    	//RETIRAR ESSE NOME EVENT
+    void actionAdicionar(ActionEvent event) {
     	Integer id;
     	Product p;
     	// Pega o nome da combobox, converte para id
@@ -131,7 +131,7 @@ public class FormItensController implements Initializable {
      * @param event - Evento disparado ao clicar no botao deletar
      */
     @FXML
-    void eventDelete(ActionEvent event) {
+    void actionDelete(ActionEvent event) {
     	Ingredients ing;
     	// Procurando pelo produto selecionado
     	for (int i = 0; i < tableViewList.size(); i++) {
@@ -150,7 +150,7 @@ public class FormItensController implements Initializable {
      * @throws IOException 
      */
     @FXML
-    void eventSave(ActionEvent event) throws IOException {
+    void actionSave(ActionEvent event) throws IOException {
     	boolean aux = true;
     	// Verifica nï¿½o existe um id selecionado
 		if (Main.getIdSelected() == -1) {
@@ -162,8 +162,8 @@ public class FormItensController implements Initializable {
 				String detailDesc = "Adicione ingredientes ao seu prato";
 				Alerts.alertError(e.getMessage(), desc, detailDesc);
 			} catch (NegativePriceEntity e) {
-				String desc = "Preço negativo";
-				String detailDesc = "Insira um valor positivo para o preço";
+				String desc = "Preï¿½o negativo";
+				String detailDesc = "Insira um valor positivo para o preï¿½o";
 				Alerts.alertError(e.getMessage(), desc, detailDesc);
 			}
 		}
@@ -178,7 +178,7 @@ public class FormItensController implements Initializable {
 		}
 		// Se passar pelas etapas sem receber uma exceï¿½ï¿½o
 		if (aux == false) {
-			backToItem();
+			actionBackToItem();
 		}
     }
     
@@ -193,8 +193,13 @@ public class FormItensController implements Initializable {
 		i.setName(inputName.getText());
 		i.setCategory(inputCategory.getText());
     	i.setDescription(inputDescription.getText());
-    	i.setPrice(Float.parseFloat(inputValue.getText()));
     	i.setComposition(tableViewList);
+    	//i.setPrice(Float.parseFloat(inputValue.getText()));
+    	if (! inputValue.getText().equals(".")) {
+			i.setPrice(Float.parseFloat(inputValue.getText()));
+		}else {
+			i.setPrice(0);
+		}
     	
 		ManagementItens.addItem(i);
     }
@@ -209,8 +214,13 @@ public class FormItensController implements Initializable {
 		i.setName(inputName.getText());
 		i.setCategory(inputCategory.getText());
     	i.setDescription(inputDescription.getText());
-    	i.setPrice(Float.parseFloat(inputValue.getText()));
+    	//i.setPrice(Float.parseFloat(inputValue.getText()));
     	i.setComposition(tableViewList);
+    	if (! inputValue.getText().equals(".")) {
+			i.setPrice(Float.parseFloat(inputValue.getText()));
+		}else {
+			i.setPrice(0);
+		}
     	
 		ManagementItens.update(Main.getIdSelected(), i);
     }
@@ -232,8 +242,7 @@ public class FormItensController implements Initializable {
      */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// CADÊ A MASCARA DO VALOR???????????????
-
+		
 		// Se for editar um novo fornecedor, preenche os campos e tabela
 		if (Main.getIdSelected() != -1) {
 			Item i = ManagementItens.getOne(Main.getIdSelected());
@@ -241,14 +250,14 @@ public class FormItensController implements Initializable {
 			inputName.setText(i.getName());
 			inputValue.setText(Float.toString(i.getPrice()));
 			inputDescription.setText(i.getDescription());
-			// Pegando a lista de composição e mudando para uma lista de Ingredientes e mudando para uma de produtos
+			// Pegando a lista de composiï¿½ï¿½o e mudando para uma lista de Ingredientes e mudando para uma de produtos
 			tableViewList = i.getComposition();
 		}
 		// Preenchendo o combo box com a lista de produtos
 		comboNameList = new ArrayList<String>();
 		listAllProducts = ManagementProducts.listAllProducts();
 		Product p;
-		// Percorrendo todos os produtos e adicionando só o nome na lista
+		// Percorrendo todos os produtos e adicionando sï¿½ o nome na lista
 		for (int i = 0; i < listAllProducts.size(); i++) {
 			p = listAllProducts.get(i);
 			// Adicionando na lista do comboBox
@@ -259,14 +268,40 @@ public class FormItensController implements Initializable {
 		// Setando os produtos no combo
 		comboBoxProdutos.getItems().setAll(comboNameList);
 		refreshTableViewProducts();
+		
+		//Mascara para impedir que o usuario ponha dados de String na textField de Inteiros
+		inputQuatity.setTextFormatter(new TextFormatter<>(c -> {
+		    if (!c.getControlNewText().matches("[0123456789]*")) 
+		        return null;
+		    else
+		        return c;
+		    }
+		));
+		
+		//Mascara para impedir que o usuario ponha dados de String na textField de Float
+		inputValue.setTextFormatter(new TextFormatter<>(c -> {
+		    if (!c.getControlNewText().matches("\\d*(\\.\\d*)?")) 
+		        return null;
+		    else
+		        return c;
+		    }
+		));
 	}
-
+	
+	/**Metodo para tornar o botao quantidade visivel
+	 * 
+	 * @param event
+	 */
+    @FXML
+    void clickedAddQtd(MouseEvent event) {
+    	btnAdicionar.setDisable(false);
+    }
 	
 	/**Metodo para retornar a tela de Item
 	 * 
 	 * @throws IOException
 	 */
-    private void backToItem() throws IOException {
+    private void actionBackToItem() throws IOException {
     	AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorItens.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);

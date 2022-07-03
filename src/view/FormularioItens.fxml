@@ -29,7 +29,7 @@
                   <Image url="@../../projecticons/pratos.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnBack" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#eventBack" prefHeight="41.0" prefWidth="85.0" text="Voltar">
+            <Button fx:id="btnBack" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#actionBack" prefHeight="41.0" prefWidth="85.0" text="Voltar">
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -43,7 +43,7 @@
       <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;" />
       <AnchorPane layoutY="364.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
-            <Button fx:id="btnDelete" disable="true" layoutX="508.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventDelete" prefHeight="27.0" prefWidth="79.0" text="Deletar">
+            <Button fx:id="btnDelete" disable="true" layoutX="508.0" layoutY="5.0" mnemonicParsing="false" onAction="#actionDelete" prefHeight="27.0" prefWidth="79.0" text="Deletar">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -52,7 +52,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnSave" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventSave" prefHeight="27.0" prefWidth="79.0" text="Salvar">
+            <Button fx:id="btnSave" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#actionSave" prefHeight="27.0" prefWidth="79.0" text="Salvar">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -93,8 +93,8 @@
         </columns>
       </TableView>
       <ComboBox fx:id="comboBoxProdutos" layoutX="274.0" layoutY="129.0" prefHeight="27.0" prefWidth="121.0" promptText="Produtos" />
-      <TextField fx:id="inputQuatity" layoutX="399.0" layoutY="129.0" prefHeight="27.0" prefWidth="79.0" promptText="Quantidade" />
-      <Button fx:id="btnAdicionar" layoutX="510.0" layoutY="127.0" mnemonicParsing="false" onAction="#eventAdicionar" prefHeight="30.0" prefWidth="79.0" text="Adicionar" />
+      <TextField fx:id="inputQuatity" layoutX="399.0" layoutY="129.0" onMouseClicked="#clickedAddQtd" prefHeight="27.0" prefWidth="79.0" promptText="Quantidade" />
+      <Button fx:id="btnAdicionar" disable="true" layoutX="510.0" layoutY="127.0" mnemonicParsing="false" onAction="#actionAdicionar" prefHeight="30.0" prefWidth="79.0" text="Adicionar" />
       <Label fx:id="labelUnd" layoutX="474.0" layoutY="129.0" prefHeight="27.0" prefWidth="36.0" />
    </children>
 </AnchorPane>

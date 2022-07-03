@@ -75,7 +75,7 @@ public class ProductsController implements Initializable {
 	 * @throws IOException
 	 */
 	@FXML
-	private void eventBack(ActionEvent e) throws IOException {
+	private void actionBack(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
@@ -87,7 +87,7 @@ public class ProductsController implements Initializable {
 	 * @throws IOException
 	 */
     @FXML
-    void eventEdit(ActionEvent event) throws IOException {
+    void actionEdit(ActionEvent event) throws IOException {
 		Main.setIdSelected(idSelected);
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioProducts.fxml"));
 		Scene cena = new Scene(anchor);
@@ -100,7 +100,7 @@ public class ProductsController implements Initializable {
      * @throws IOException
      */
     @FXML
-    void eventCreate(ActionEvent event) throws IOException {
+    void actionCreate(ActionEvent event) throws IOException {
 		Main.setIdSelected(-1);
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioProducts.fxml"));
 		Scene cena = new Scene(anchor);

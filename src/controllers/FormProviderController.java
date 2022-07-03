@@ -83,19 +83,19 @@ public class FormProviderController implements Initializable {
     
     /**Metodo para retornar a tela anterior
      * 
-     * @param e - Evento disparado ao clicar no botão de voltar
+     * @param e - Evento disparado ao clicar no botï¿½o de voltar
      * @throws IOException
      */
     @FXML
     void actionBack(ActionEvent event) throws IOException {
-    	backToProvider();
+    	actionBackToProvider();
     }
 
 	/**Metodo para retornar a tela de fornecedor
 	 * 
 	 * @throws IOException
 	 */
-    private void backToProvider() throws IOException {
+    private void actionBackToProvider() throws IOException {
     	AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProvider.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
@@ -134,7 +134,7 @@ public class FormProviderController implements Initializable {
     }
     
     
-    /** Metodo para salvar as informações inseridas no formulario
+    /** Metodo para salvar as informaï¿½ï¿½es inseridas no formulario
      * 
      * @param event - Evento disparado ao clicar no botao salvar
      * @throws IOException
@@ -161,7 +161,7 @@ public class FormProviderController implements Initializable {
 	    }
 		// Se passar pelas etapas sem receber uma exceï¿½ï¿½o
 		if (aux == false) {
-			backToProvider();
+			actionBackToProvider();
 		}
     }
     
@@ -249,7 +249,7 @@ public class FormProviderController implements Initializable {
 		comboNameList = new ArrayList<String>();
 		listAllProducts = ManagementProducts.listAllProducts();
 		Product p;
-		// Percorrendo todos os produtos e adicionando só o nome na lista
+		// Percorrendo todos os produtos e adicionando sï¿½ o nome na lista
 		for (int i = 0; i < listAllProducts.size(); i++) {
 			p = listAllProducts.get(i);
 			// Adicionando na lista do comboBox

@@ -44,7 +44,7 @@ public class ProviderController implements Initializable{
     private Button btnBack, btnCreate, btnEdit, btnDelete, btnPrint;
 	
 	@FXML
-    private ComboBox<String> comboBoxPrint;// ComboBox para selecionar o tipo de relatório
+    private ComboBox<String> comboBoxPrint;// ComboBox para selecionar o tipo de relatï¿½rio
 	private String[] lista = {"Relatorio completo", "Fornecedor por Produto"};
 	
     @FXML
@@ -165,7 +165,7 @@ public class ProviderController implements Initializable{
 	 * @param event - Evento disparado ao clicar no botao de imprimir
 	 */
 	@FXML
-    void eventPrint(ActionEvent event) {
+    void actionPrint(ActionEvent event) {
 		if (comboBoxPrint.getValue() == "Relatorio completo") {
 			providerAll();
 		}else{
@@ -191,7 +191,7 @@ public class ProviderController implements Initializable{
 	 * 
 	 */
 	public void providerAll() {
-		//VAI FICAR MELHOR SE BOTAR EM UM FACE, PQ ISSO NÃO É TAREFA DO CONTROLLER
+		//VAI FICAR MELHOR SE BOTAR EM UM FACE, PQ ISSO Nï¿½O ï¿½ TAREFA DO CONTROLLER
 		ArrayList<Provider> list = ManagementProvider.listAllProvider();
 		int qtdTotal = list.size();
 		
@@ -207,7 +207,7 @@ public class ProviderController implements Initializable{
 	 * 
 	 */
 	public void providerPerProduct() {
-		//VAI FICAR MELHOR SE BOTAR EM UM FACE, PQ ISSO NÃO É TAREFA DO CONTROLLER
+		//VAI FICAR MELHOR SE BOTAR EM UM FACE, PQ ISSO Nï¿½O ï¿½ TAREFA DO CONTROLLER
 		int idProduct = 0;
 		ArrayList<Provider> list;
 		int qtdTotal;

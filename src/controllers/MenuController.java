@@ -16,6 +16,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
+import model.ManagementUsers;
 	
 public class MenuController implements Initializable {
 	
@@ -23,42 +24,42 @@ public class MenuController implements Initializable {
     private Button btnUser, btnProvider, btnSales, btnCostumer, btnItens, btnProduct, btnLogout;
 	
 	@FXML
-	private void eventShowUserScene(ActionEvent e) throws IOException {
+	private void actionShowUserScene(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorUser.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
 	}
 	
 	@FXML
-	private void eventProductShowScene(ActionEvent e) throws IOException {
+	private void actionProductShowScene(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProducts.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
 	}
 	
 	@FXML
-	private void eventCostumerShowScene(ActionEvent e) throws IOException {
+	private void actionCostumerShowScene(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorCostume.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
 	}
 	
 	@FXML
-	private void eventShowProviderScene(ActionEvent e) throws IOException {
+	private void actionShowProviderScene(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProvider.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
 	}
 
 	@FXML
-	private void eventItensShowScene(ActionEvent e) throws IOException {
+	private void actionItensShowScene(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorItens.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
 	}
 	
 	@FXML
-	private void eventShowSalesScene(ActionEvent e) throws IOException {
+	private void actionShowSalesScene(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorSales.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
@@ -74,10 +75,12 @@ public class MenuController implements Initializable {
 		btnItens.setCursor(Cursor.HAND);
 		btnProduct.setCursor(Cursor.HAND);
 		btnLogout.setCursor(Cursor.HAND);
-		logoutSystem();
+		if (logoutSystem() != false) {
+			ManagementUsers.auth(null, null);
+		}
 	}
 	
-	public void logoutSystem() {
+	public boolean logoutSystem() {
 		btnLogout.setOnAction(e-> {
 			Alert logoutExe = new Alert(Alert.AlertType.CONFIRMATION);
 			
@@ -101,6 +104,7 @@ public class MenuController implements Initializable {
 			});
 			
 		});
+		return false;
 	}
 	public void loginScene() throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Login.fxml"));

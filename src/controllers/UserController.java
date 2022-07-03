@@ -24,7 +24,7 @@ import main.Main;
 import model.ManagementUsers;
 import model.User;
 
-/** Classe responsavel pelo controle das ações a serem tomadas com os usuários
+/** Classe responsavel pelo controle das aï¿½ï¿½es a serem tomadas com os usuï¿½rios
  * 
  * @author Washington Luis Ferreira de Oliveira Junior
  * @author Tassio Carvalho Rodrigues
@@ -32,7 +32,7 @@ import model.User;
  */
 public class UserController implements Initializable {
 	
-	//Id do usuário selecionado
+	//Id do usuï¿½rio selecionado
 	private Integer idSelected;
 	
 	ObservableList<User> observableListaUsuarios; 
@@ -41,24 +41,24 @@ public class UserController implements Initializable {
     private TableView<User> tableView;
 
     @FXML
-    private TableColumn<User, String> tipoColuna;// Coluna do tipo de usuário
+    private TableColumn<User, String> tipoColuna;// Coluna do tipo de usuï¿½rio
     
     @FXML
-    private TableColumn<User, String> userColuna;// Coluna do login do usuário
+    private TableColumn<User, String> userColuna;// Coluna do login do usuï¿½rio
 
 	@FXML
-    private TableColumn<User, Integer> idColuna;// Coluna do id do usuário
+    private TableColumn<User, Integer> idColuna;// Coluna do id do usuï¿½rio
 	
 	@FXML
     private Button btnBack, btnAdd, btnEdit, btnDelete;
 	
 	 /**Metodo para criar um novo user
      * 
-     * @param event - Evento disparado ao clicar no botão de criar um usuário
+     * @param event - Evento disparado ao clicar no botï¿½o de criar um usuï¿½rio
      * @throws IOException
      */
 	@FXML
-	private void eventCreate(ActionEvent e) throws IOException {
+	private void actionCreate(ActionEvent e) throws IOException {
 		// Indicando que nï¿½o selecionou ninguï¿½m
 		Main.setIdSelected(-1);
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
@@ -68,11 +68,11 @@ public class UserController implements Initializable {
 	
 	 /**Metodo para editar o User
      * 
-     * @param event - Evento disparado ao clicar no botão de editar o usuário
+     * @param event - Evento disparado ao clicar no botï¿½o de editar o usuï¿½rio
      * @throws IOException
      */
     @FXML
-    void eventEdit(ActionEvent event) throws IOException {
+    void actionEdit(ActionEvent event) throws IOException {
     	// Indicando quem selecionou
     	Main.setIdSelected(idSelected);
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/FormularioUser.fxml"));
@@ -82,11 +82,11 @@ public class UserController implements Initializable {
 
     /**Evento atribuido ao botao de voltar para retornar ao menu
      * 
-     * @param e - Evento disparado ao clicar no Botão de voltar
+     * @param e - Evento disparado ao clicar no Botï¿½o de voltar
      * @throws IOException
      */
 	@FXML
-	private void eventBack(ActionEvent e) throws IOException {
+	private void actionBack(ActionEvent e) throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
@@ -98,12 +98,12 @@ public class UserController implements Initializable {
 	 */
     @FXML
     void clickLine(MouseEvent event) {
-    	// Obtendo o id o usuário selecionado
+    	// Obtendo o id o usuï¿½rio selecionado
     	User p = tableView.getSelectionModel().getSelectedItem();
     	if(p != null) {
     		idSelected = p.getId();
     	}
-    	// Habilitando os botões de edição e de exclusão
+    	// Habilitando os botï¿½es de ediï¿½ï¿½o e de exclusï¿½o
     	btnEdit.setDisable(false);
     	btnDelete.setDisable(false);
     }
@@ -151,7 +151,7 @@ public class UserController implements Initializable {
 			deleteExe.setContentText("Ao apagar as informaÃ§Ãµes nÃ£o serÃ£o mais recuperadas");
 			deleteExe.getButtonTypes().setAll(btnOk,btnCancel);
 			deleteExe.showAndWait().ifPresent(a -> {
-				// Se clicar no botão 'ok' deleta o usuário
+				// Se clicar no botï¿½o 'ok' deleta o usuï¿½rio
 				if (a == btnOk) {
 					ManagementUsers.delete(idSelected);
 					refreshTableView();

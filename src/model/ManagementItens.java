@@ -35,7 +35,7 @@ public abstract class ManagementItens {
 		if (obj.getComposition()==null || obj.getComposition().size()==0){
 			throw new ListEmptyComposition();
 		}
-		if (obj.getPrice() > 0) { 
+		if (obj.getPrice() >= 0) { 
 		obj.setId(lastId++);
 		list.add(obj);
 		}else {

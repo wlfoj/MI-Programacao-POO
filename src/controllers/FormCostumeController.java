@@ -47,7 +47,7 @@ public class FormCostumeController implements Initializable {
 	 * @throws IOException
 	 */
     @FXML
-    void eventSave(ActionEvent event) throws IOException {
+    void actionSave(ActionEvent event) throws IOException {
     	boolean aux = true;
     	// Verifica nï¿½o existe um id selecionado
     	if(Main.getIdSelected() == -1) {
@@ -57,7 +57,7 @@ public class FormCostumeController implements Initializable {
 			} catch (NullFieldException e) {
 				Alerts.alertError(e.getMessage(), "Campos vazios","Preencha todos os campos" );
 			} catch (ObjectRegistred e) {
-				Alerts.alertError(e.getMessage(), "Login registrado","Já existe um usuário com este cpf" );
+				Alerts.alertError(e.getMessage(), "Login registrado","Jï¿½ existe um usuï¿½rio com este cpf" );
 			}
     	}
     	// Caso tenha o id selecionado
@@ -153,7 +153,7 @@ public class FormCostumeController implements Initializable {
 	 * @throws IOException
 	 */
 	@FXML
-	private void eventBack(ActionEvent e) throws IOException {
+	private void actionBack(ActionEvent e) throws IOException {
 		backToCostumer();
 	}
 	

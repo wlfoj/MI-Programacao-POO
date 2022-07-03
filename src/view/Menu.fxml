@@ -30,21 +30,21 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnUser" contentDisplay="TOP" mnemonicParsing="false" onAction="#eventShowUserScene" prefHeight="129.0" prefWidth="213.0" text="Usuários">
+            <Button fx:id="btnUser" contentDisplay="TOP" mnemonicParsing="false" onAction="#actionShowUserScene" prefHeight="129.0" prefWidth="213.0" text="Usuários">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../projecticons/Useres.png" />
                      </image></ImageView>
                </graphic></Button>
-            <Button fx:id="btnProvider" contentDisplay="TOP" mnemonicParsing="false" onAction="#eventShowProviderScene" prefHeight="155.0" prefWidth="236.0" text="Fornecedores" GridPane.columnIndex="1">
+            <Button fx:id="btnProvider" contentDisplay="TOP" mnemonicParsing="false" onAction="#actionShowProviderScene" prefHeight="155.0" prefWidth="236.0" text="Fornecedores" GridPane.columnIndex="1">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../projecticons/Fornecedores.png" />
                      </image></ImageView>
                </graphic></Button>
-            <Button fx:id="btnSales" contentDisplay="TOP" mnemonicParsing="false" onAction="#eventShowSalesScene" prefHeight="109.0" prefWidth="164.0" text="Vendas" GridPane.columnIndex="2">
+            <Button fx:id="btnSales" contentDisplay="TOP" mnemonicParsing="false" onAction="#actionShowSalesScene" prefHeight="109.0" prefWidth="164.0" text="Vendas" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -52,7 +52,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="btnCostumer" contentDisplay="TOP" mnemonicParsing="false" onAction="#eventCostumerShowScene" prefHeight="137.0" prefWidth="206.0" text="Clientes" GridPane.rowIndex="1">
+            <Button fx:id="btnCostumer" contentDisplay="TOP" mnemonicParsing="false" onAction="#actionCostumerShowScene" prefHeight="137.0" prefWidth="206.0" text="Clientes" GridPane.rowIndex="1">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -60,7 +60,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="btnItens" contentDisplay="TOP" mnemonicParsing="false" onAction="#eventItensShowScene" prefHeight="170.0" prefWidth="275.0" text="Pratos" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="btnItens" contentDisplay="TOP" mnemonicParsing="false" onAction="#actionItensShowScene" prefHeight="170.0" prefWidth="275.0" text="Pratos" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <graphic>
                   <ImageView fitHeight="64.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -68,7 +68,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="btnProduct" contentDisplay="TOP" mnemonicParsing="false" onAction="#eventProductShowScene" prefHeight="112.0" prefWidth="222.0" text="Produtos" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button fx:id="btnProduct" contentDisplay="TOP" mnemonicParsing="false" onAction="#actionProductShowScene" prefHeight="112.0" prefWidth="222.0" text="Produtos" GridPane.columnIndex="2">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>

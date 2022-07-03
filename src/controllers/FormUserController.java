@@ -76,7 +76,7 @@ public class FormUserController implements Initializable {
     	}
     	// Se passar pelas etapas sem receber uma exceção, retorna para tela anterior
     	if (aux == false) {
-    		backToUser();
+    		actionBackToUser();
     	}
     	
     }
@@ -125,15 +125,15 @@ public class FormUserController implements Initializable {
      * @throws IOException
      */
 	@FXML
-	private void eventBack(ActionEvent e) throws IOException {
-		backToUser();
+	private void actionBack(ActionEvent e) throws IOException {
+		actionBackToUser();
 	}
 	
 	/**Metodo para retornar a tela de usuários
 	 * 
 	 * @throws IOException
 	 */
-	private void backToUser() throws IOException {
+	private void actionBackToUser() throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorUser.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);

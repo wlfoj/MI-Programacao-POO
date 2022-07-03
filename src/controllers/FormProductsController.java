@@ -82,7 +82,7 @@ public class FormProductsController implements Initializable {
 		}
     	// Se passar pelas etapas sem receber uma exce��o, volta para tela anterior
     	if(aux==false) {
-    		backToProduct();
+    		actionBackToProduct();
     	}
 	}
 	
@@ -177,8 +177,8 @@ public class FormProductsController implements Initializable {
 	 * @throws IOException
 	 */
 	@FXML
-	private void eventBack(ActionEvent e) throws IOException {
-		backToProduct();
+	private void actionBack(ActionEvent e) throws IOException {
+		actionBackToProduct();
 	}
 	
 	
@@ -186,7 +186,7 @@ public class FormProductsController implements Initializable {
 	 * 
 	 * @throws IOException
 	 */
-	private void backToProduct() throws IOException {
+	private void actionBackToProduct() throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorProducts.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
