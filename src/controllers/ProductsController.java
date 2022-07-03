@@ -119,10 +119,10 @@ public class ProductsController implements Initializable {
     /**Metodo para gerar o relatorio selecionado
      * 
      * @param event - Evento disparado ao clicar no botao de gerar relatorio
-     * @throws IOException 
+     * @throws Exception 
      */
     @FXML
-    void actionPrint(ActionEvent event) throws IOException {
+    void actionPrint(ActionEvent event) throws Exception {
     	
     	if (comboBoxPrint.getValue() == "Relatorio completo") {
     		ProductAll();
@@ -218,17 +218,58 @@ public class ProductsController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	public void ProductExpiredDate () throws IOException {
-		LocalDate test;
-		ArrayList<Product> list;
-		int qtdProductInRelat = 1;
-		openRelatorioDate();
-		if (RelatorioDateController.getAnswer() == true) {
-			test = RelatorioDateController.getDateInicial();
-			list = ManagementProducts.listProductsInExpiration(qtdProductInRelat, test);
-		}
-	}
 	
+	/**Metodo para gerar relatorios a vencer
+	 * 
+	 * @throws Exception
+	 */
+	public void ProductExpiredDate () throws Exception {
+		LocalDate data = LocalDate.now();
+		ArrayList<Product> list;
+		
+		    TextInputDialog textInput = new TextInputDialog();
+			textInput.setTitle("Quantidade de produtos");
+			textInput.getDialogPane().setHeaderText("Informe a quantidade de produto");
+			textInput.getDialogPane().setContentText("Informe a quatidade de produto para gerar o relatorio:");
+			Stage stage = (Stage) textInput.getDialogPane().getScene().getWindow();
+			stage.getIcons().add(new Image("iconapp.png"));
+			input = textInput.showAndWait();
+			if(input.isPresent() == true) {
+				try {
+					list = ManagementProducts.listProductsInExpiration(Integer.parseInt(input.get()), data);
+					Relatorio.relatorioEstoque(list, Integer.parseInt(input.get()));;
+				} catch (NumberFormatException ex) {
+					alertNumberFormat();
+				}
+			}
+		}
+	
+
+	/**Metodo que gera alerta para evitar entradas de outros valores a nao ser inteiros dentro do TextInputDialog
+	 * 
+	 */
+	public void alertNumberFormat() {
+		Alert logoutExe = new Alert(Alert.AlertType.CONFIRMATION);
+		
+		ButtonType btnOk = new ButtonType("Ok");
+		Stage stage2 = (Stage) logoutExe.getDialogPane().getScene().getWindow();
+		stage2.getIcons().add(new Image("iconapp.png"));
+		logoutExe.setTitle("Informe corretamente");
+		logoutExe.setHeaderText("Informe valor inteiro");
+		logoutExe.setContentText("Informe uma valor inteiro!");
+		logoutExe.getButtonTypes().setAll(btnOk);
+		logoutExe.showAndWait().ifPresent(a -> {
+			if (a == btnOk) {
+				try {
+					ProductExpiredDate ();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+			
 	public void openRelatorioDate() throws IOException {
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/RelatorioDataPicker.fxml"));
 		Scene cena = new Scene(anchor);
