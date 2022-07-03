@@ -1,17 +1,19 @@
-Ao tentar gerar um relatório com a lista vazia, gera um alerta.
+-> FAZENDO/TERMINANDO
+Usuários [X]
+Clientes [X]
+Produtos [X]
+Fornecedores [X]
+Pratos [X]
+Vendas [ ]
+** ASSIM QUE VER ISSO FAÇA UM TESTES(NOS QUE MARQUEI UM X) PARA VER SE TEM ALGO DANDO ERRO **
+## SE TIVER ALGO DANDO ERRO, CONTINUE AÍ NAS SUAS TAREFAS, DEPOIS EU CORRIJO (SE FOR FÁCIL FAZ VOCÊ MESMO)
 
-Corrigir os relatórios de fornecedor
+-> VOCÊ CONCLUI
+Relatórios [ ]
+Corrigir problemas do pbl anterior [ ]
+Revisar docs e testes e os pontos já pedidos [ ]
+Mudar os nomes da variaveis [X]
+Corrigir os relatórios de fornecedor [ ]
+Corrigir o relatório de vendas por tipo de prato [ ]
+Verificar se o javadoc está correto ou faltando [ ]
 
-Tratar dados invalidos dos inputs ( tipo quando digita uma string quando devia ser um número)
-
-Corrigir o relatório de vendas por tipo de prato
-
-Corrigir a exceção de campos vazios dos clientes na hora de editar!
-
-Por relatorios nas classes
-
-Corrigir editar usuário na troca de Adm para Employee
-
-Adicionar o editar e criar nos Vendas e Cardapio
-
-Ver o Cliente por venda
