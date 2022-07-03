@@ -43,7 +43,14 @@
             <TableColumn fx:id="columnTotalValue" prefWidth="136.0" text="Valor total" />
         </columns>
       </TableView>
-      <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;" />
+      <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
+         <children>
+            <Label layoutX="105.0" layoutY="13.0" text="Para ver os pratos, selecione um item de vendas e clique em editar">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
       <AnchorPane layoutY="364.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
             <Button fx:id="btnCreate" layoutX="353.0" layoutY="5.0" mnemonicParsing="false" onAction="#actionCreate" text="Novo">

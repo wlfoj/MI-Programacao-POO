@@ -55,7 +55,7 @@ public class FormSalesController implements Initializable {
     
 
     @FXML
-    private TextField inputTotalValue;
+    private TextField inputTotalValue, inputIdCostume;
     
     @FXML
     private ComboBox<String> comboBoxPaymentMethod;
@@ -93,6 +93,15 @@ public class FormSalesController implements Initializable {
 		comboBoxPaymentMethod.getItems().setAll(lista);
 		
 		refreshTableView();
+		
+		//Mascara para impedir que o usuario ponha dados de String na textField de Inteiros
+		inputIdCostume.setTextFormatter(new TextFormatter<>(c -> {
+		    if (!c.getControlNewText().matches("\\d*")) 
+		        return null;
+		    else
+		        return c;
+		    }
+		));
 		
 		//Mascara para impedir que o usuario ponha dados de String na textField de Float
 		inputTotalValue.setTextFormatter(new TextFormatter<>(c -> {

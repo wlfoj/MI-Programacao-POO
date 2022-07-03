@@ -39,7 +39,7 @@
       <AnchorPane layoutY="69.0" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;" />
       <AnchorPane layoutY="364.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #87CEFA;">
          <children>
-            <Button fx:id="btnDelete" disable="true" layoutX="508.0" layoutY="5.0" mnemonicParsing="false" onAction="#actionDelete" prefHeight="17.0" prefWidth="79.0" text="Deletar">
+            <Button fx:id="btnDelete" disable="true" layoutX="475.0" layoutY="5.0" mnemonicParsing="false" onAction="#actionDelete" prefHeight="25.0" prefWidth="112.0" text="Deletar Prato">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -48,7 +48,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnSave" layoutX="20.0" layoutY="6.0" mnemonicParsing="false" onAction="#actionSave" text="Salvar">
+            <Button fx:id="btnSave" layoutX="20.0" layoutY="6.0" mnemonicParsing="false" onAction="#actionSave" text="Registrar">
                <graphic>
                   <ImageView fitHeight="62.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,8 +58,6 @@
                </graphic></Button>
          </children>
       </AnchorPane>
-      <ComboBox fx:id="comboBoxPaymentMethod" layoutX="151.0" layoutY="171.0" prefWidth="150.0" />
-      <Label layoutX="14.0" layoutY="175.0" text="Metódo de pagamento" />
       <TableView fx:id="tableView" layoutX="337.0" layoutY="164.0" onMouseClicked="#clickLine" prefHeight="200.0" prefWidth="261.0">
         <columns>
           <TableColumn fx:id="columnId" prefWidth="41.0" text="Id" />
@@ -68,8 +66,12 @@
         </columns>
       </TableView>
       <ComboBox fx:id="comboBoxPratos" layoutX="337.0" layoutY="128.0" prefHeight="25.0" prefWidth="149.0" promptText="Selecione o prato" />
+      <Label layoutX="28.0" layoutY="189.0" text="Metódo de pagamento" />
+      <ComboBox fx:id="comboBoxPaymentMethod" layoutX="162.0" layoutY="185.0" prefWidth="150.0" />
+      <Label layoutX="28.0" layoutY="230.0" text="Valor total:" />
+      <TextField fx:id="inputTotalValue" layoutX="139.0" layoutY="225.0" prefHeight="27.0" prefWidth="58.0" />
+      <TextField fx:id="inputIdCostume" layoutX="139.0" layoutY="143.0" prefHeight="27.0" prefWidth="58.0" />
+      <Label layoutX="28.0" layoutY="148.0" text="Id do Cliente" />
       <Button fx:id="btnAdicionar" layoutX="501.0" layoutY="128.0" mnemonicParsing="false" onAction="#actionAdicionar" prefHeight="25.0" prefWidth="85.0" text="Adicionar" />
-      <Label layoutX="79.0" layoutY="223.0" text="Valor total:" />
-      <TextField fx:id="inputTotalValue" layoutX="151.0" layoutY="218.0" />
    </children>
 </AnchorPane>
