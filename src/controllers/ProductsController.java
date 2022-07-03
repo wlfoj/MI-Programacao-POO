@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Optional;
@@ -118,12 +119,15 @@ public class ProductsController implements Initializable {
     /**Metodo para gerar o relatorio selecionado
      * 
      * @param event - Evento disparado ao clicar no botao de gerar relatorio
+     * @throws IOException 
      */
     @FXML
-    void actionPrint(ActionEvent event) {
+    void actionPrint(ActionEvent event) throws IOException {
     	
     	if (comboBoxPrint.getValue() == "Relatorio completo") {
     		ProductAll();
+    	} else {
+    		 ProductExpiredDate ();
     	}
     }
     
@@ -214,13 +218,22 @@ public class ProductsController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	public void ProductExpiredDate () {
+	public void ProductExpiredDate () throws IOException {
+		LocalDate test;
 		ArrayList<Product> list;
-		int qtdProductInRelat;
-		boolean err;
-		Calendar validaty = Calendar.getInstance();
-		String date;
-		
+		int qtdProductInRelat = 1;
+		openRelatorioDate();
+		if (RelatorioDateController.getAnswer() == true) {
+			test = RelatorioDateController.getDateInicial();
+			list = ManagementProducts.listProductsInExpiration(qtdProductInRelat, test);
+		}
 	}
+	
+	public void openRelatorioDate() throws IOException {
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/RelatorioDataPicker.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+	}
+	
 	
 }
