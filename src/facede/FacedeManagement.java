@@ -87,7 +87,7 @@ public abstract class FacedeManagement {
 		ManagementProducts.addProduct(p3);
 		
 		Product p4 = new Product();
-		p4.setMedida("l");
+		p4.setMedida("L");
 		p4.setName("Leite");
 		p4.setPrice(3.84f);
 		p4.setQtd(55);
@@ -132,7 +132,7 @@ public abstract class FacedeManagement {
 		
 		Item item2 = new Item();
 		Ingredients ing2 = new Ingredients();
-		ing2.setId(3); //id que exista no produtos
+		ing2.setId(2); //id que exista no produtos
 		ing.setMedida("L");
 		ing.setName("Leite");
 		ing2.setQtd(2);

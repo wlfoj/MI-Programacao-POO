@@ -1,4 +1,5 @@
 package model;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -14,7 +15,7 @@ public class Sale {
 	private float totalPrice;//Valor total da venda
 	private String paymentMethod;//Metodo de pagamento
 	private ArrayList<Integer> itens;//Lista com os id's dos pratos vendidos
-	private Calendar date;//obj da data
+	private LocalDateTime date;//obj da data
 
 	public int getId() {
 		return this.id;
@@ -74,13 +75,13 @@ public class Sale {
 	
 	
 
-	public Calendar getDate() {
+	public LocalDateTime getDate() {
 		return this.date;
 	}
 	
 	
 
-	public void setDate(Calendar date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 	

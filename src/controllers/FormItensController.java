@@ -90,7 +90,7 @@ public class FormItensController implements Initializable {
 	/**Metodo para pegar o id do produto selecionado na tabela
 	 * serve para remover da tabela posteriormente somente
 	 * 
-	 * @param event
+	 * @param event - Evento disparado ao clicar em uma linha da tabela
 	 */
     @FXML
     void clickLine(MouseEvent event) {
@@ -287,6 +287,7 @@ public class FormItensController implements Initializable {
 		));
 	}
 	
+	
 	/**Metodo para tornar o botao adicionar visivel
 	 * 
 	 * @param Evento disparado ao clicar na textField quantidade
@@ -295,6 +296,7 @@ public class FormItensController implements Initializable {
     void clickedAddQtd(MouseEvent event) {
     	btnAdicionar.setDisable(false);
     }
+    
 	
 	/**Metodo para retornar a tela de Item
 	 * 

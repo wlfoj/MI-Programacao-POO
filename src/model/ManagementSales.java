@@ -1,4 +1,5 @@
 package model;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -53,13 +54,14 @@ public abstract class ManagementSales {
 	
 	
 	
-	public static ArrayList<Sale> listSalePerPeriod(Calendar dataInicial, Calendar dataFinal){
+	public static ArrayList<Sale> listSalePerPeriod(LocalDateTime dataInicial, LocalDateTime dataFinal){
 		ArrayList<Sale> SalePerPeriod = new ArrayList<Sale>();
 		Sale s;
+		//data1 é depois de data2?
 		
 		for(int i=0; i<list.size(); i++) {
 			s = list.get(i);
-			if (s.getDate().compareTo(dataFinal)<=0 && s.getDate().compareTo(dataInicial)>=0) {
+			if (s.getDate().isAfter(dataInicial)==true  && s.getDate().isBefore(dataFinal)==true) {
 				SalePerPeriod.add(s);
 			}
 		}
@@ -73,20 +75,25 @@ public abstract class ManagementSales {
 	 * @param obj a venda a ser adicionada na lista.
 	 */
 	public static void addSale(Sale obj) throws InsufficientQuantityProducts {
-		Calendar now = Calendar.getInstance();
+		LocalDateTime now = LocalDateTime.now();
 		obj.setDate(now);
 		ArrayList<Integer> pratosVenda = obj.getItens();// Lista com o id dos pratos vendidos
 		ArrayList<Item> todosPratos = ManagementItens.listAllItens();// Lista de todos os pratos
-		ArrayList<Product> todosProdutos = ManagementProducts.listAllProducts();
+		ArrayList<Product> todosProdutos = ManagementProducts.listAllProducts();// Lista de todos os produtos
 		// Buscando o objeto Prato com o id recebido do objeto venda
 		for (int i = 0; i < pratosVenda.size(); i++) {// Percorrendo a lista de id's dos pratos vendidos
 			for (int j = 0; j < todosPratos.size(); j++){// Percorrendo a lista de pratos no cardÃ¡pio
 				if(pratosVenda.get(i) == todosPratos.get(j).getId()){ // Verificando se o prato Ã© o mesmo
 					ArrayList<Ingredients> ingredientes = todosPratos.get(j).getComposition();
+					// Buscando a relação entre pratos e ingredientes
 					for (int k = 0; k < ingredientes.size(); k++){// Percorre a lista de ingredientes
 						for (int c = 0; c < todosProdutos.size(); c++){// Percorre a lista de produtos
-						 
-							if(ingredientes.get(k).getId()==todosProdutos.get(c).getId()){
+							//caso não tenha o produto utilizado como ingrediente
+							if(ManagementProducts.getOne(ingredientes.get(k).getId())==null) {
+								throw new InsufficientQuantityProducts();
+							}
+							
+							else if(ingredientes.get(k).getId()==todosProdutos.get(c).getId()){
 								if (ingredientes.get(k).getQtd() > todosProdutos.get(c).getQtd() ) {
 									throw new InsufficientQuantityProducts();
 								}
