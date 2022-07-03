@@ -158,15 +158,13 @@ public class FormItensController implements Initializable {
 				createItem();
 				aux = false;
 			} catch (ListEmptyComposition e) {
-				String title = "Lista de Ingredientes vazia";
-				String desc = "Adicione ingredientes ao seu prato";
-				String detailDesc = "Existe pratoa sem ingrediente?";
-				Alerts.alertError(title, desc, detailDesc);
+				String desc = "Lista de Ingredientes vazia";
+				String detailDesc = "Adicione ingredientes ao seu prato";
+				Alerts.alertError(e.getMessage(), desc, detailDesc);
 			} catch (NegativePriceEntity e) {
-				String title = "Valor negativo";
-				String desc = "Digite um valor real";
-				String detailDesc = "Esta pagando para as pessoas comerem sua comida?";
-				Alerts.alertError(title, desc, detailDesc);
+				String desc = "Preço negativo";
+				String detailDesc = "Insira um valor positivo para o preço";
+				Alerts.alertError(e.getMessage(), desc, detailDesc);
 			}
 		}
 		// Se for editar um prato
@@ -175,10 +173,7 @@ public class FormItensController implements Initializable {
 				updateItem();
 				aux = false;
 			} catch (NullFieldException e) {
-				String title = "Campos vazios";
-				String desc = "Preencha todos os campos";
-				String detailDesc = "";
-				Alerts.alertError(title, desc, detailDesc);
+				Alerts.alertError(e.getMessage(), "Campos vazios", "Preencha todos os campos");
 			}
 		}
 		// Se passar pelas etapas sem receber uma exceï¿½ï¿½o

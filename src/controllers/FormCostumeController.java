@@ -21,6 +21,7 @@ import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.Costumer;
 import model.ManagementCostumer;
+import utils.Alerts;
 
 public class FormCostumeController implements Initializable {
     
@@ -54,17 +55,9 @@ public class FormCostumeController implements Initializable {
 				createCostumer();
 				aux = false;
 			} catch (NullFieldException e) {
-		    	Alert alert = new Alert(AlertType.ERROR);
-		    	alert.setTitle("Erro");
-		    	alert.setHeaderText("Campos vazios");
-		    	alert.setContentText("Para prosseguir, preencha corretamente os campos");
-		    	alert.show();
+				Alerts.alertError(e.getMessage(), "Campos vazios","Preencha todos os campos" );
 			} catch (ObjectRegistred e) {
-		    	Alert alert = new Alert(AlertType.INFORMATION);
-		    	alert.setTitle("Erro");
-		    	alert.setHeaderText("CPF registrado");
-		    	alert.setContentText("Para prosseguir, insira outro cpf");
-		    	alert.show();
+				Alerts.alertError(e.getMessage(), "Login registrado","Já existe um usuário com este cpf" );
 			}
     	}
     	// Caso tenha o id selecionado
@@ -73,11 +66,7 @@ public class FormCostumeController implements Initializable {
 				editCostumer();
 				aux = false;
 			} catch (NullFieldException e) {
-		    	Alert alert = new Alert(AlertType.ERROR);
-		    	alert.setTitle("Erro");
-		    	alert.setHeaderText("Campos vazios");
-		    	alert.setContentText("Para prosseguir, preencha corretamente os campos");
-		    	alert.show();
+				Alerts.alertError(e.getMessage(), "Campos vazios","Preencha todos os campos" );
 			}
     	}
     	

@@ -28,6 +28,8 @@ import model.ManagementProducts;
 import model.ManagementProvider;
 import model.Product;
 import model.Provider;
+import utils.Alerts;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
@@ -146,10 +148,7 @@ public class FormProviderController implements Initializable {
 					createProvider();
 					aux = false;
 				} catch (NullFieldException e) {
-					Alert alert = new Alert(Alert.AlertType.ERROR);
-					alert.setTitle("Campos vazios");
-					alert.setContentText("Preencha todos os campos");
-					alert.show();
+					Alerts.alertError(e.getMessage(), "Campos vazios","Preencha todos os campos" );
 				}
 	    // Caso tenha o id selecionado
 	    } else {
@@ -157,10 +156,7 @@ public class FormProviderController implements Initializable {
 				editProvider();
 				aux = false;
 			} catch (NullFieldException e) {
-				Alert alert = new Alert(Alert.AlertType.ERROR);
-				alert.setTitle("Campos vazios");
-				alert.setContentText("Preencha todos os campos");
-				alert.show();
+				Alerts.alertError(e.getMessage(), "Campos vazios","Preencha todos os campos" );
 			}	
 	    }
 		// Se passar pelas etapas sem receber uma exce��o

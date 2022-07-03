@@ -24,7 +24,7 @@ import model.Administrator;
 import model.Employee;
 import model.ManagementUsers;
 import model.User;
-import utils.AlertsController;
+import utils.Alerts;
 
 public class FormUserController implements Initializable {
 
@@ -60,9 +60,9 @@ public class FormUserController implements Initializable {
 				createNewUser();
 				aux = false;
 			} catch (NullFieldException e) {
-				AlertsController.alertErrorDate(e.getMessage(), "Campos vazios","Preencha todos os campos" );
+				Alerts.alertError(e.getMessage(), "Campos vazios","Preencha todos os campos" );
 			} catch (ObjectRegistred e) {
-				AlertsController.alertErrorDate(e.getMessage(), "Login registrado","Já existe um usuário com este login" );
+				Alerts.alertError(e.getMessage(), "Login registrado","Já existe um usuário com este login" );
 			}
     	}
     	// Caso tenha o id selecionado
@@ -71,10 +71,7 @@ public class FormUserController implements Initializable {
 				editUser();
 				aux = false;
 			} catch (NullFieldException e) {
-				Alert alert = new Alert(Alert.AlertType.ERROR);
-				alert.setTitle("Campos vazios");
-				alert.setContentText("Preencha todos os campos");
-				alert.show();
+				Alerts.alertError(e.getMessage(), "Campos vazios","Preencha todos os campos" );
 			}
     	}
     	// Se passar pelas etapas sem receber uma exceção, retorna para tela anterior
