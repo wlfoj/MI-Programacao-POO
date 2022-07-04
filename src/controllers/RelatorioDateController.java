@@ -23,6 +23,13 @@ import model.ManagementSales;
 import model.Sale;
 import utils.Relatorio;
 
+/** Classe responsavel pelo Controller de Datas do relatorios de vendas
+ * 
+ * @author Washington Luis Ferreira de Oliveira Junior
+ * @author Tassio Carvalho Rodrigues
+ *
+ */
+
 public class RelatorioDateController implements Initializable{
 
     @FXML
@@ -34,8 +41,6 @@ public class RelatorioDateController implements Initializable{
     @FXML
     private DatePicker datePickerInicial;
     
-    private static boolean answer;
-
 	private static LocalDateTime dateInicial;
 
 	private static LocalDateTime dateFinish;
@@ -47,7 +52,6 @@ public class RelatorioDateController implements Initializable{
      */
     @FXML
     void actionBack(ActionEvent event) throws IOException {
-    	setAnswer(false);
     	AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/GerenciadorSales.fxml"));
 		Scene cena = new Scene(anchor);
 		Main.setScene(cena);
@@ -60,10 +64,6 @@ public class RelatorioDateController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnCancel.setCursor(Cursor.HAND);
 		btnConfirma.setCursor(Cursor.HAND);
-	}
-
-	public static void setAnswer(boolean answer) {
-		RelatorioDateController.answer = answer;
 	}
 
 	public static LocalDateTime getDateInicial() {
@@ -89,8 +89,6 @@ public class RelatorioDateController implements Initializable{
 	 */
     @FXML
     void actionConfirmation(ActionEvent event) throws Exception {
-    	setAnswer(true);
-    	
     	ArrayList<Sale> sales;
 		int qtdSales;
 		float totalPrice;
