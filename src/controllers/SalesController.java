@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
@@ -17,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -25,6 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementSales;
 import model.Sale;
+import utils.Relatorio;
 	
 /** Classe responsavel pelo Controller de Vendas
  * 
@@ -53,8 +56,12 @@ public class SalesController implements Initializable {
     @FXML
     private TableView<Sale> tableView;
     
+    @FXML
+    private ComboBox<String> comboBoxPrint;// Combo para gerar o relatorio
+    private String[] lista = {"Relatorio completo", "Vendas"};//Opcoes de relatorios
+    
 	@FXML
-    private Button btnBack, btnCreate, btnEdit, btnDelete;
+    private Button btnBack, btnCreate, btnEdit, btnDelete, btnPrint;
 	
 	/**Evento atribuido no botao de voltar para retornar ao menu
 	 * 
@@ -103,7 +110,10 @@ public class SalesController implements Initializable {
 		btnCreate.setCursor(Cursor.HAND);
 		btnEdit.setCursor(Cursor.HAND);
 		btnDelete.setCursor(Cursor.HAND);
-	
+		btnPrint.setCursor(Cursor.HAND);
+		comboBoxPrint.getItems().setAll(lista);
+		comboBoxPrint.setValue("Relatorio completo");
+		
 		deleteSales();
 		refreshTableView();
 	}
@@ -146,6 +156,20 @@ public class SalesController implements Initializable {
 		
 	}
 
+	@FXML
+    void actionPrint(ActionEvent event) throws Exception {
+		if (comboBoxPrint.getValue() == "Relatorio completo") {
+			SaleAll();
+		}
+    }
+	
+	public void SaleAll() throws Exception {
+		ArrayList<Sale> sales = ManagementSales.listAllSale();
+		int qtdSales = ManagementSales.countItensInSale(sales);
+		float totalPrice = ManagementSales.sumTotalPrice(sales);
+		
+		Relatorio.relatorioVendas(sales, qtdSales, totalPrice);
+	}
 	
 	 /**Evento de click para selecionar determinada linha da tabela
      * 

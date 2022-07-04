@@ -3,7 +3,6 @@ package utils;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -47,9 +46,6 @@ public class Relatorio {
 	public static void relatorioEstoque(ArrayList<Product> lista, int qtd) throws Exception {
 		Document documento = new Document();
 		String nome = "RelatorioEstoque" + dataEHora() + ".pdf";
-		Calendar c;
-		Date data;
-		DateFormat f=DateFormat.getDateInstance(DateFormat.FULL);
 		
 		try {
 			//Iniciando arquivo
@@ -103,7 +99,7 @@ public class Relatorio {
 				celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
 				celulaPDF2 = new PdfPCell(new Paragraph(produto.getName()));
 				celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
-				celulaPDF3 = new PdfPCell(new Paragraph(Integer.toString(produto.getQtd())));
+				celulaPDF3 = new PdfPCell(new Paragraph(Float.toString(produto.getQtd())));
 				celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
 				celulaPDF4 = new PdfPCell(new Paragraph(produto.getMedida()));
 				celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -144,9 +140,6 @@ public class Relatorio {
 		String nome = "RelatorioVenda" + dataEHora() + ".pdf";
 		ArrayList<Integer> pratosId;
 		Item prato;
-		Calendar c;
-		Date data;
-		DateFormat f=DateFormat.getDateInstance(DateFormat.FULL);
 		
 		try {
 			//Iniciando arquivo
@@ -204,7 +197,7 @@ public class Relatorio {
 						celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
 						celulaPDF2 = new PdfPCell(new Paragraph(venda.getPaymentMethod()));//pagamento
 						celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
-						//celulaPDF3 = new PdfPCell(new Paragraph(f.format(data)));//data da venda
+						celulaPDF3 = new PdfPCell(new Paragraph(venda.getDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG))));//data da venda
 						celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
 						celulaPDF4 = new PdfPCell(new Paragraph(prato.getName()));//nome do prato
 						celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);

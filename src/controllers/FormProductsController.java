@@ -147,7 +147,7 @@ public class FormProductsController implements Initializable {
 			Product p = ManagementProducts.getOne(Main.getIdSelected());
 			inputName.setText(p.getName());
 			inputMedida.setValue(p.getMedida());
-			inputQtd.setText(Integer.toString(p.getQtd()));
+			inputQtd.setText(Float.toString(p.getQtd()));
 			inputValue.setText(Float.toString(p.getPrice()));
 			inputValidity.setValue(p.getValidity());
 		}
