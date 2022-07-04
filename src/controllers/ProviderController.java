@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,7 +30,6 @@ import javafx.stage.Stage;
 import main.Main;
 import model.ManagementProvider;
 import model.Provider;
-import utils.Alerts;
 import utils.Relatorio;
 
 /** Classe responsavel pelo Controller de Fornecedores
@@ -241,16 +239,16 @@ public class ProviderController implements Initializable{
 	 * 
 	 */
 	public void alertNumberFormat() {
-		Alert logoutExe = new Alert(Alert.AlertType.CONFIRMATION);
+		Alert alertExceptionNumber = new Alert(Alert.AlertType.CONFIRMATION);
 		
 		ButtonType btnOk = new ButtonType("Ok");
-		Stage stage2 = (Stage) logoutExe.getDialogPane().getScene().getWindow();
+		Stage stage2 = (Stage) alertExceptionNumber.getDialogPane().getScene().getWindow();
 		stage2.getIcons().add(new Image("iconapp.png"));
-		logoutExe.setTitle("Informe corretamente");
-		logoutExe.setHeaderText("Informe valor inteiro");
-		logoutExe.setContentText("Informe uma valor inteiro!");
-		logoutExe.getButtonTypes().setAll(btnOk);
-		logoutExe.showAndWait().ifPresent(a -> {
+		alertExceptionNumber.setTitle("Informe corretamente");
+		alertExceptionNumber.setHeaderText("Informe valor inteiro");
+		alertExceptionNumber.setContentText("Informe uma valor inteiro!");
+		alertExceptionNumber.getButtonTypes().setAll(btnOk);
+		alertExceptionNumber.showAndWait().ifPresent(a -> {
 			if (a == btnOk) {
 				try {
 					providerPerProduct();

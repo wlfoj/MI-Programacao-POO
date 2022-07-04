@@ -80,8 +80,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <ComboBox layoutX="39.0" layoutY="5.0" prefHeight="27.0" prefWidth="150.0" promptText="Relatórios" />
-            <Button layoutX="195.0" layoutY="5.0" mnemonicParsing="false">
+            <ComboBox fx:id="comboBoxPrint" layoutX="39.0" layoutY="5.0" prefHeight="27.0" prefWidth="150.0" promptText="Relatórios" />
+            <Button fx:id="btnPrint" layoutX="195.0" layoutY="5.0" mnemonicParsing="false" onAction="#actionPrint">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>

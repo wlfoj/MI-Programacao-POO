@@ -248,16 +248,16 @@ public class ProductsController implements Initializable {
 	 * 
 	 */
 	public void alertNumberFormat() {
-		Alert logoutExe = new Alert(Alert.AlertType.CONFIRMATION);
+		Alert alertExceptionNumber = new Alert(Alert.AlertType.CONFIRMATION);
 		
 		ButtonType btnOk = new ButtonType("Ok");
-		Stage stage2 = (Stage) logoutExe.getDialogPane().getScene().getWindow();
+		Stage stage2 = (Stage) alertExceptionNumber.getDialogPane().getScene().getWindow();
 		stage2.getIcons().add(new Image("iconapp.png"));
-		logoutExe.setTitle("Informe corretamente");
-		logoutExe.setHeaderText("Informe valor inteiro");
-		logoutExe.setContentText("Informe uma valor inteiro!");
-		logoutExe.getButtonTypes().setAll(btnOk);
-		logoutExe.showAndWait().ifPresent(a -> {
+		alertExceptionNumber.setTitle("Informe corretamente");
+		alertExceptionNumber.setHeaderText("Informe valor inteiro");
+		alertExceptionNumber.setContentText("Informe uma valor inteiro!");
+		alertExceptionNumber.getButtonTypes().setAll(btnOk);
+		alertExceptionNumber.showAndWait().ifPresent(a -> {
 			if (a == btnOk) {
 				try {
 					ProductExpiredDate ();
@@ -268,12 +268,4 @@ public class ProductsController implements Initializable {
 			}
 		});
 	}
-			
-	public void openRelatorioDate() throws IOException {
-		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/RelatorioDataPicker.fxml"));
-		Scene cena = new Scene(anchor);
-		Main.setScene(cena);
-	}
-	
-	
 }
