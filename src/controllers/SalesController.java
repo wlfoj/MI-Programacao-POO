@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -21,9 +22,12 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import main.Main;
 import model.ManagementSales;
 import model.Sale;
@@ -36,6 +40,8 @@ import utils.Relatorio;
  *
  */
 public class SalesController implements Initializable {
+	
+	private Optional<String> input;
 	
 	ObservableList<Sale> observableListSales;
 	
@@ -58,7 +64,7 @@ public class SalesController implements Initializable {
     
     @FXML
     private ComboBox<String> comboBoxPrint;// Combo para gerar o relatorio
-    private String[] lista = {"Relatorio completo", "Vendas"};//Opcoes de relatorios
+    private String[] lista = {"Relatorio completo", "Venda por Item"};//Opcoes de relatorios
     
 	@FXML
     private Button btnBack, btnCreate, btnEdit, btnDelete, btnPrint;
@@ -160,9 +166,68 @@ public class SalesController implements Initializable {
     void actionPrint(ActionEvent event) throws Exception {
 		if (comboBoxPrint.getValue() == "Relatorio completo") {
 			SaleAll();
+		} else if(comboBoxPrint.getValue() == "Venda por Item") {
+			 SalePerItem();
+		}else {
+			
 		}
     }
 	
+	public void SalePerItem() throws Exception {
+		ArrayList<Sale> sales;
+		int idPrato;
+		int qtdSales;
+		float totalPrice;
+		
+		
+		
+		
+		TextInputDialog textInput = new TextInputDialog();
+		textInput.setTitle("Informe o prato");
+		textInput.getDialogPane().setHeaderText("Informe o id do prato");
+		textInput.getDialogPane().setContentText("Informe o id do prato para gerar o relatorio:");
+		Stage stage = (Stage) textInput.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image("iconapp.png"));
+		input = textInput.showAndWait();
+		if(input.isPresent() == true) {
+			try {
+				idPrato = Integer.parseInt(input.get());
+				sales = ManagementSales.listSaleWithItem(idPrato);
+				qtdSales = ManagementSales.countItensInSale(sales);
+				totalPrice = ManagementSales.sumTotalPrice(sales);
+				Relatorio.relatorioVendas(sales, qtdSales, totalPrice);
+			} catch (NumberFormatException e) {
+				alertNumberFormat();
+			}
+		}
+	}
+	
+	public void alertNumberFormat() {
+		Alert alertExceptionNumber = new Alert(Alert.AlertType.CONFIRMATION);
+		
+		ButtonType btnOk = new ButtonType("Ok");
+		Stage stage2 = (Stage) alertExceptionNumber.getDialogPane().getScene().getWindow();
+		stage2.getIcons().add(new Image("iconapp.png"));
+		alertExceptionNumber.setTitle("Informe corretamente");
+		alertExceptionNumber.setHeaderText("Informe valor inteiro");
+		alertExceptionNumber.setContentText("Informe uma valor inteiro!");
+		alertExceptionNumber.getButtonTypes().setAll(btnOk);
+		alertExceptionNumber.showAndWait().ifPresent(a -> {
+			if (a == btnOk) {
+				try {
+					SalePerItem();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	/**Metodo para imprimir todas vendas
+	 * 
+	 * @throws Exception
+	 */
 	public void SaleAll() throws Exception {
 		ArrayList<Sale> sales = ManagementSales.listAllSale();
 		int qtdSales = ManagementSales.countItensInSale(sales);

@@ -205,18 +205,15 @@ public class ProductsController implements Initializable {
 	
 	
 	/**Metodo para auxiliar a gerar o relatorio de todos os produtos
+	 * @throws Exception 
 	 * 
 	 */
-	public void ProductAll() {
+	public void ProductAll() throws Exception {
 		ArrayList<Product> list = ManagementProducts.listAllProducts();
 		int qtdTotal = list.size();
 		
-		try {
 			Relatorio.relatorioEstoque(list, qtdTotal);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 	
 	/**Metodo para gerar relatorios a vencer
@@ -224,7 +221,7 @@ public class ProductsController implements Initializable {
 	 * @throws Exception
 	 */
 	public void ProductExpiredDate () throws Exception {
-		ArrayList<Product> list;
+			ArrayList<Product> list;
 		
 		    TextInputDialog textInput = new TextInputDialog();
 			textInput.setTitle("Quantidade de produtos");
