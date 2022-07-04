@@ -199,6 +199,11 @@ public class SalesController implements Initializable {
 		
 	}
 	
+	/** Metodo para ir pra tela de pedir as datas iniciais e finais da venda para gerar o relatorio por periodo.
+	 * Serve para trocar a scene, somente
+	 * 
+	 * @throws IOException
+	 */
 	public void RelatorioDateContraller() throws IOException{
 		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/RelatorioDataPicker.fxml"));
 		Scene cena = new Scene(anchor);

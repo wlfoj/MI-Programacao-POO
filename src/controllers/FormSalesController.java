@@ -34,6 +34,12 @@ import model.Sale;
 import utils.Alerts;
 import utils.Relatorio;
 
+/** Classe responsavel pelo controle do formulario de vendas
+ * 
+ * @author Washington Luis Ferreira de Oliveira Junior
+ * @author Tassio Carvalho Rodrigues
+ *
+ */
 public class FormSalesController implements Initializable {
 
 	private Integer idSelected;// id do prato vendido, selecionado da tabela

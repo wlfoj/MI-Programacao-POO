@@ -35,7 +35,12 @@ import model.ManagementItens;
 import model.ManagementProducts;
 import model.Product;
 import utils.Alerts;
-
+/** Classe responsavel pelo controle do formulario de pratos
+ * 
+ * @author Washington Luis Ferreira de Oliveira Junior
+ * @author Tassio Carvalho Rodrigues
+ *
+ */
 public class FormItensController implements Initializable {
 	private Integer idSelected;// id do ingrediente utilizado, selecionado da tabela
 	

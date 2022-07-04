@@ -17,7 +17,12 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import main.Main;
 import model.ManagementUsers;
-	
+/** Classe responsavel pelo controle entre as telas do sistema de gerenciamento.
+ * 
+ * @author Washington Luis Ferreira de Oliveira Junior
+ * @author Tassio Carvalho Rodrigues
+ *
+ */
 public class MenuController implements Initializable {
 	
 	@FXML

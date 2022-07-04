@@ -23,6 +23,12 @@ import model.Costumer;
 import model.ManagementCostumer;
 import utils.Alerts;
 
+/** Classe responsavel pelo controle do formulario de clientes
+ * 
+ * @author Washington Luis Ferreira de Oliveira Junior
+ * @author Tassio Carvalho Rodrigues
+ *
+ */
 public class FormCostumeController implements Initializable {
     
     @FXML

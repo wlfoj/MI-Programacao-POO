@@ -26,6 +26,12 @@ import model.ManagementUsers;
 import model.User;
 import utils.Alerts;
 
+/** Classe responsavel pelo controle do formulario do usuario.
+ * 
+ * @author Washington Luis Ferreira de Oliveira Junior
+ * @author Tassio Carvalho Rodrigues
+ *
+ */
 public class FormUserController implements Initializable {
 
     @FXML

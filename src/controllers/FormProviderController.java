@@ -33,7 +33,12 @@ import utils.Alerts;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
-
+/** Classe responsavel pelo controle do formulario de fornecedor
+ * 
+ * @author Washington Luis Ferreira de Oliveira Junior
+ * @author Tassio Carvalho Rodrigues
+ *
+ */
 public class FormProviderController implements Initializable {
 	private Integer idSelected;// id do produto fornecido, selecionado da tabela
 	// COMPONENTES DA JAVAFX

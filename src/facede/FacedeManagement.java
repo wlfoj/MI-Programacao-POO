@@ -1,6 +1,7 @@
 package facede;
 
 import java.time.LocalDate;
+
 import java.util.ArrayList;
 
 import exceptions.DateInvalid;
@@ -25,7 +26,23 @@ import model.Provider;
 import model.Sale;
 import model.User;
 
+/** Classe responsavel pela fachada para inicialização
+* 
+* @author Washington Luis Ferreira de Oliveira Junior
+* @author Tassio Carvalho Rodrigues
+*
+*/
 public abstract class FacedeManagement {
+	
+	/**Metodo para inicializar valores no sistema
+	 * 
+	 * @throws NullFieldException
+	 * @throws ObjectRegistred
+	 * @throws NegativePriceEntity
+	 * @throws InsufficientQuantityProducts
+	 * @throws DateInvalid
+	 * @throws ListEmptyComposition
+	 */
 	public static void initData() throws NullFieldException, ObjectRegistred, NegativePriceEntity, InsufficientQuantityProducts, DateInvalid, ListEmptyComposition {
 		// BLOCO DE USUARIO
 		User u = new User();
@@ -156,7 +173,15 @@ public abstract class FacedeManagement {
 		
 	}
 	
-	//VER SE TIRA ISSO
+	/**Metodo para fachada para adicionar usuarios
+	 * 
+	 * @param name
+	 * @param login
+	 * @param pass
+	 * @param type
+	 * @throws NullFieldException
+	 * @throws ObjectRegistred
+	 */
 	public static void addUser(String name, String login, String pass, String type) throws NullFieldException, ObjectRegistred {
 		if (type == "Administrador") {
     		Administrator u = new Administrator();

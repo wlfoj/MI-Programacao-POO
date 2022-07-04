@@ -52,7 +52,12 @@ public abstract class ManagementSales {
 	}
 	
 	
-	
+	/**Metodo para fazer filtro das vendas por periodo
+	 * Pega as vendas que forma realizadas entre as datas inicial e final
+	 * @param dataInicial - data inicial do periodo analisado
+	 * @param dataFinal - Data final do periodo final
+	 * @return A lista filtrada 
+	 */
 	public static ArrayList<Sale> listSalePerPeriod(LocalDateTime dataInicial, LocalDateTime dataFinal){
 		ArrayList<Sale> SalePerPeriod = new ArrayList<Sale>();
 		Sale s;

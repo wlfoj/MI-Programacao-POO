@@ -1,5 +1,10 @@
 package model;
-
+/** Classe responsavel pelo gerenciamento dos clientes.
+* 
+* @author Washington Luis Ferreira de Oliveira Junior
+* @author Tassio Carvalho Rodrigues
+*
+*/
 import java.util.ArrayList;
 
 import exceptions.NullFieldException;

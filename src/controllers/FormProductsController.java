@@ -26,6 +26,12 @@ import model.ManagementProducts;
 import model.Product;
 import utils.Alerts;
 
+/** Classe responsavel pelo controle do formulario de produtos
+ * 
+ * @author Washington Luis Ferreira de Oliveira Junior
+ * @author Tassio Carvalho Rodrigues
+ *
+ */
 public class FormProductsController implements Initializable {
 
 	@FXML

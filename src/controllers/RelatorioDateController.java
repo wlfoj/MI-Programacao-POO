@@ -66,6 +66,7 @@ public class RelatorioDateController implements Initializable{
 		btnConfirma.setCursor(Cursor.HAND);
 	}
 
+	
 	public static LocalDateTime getDateInicial() {
 		return dateInicial;
 	}
