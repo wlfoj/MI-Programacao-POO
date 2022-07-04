@@ -361,13 +361,13 @@ public class Relatorio {
 			pVenda = new Paragraph("Data e hor�rio da venda: "+ s.getDate());
 			documento.add(pVenda);
 			// Cliente
-			String nome;
+			String nomeCliente;
 			if (ManagementCostumer.getOne(s.getIdCostumer()) == null) {
-				nome = "Desconhecido";
+				nomeCliente = "Desconhecido";
 			}else {
-				nome = ManagementCostumer.getOne(s.getIdCostumer()).getName();
+				nomeCliente = ManagementCostumer.getOne(s.getIdCostumer()).getName();
 			}
-			pVenda = new Paragraph("Nome do cliente: " + nome);
+			pVenda = new Paragraph("Nome do cliente: " + nomeCliente);
 			documento.add(pVenda);
 			// Pratos vendidos		
 			pVenda = new Paragraph("Pratos vendidos: ");
