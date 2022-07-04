@@ -100,7 +100,7 @@ public class Relatorio {
 				celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
 				celulaPDF2 = new PdfPCell(new Paragraph(produto.getName()));
 				celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
-				celulaPDF3 = new PdfPCell(new Paragraph(Integer.toString(produto.getQtd())));
+				celulaPDF3 = new PdfPCell(new Paragraph(Float.toString(produto.getQtd())));
 				celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
 				celulaPDF4 = new PdfPCell(new Paragraph(produto.getMedida()));
 				celulaPDF1.setHorizontalAlignment(Element.ALIGN_CENTER);
