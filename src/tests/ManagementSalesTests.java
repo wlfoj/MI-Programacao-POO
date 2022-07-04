@@ -24,11 +24,13 @@ class ManagementSalesTests {
 		aaa.add(2);
 		
 		venda.insertItens(aaa);
-			ManagementSales.addSale(venda);
+		ManagementSales.addSale(venda);
 		//verificando a soma dos itens
 		assertEquals(10,ManagementSales.getOne(0).getTotalPrice());
+		System.out.println(ManagementSales.getOne(0).getTotalPrice());
 		//verificar quantidade de itens na lista, apos adicinar
 		assertEquals(1,ManagementSales.listAllSale().size());
+		
 		
 		//adicionando venda 2
 		
@@ -41,15 +43,15 @@ class ManagementSalesTests {
 		
 		venda2.insertItens(aaa2);
 
-			ManagementSales.addSale(venda2);
+		ManagementSales.addSale(venda2);
 
-			// TODO Auto-generated catch block
 
 		//verificando a soma dos itens de id 4, 5 sendo assim 8 + 48 = 56
 		assertEquals(56.0,ManagementSales.getOne(1).getTotalPrice());//valor esperado 56
+		System.out.println(ManagementSales.getOne(1).getTotalPrice());
 		//verificar quantidade de itens na lista, apos adicinar
 		assertEquals(2,ManagementSales.listAllSale().size());//size da lista
-		
+		System.out.println(ManagementSales.listAllSale().size());
 		// adicionando venda 3
 		
 		Sale venda3 = new Sale();
