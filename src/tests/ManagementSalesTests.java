@@ -38,16 +38,12 @@ class ManagementSalesTests {
 		venda2.setPaymentMethod("credito");
 		
 		ArrayList<Integer> aaa2 = new ArrayList<Integer>();
-		aaa2.add(4);
-		aaa2.add(5);
-		
+		aaa2.add(1);
+		aaa2.add(2);
+
 		venda2.insertItens(aaa2);
-
 		ManagementSales.addSale(venda2);
-
-
-		//verificando a soma dos itens de id 4, 5 sendo assim 8 + 48 = 56
-		assertEquals(56.0,ManagementSales.getOne(1).getTotalPrice());//valor esperado 56
+		assertEquals(6.0,ManagementSales.getOne(1).getTotalPrice());//valor esperado 56
 		System.out.println(ManagementSales.getOne(1).getTotalPrice());
 		//verificar quantidade de itens na lista, apos adicinar
 		assertEquals(2,ManagementSales.listAllSale().size());//size da lista

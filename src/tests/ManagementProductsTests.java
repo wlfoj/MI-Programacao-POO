@@ -20,84 +20,84 @@ class ManagementProductsTests {
 		//Produto id 0
 		Product p1 = new Product();
 		p1.setName("pao");
-		p1.setQtd(100);
+		p1.setQtd(1000);
 		p1.setMedida("kg");
 		p1.setPrice(2);
 		p1.setValidity(LocalDate.now());
 		// Produto id 1
 		Product p2 = new Product();
 		p2.setName("queijo");
-		p2.setQtd(234);
+		p2.setQtd(2340);
 		p2.setMedida("L");
 		p2.setPrice(4);
 		p2.setValidity(LocalDate.now());
 		// Produto id 2
 		Product p3 = new Product();
 		p3.setName("alface");
-		p3.setQtd(231);
+		p3.setQtd(2310);
 		p3.setMedida("G");
 		p3.setPrice(1);
 		p3.setValidity(LocalDate.now());
 		// Produto id 3
 		Product p4 = new Product();
 		p4.setName("tomate");
-		p4.setQtd(324);
+		p4.setQtd(3204);
 		p4.setMedida("kg");
 		p4.setPrice(2);
 		p4.setValidity(LocalDate.now());
 		// Produto id 4
 		Product p5 = new Product();
 		p5.setName("salsicha");
-		p5.setQtd(245);
+		p5.setQtd(2450);
 		p5.setMedida("ml");
 		p5.setPrice(5);
 		p5.setValidity(LocalDate.now());
 		// Produto id 5
 		Product p6 = new Product();
 		p6.setName("carne");
-		p6.setQtd(564);
+		p6.setQtd(5640);
 		p6.setMedida("kg");
 		p6.setPrice(10);
 		p6.setValidity(LocalDate.now());
 		//produto id 6
 		Product p7 = new Product();
 		p7.setName("frango");
-		p7.setQtd(452);
+		p7.setQtd(4052);
 		p7.setMedida("kg");
 		p7.setPrice(23);
 		p7.setValidity(LocalDate.now());
 		//produto id 7
 		Product p8 = new Product();
 		p8.setName("Farinha");
-		p8.setQtd(422);
+		p8.setQtd(4200);
 		p8.setMedida("kg");
 		p8.setPrice(13);
 		p8.setValidity(LocalDate.now());
 		//produto id 8
 		Product p9 = new Product();
 		p9.setName("acucar");
-		p9.setQtd(422);
+		p9.setQtd(4022);
 		p9.setMedida("kg");
 		p9.setPrice(25);
 		p9.setValidity(LocalDate.now());
 		//produto id 9
 		Product p10 = new Product();
 		p10.setName("arroz");
-		p10.setQtd(422);
+		p10.setQtd(4022);
 		p10.setMedida("kg");
 		p10.setPrice(52);
 		p10.setValidity(LocalDate.now());
 		//produto id 10
 		Product p11 = new Product();
 		p11.setName("feijao");
-		p11.setQtd(322);
+		p11.setQtd(3202);
 		p11.setMedida("kg");
 		p11.setPrice(75);
 		p11.setValidity(LocalDate.now());
 		//produto id 11
 		Product p12 = new Product();
 		p12.setName("bolo");
-		p12.setQtd(322);
+		p12.setQtd(3022);
 		p12.setMedida("kg");
 		p12.setPrice(23);
 		p12.setValidity(LocalDate.now());

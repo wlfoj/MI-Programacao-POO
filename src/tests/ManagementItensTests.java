@@ -48,7 +48,7 @@ class ManagementItensTests {
 		ArrayList<Ingredients> c3 = new ArrayList<Ingredients>();
 		c3.add(ing3);
 		ing3.setId(4); //id que exista no produtos
-		ing3.setQtd(10);
+		ing3.setQtd(1);
 		item3.setCategory("doce");
 		item3.setPrice(5);
 		item3.setDescription("fatia de bolo de chocolate");
@@ -60,7 +60,7 @@ class ManagementItensTests {
 		ArrayList<Ingredients> c4 = new ArrayList<Ingredients>();
 		c4.add(ing4);
 		ing4.setId(5); 
-		ing4.setQtd(12);
+		ing4.setQtd(1);
 		item4.setCategory("bebida");
 		item4.setPrice(2);
 		item4.setDescription("agua sem gas");
@@ -75,7 +75,7 @@ class ManagementItensTests {
 		Item obj = new Item();
 		Ingredients ing5 = new Ingredients();
 		ing5.setId(6);
-		ing5.setQtd(23);
+		ing5.setQtd(2);
 		ArrayList<Ingredients> p1 = new ArrayList<Ingredients>();
 		p1.add(ing5);
 		obj.setCategory("lanche");
@@ -86,7 +86,7 @@ class ManagementItensTests {
 		Item obj2 = new Item();
 		Ingredients ing6 = new Ingredients();
 		ing6.setId(7);
-		ing6.setQtd(10);
+		ing6.setQtd(1);
 		ArrayList<Ingredients> p2 = new ArrayList<Ingredients>();
 		p2.add(ing6);
 		obj2.setCategory("massa");
@@ -108,7 +108,7 @@ class ManagementItensTests {
 		Item obj4 = new Item();
 		Ingredients ing8 = new Ingredients();
 		ing8.setId(9);
-		ing8.setQtd(21);
+		ing8.setQtd(2);
 		ArrayList<Ingredients> p4 = new ArrayList<Ingredients>();
 		p4.add(ing8);
 		obj4.setCategory("lanche");
@@ -119,7 +119,7 @@ class ManagementItensTests {
 		Item obj5 = new Item();
 		Ingredients ing9 = new Ingredients();
 		ing9.setId(10);
-		ing9.setQtd(24);
+		ing9.setQtd(2);
 		ArrayList<Ingredients> p5 = new ArrayList<Ingredients>();
 		p5.add(ing9);
 		obj5.setCategory("sobremesa");
@@ -130,7 +130,7 @@ class ManagementItensTests {
 		Item obj6 = new Item();
 		Ingredients ing10 = new Ingredients();
 		ing10.setId(11);
-		ing10.setQtd(19);
+		ing10.setQtd(1);
 		ArrayList<Ingredients> p6 = new ArrayList<Ingredients>();
 		p6.add(ing10);;
 		obj6.setCategory("almoco");
