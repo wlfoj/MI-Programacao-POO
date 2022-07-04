@@ -143,6 +143,7 @@ public abstract class ManagementSales {
 				list.get(i).setDate(obj.getDate());
 				list.get(i).insertItens(obj.getItens());
 				list.get(i).setPaymentMethod(obj.getPaymentMethod());
+				list.get(i).setIdCostumer(obj.getIdCostumer());
 				return true;
 			}
 		}

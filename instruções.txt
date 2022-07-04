@@ -1,13 +1,3 @@
--> FAZENDO/TERMINANDO
-Usuários [X]
-Clientes [X]
-Produtos [X]
-Fornecedores [X]
-Pratos [X]
-Vendas [ ]
-** ASSIM QUE VER ISSO FAÇA UM TESTES(NOS QUE MARQUEI UM X) PARA VER SE TEM ALGO DANDO ERRO **
-## SE TIVER ALGO DANDO ERRO, CONTINUE AÍ NAS SUAS TAREFAS, DEPOIS EU CORRIJO (SE FOR FÁCIL FAZ VOCÊ MESMO)
-
 -> VOCÊ CONCLUI
 Relatórios [ ]
 Corrigir problemas do pbl anterior [ ]
@@ -17,3 +7,15 @@ Corrigir os relatórios de fornecedor [ ]
 Corrigir o relatório de vendas por tipo de prato [ ]
 Verificar se o javadoc está correto ou faltando [ ]
 
+
+RELATORIOS
+Vendas realizadas no geral [ ]
+Vendas por periodo [ ]
+Vendas por tipo de prato [ ]
+
+Estoque total [X]
+Estoque por produto [ ]
+Estoque por produtos a vencer [X]
+
+Forncedor geral [X]
+Fornecedor por produto [X]
