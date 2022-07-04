@@ -2,6 +2,8 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Optional;
@@ -64,7 +66,7 @@ public class SalesController implements Initializable {
     
     @FXML
     private ComboBox<String> comboBoxPrint;// Combo para gerar o relatorio
-    private String[] lista = {"Relatorio completo", "Venda por Item"};//Opcoes de relatorios
+    private String[] lista = {"Relatorio completo", "Venda por Item", "venda por periodo"};//Opcoes de relatorios
     
 	@FXML
     private Button btnBack, btnCreate, btnEdit, btnDelete, btnPrint;
@@ -162,25 +164,56 @@ public class SalesController implements Initializable {
 		
 	}
 
+	/**Metodo para gerar relatorio
+	 * 
+	 * @param event evento disparado ao clicar no botao de imprimir
+	 * @throws Exception
+	 */
 	@FXML
     void actionPrint(ActionEvent event) throws Exception {
 		if (comboBoxPrint.getValue() == "Relatorio completo") {
 			SaleAll();
 		} else if(comboBoxPrint.getValue() == "Venda por Item") {
 			 SalePerItem();
-		}else {
-			
+		}else{
+			RelatorioDateContraller();
 		}
     }
 	
+	/**Gera relatorio de vendas por periodo
+	 * 
+	 */
+	public void SalePerPeriod() {
+		ArrayList<Sale> sales;
+		int qtdSales;
+		float totalPrice;
+		LocalDateTime dateInicial = null;
+		LocalDateTime dateFinish = null;
+		
+		RelatorioDateController.setDateInicial(dateInicial);
+		RelatorioDateController.setDateFinish(dateInicial);
+		
+		sales = ManagementSales.listSalePerPeriod(dateInicial, dateFinish);
+		qtdSales = ManagementSales.countItensInSale(sales);
+		totalPrice = ManagementSales.sumTotalPrice(sales);
+		
+	}
+	
+	public void RelatorioDateContraller() throws IOException{
+		AnchorPane anchor = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/RelatorioDataPicker.fxml"));
+		Scene cena = new Scene(anchor);
+		Main.setScene(cena);
+	}
+	
+	/**Gera relatorio de venda por item
+	 * 
+	 * @throws Exception
+	 */
 	public void SalePerItem() throws Exception {
 		ArrayList<Sale> sales;
 		int idPrato;
 		int qtdSales;
 		float totalPrice;
-		
-		
-		
 		
 		TextInputDialog textInput = new TextInputDialog();
 		textInput.setTitle("Informe o prato");
@@ -202,6 +235,9 @@ public class SalesController implements Initializable {
 		}
 	}
 	
+	/**Alerta para entradas invalidas em input de inteiros
+	 * 
+	 */
 	public void alertNumberFormat() {
 		Alert alertExceptionNumber = new Alert(Alert.AlertType.CONFIRMATION);
 		

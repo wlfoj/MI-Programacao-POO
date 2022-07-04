@@ -32,6 +32,7 @@ import model.ManagementItens;
 import model.ManagementSales;
 import model.Sale;
 import utils.Alerts;
+import utils.Relatorio;
 
 public class FormSalesController implements Initializable {
 
@@ -117,7 +118,7 @@ public class FormSalesController implements Initializable {
     		refreshTableView();
     	}
     	
-    	//Atualiza o input preço total
+    	//Atualiza o input preï¿½o total
     	for (int i = 0; i < tableViewList.size(); i++) {
     		totalPrice = totalPrice + tableViewList.get(i).getPrice();
 		}
@@ -157,7 +158,7 @@ public class FormSalesController implements Initializable {
 			}
 		}
     	
-    	//Atualiza o input preço total
+    	//Atualiza o input preï¿½o total
     	if (tableViewList.size()>0) {
         	for (int i = 0; i < tableViewList.size(); i++) {
         		totalPrice = totalPrice + tableViewList.get(i).getPrice();
@@ -173,10 +174,10 @@ public class FormSalesController implements Initializable {
     /**Metodo para salvar as informacoes inseridas no formulario
      * 
      * @param event - Evento disparado ao clicar no botao registrar
-     * @throws IOException
+     * @throws Exception 
      */
     @FXML
-    void actionSave(ActionEvent event) throws IOException {
+    void actionSave(ActionEvent event) throws Exception {
     	boolean aux = true;
     	// Verifica nï¿½o existe um id selecionado
 		if (Main.getIdSelected() == -1) {
@@ -202,10 +203,10 @@ public class FormSalesController implements Initializable {
     
     
     /**Metodo para utilizar as informacoes do formulario para registrar nova venda
-     * @throws InsufficientQuantityProducts 
+     * @throws Exception 
      * 
      */
-    public void createSale() throws InsufficientQuantityProducts {
+    public void createSale() throws Exception {
     	Sale s = new Sale();
     	s.setIdCostumer(Integer.parseInt(inputIdCostume.getText()));
     	s.setPaymentMethod(comboBoxPaymentMethod.getValue());
@@ -218,7 +219,7 @@ public class FormSalesController implements Initializable {
     	s.insertItens(listId);
     	
     	ManagementSales.addSale(s);
-    	
+    	Relatorio.gerarNotaVenda(s);
     }
     
     /**Metodo para utilizar as informacoes do formulario para editar uma venda

@@ -342,7 +342,6 @@ public class Relatorio {
 		Document documento = new Document();
 		String nome = "NotaVenda" + dataEHora() + ".pdf";
 		ArrayList<Item> pratos;
-		Item prato;//
 		
 		try {
 			//Iniciando arquivo
@@ -359,7 +358,7 @@ public class Relatorio {
 			documento.add(pVenda);
 			
 			// Data da venda
-			pVenda = new Paragraph("Data e horário da venda: "+ s.getDate());
+			pVenda = new Paragraph("Data e horï¿½rio da venda: "+ s.getDate());
 			documento.add(pVenda);
 			// Cliente
 			pVenda = new Paragraph("Nome do cliente: " + ManagementCostumer.getOne(s.getIdCostumer()).getName());
@@ -368,7 +367,7 @@ public class Relatorio {
 			pVenda = new Paragraph("Pratos vendidos: ");
 			documento.add(pVenda);
 			pratos = ManagementItens.convertIdItemList(s.getItens());
-			List pratosVenda = new List(pratos.get(i).getName());
+			List pratosVenda = new List();
 			for (int i = 0; i < pratos.size(); i++) {
 				ListItem item = new ListItem(pratos.get(i).getName());
 				pratosVenda.add(item);
