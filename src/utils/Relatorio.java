@@ -16,11 +16,14 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.List;
+import com.itextpdf.text.ListItem;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import model.Item;
+import model.ManagementCostumer;
 import model.ManagementItens;
 import model.ManagementProducts;
 import model.Product;
@@ -334,4 +337,59 @@ public class Relatorio {
 		return formattedDate;
 		
 	}
+	
+	
+	
+	/**Procedimento para gerar a nota da venda
+	 * 
+	 * @param s - A venda
+	 * @throws Exception	Excecao em caso de falha ao gerar arquivo
+	 */
+	public static void gerarNotaVenda(Sale s) throws Exception {
+		Document documento = new Document();
+		String nome = "NotaVenda" + dataEHora() + ".pdf";
+		ArrayList<Item> pratos;
+		Item prato;//
+		
+		try {
+			//Iniciando arquivo
+			PdfWriter.getInstance(documento, new FileOutputStream(nome));
+            documento.open();
+            Font bold = new Font(Font.FontFamily.UNDEFINED, 12, Font.BOLD);
+            
+            // TITULO
+			Paragraph pVenda = new Paragraph("Nota de Venda",bold);
+			pVenda.setAlignment(1);
+			documento.add(pVenda);
+			
+			pVenda = new Paragraph(" ");
+			documento.add(pVenda);
+			
+			// Data da venda
+			pVenda = new Paragraph("Data e horário da venda: "+ s.getDate());
+			documento.add(pVenda);
+			// Cliente
+			pVenda = new Paragraph("Nome do cliente: " + ManagementCostumer.getOne(s.getIdCostumer()).getName());
+			documento.add(pVenda);
+			// Pratos vendidos		
+			pVenda = new Paragraph("Pratos vendidos: ");
+			documento.add(pVenda);
+			pratos = ManagementItens.convertIdItemList(s.getItens());
+			List pratosVenda = new List(pratos.get(i).getName());
+			for (int i = 0; i < pratos.size(); i++) {
+				ListItem item = new ListItem(pratos.get(i).getName());
+				pratosVenda.add(item);
+			}
+			documento.add(pratosVenda);
+			//Valor total da venda e metodo de pagamento
+			pVenda = new Paragraph("Total: R$ "+ s.getTotalPrice()+"     Pago:"+s.getPaymentMethod());
+			documento.add(pVenda);
+
+			documento.close();
+			Desktop.getDesktop().open(new File(nome));
+		} catch (Exception e) {
+				throw new Exception();
+		}
+	}
+	
 }
